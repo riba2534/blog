@@ -1,0 +1,111 @@
+DefaultContentLanguage = "zh"
+dateFormat = "2006-01-02 15:04:05"
+description = "🌀riba2534's Blog"
+enableEmoji = true
+enableGitInfo = false
+languageCode = "zh-cn"
+theme = "diary"
+title = "🌀riba2534's Blog"
+relativeURLs = true
+canonifyURLs = false
+baseURL = "https://blog.riba2534.cn/" 
+
+
+
+
+[markup]
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+hl_Lines = ""
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = true
+noClasses = true
+style = "perldoc"
+tabWidth = 4
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+enableGitalk = false
+enableOpenGraph = true
+enableTwitterCards = true
+title = "🌀riba2534's Blog"
+description = "My HomePage Description"
+enableMathJax = true
+enableReadingTime = true
+favicon = "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210427152737.jpeg"
+subtitle = "凡事有交代，件件有着落，事事有回音"
+
+
+[params.gitalk]
+owner = "user"
+repo = "repo name"
+client_id = "your client id"
+client_secret = "your client secret"
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+
+
+[[menu.main]]
+name = "文章📖"
+url = "/blog"
+weight = 1
+
+[[menu.main]]
+name = "分类📌"
+url = "/categories"
+weight = 2
+
+[[menu.main]]
+name = "标签🏷️"
+url = "/tags"
+weight = 3
+
+[[menu.main]]
+name = "系列📚"
+url = "/series"
+weight = 4
+
+[[menu.main]]
+name = "归档📃"
+url = "/archive"
+weight = 5
+
+[[menu.main]]
+name = "关于👋"
+url = "/about"
+weight = 6
+
+[[menu.main]]
+name = "友链🔗"
+url = "/friends"
+weight = 7
+
+[[menu.main]]
+name = "RSS📢"
+url = "/index.xml"
+weight = 8
+
+[[menu.footer]]
+name = "CSDN"
+url = "https://blog.csdn.net/riba2534"
+weight = 1
+
+[[menu.footer]]
+name = "GitHub"
+url = "https://github.com/riba2534"
+weight = 2
+[[menu.footer]]
+name = "Zhihu"
+url = "https://www.zhihu.com/people/riba2534"
+weight = 3
+[[menu.footer]]
+name = "Email"
+url = "mailto:riba2534@qq.com"
+weight = 4
