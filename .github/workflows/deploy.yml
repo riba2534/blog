@@ -1,41 +1,69 @@
-name: GitHub Pages Deploy
+# 部署 Hugo 站点到 GitHub Pages 的工作流
+name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches:
-      - main  # 当 main 分支有新提交时触发部署
+    branches: ["main"]  # 监听 main 分支的 push 事件
+
+  # 允许从 Actions 标签页手动触发工作流
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的权限，以便进行 GitHub Pages 部署
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 设置并发控制，以确保只允许一个部署进程，避免重复的部署任务
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# 默认 shell 配置为 bash
+defaults:
+  run:
+    shell: bash
 
 jobs:
-  deploy:
+  # 构建任务
+  build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read         # 读取仓库内容
-      pages: write           # 写入 GitHub Pages 部署内容
-      id-token: write        # 用于身份验证的 ID 令牌
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        submodules: true  # 拉取主题子模块
+      - name: Install Hugo CLI
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'  # 使用最新的 Hugo 扩展版
+          extended: true
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: 'latest'
-        extended: true  # 使用 Hugo 扩展版
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true  # 下载主题的子模块
 
-    - name: Build site
-      run: hugo --minify  # 生成静态站点，并最小化输出
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
-    - name: Upload artifact to Pages
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: ./public  # Hugo 生成的静态文件目录
+      - name: Build with Hugo
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+        run: |
+          hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"  # 基于配置的 URL 生成
 
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-      environment: github-pages
+      - name: Upload artifact to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public  # Hugo 生成的静态文件目录
+
+  # 部署任务
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
