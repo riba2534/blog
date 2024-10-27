@@ -1,0 +1,32 @@
+name: GitHub Pages Deploy
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的 push 事件
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        submodules: true  # 下载主题的子模块
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+        extended: true  # 使用 Hugo 扩展版
+
+    - name: Build site
+      run: hugo --minify  # 使用 Hugo 生成静态站点，并最小化输出
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub 自动提供的令牌
+        publish_dir: ./public  # Hugo 生成的静态文件目录
+        cname: 'blog.riba2534.cn'  # 自定义域名
