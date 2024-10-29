@@ -49,30 +49,21 @@ jobs:
           hugo-version: 'latest'  # 安装最新版本的 Hugo
           extended: true  # 安装扩展版，支持 SASS/SCSS 编译
 
-      # 第四步：缓存 Hugo 生成的临时文件
-      - name: Cache Hugo files
-        uses: actions/cache@v3  # 使用 actions/cache@v3 action 以支持 Node.js 20
-        with:
-          path: ${{ runner.temp }}/hugo_cache  # 设置缓存路径，存储在运行器的临时目录下
-          key: ${{ runner.os }}-hugo-${{ hashFiles('**/*.md') }}  # 基于文件内容生成缓存的唯一键
-          restore-keys: |
-            ${{ runner.os }}-hugo-  # 尝试使用适用于该操作系统的缓存，提升缓存命中率
-
-      # 第五步：使用 Hugo 构建网站
+      # 第四步：使用 Hugo 构建网站
       - name: Build with Hugo
         env:
-          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache  # 使用缓存目录，提升构建速度
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache  # 使用默认的临时缓存目录
           HUGO_ENVIRONMENT: production  # 设置构建环境为生产环境
         run: |
           hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"  # 使用 GitHub Pages 提供的基础 URL，压缩并构建网站
 
-      # 第六步：将构建输出上传为 GitHub Pages 的静态文件
+      # 第五步：将构建输出上传为 GitHub Pages 的静态文件
       - name: Upload artifact to Pages
         uses: actions/upload-pages-artifact@v3  # 使用上传文件的 action，适配 Node.js 20
         with:
           path: ./public  # 指定要上传的文件夹路径（Hugo 默认输出到 ./public）
 
-      # 第七步：将上传的静态文件部署到 GitHub Pages
+      # 第六步：将上传的静态文件部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4  # 使用 GitHub 官方的 deploy pages action
