@@ -18,30 +18,35 @@ enableVue : true
 
 ## 简介
 
-riba2534 是我在网络上的常用代号，本人于 2020 年毕业于计算机科学与技术专业，我一直使用一个兔斯基的头像(~~如果要问为什么是，因为我太懒，懒得换~~)。
+riba2534 是我在网络上的常用代号，本人于 2020 年本科毕业于计算机科学与技术专业，我一直使用一个兔斯基的头像(~~如果要问为什么是，因为我太懒，懒得换~~)。
 
 兴趣使然（~~我会告诉你我是小时候玩网络游戏下载一堆外挂然后电脑中毒后开始对技术感兴趣的？~~），比较热爱计算机相关技术，喜欢折腾爱瞎搞，前算法竞赛选手，退役 Acmer。
 
-目前在字节跳动（ByteDance）担任抖音电商的服务端研发工程师(之前在今日头条)，喜欢折腾 Go，Linux，分布式等技术。常用语言为：Golang、Python、C/C++。
+目前在字节跳动（ByteDance）担任抖音电商的服务端研发工程师(之前在今日头条)，喜欢折腾 Go，Linux，分布式，服务端架构设计。常用语言为：Golang、Python、Rust、C/C++。
 
-最近对区块链、Web3相关话题比较感兴趣，Solidity、Rust 学习中，有相同兴趣的同学可以一起交流。
+也喜欢折腾一些 HomeLab 相关的东西， NAS、软路由、家庭网络拓扑、家庭影院、各种内网 Server 服务等。
 
+现在对投资、经济、量化交易、区块链、Web3领域也比较感兴趣。混迹于加密社区，BTC HODL，同时搞一些 Defi 套利, Cefi 量化，Yield Farmer，价值投资者。
+
+*Don't Trust, Verify!*
+*Time, Not Timing!*
 
 ## 工作经历
 
 - 2021.8 - 至今 抖音电商服务端研发工程师
 - 2020.7 - 2021.8 今日头条UGC服务端研发工程师
-- 2019.4 - 2020.7 今日头条后台开发实习生
+- 2019.4 - 2020.7 今日头条后端研发实习生
 
 
 ## 其他主页
 
-- 个人网站：[https://www.riba2534.cn/](https://www.riba2534.cn/) （~~大一闲的无聊用wordpress搭的网站，以后再也不会更新了，但是我觉得挺好看的，就不下线了~~，彻底无了）
+- 个人主页导航：[https://riba2534.cn/](https://riba2534.cn/)
 - GitHub：[https://github.com/riba2534](https://github.com/riba2534)
-- CSDN：[https://blog.csdn.net/riba2534](https://blog.csdn.net/riba2534) （大学时期最常用，写了一堆题解）
-- 知乎：[https://www.zhihu.com/people/riba2534](https://www.zhihu.com/people/riba2534) （网上闲聊吹水。。）
+- CSDN：[https://blog.csdn.net/riba2534](https://blog.csdn.net/riba2534) （大学时期最常用，基本上是一些 ACM 题解，希望对后人有帮助）
+- 知乎：[https://www.zhihu.com/people/riba2534](https://www.zhihu.com/people/riba2534) （网上闲聊吹水）
+- X: [https://x.com/riba2534](https://x.com/riba2534) （加密社区）
 
-## 一些垃圾
+## 以前的一些垃圾
 
 - [ACM_Template](https://github.com/riba2534/my_acm_template)：竞赛退役后整理的 ACM 模板，希望对后人有帮助. [网页版](https://riba2534.github.io/book/) | [PDF版](https://github.com/riba2534/my_acm_template/releases/download/v1.0/riba2534-ACM-Template.pdf)
 - [My_ACM_Code](https://github.com/riba2534/My_ACM_Code)：为了防止代码丢，之前用爬虫爬的我的各大 OJ AC 代码。
@@ -74,4 +79,3 @@ riba2534 是我在网络上的常用代号，本人于 2020 年毕业于计算�
 > 由于工作比较忙，可能会很久才更新一篇博客，故而把博客从 Typecho 迁移到 Hugo 便于维护，由于本人太蠢，搞不懂前端，对本主题进行了魔改，好像有很多 Bug...，如果您发现了请告诉我。
 
 > 之前的一些博客基本在 CSDN 上。本博客先是迁移了一些 2018 年 12 月 - 2021年初的文章，后续本人的博客也会更新在这里。
-
