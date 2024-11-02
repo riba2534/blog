@@ -12,6 +12,8 @@
 
 # 构建方法
 
+> hugo 需要下载扩展版
+
 ```bash
 
 # 初始化本地配置文件
@@ -23,6 +25,6 @@ git submodule update
 git submodule update --remote --merge
 
 # 启动服务器
-hugo server
+hugo server --disableFastRender
 ```
 
