@@ -9,7 +9,7 @@ title = "🌀riba2534's Blog"
 relativeURLs = true
 canonifyURLs = false
 baseURL = "https://blog.riba2534.cn/" 
-
+enableLaTeX=true
 
 
 
