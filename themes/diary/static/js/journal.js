@@ -5,6 +5,9 @@ var debounce = function (func, wait, options) {
   let leading = false;
   let maxing = false;
   let trailing = true;
+  
+  // Define root as window or global
+  const root = typeof window !== 'undefined' ? window : (typeof global !== 'undefined' ? global : this);
 
   // Bypass `requestAnimationFrame` by explicitly setting `wait=0`.
   const useRAF =

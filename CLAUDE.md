@@ -7,34 +7,51 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 这是一个使用 Hugo 静态网站生成器构建的个人博客项目。博客使用 GitHub Pages 进行托管，Twikoo 作为评论系统。
 
 - **主站地址**: https://blog.riba2534.cn
-- **主题**: hugo-theme-diary (自定义分支: https://github.com/riba2534/hugo-theme-diary)
+- **主题**: hugo-theme-diary (已包含在项目中)
 - **评论系统**: Twikoo (https://twikoo.riba2534.cn)
 
 ## 常用命令
 
-### 本地开发
+### 使用 Makefile（推荐）
 ```bash
-# 初始化子模块（第一次克隆后需要执行）
-git submodule init
-git submodule update
+# 显示所有可用命令
+make help
 
-# 更新主题到最新版本
-git submodule update --remote --merge
+# 启动本地开发服务器 (localhost:1313)
+make serve
 
+# 启动局域网可访问的服务器
+make serve-lan
+
+# 构建静态网站
+make build
+
+# 清理生成的文件
+make clean
+
+# 创建新文章
+make new title="文章标题"
+
+# 构建并预览生产版本
+make preview
+
+# 部署到 GitHub Pages
+make deploy
+```
+
+### 直接使用 Hugo 命令
+```bash
 # 启动本地开发服务器
 hugo server --disableFastRender
 
-# 使用 Makefile 启动服务器（绑定到局域网 IP）
-make server
-```
-
-### 构建
-```bash
 # 构建静态网站（输出到 public 目录）
 hugo --minify
 
 # 构建用于生产环境
 HUGO_ENVIRONMENT=production hugo --minify
+
+# 创建新文章
+hugo new blog/$(date +%Y)/文章标题.md
 ```
 
 ## 项目结构
@@ -51,8 +68,8 @@ HUGO_ENVIRONMENT=production hugo --minify
   - `content/archive.md`: 归档页面
 
 ### 主题配置
-- 主题作为 Git 子模块存储在 `themes/diary/`
-- 使用自定义的 hugo-theme-diary 分支
+- 主题直接存储在 `themes/diary/` 目录中
+- 基于 hugo-theme-diary，已包含在项目中
 - 主题支持数学公式（MathJax）、代码高亮、评论系统等功能
 
 ## 重要特性
@@ -67,5 +84,18 @@ HUGO_ENVIRONMENT=production hugo --minify
 
 - Hugo 版本需要使用扩展版（extended），以支持主题中的 SASS/SCSS
 - 所有新文章应放在 `content/blog/` 目录下，按年份组织
-- 主题是通过 Git 子模块管理的，修改主题需要在子模块仓库中进行
+- 主题文件可以直接在 `themes/diary/` 目录中修改
 - 部署是通过 GitHub Actions 自动完成的，无需手动构建和推送
+
+## Claude 操作规则
+
+### Git 操作权限
+- **重要**: 所有 Git 和 GitHub 相关操作（commit、push、pull、merge、创建分支等）必须得到明确授权才能执行
+- 在执行这类操作前必须先询问许可
+
+### 痕迹清理要求
+每次完成修改后必须进行环境清理：
+1. 删除生成的测试文件（如 `public/` 目录）
+2. 删除临时文件和备份文件
+3. 结束后台运行的程序（如开发服务器）
+4. 确保不留下不必要的文件或进程

@@ -50,9 +50,9 @@
 <div id="tcomment"></div>
 <script>
 twikoo.init({
-    envId: {{.Site.Params.twikooEnvId}},
-    el: '#tcomment',
-    region: {{.Site.Params.twikooRegion}},
+    envId: '{{.Site.Params.twikooEnvId}}',
+    el: '#tcomment'{{ with .Site.Params.twikooRegion }},
+    region: '{{.}}'{{ end }}
 });
 </script>
 {{ end }}
