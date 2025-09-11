@@ -17,7 +17,7 @@ serve:
 
 # 启动局域网可访问的服务器
 serve-lan:
-	hugo server --disableFastRender --bind 0.0.0.0 --baseURL http://192.168.31.210:1313
+	hugo server --disableFastRender --bind 0.0.0.0
 
 # 兼容旧命令
 server: serve-lan
