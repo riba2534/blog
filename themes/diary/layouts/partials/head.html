@@ -1,5 +1,5 @@
 <head>
-<title>{{.Title}}</title>
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
 {{ $description := .Params.description}}
 {{if .IsHome}}
@@ -8,7 +8,9 @@
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
-<meta name="google-site-verification" content="{{ .Site.Config.Services.GoogleAnalytics.ID }}">
+{{ with .Site.Params.googleSiteVerification }}
+<meta name="google-site-verification" content="{{ . }}">
+{{ end }}
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta content="telephone=no" name="format-detection">
 <meta name="description" content="{{ $description }}">
@@ -46,9 +48,11 @@
 <link rel="manifest" href="{{.Site.Params.manifest}}">
 {{end}}
   
-{{if .Params.canonicalUrl}}
-<link rel="canonical" href="{{.Params.canonicalUrl}}" />
-{{end}}
+{{ if .Params.canonicalUrl }}
+<link rel="canonical" href="{{ .Params.canonicalUrl }}" />
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}" />
+{{ end }}
 
 <!-- favicon -->
 {{ if .Site.Params.favicon }}
@@ -71,7 +75,8 @@
     <link type="text/css" rel="stylesheet" href="{{"/vendor/css/bootstrap.min.css" | relURL}}">
 {{- end -}}
 
-{{ if not .Site.Params.disableDarkmode }}
+{{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
+{{ if not $disableDark }}
 {{ $darkmode := resources.Get "scss/dark-mode.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $darkmode.RelPermalink }}" integrity="{{ $darkmode.Data.Integrity }}" media="screen">
 {{ else }}
@@ -79,8 +84,9 @@
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
 {{ end }}
 
-<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Material+Icons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=swap">
 
 {{ if .Site.Params.cloudflareToken }}
 <!-- Cloudflare Web Analytics -->
@@ -149,11 +155,16 @@
 {{ end }}
 
 {{ if and (.Site.Params.disqusShortname) (.IsPage) }}
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 {{ end }}
 
+{{ if or (.Params.enableVue) (.Site.Params.enableVueGlobally) }}
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+{{ end }}
+
 {{ if and (.Site.Params.enableTwikoo) (.IsPage) }}
-<script src="https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js"></script>
 {{ end }}
 
 {{ if and (.Site.Params.walineServer) (.IsPage) }}

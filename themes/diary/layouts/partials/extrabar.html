@@ -1,9 +1,6 @@
 <div id="extraContainer" class="extra-container">
     <div class="toc-wrapper">
-        {{ if and (isset .Site.Params "googlesearchcode") (.IsHome) }}
-        <script async src="https://cse.google.com/cse.js?cx={{.Site.Params.googleSearchCode}}"></script>
-        <div class="gcse-searchbox-only" mobileLayout="true"></div>
-        {{ end }}
+        {{- partial "google-search.html" . -}}
 
         {{ if and (not (.Params.disableToC) ) (.IsPage) }}
         <div class="toc">
@@ -18,8 +15,9 @@
                 keyboard_arrow_up
             </i>
         </a>
-        {{ if not .Site.Params.disableDarkMode }}
-        <a type="button" class="pagination-action" id="darkModeToggleButton">
+        {{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
+        {{ if not $disableDark }}
+        <a type="button" class="pagination-action" id="darkModeToggleButton" title="切换暗黑模式">
             <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
                 dark_mode
             </span>
@@ -38,9 +36,9 @@
         </a>
 
         <div class="pagination-indicator">
-            <span style="text-align: center">
+            <span style="text-align: center; line-height: 1.2em;">
                 {{.Paginator.PageNumber}}<br>
-                <div style="display: inline-block; transform: rotate(-28deg)">-</div><br>{{.Paginator.TotalPages}}
+                <div style="display: inline-block; transform: rotate(-28deg); margin: 2px 0;">-</div><br>{{.Paginator.TotalPages}}
             </span>
         </div>
 

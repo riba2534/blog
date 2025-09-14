@@ -13,7 +13,7 @@
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
-    {{ range .Paginator.Pages }}
+    {{ range first 50 .Paginator.Pages }}
     {{ if and (.IsPage) (.Params.date) }}
         <item>
         <title>{{ .Title }}</title>

@@ -12,7 +12,9 @@
     </a>
 
         <div class="pagination-indicator">
-            <span>{{.Paginator.PageNumber}}/{{.Paginator.TotalPages}}</span>
+            <span style="text-align: center">
+                {{.Paginator.PageNumber}}/{{.Paginator.TotalPages}}
+            </span>
         </div>
 
         {{ if .Paginator.HasNext }}

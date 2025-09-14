@@ -2,10 +2,7 @@
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">
-            {{ if and (isset .Site.Params "googlesearchcode") (.IsHome) }}
-            <script async src="https://cse.google.com/cse.js?cx={{.Site.Params.googleSearchCode}}"></script>
-            <div class="gcse-searchbox-only" mobileLayout="true"></div>
-            {{ end }}
+            {{- partial "google-search.html" . -}}
             {{ $current := .RelPermalink | absLangURL }}
             {{ range .Site.Menus.main }}
                 {{$actived := "false"}}
@@ -14,9 +11,9 @@
                     {{$actived = "active"}}
                 {{end}}
                 {{ if .HasChildren }}
-                <div class="a-block" class="drawer-menu-item {{$actived}}" v-on:click="isHidden = !isHidden">
+                <div class="a-block drawer-menu-item {{$actived}}" v-on:click="toggleDrawerSubMenu" onclick="if(typeof toggleDrawerSubMenu === 'function') toggleDrawerSubMenu()">
                     {{ .Name }}
-                    <div class="nav-link-subitem" v-if="!isHidden">
+                    <div class="nav-link-subitem drawer-submenu" v-if="!drawerSubMenuHidden" style="display: none;">
                         {{ range .Children }}
                         <li><a href="{{ .URL }}"> {{ .Name }}</a></li>
                     {{ end }}
@@ -38,12 +35,18 @@
     </div>
 </div>
 <transition name="fade">
-    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+    <div id="drawer-mask"
+         class="single-column-drawer-mask"
+         v-bind:class="{ 'single-column-drawer-mask': mounted }"
+         v-show="isDrawerOpen"
+         v-on:click="toggleDrawer"
+         onclick="if(typeof toggleDrawer === 'function') toggleDrawer()"
+         style="display: none;"></div>
 </transition>
 <nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer" onclick="if(typeof toggleDrawer === 'function') toggleDrawer()">
             <i class="material-icons">
                 menu
             </i>
@@ -51,8 +54,9 @@
         <a id="navTitle" class="navbar-brand" href="{{ "" | absLangURL }}">
             {{.Site.Title}}
         </a>
-        {{ if not .Site.Params.disableDarkMode }}
-        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+        {{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
+        {{ if not $disableDark }}
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2" title="切换暗黑模式">
             <i class="material-icons" id="darkModeToggleIcon2">
                 dark_mode
             </i>

@@ -27,6 +27,95 @@
         {{- /* with leading slash */ -}}
         <script src="{{"/js/journal.js" | relURL}}"></script>
     {{- end -}}
-    
+
+    <script>
+    // Initialize Vue.js for theme functionality (always loaded for menu functionality)
+    if (typeof Vue !== 'undefined') {
+        new Vue({
+            el: '#app',
+            data: {
+                mounted: false,
+                isDrawerOpen: false,
+                sidebarSubMenuHidden: true,  // 桌面端侧边栏子菜单状态
+                drawerSubMenuHidden: true,   // 移动端抽屉子菜单状态
+                scrollY: 0,
+                navOpacity: 0
+            },
+            mounted() {
+                this.mounted = true;
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            beforeDestroy() {
+                window.removeEventListener('scroll', this.handleScroll);
+            },
+            methods: {
+                toggleDrawer() {
+                    this.isDrawerOpen = !this.isDrawerOpen;
+                    // 切换抽屉时重置移动端子菜单状态
+                    if (!this.isDrawerOpen) {
+                        this.drawerSubMenuHidden = true;
+                    }
+                },
+                toggleSidebarSubMenu() {
+                    this.sidebarSubMenuHidden = !this.sidebarSubMenuHidden;
+                },
+                toggleDrawerSubMenu() {
+                    this.drawerSubMenuHidden = !this.drawerSubMenuHidden;
+                },
+                handleScroll() {
+                    this.scrollY = window.scrollY;
+                    this.navOpacity = Math.min(this.scrollY / 300, 1);
+                }
+            }
+        });
+    } else {
+        // Fallback for when Vue is not loaded - provide basic functionality
+        window.themeState = {
+            isDrawerOpen: false,
+            sidebarSubMenuHidden: true,
+            drawerSubMenuHidden: true
+        };
+
+        window.toggleDrawer = function() {
+            const state = window.themeState;
+            state.isDrawerOpen = !state.isDrawerOpen;
+
+            const drawer = document.getElementById('drawer');
+            const mask = document.getElementById('drawer-mask');
+
+            if (state.isDrawerOpen) {
+                drawer.classList.add('single-column-drawer-container-active');
+                mask.style.display = 'block';
+            } else {
+                drawer.classList.remove('single-column-drawer-container-active');
+                mask.style.display = 'none';
+                state.drawerSubMenuHidden = true;
+                // Hide all submenu items
+                document.querySelectorAll('.drawer-submenu').forEach(el => {
+                    el.style.display = 'none';
+                });
+            }
+        };
+
+        window.toggleSidebarSubMenu = function() {
+            const state = window.themeState;
+            state.sidebarSubMenuHidden = !state.sidebarSubMenuHidden;
+            const submenu = document.querySelector('.sidebar-submenu');
+            if (submenu) {
+                submenu.style.display = state.sidebarSubMenuHidden ? 'none' : 'block';
+            }
+        };
+
+        window.toggleDrawerSubMenu = function() {
+            const state = window.themeState;
+            state.drawerSubMenuHidden = !state.drawerSubMenuHidden;
+            const submenu = document.querySelector('.drawer-submenu');
+            if (submenu) {
+                submenu.style.display = state.drawerSubMenuHidden ? 'none' : 'block';
+            }
+        };
+    }
+    </script>
+
     </body>
 </html>

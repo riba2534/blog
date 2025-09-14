@@ -1,0 +1,6 @@
+{{ if .IsHome }}
+{{ with .Site.Params.googleSearchCode }}
+<script async src="https://cse.google.com/cse.js?cx={{ . }}"></script>
+<div class="gcse-searchbox-only" mobileLayout="true"></div>
+{{ end }}
+{{ end }}

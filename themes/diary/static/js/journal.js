@@ -195,8 +195,12 @@ var handleScroll = function () {
     navTitle.style.opacity = 0;
   }
 
-  if (typeof spy !== "undefined") {
-    spy();
+  if (typeof spy !== "undefined" && typeof spy === "function") {
+    try {
+      spy();
+    } catch (e) {
+      console.warn('TOC spy function error:', e);
+    }
   }
 };
 
@@ -297,11 +301,13 @@ var openDrawer = function () {
     .classList.add("single-column-drawer-container-active");
 };
 
-document
-  .getElementById("nav_dropdown_btn")
-  .addEventListener("click", function () {
+// Safe event listener attachment
+var navDropdownBtn = document.getElementById("nav_dropdown_btn");
+if (navDropdownBtn) {
+  navDropdownBtn.addEventListener("click", function () {
     openDrawer();
   });
+}
 
 var closeDrawer = function () {
   document.getElementsByTagName("html")[0].style.overflow = "unset";
@@ -313,6 +319,9 @@ var closeDrawer = function () {
     .classList.remove("single-column-drawer-container-active");
 };
 
-document.getElementById("drawer-mask").addEventListener("click", function () {
-  closeDrawer();
-});
+var drawerMask = document.getElementById("drawer-mask");
+if (drawerMask) {
+  drawerMask.addEventListener("click", function () {
+    closeDrawer();
+  });
+}

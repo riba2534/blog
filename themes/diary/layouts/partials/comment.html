@@ -49,11 +49,21 @@
 {{ if .Site.Params.enableTwikoo }}
 <div id="tcomment"></div>
 <script>
-twikoo.init({
-    envId: '{{.Site.Params.twikooEnvId}}',
-    el: '#tcomment'{{ with .Site.Params.twikooRegion }},
-    region: '{{.}}'{{ end }}
-});
+(function(){
+  var start = function(){
+    if (typeof twikoo === 'undefined') return;
+    twikoo.init({
+      envId: '{{ .Site.Params.twikooEnvId }}',
+      el: '#tcomment'{{ with .Site.Params.twikooRegion }},
+      region: '{{ . }}'{{ end }}
+    });
+  };
+  if (typeof twikoo !== 'undefined') {
+    start();
+  } else {
+    window.addEventListener('load', start, { once: true });
+  }
+})();
 </script>
 {{ end }}
 
@@ -64,7 +74,7 @@ twikoo.init({
         el: '#waline',
         //path: location.pathname,
         dark: "body.night",
-        serverURL: {{.Site.Params.walineServer}} ,
+        serverURL: "{{.Site.Params.walineServer | safeJS}}" ,
     });
     
     </script>

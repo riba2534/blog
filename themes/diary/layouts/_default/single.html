@@ -27,7 +27,7 @@
                     {{ end }}
                     <div class="post-meta">
                         {{ if .Params.date}}
-                        <time itemprop="datePublished">
+                        <time itemprop="datePublished" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
                             {{ i18n "format_date_tosec" .PublishDate }}
                         </time>
                         {{ end }}
