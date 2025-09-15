@@ -42,6 +42,15 @@
   --surface-2: #f8fafc; /* slate-50 */
   --surface-3: #f1f5f9; /* slate-100 */
   --border: rgba(0,0,0,0.08);
+
+  /* typography */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* code surfaces */
+  --code-surface: #10172a;
+  --code-border: rgba(15,23,42,0.32);
+  --code-line-bg: rgba(15,23,42,0.42);
+  --code-line-color: rgba(148,163,184,0.65);
 }
 
 /* Dark tokens (activated by theme's body.night) */
@@ -53,6 +62,10 @@ body.night {
   --surface-2: #0b0b0c; /* darker bg for page */
   --surface-3: #1f2937; /* slate-800 */
   --border: rgba(255,255,255,0.08);
+  --code-surface: #050b16;
+  --code-border: rgba(148,163,184,0.26);
+  --code-line-bg: rgba(148,163,184,0.08);
+  --code-line-color: rgba(148,163,184,0.45);
 }
 
 /* Global refinements */
@@ -153,17 +166,180 @@ body.night .post-list-container.post-list-container-shadow > .post {
 .post-head-wrapper-text-only { padding-top: var(--space-6); }
 
 /* Code blocks */
-pre, code { transition: background-color .2s ease, color .2s ease; }
-pre {
-  background: var(--surface-3) !important;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md) !important;
+pre,
+code {
+  font-family: var(--font-mono);
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
-body.night pre { background: rgba(255,255,255,0.06) !important; }
-code:not([class*="language-"]) {
+
+.post-body > pre {
+  position: relative;
+  margin: var(--space-5) 0;
+  padding: var(--space-5) var(--space-6);
+  background: var(--surface-1);
+  border: 1px solid rgba(148,163,184,0.24);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 14px 34px rgba(15,23,42,0.08);
+  overflow: auto;
+  font-size: .95rem;
+  line-height: 1.7;
+  color: inherit;
+}
+
+body.night .post-body > pre {
   background: var(--surface-3);
-  border: 1px solid var(--border);
+  border-color: rgba(148,163,184,0.2);
+  box-shadow: 0 22px 46px rgba(2,6,23,0.58);
+}
+
+.post-body > pre:hover {
+  box-shadow: 0 20px 44px rgba(15,23,42,0.12);
+}
+body.night .post-body > pre:hover {
+  box-shadow: 0 26px 54px rgba(2,6,23,0.68);
+}
+
+.post-body > pre code {
+  display: block;
+  padding: 0;
+  background: none !important;
+  color: inherit;
+  overflow-wrap: normal;
+}
+
+.post-body > pre::-webkit-scrollbar {
+  height: 8px;
+}
+.post-body > pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+.post-body > pre::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.4);
+  border-radius: 999px;
+}
+body.night .post-body > pre::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.35);
+}
+
+.post-body .highlight {
+  position: relative;
+  margin: var(--space-5) 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  background: var(--code-surface);
+  border: 1px solid var(--code-border);
+  box-shadow: 0 12px 32px rgba(15,23,42,0.24);
+  overflow: hidden;
+}
+
+body.night .post-body .highlight {
+  background: var(--code-surface);
+  border-color: var(--code-border);
+  box-shadow: 0 20px 46px rgba(2,6,23,0.62);
+}
+
+.post-body .highlight:hover {
+  box-shadow: 0 20px 46px rgba(15,23,42,0.3);
+}
+body.night .post-body .highlight:hover {
+  box-shadow: 0 28px 60px rgba(2,6,23,0.7);
+}
+
+.post-body .highlight > div {
+  position: relative;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  overflow: auto;
+}
+
+.post-body .highlight > div::-webkit-scrollbar {
+  height: 8px;
+}
+.post-body .highlight > div::-webkit-scrollbar-track {
+  background: transparent;
+}
+.post-body .highlight > div::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.35);
+  border-radius: 999px;
+}
+body.night .post-body .highlight > div::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.3);
+}
+
+.post-body .highlight table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.post-body .highlight td {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.post-body .highlight td:first-child {
+  width: 3.4rem;
+  min-width: 3.4rem;
+  text-align: right;
+  padding-right: var(--space-3) !important;
+  border-right: 1px solid rgba(148,163,184,0.18);
+  color: var(--code-line-color);
+  background: var(--code-line-bg);
+  user-select: none;
+}
+body.night .post-body .highlight td:first-child {
+  border-right-color: rgba(148,163,184,0.18);
+  color: var(--code-line-color);
+  background: var(--code-line-bg);
+}
+
+.post-body .highlight pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible;
+}
+
+.post-body .highlight pre code {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  background: none !important;
+  background-color: transparent !important;
+  color: inherit;
+}
+
+.post-body .highlight td:first-child pre code {
+  padding: var(--space-3) 0;
+  opacity: .65;
+}
+body.night .post-body .highlight td:first-child pre code {
+  opacity: .55;
+}
+
+.post-body code:not([class*="language-"]) {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
   border-radius: var(--radius-xs);
+  border: 1px solid rgba(148,163,184,0.4);
+  background: rgba(248,250,252,0.8);
+  color: var(--accent);
+  font-size: .85rem;
+  letter-spacing: .15px;
+}
+body.night .post-body code:not([class*="language-"]) {
+  background: rgba(148,163,184,0.12);
+  border-color: rgba(148,163,184,0.28);
+  color: #9cc9ff;
+}
+
+.post-body code[class*="language-"] {
+  font-size: .92rem;
 }
 
 /* Blockquotes */
@@ -185,6 +361,7 @@ body.night blockquote { background: rgba(25,118,210,0.12) !important; }
   border-radius: var(--radius-sm);
   background: var(--surface-1);
   box-shadow: var(--shadow-1);
+  overflow: hidden;
 }
 body.night .toc { background: var(--surface-3); }
 .toc .toc-content { max-height: calc(100vh - 140px); overflow: auto; }
