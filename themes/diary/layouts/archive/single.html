@@ -1,0 +1,59 @@
+{{ define "main" }}
+<div class="post-list-container post-list-container-shadow">
+    <a class="a-block">
+        <div class="post-item-wrapper post-item-wrapper-no-hover">
+            <div class="post-item post-item-no-gaps">
+                <div class="post-item-info-wrapper">
+                    <div class="post-item-title post-item-title-small">
+                        归档
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <!-- 内容列表页（按年分组） -->
+    <div class="archive">
+        {{ range (.Site.RegularPages.GroupByDate "2006") }}
+        {{ $posts := where .Pages "Type" "blog" }}
+        {{ if gt (len $posts) 0 }}
+        <section class="archive-year">
+            {{ $count := len $posts }}
+            <header class="archive-year-header">
+                <span class="archive-year-label">{{ .Key }}</span>
+                <span class="archive-year-badge" aria-label="{{ $count }} 篇文章">
+                    <span class="archive-year-badge-count">{{ printf "%d" $count }}</span>
+                    <span class="archive-year-badge-text">篇</span>
+                </span>
+            </header>
+            <ul class="archive-list">
+                {{ range $posts.ByPublishDate.Reverse }}
+                {{ $titleID := printf "archive-title-%s" (md5 .RelPermalink) }}
+                <li class="archive-item">
+                    <time class="archive-item-date" datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "01-02" }}</time>
+                    <div class="archive-item-main">
+                        <a class="archive-item-hit" href="{{ .RelPermalink }}" aria-labelledby="{{ $titleID }}"></a>
+                        <span class="archive-item-title" id="{{ $titleID }}">{{ .Title }}</span>
+                        {{ with .Params.tags }}
+                        <ul class="archive-item-tags">
+                            {{ range . }}
+                            {{ $tag := . }}
+                            {{ with $.Site.GetPage (printf "/tags/%s" (urlize $tag)) }}
+                            <li>
+                                <a href="{{ .RelPermalink }}">{{ $tag }}</a>
+                            </li>
+                            {{ else }}
+                            <li>{{ $tag }}</li>
+                            {{ end }}
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+        </section>
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}

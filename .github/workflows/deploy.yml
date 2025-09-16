@@ -34,8 +34,6 @@ jobs:
       # 第一步：检出代码仓库内容
       - name: Checkout repository
         uses: actions/checkout@v4  # 使用 checkout action 的 v4 版本，支持 Node.js 20
-        with:
-          submodules: true  # 下载包含在仓库中的所有 Git 子模块（如 Hugo 主题）
 
       # 第二步：设置 GitHub Pages 环境
       - name: Setup Pages
@@ -46,13 +44,12 @@ jobs:
       - name: Install Hugo CLI
         uses: peaceiris/actions-hugo@v3  # 使用最新的 peaceiris Hugo action 支持 Node.js 20
         with:
-          hugo-version: 'latest'  # 安装最新版本的 Hugo
+          hugo-version: 'latest'  # 使用最新版本的 Hugo
           extended: true  # 安装扩展版，支持 SASS/SCSS 编译
 
       # 第四步：使用 Hugo 构建网站
       - name: Build with Hugo
         env:
-          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache  # 使用默认的临时缓存目录
           HUGO_ENVIRONMENT: production  # 设置构建环境为生产环境
         run: |
           hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"  # 使用 GitHub Pages 提供的基础 URL，压缩并构建网站

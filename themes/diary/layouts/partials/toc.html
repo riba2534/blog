@@ -1,0 +1,53 @@
+{{ $headers := findRE "<h[1-4].*?>(.|\n)*?</h[1-4]>" .Content }}
+<!-- at least one header to link to -->
+{{ if ge (len $headers) 1 }}
+	<div class="toc-content">
+	<!-- ignore empty links with + -->
+		{{ $h1_n := len (findRE "<h1.*?>(.|\n)*?</h1>" .Content) }}
+		{{ $re := (cond (eq $h1_n 0) "<h[2-4]" "<h[1-4]") }}
+		{{ $renum := (cond (eq $h1_n 0) "[2-4]" "[1-4]") }}
+		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+			<span>- {{ i18n "toc_title" }} -</span>
+			{{ if site.Params.enableAutoCollapse }}
+			<button id="toc-toggle-all" onclick="toggleAllTocItems()" style="background: none; border: none; cursor: pointer; font-size: 14px;">
+				<i class="material-icons" style="font-size: 16px;">expand_more</i>
+			</button>
+			{{ end }}
+		</div>
+		{{ $scratch := newScratch }}
+		{{ $scratch.Set "prev_heading" 1 }}
+		<ul>
+			{{ range $headers }}
+				{{ $header := . }}
+				{{ range first 1 (findRE $re $header 1) }}
+					{{ range findRE $renum . 1 }}
+						{{ $next_heading := (cond (eq $h1_n 0) (sub (int .) 1 ) (int . ) ) }}
+						{{ $prev_heading := $scratch.Get "prev_heading"}}
+						{{ if lt $next_heading $prev_heading }}
+							{{ range seq (sub $prev_heading $next_heading) }}
+								</ul>
+							{{ end }}
+						{{ end }}
+						{{ if gt $next_heading $prev_heading }}
+							{{ range seq (sub $next_heading $prev_heading) }}
+								{{ if site.Params.enableAutoCollapse }}
+									<ul class="toc-collapsible" data-level="{{ $next_heading }}" style="display: none;">
+								{{ else }}
+									<ul>
+								{{ end }}
+							{{ end }}
+						{{ end }}
+						{{ $anchorId :=  (replaceRE ".* id=\"(.*?)\".*" "$1" $header ) }}
+							<li>
+								<a href="#{{ $anchorId }}" class="nav-{{ $anchorId }}">
+									{{ $header | plainify | htmlUnescape }}
+								</a>
+							</li>
+						
+						{{ $scratch.Set "prev_heading" $next_heading }}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+		</ul>
+	</div>
+{{ end }}

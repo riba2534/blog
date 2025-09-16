@@ -1,0 +1,57 @@
+<div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        {{- partial "google-search.html" . -}}
+
+        {{ if and (not (.Params.disableToC) ) (.IsPage) }}
+        <div class="toc">
+            {{- partial "toc.html" . -}}
+        </div>
+        {{ end }}
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        {{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
+        {{ if not $disableDark }}
+        <a type="button" class="pagination-action" id="darkModeToggleButton" title="切换暗黑模式">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        {{ end }}
+        {{ if and (.Page.IsNode) (.Page.Paginator) (not (.Data.Terms)) }}
+        {{ if gt .Paginator.TotalPages 1 }}
+
+        <a class="pagination-action" {{ if .Paginator.HasPrev }} href="{{.Paginator.Prev.URL}}">
+            {{ else }}
+            style="visibility:hidden">
+            {{ end }}
+            <i class="material-icons pagination-action-icon">
+                chevron_left
+            </i>
+        </a>
+
+        <div class="pagination-indicator">
+            <span style="text-align: center; line-height: 1.2em;">
+                {{.Paginator.PageNumber}}<br>
+                <div style="display: inline-block; transform: rotate(-28deg); margin: 2px 0;">-</div><br>{{.Paginator.TotalPages}}
+            </span>
+        </div>
+
+
+        <a class="pagination-action" {{ if .Paginator.HasNext }} href="{{.Paginator.Next.URL}}">
+            {{ else }}
+            style="visibility:hidden">
+            {{ end }}
+            <i class="material-icons pagination-action-icon">
+                chevron_right
+            </i>
+        </a>
+        {{ end }}
+        {{ end }}
+    </div>
+</div>

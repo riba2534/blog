@@ -2,11 +2,9 @@
 
 我的博客，使用 hugo+github pages， twikoo 作为评论系统.
 
-20241027 更新到最新版本，主题采用自己仓库的 [hugo-theme-diary](https://github.com/riba2534/hugo-theme-diary)
-
 地址为：https://blog.riba2534.cn
 
-主题链接：https://github.com/AmazingRise/hugo-theme-diary
+主题：基于 [hugo-theme-diary](https://github.com/AmazingRise/hugo-theme-diary)，已直接包含在项目中
 
 评论系统：https://twikoo.js.org/
 
@@ -15,16 +13,14 @@
 > hugo 需要下载扩展版
 
 ```bash
+# 克隆仓库
+git clone https://github.com/riba2534/blog.git
+cd blog
 
-# 初始化本地配置文件
-git submodule init
-# 拉数据
-git submodule update
-
-# 拉取最新数据
-git submodule update --remote --merge
-
-# 启动服务器
+# 启动本地开发服务器
 hugo server --disableFastRender
+
+# 构建静态网站
+hugo --minify
 ```
 

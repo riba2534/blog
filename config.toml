@@ -6,8 +6,6 @@ enableGitInfo = true
 languageCode = "zh-cn"
 theme = "diary"
 title = "🌀riba2534's Blog"
-relativeURLs = true
-canonifyURLs = false
 baseURL = "https://blog.riba2534.cn/" 
 
 
@@ -21,7 +19,7 @@ lineNoStart = 1
 lineNos = true
 lineNumbersInTable = true
 noClasses = true
-style = "onedark"
+style = "github"
 tabWidth = 4
 
 [markup.goldmark.renderer]
@@ -32,7 +30,7 @@ unsafe = true
 enableOpenGraph = true
 enableTwitterCards = true
 title = "🌀riba2534's Blog"
-description = "My HomePage Description"
+description = "riba2534的个人技术博客，分享编程、投资、生活的思考与经验"
 enableMathJax = true
 enableLaTeX=true
 enableReadingTime = true

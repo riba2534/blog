@@ -1,0 +1,188 @@
+<!-- Modern UI override: styles and micro-interactions (moved into theme) -->
+{{ with resources.Get "scss/modern.scss" }}
+  {{ $modern := . | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $modern.RelPermalink }}" integrity="{{ $modern.Data.Integrity }}" media="screen">
+{{ end }}
+
+<meta name="color-scheme" content="light dark">
+
+<script>
+// Lightweight enhancements: reading progress + back-to-top
+(function () {
+  var on = function (el, evt, fn, opts) { el && el.addEventListener(evt, fn, opts || { passive: true }); };
+  var create = function (tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  };
+  var raf = window.requestAnimationFrame || function (fn) { return setTimeout(fn, 16); };
+  var media = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var reduceMotion = media ? media.matches : false;
+
+  function updateMotion(e) { reduceMotion = !!(e && e.matches); }
+  if (media) {
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', updateMotion);
+    } else if (typeof media.addListener === 'function') {
+      media.addListener(updateMotion);
+    }
+  }
+
+  function scrollToTop() {
+    if (reduceMotion) {
+      window.scrollTo(0, 0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function ensureWidgets() {
+    if (!document.getElementById('reading-progress')) {
+      document.body.appendChild(create('div', { id: 'reading-progress', 'aria-hidden': 'true' }));
+    }
+    if (!document.getElementById('backToTop')) {
+      var btn = create('button', { id: 'backToTop', title: '返回顶部', 'aria-label': '返回顶部', type: 'button' });
+      btn.innerHTML = '<span class="material-icons" aria-hidden="true">arrow_upward</span>';
+      btn.addEventListener('click', scrollToTop);
+      document.body.appendChild(btn);
+    }
+  }
+
+  function updateProgress() {
+    var bar = document.getElementById('reading-progress');
+    if (!bar) return;
+    var h = document.documentElement;
+    var scrollTop = h.scrollTop || document.body.scrollTop;
+    var height = h.scrollHeight - h.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+
+  function toggleBackToTop() {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    var show = (window.scrollY || document.documentElement.scrollTop) > 360;
+    if (show) btn.classList.add('show'); else btn.classList.remove('show');
+  }
+
+  function refresh() {
+    updateProgress();
+    toggleBackToTop();
+  }
+
+  var ticking = false;
+  function scheduleRefresh() {
+    if (ticking) return;
+    ticking = true;
+    raf(function () {
+      ticking = false;
+      refresh();
+    });
+  }
+
+  function init() {
+    ensureWidgets();
+    refresh();
+    on(window, 'scroll', scheduleRefresh);
+    on(window, 'resize', scheduleRefresh);
+  }
+  if (document.readyState === 'loading') {
+    on(document, 'DOMContentLoaded', init, { passive: true });
+  } else {
+    init();
+  }
+})();
+</script>
+
+<script>
+// Image lightbox for post body media
+(function () {
+  function $(selector, ctx) { return (ctx || document).querySelector(selector); }
+  function create(tag, attrs) {
+    var el = document.createElement(tag);
+    if (attrs) for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  function initLightbox() {
+    var images = document.querySelectorAll('.post-body img:not([data-lightbox="disabled"])');
+    if (!images.length) return;
+
+    var overlay = create('div', { class: 'image-lightbox', role: 'dialog', 'aria-modal': 'true' });
+    var inner = create('div', { class: 'image-lightbox__inner' });
+    var closeBtn = create('button', { class: 'image-lightbox__close', type: 'button', 'aria-label': '关闭图片预览' });
+    closeBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.42L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.42L12 13.41l4.89 4.9a1 1 0 0 0 1.42-1.41L13.41 12l4.9-4.89a1 1 0 0 0-.01-1.4Z"/></svg>';
+    var imgEl = create('img', { class: 'image-lightbox__img', alt: '' });
+
+    inner.appendChild(closeBtn);
+    inner.appendChild(imgEl);
+    overlay.appendChild(inner);
+    document.body.appendChild(overlay);
+
+    var activeTrigger = null;
+
+    function closeLightbox() {
+      overlay.classList.remove('is-visible');
+      document.body.classList.remove('lightbox-open');
+      imgEl.removeAttribute('src');
+      imgEl.removeAttribute('srcset');
+      if (activeTrigger) {
+        activeTrigger.focus({ preventScroll: true });
+        activeTrigger = null;
+      }
+    }
+
+    function openLightbox(img) {
+      activeTrigger = img;
+      var source = img.getAttribute('data-lightbox-src') || (img.currentSrc || img.src);
+      var linkParent = img.closest('a');
+      if (!img.getAttribute('data-lightbox-src') && linkParent && linkParent.href) {
+        source = linkParent.href;
+      }
+      imgEl.src = source;
+      var srcset = img.getAttribute('srcset');
+      if (srcset) imgEl.setAttribute('srcset', srcset);
+      imgEl.alt = img.alt || '';
+      overlay.classList.add('is-visible');
+      document.body.classList.add('lightbox-open');
+      closeBtn.focus({ preventScroll: true });
+    }
+
+    function handleImageClick(event) {
+      var target = event.currentTarget;
+      if (target.dataset.lightbox === 'disabled') return;
+      event.preventDefault();
+      openLightbox(target);
+    }
+
+    images.forEach(function (img) {
+      img.addEventListener('click', handleImageClick);
+      img.setAttribute('tabindex', '0');
+      img.addEventListener('keydown', function (evt) {
+        if (evt.key === 'Enter' || evt.key === ' ') {
+          evt.preventDefault();
+          handleImageClick(evt);
+        }
+      });
+    });
+
+    overlay.addEventListener('click', function (evt) {
+      if (evt.target === overlay) {
+        closeLightbox();
+      }
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (evt) {
+      if (evt.key === 'Escape' && overlay.classList.contains('is-visible')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightbox, { once: true });
+  } else {
+    initLightbox();
+  }
+})();
+</script>
