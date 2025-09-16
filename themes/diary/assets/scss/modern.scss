@@ -481,6 +481,29 @@ body.night .toc { background: var(--surface-3); }
 @media (max-width: 1020px) {
   .toc { position: static; box-shadow: none; top: auto; }
   .toc .toc-content { max-height: none; }
+
+  /* Enable horizontal scrolling for code blocks on mobile */
+  .post-body > pre {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .post-body .highlight {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .post-body .highlight > div {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc {
+    scroll-behavior: smooth;
+    border-radius: 8px;
+  }
 }
 
 /* Tags & meta */

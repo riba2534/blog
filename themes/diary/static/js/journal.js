@@ -294,11 +294,13 @@ try {
 var openDrawer = function () {
   document.getElementsByTagName("html")[0].style.overflow = "hidden";
   document
-    .getElementById("drawer-mask")
-    .classList.add("single-column-drawer-mask");
-  document
     .getElementById("drawer")
     .classList.add("single-column-drawer-container-active");
+  // Show transparent overlay for click-to-close
+  var overlay = document.getElementById("drawer-overlay");
+  if (overlay) {
+    overlay.style.display = "block";
+  }
 };
 
 // Safe event listener attachment
@@ -312,16 +314,19 @@ if (navDropdownBtn) {
 var closeDrawer = function () {
   document.getElementsByTagName("html")[0].style.overflow = "unset";
   document
-    .getElementById("drawer-mask")
-    .classList.remove("single-column-drawer-mask");
-  document
     .getElementById("drawer")
     .classList.remove("single-column-drawer-container-active");
+  // Hide transparent overlay
+  var overlay = document.getElementById("drawer-overlay");
+  if (overlay) {
+    overlay.style.display = "none";
+  }
 };
 
-var drawerMask = document.getElementById("drawer-mask");
-if (drawerMask) {
-  drawerMask.addEventListener("click", function () {
+// Add click handler for transparent overlay
+var drawerOverlay = document.getElementById("drawer-overlay");
+if (drawerOverlay) {
+  drawerOverlay.addEventListener("click", function () {
     closeDrawer();
   });
 }

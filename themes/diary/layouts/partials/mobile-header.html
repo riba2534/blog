@@ -34,15 +34,7 @@
         </div>
     </div>
 </div>
-<transition name="fade">
-    <div id="drawer-mask"
-         class="single-column-drawer-mask"
-         v-bind:class="{ 'single-column-drawer-mask': mounted }"
-         v-show="isDrawerOpen"
-         v-on:click="toggleDrawer"
-         onclick="if(typeof toggleDrawer === 'function') toggleDrawer()"
-         style="display: none;"></div>
-</transition>
+<div id="drawer-overlay" class="single-column-drawer-overlay" v-show="isDrawerOpen" v-on:click="toggleDrawer" onclick="if(typeof toggleDrawer === 'function') toggleDrawer()"></div>
 <nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">

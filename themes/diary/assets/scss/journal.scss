@@ -42,11 +42,11 @@ $single-column-max-width: 1020px;
 $single-column-drawer-width: 260px;
 $single-column-nav-title-size: 28px;
 $single-column-nav-subtitle-size: 20px;
-$single-column-nav-link-size: 18px;
+$single-column-nav-link-size: 16px;
 $single-column-nav-footer-size: 13px;
 $single-column-post-title-size: 22px;
 $single-column-post-summary-size: 16px;
-$single-column-post-body-size: 16px;
+$single-column-post-body-size: 15px;
 $single-column-post-meta-size: 14px;
 $single-column-tag-category-title-size: 14px;
 $single-column-toc-size: 14px;
@@ -148,11 +148,18 @@ pre {
   padding: 12px 15px;
   border-radius: 5px;
   font-family: $mono-font-list;
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+  @media screen and (max-width: $single-column-max-width) {
+    -webkit-overflow-scrolling: touch;
+  }
   * {
     background: none;
     font-family: $mono-font-list !important;
   }
   code {
+    display: block;
     padding: 0;
     * {
       color: inherit;
@@ -272,6 +279,8 @@ a {
       justify-content: center;
       background: none !important;
       border: none;
+      padding: 8px;
+      margin: -8px;
       //padding-top: 1px;
       &:hover {
         color: #3f587d !important;
@@ -285,6 +294,8 @@ a {
       justify-content: center;
       background: none !important;
       border: none;
+      padding: 8px;
+      margin: -8px;
       //padding-top: 1px;
       &:hover {
         color: #3f587d !important;
@@ -353,12 +364,19 @@ a {
     height: 100vh;
     z-index: 1800;
     transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-overflow-scrolling: touch;
     .drawer-content {
       background: white;
       height: 100%;
       width: 100%;
       padding: 50px 0 80px 0;
       display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       .drawer-menu {
         flex-grow: 1;
         display: flex;
@@ -402,23 +420,46 @@ a {
   }
 }
 
-.single-column-drawer-mask {
+
+/* Hide old drawer mask but allow new transparent overlay */
+.single-column-drawer-mask,
+#drawer-mask,
+div[id*="mask"]:not(#drawer):not(#drawer-overlay),
+div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawer-overlay),
+[class*="drawer-mask"] {
   display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  z-index: -1 !important;
+}
+
+.single-column-drawer-mask.single-column-drawer-mask-active {
+  display: none !important;
+}
+
+/* New transparent overlay for click-to-close functionality */
+.single-column-drawer-overlay {
+  display: none;
   @media screen and (max-width: $single-column-max-width) {
-    display: block !important;
     position: fixed;
     top: 0;
-    bottom: 0;
-    right: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1600;
-    transition: all 0.3s ease-in-out;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 1700;
+    pointer-events: auto;
+    cursor: pointer;
   }
 }
 
 .single-column-drawer-container-active {
   left: 0;
+  opacity: 1;
+  visibility: visible;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -893,7 +934,7 @@ a {
       padding: 30px 35px 35px 35px;
 
       @media screen and (max-width: $single-column-max-width) {
-        padding: 20px 20px 35px 20px;
+        padding: 20px 15px 35px 15px;
       }
       .post-body {
         font-size: $post-body-size;
@@ -997,12 +1038,88 @@ a {
     margin-top: 30px;
     margin-left: 0;
     margin-right: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    border-radius: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.4);
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.6);
+    }
     &,
     * {
       /*font-size: $single-column-toc-size;*/
     }
     .toc-content {
-      padding: 10px;
+      padding: 15px;
+      max-height: none;
+      overflow: visible;
+      a {
+        display: block;
+        padding: 4px 0;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        &:hover {
+          background: rgba($color-accent, 0.08);
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $single-column-max-width) {
+  .single-column-drawer-container .drawer-menu .toc {
+    width: 100%;
+    max-height: calc(100vh - 200px);
+    margin: 15px 20px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    border-radius: 8px;
+    background: rgba($color-accent, 0.04);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.4);
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.6);
+    }
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content {
+    padding: 15px;
+    max-height: none;
+    overflow: visible;
+    a {
+      display: block;
+      padding: 4px 0;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      &:hover {
+        background: rgba($color-accent, 0.08);
+        padding-left: 8px;
+      }
     }
   }
 }

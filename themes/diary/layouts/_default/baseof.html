@@ -46,6 +46,12 @@
             mounted() {
                 this.mounted = true;
                 window.addEventListener('scroll', this.handleScroll);
+                // Force remove any drawer mask elements
+                this.removeMasks();
+                // Check again after Vue renders
+                this.$nextTick(() => {
+                    this.removeMasks();
+                });
             },
             beforeDestroy() {
                 window.removeEventListener('scroll', this.handleScroll);
@@ -67,6 +73,10 @@
                 handleScroll() {
                     this.scrollY = window.scrollY;
                     this.navOpacity = Math.min(this.scrollY / 300, 1);
+                },
+                removeMasks() {
+                    const masks = document.querySelectorAll('#drawer-mask, .single-column-drawer-mask, [class*="mask"]:not(.single-column-drawer-overlay), [id*="mask"]:not(#drawer-overlay)');
+                    masks.forEach(mask => mask.remove());
                 }
             }
         });
@@ -78,19 +88,34 @@
             drawerSubMenuHidden: true
         };
 
+        const drawerEl = document.getElementById('drawer');
+
+        // Force remove any drawer mask elements but keep our transparent overlay
+        function removeMasks() {
+            const masks = document.querySelectorAll('#drawer-mask, .single-column-drawer-mask, [class*="mask"]:not(.single-column-drawer-overlay), [id*="mask"]:not(#drawer-overlay)');
+            masks.forEach(mask => mask.remove());
+        }
+        removeMasks();
+        // Check again after a delay
+        setTimeout(removeMasks, 100);
+
         window.toggleDrawer = function() {
             const state = window.themeState;
             state.isDrawerOpen = !state.isDrawerOpen;
+            const overlayEl = document.getElementById('drawer-overlay');
 
-            const drawer = document.getElementById('drawer');
-            const mask = document.getElementById('drawer-mask');
+            if (!drawerEl) {
+                return;
+            }
 
             if (state.isDrawerOpen) {
-                drawer.classList.add('single-column-drawer-container-active');
-                mask.style.display = 'block';
+                drawerEl.classList.add('single-column-drawer-container-active');
+                document.documentElement.style.overflow = 'hidden';
+                if (overlayEl) overlayEl.style.display = 'block';
             } else {
-                drawer.classList.remove('single-column-drawer-container-active');
-                mask.style.display = 'none';
+                drawerEl.classList.remove('single-column-drawer-container-active');
+                document.documentElement.style.overflow = '';
+                if (overlayEl) overlayEl.style.display = 'none';
                 state.drawerSubMenuHidden = true;
                 // Hide all submenu items
                 document.querySelectorAll('.drawer-submenu').forEach(el => {
