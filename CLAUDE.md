@@ -10,6 +10,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **主题**: hugo-theme-diary (已包含在项目中)
 - **评论系统**: Twikoo (https://twikoo.riba2534.cn)
 
+### 重要说明
+- **本项目不使用根目录的 layouts 目录**，所有布局模板都在 `themes/diary/layouts/` 中
+- 如需修改模板，直接编辑主题目录下的文件即可
+
 ## 常用命令
 
 ### 使用 Makefile（推荐）
@@ -75,7 +79,7 @@ hugo new blog/$(date +%Y)/文章标题.md
 ## 重要特性
 
 1. **评论系统**: 使用 Twikoo，配置在 config.toml 中的 `twikooEnvId`
-2. **代码高亮**: 使用 onedark 主题，支持行号显示
+2. **代码高亮**: 使用 GitHub 主题，支持行号显示，带复制按钮和语言标识
 3. **数学公式**: 启用了 MathJax 和 LaTeX 支持
 4. **自动部署**: 推送到 main 分支后，GitHub Actions 会自动构建并部署到 GitHub Pages
 5. **扩展版 Hugo**: 项目需要 Hugo 扩展版（extended）以支持 SASS/SCSS 编译
@@ -86,6 +90,7 @@ hugo new blog/$(date +%Y)/文章标题.md
 - 所有新文章应放在 `content/blog/` 目录下，按年份组织
 - 主题文件可以直接在 `themes/diary/` 目录中修改
 - 部署是通过 GitHub Actions 自动完成的，无需手动构建和推送
+- **不要在根目录创建 layouts 目录**，所有模板修改都应在 `themes/diary/layouts/` 中进行
 
 ## Claude 操作规则
 
