@@ -23,9 +23,11 @@
     {{- if and (eq (int (index $hugoVersion 0)) 0) (ge (int (index $hugoVersion 1)) 101) -}}
         {{- /* no leading slash */ -}}
         <script src="{{"js/journal.js" | relURL}}"></script>
+        <script src="{{"js/code-enhance.js" | relURL}}"></script>
     {{- else -}}
         {{- /* with leading slash */ -}}
         <script src="{{"/js/journal.js" | relURL}}"></script>
+        <script src="{{"/js/code-enhance.js" | relURL}}"></script>
     {{- end -}}
 
     <script>

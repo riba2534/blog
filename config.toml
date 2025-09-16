@@ -19,7 +19,7 @@ lineNoStart = 1
 lineNos = true
 lineNumbersInTable = true
 noClasses = true
-style = "onedark"
+style = "github"
 tabWidth = 4
 
 [markup.goldmark.renderer]
