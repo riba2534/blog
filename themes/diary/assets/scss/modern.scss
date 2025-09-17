@@ -236,23 +236,17 @@ body.night .post-body > pre::-webkit-scrollbar-thumb {
 .post-body .highlight {
   position: relative;
   margin: var(--space-5) 0;
-  padding: calc(var(--space-5) + 18px) var(--space-5) var(--space-5);
-  border-radius: var(--radius-xl);
-  background: var(--code-surface);
-  border: 1px solid var(--code-border);
-  overflow: hidden;
-}
-
-body.night .post-body .highlight {
-  background: var(--code-surface);
-  border-color: var(--code-border);
-}
-
-.post-body .highlight:hover {
-  box-shadow: 0 20px 46px rgba(15,23,42,0.3);
-}
-body.night .post-body .highlight:hover {
-  box-shadow: 0 28px 60px rgba(2,6,23,0.7);
+  padding: 0 0 20px 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: stable both-edges;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100,116,139,0.6) rgba(148,163,184,0.18);
 }
 
 .post-body .highlight > div {
@@ -260,25 +254,32 @@ body.night .post-body .highlight:hover {
   padding: 0 !important;
   background: transparent !important;
   background-color: transparent !important;
-  overflow: auto;
+  display: inline-block;
+  min-width: 100%;
+  width: auto;
 }
 
-.post-body .highlight > div::-webkit-scrollbar {
+.post-body .highlight::-webkit-scrollbar {
   height: 8px;
 }
-.post-body .highlight > div::-webkit-scrollbar-track {
-  background: transparent;
-}
-.post-body .highlight > div::-webkit-scrollbar-thumb {
-  background: rgba(148,163,184,0.35);
+.post-body .highlight::-webkit-scrollbar-track {
+  background: rgba(148,163,184,0.18);
   border-radius: 999px;
 }
-body.night .post-body .highlight > div::-webkit-scrollbar-thumb {
-  background: rgba(148,163,184,0.3);
+.post-body .highlight::-webkit-scrollbar-thumb {
+  background: rgba(100,116,139,0.65);
+  border-radius: 999px;
+}
+body.night .post-body .highlight::-webkit-scrollbar-track {
+  background: rgba(148,163,184,0.28);
+}
+body.night .post-body .highlight::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.55);
 }
 
 .post-body .highlight table {
-  width: 100% !important;
+  width: auto !important;
+  min-width: 100%;
   border-collapse: collapse !important;
 }
 
@@ -435,6 +436,11 @@ body.night .post-body .highlight[data-lang]::before {
   color: rgba(221,230,242,0.65);
 }
 
+.post-body .highlight[data-lang]::before,
+body.night .post-body .highlight[data-lang]::before {
+  display: none;
+}
+
 /* Blockquotes */
 blockquote {
   border-left: 4px solid var(--accent);
@@ -484,17 +490,6 @@ body.night .toc { background: var(--surface-3); }
 
   /* Enable horizontal scrolling for code blocks on mobile */
   .post-body > pre {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .post-body .highlight {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .post-body .highlight > div {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
