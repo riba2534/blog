@@ -262,6 +262,23 @@ body.night {
     color: $dark-mode-text !important;
   }
 
+  // 深色模式下的页面标题样式
+  .page-title {
+    color: $dark-mode-text;
+
+    a {
+      color: $light-accent;
+
+      &:hover {
+        color: $deep-light-accent;
+      }
+    }
+  }
+
+  .year-title {
+    color: $dark-mode-text;
+  }
+
   .gsc-control-searchbox-only table * {
     color: black !important;
   }

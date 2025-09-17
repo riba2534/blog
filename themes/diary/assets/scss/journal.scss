@@ -1,3 +1,6 @@
+// Import Liquid Glass Design System
+@import "liquid-glass";
+
 $color-accent: #1976d2;
 //$color-accent: #330000;
 $back-container-background: #fcfcfc;
@@ -464,18 +467,20 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
 }
 
 .side-container {
+  @include liquid-glass-regular;
   position: fixed;
   top: 0;
+  left: 0;
   height: 100vh;
   width: $side-container-width;
   text-align: right;
   font-family: $sans-preferred-font-list;
   padding: 20px 0 50px 0;
-  //overflow-x: hidden;
-  //overflow-y: hidden;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
   $nav-item-hover-background-alpha: 0.02;
   $nav-item-hover-indicator-alpha: 0.6;
   $nav-item-hover-color-darken: 30%;
@@ -483,29 +488,32 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
   $nav-item-active-color-darken: 20%;
   .nav-head {
     padding: 30px 28px 30px 20px;
-    cursor: hand;
     cursor: pointer;
     margin-bottom: 10px;
     color: $deep-dark-accent;
+    position: relative;
+    z-index: 2;
     .nav-title {
       font-size: $nav-title-size;
       line-height: $nav-title-size * 1.4;
     }
-    border-right: 2px solid transparent;
+    border-right: none;
+    border-radius: var(--lg-radius-medium) 0 0 var(--lg-radius-medium);
+    transition: all var(--lg-duration-medium) var(--lg-transition-smooth);
     .nav-subtitle {
       margin-top: 8px;
       font-size: $nav-subtitle-size;
     }
     &:hover {
-      border-right: 2px solid
-        rgba($color-accent, $nav-item-hover-indicator-alpha);
-      background: rgba($color-accent, $nav-item-hover-background-alpha);
-      color: darken($color-accent, $nav-item-hover-color-darken);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transform: translateX(-4px);
+      color: $color-accent;
     }
     &.active {
-      border-right: 2px solid $color-accent;
-      background: rgba($color-accent, $nav-item-active-background-alpha);
-      color: darken($color-accent, $nav-item-active-color-darken);
+      background: linear-gradient(90deg, transparent 0%, rgba($color-accent, 0.1) 100%);
+      border-left: 3px solid $color-accent;
+      color: $color-accent;
     }
   }
   .nav-link-list {
@@ -529,15 +537,16 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
         }
       }
       &:hover {
-        border-right: 2px solid
-          rgba($color-accent, $nav-item-hover-indicator-alpha);
-        background: rgba($color-accent, $nav-item-hover-background-alpha);
-        color: darken($color-accent, $nav-item-hover-color-darken);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(8px);
+        transform: translateX(-2px);
+        color: $color-accent;
       }
       &.active {
-        border-right: 2px solid $color-accent;
-        background: rgba($color-accent, $nav-item-active-background-alpha);
-        color: darken($color-accent, $nav-item-active-color-darken);
+        background: linear-gradient(90deg, transparent 0%, rgba($color-accent, 0.15) 100%);
+        border-left: 2px solid $color-accent;
+        color: $color-accent;
+        font-weight: 500;
       }
     }
   }
@@ -661,8 +670,12 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
     &,
     > * {
       .post-item-wrapper {
-        cursor: hand;
+        @include liquid-glass-regular;
+        @include floating-element;
         cursor: pointer;
+        padding: 0;
+        margin-bottom: 20px;
+        overflow: hidden;
         .post-item {
           margin: 0 28px 0 35px;
           padding: 30px 0;
@@ -736,8 +749,10 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
               height: 120px;
               background: no-repeat center;
               background-size: cover;
-              border-radius: 5px;
+              border-radius: var(--lg-radius-medium);
               overflow: hidden;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              transition: transform var(--lg-duration-medium) var(--lg-transition-smooth);
 
               @media screen and (max-width: $single-column-max-width) {
                 width: 100%;
@@ -1222,5 +1237,60 @@ mjx-container {
   flex-wrap: wrap;
   .tag {
     margin: 10px;
+  }
+}
+
+// 页面标题样式
+.page-header {
+  margin: 20px 35px 30px 35px;
+  padding: 0;
+
+  @media screen and (max-width: $single-column-max-width) {
+    margin: 15px 20px 20px 20px;
+  }
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: $deep-dark-accent;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+
+  @media screen and (max-width: $single-column-max-width) {
+    font-size: 28px;
+  }
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// 年份标题样式
+.year-header {
+  margin: 30px 35px 20px 35px;
+  padding: 0;
+
+  @media screen and (max-width: $single-column-max-width) {
+    margin: 20px 20px 15px 20px;
+  }
+}
+
+.year-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: $deep-dark-accent;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+
+  @media screen and (max-width: $single-column-max-width) {
+    font-size: 24px;
   }
 }

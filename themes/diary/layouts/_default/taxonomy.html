@@ -1,14 +1,16 @@
 {{ define "main" }}
 
     <div class="post-list-container post-list-container-shadow">
-        <div class="post-item-wrapper post-item-wrapper-no-hover">
-            <div class="post-item post-item-no-gaps">
-                <div class="post-item-info-wrapper">
-                    <div class="post-item-title  post-item-title-small">
-                        <a href="{{ .Parent.RelPermalink }}">{{.Parent.Title}}</a> / {{ .Title }}
-                    </div>
-                </div>
-            </div>
+        <div class="page-header">
+            {{ if eq .Parent.Title "Categories" }}
+            <h1 class="page-title">🏷️ <a href="{{ .Parent.RelPermalink }}">{{.Parent.Title}}</a> / {{ .Title }}</h1>
+            {{ else if eq .Parent.Title "Tags" }}
+            <h1 class="page-title">🔖 <a href="{{ .Parent.RelPermalink }}">{{.Parent.Title}}</a> / {{ .Title }}</h1>
+            {{ else if eq .Parent.Title "Series" }}
+            <h1 class="page-title">📚 <a href="{{ .Parent.RelPermalink }}">{{.Parent.Title}}</a> / {{ .Title }}</h1>
+            {{ else }}
+            <h1 class="page-title">📂 <a href="{{ .Parent.RelPermalink }}">{{.Parent.Title}}</a> / {{ .Title }}</h1>
+            {{ end }}
         </div>
         {{- range .Paginator.Pages -}}
         <a href="{{ .RelPermalink }}" class="a-block">

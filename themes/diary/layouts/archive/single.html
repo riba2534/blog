@@ -1,16 +1,8 @@
 {{ define "main" }}
 <div class="post-list-container post-list-container-shadow">
-    <a class="a-block">
-        <div class="post-item-wrapper post-item-wrapper-no-hover">
-            <div class="post-item post-item-no-gaps">
-                <div class="post-item-info-wrapper">
-                    <div class="post-item-title post-item-title-small">
-                        归档
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
+    <div class="page-header">
+        <h1 class="page-title">📖 归档</h1>
+    </div>
     <!-- 内容列表页（按年分组） -->
     <div class="archive">
         {{ range (.Site.RegularPages.GroupByDate "2006") }}

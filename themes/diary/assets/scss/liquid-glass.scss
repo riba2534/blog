@@ -1,0 +1,496 @@
+// Apple Liquid Glass Design System for Hugo Blog
+
+// ==================== Dependencies ====================
+// Define required variables from journal.scss
+$single-column-max-width: 1020px !default;
+
+// ==================== Core Variables ====================
+:root {
+  // Glass Material Properties
+  --lg-blur-regular: 20px;
+  --lg-blur-clear: 8px;
+  --lg-blur-intense: 30px;
+  --lg-transparency-regular: 0.72;
+  --lg-transparency-clear: 0.35;
+  --lg-transparency-solid: 0.95;
+
+  // Dynamic Light Effects
+  --lg-highlight-intensity: 0.15;
+  --lg-shadow-intensity: 0.08;
+  --lg-refraction-amount: 1.05;
+  --lg-light-x: 30%;
+  --lg-light-y: 30%;
+
+  // Spatial Depth
+  --lg-elevation-low: 0 2px 8px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.02);
+  --lg-elevation-medium: 0 4px 16px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.03);
+  --lg-elevation-high: 0 8px 32px rgba(0,0,0,0.08), 0 16px 64px rgba(0,0,0,0.04);
+
+  // Border Radius (following Apple's design)
+  --lg-radius-small: 8px;
+  --lg-radius-medium: 12px;
+  --lg-radius-large: 20px;
+  --lg-radius-xl: 28px;
+
+  // Color System
+  --lg-tint-light: rgba(255,255,255,0.7);
+  --lg-tint-dark: rgba(0,0,0,0.3);
+  --lg-accent-primary: #007AFF;
+  --lg-accent-secondary: #5856D6;
+
+  // Animation
+  --lg-transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --lg-transition-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --lg-duration-fast: 200ms;
+  --lg-duration-medium: 350ms;
+  --lg-duration-slow: 500ms;
+}
+
+// Dark mode adjustments
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lg-transparency-regular: 0.5;
+    --lg-transparency-clear: 0.25;
+    --lg-transparency-solid: 0.85;
+    --lg-highlight-intensity: 0.25;
+    --lg-shadow-intensity: 0.15;
+    --lg-tint-light: rgba(255,255,255,0.1);
+    --lg-tint-dark: rgba(0,0,0,0.5);
+  }
+}
+
+// ==================== Core Mixins ====================
+
+// Regular Glass Material
+@mixin liquid-glass-regular {
+  backdrop-filter: blur(var(--lg-blur-regular)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--lg-blur-regular)) saturate(180%);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255, var(--lg-transparency-regular)) 0%,
+    rgba(255,255,255, calc(var(--lg-transparency-regular) * 0.7)) 100%
+  );
+  box-shadow: var(--lg-elevation-medium),
+              inset 0 0 0 1px rgba(255,255,255,0.1),
+              inset 0 1px 0 0 rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+
+  // Specular highlight layer
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at var(--lg-light-x, 30%) var(--lg-light-y, 30%),
+      rgba(255,255,255, var(--lg-highlight-intensity)) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+    transition: transform var(--lg-duration-slow) var(--lg-transition-smooth);
+  }
+
+  // Dynamic light response
+  &:hover::before {
+    transform: translate(5%, 5%);
+  }
+}
+
+// Clear Glass Material
+@mixin liquid-glass-clear {
+  backdrop-filter: blur(var(--lg-blur-clear));
+  -webkit-backdrop-filter: blur(var(--lg-blur-clear));
+  background: rgba(255,255,255, var(--lg-transparency-clear));
+  box-shadow: var(--lg-elevation-low),
+              inset 0 0 0 0.5px rgba(255,255,255,0.15);
+}
+
+// Floating Element
+@mixin floating-element {
+  border-radius: var(--lg-radius-large);
+  transition: all var(--lg-duration-medium) var(--lg-transition-smooth);
+  will-change: transform, box-shadow;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: var(--lg-elevation-high);
+  }
+}
+
+// Scroll Edge Blur
+@mixin scroll-edge-blur {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  &::before {
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.8) 0%,
+      transparent 100%
+    );
+    backdrop-filter: blur(8px);
+  }
+
+  &::after {
+    bottom: 0;
+    background: linear-gradient(
+      to top,
+      rgba(255,255,255,0.8) 0%,
+      transparent 100%
+    );
+    backdrop-filter: blur(8px);
+  }
+}
+
+// ==================== Component Styles ====================
+
+// Navigation Bar with Liquid Glass
+.nav-container {
+  @include liquid-glass-regular;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  padding: 12px 24px;
+  border-radius: var(--lg-radius-xl);
+  z-index: 1000;
+  transition: all var(--lg-duration-medium) var(--lg-transition-smooth);
+
+  &.scrolled {
+    top: 10px;
+    padding: 8px 20px;
+    backdrop-filter: blur(var(--lg-blur-intense));
+  }
+}
+
+// Sidebar with Glass Effect
+#sidebar {
+  @include liquid-glass-regular;
+  border-radius: 0 var(--lg-radius-large) var(--lg-radius-large) 0;
+  border-left: none;
+  margin: 20px 0;
+
+  .sidebar-container {
+    background: transparent !important;
+  }
+
+  .nav-link-item {
+    @include floating-element;
+    background: rgba(255,255,255,0.05);
+    margin: 8px;
+    padding: 10px 16px;
+
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    &.active {
+      @include liquid-glass-clear;
+      background: var(--lg-accent-primary);
+      color: white;
+    }
+  }
+}
+
+// Post Cards with Glass
+.post-list-container {
+  .post-item-wrapper {
+    @include liquid-glass-regular;
+    @include floating-element;
+    margin: 20px 0;
+    padding: 24px;
+
+    .post-item-title {
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-item-summary {
+      position: relative;
+      z-index: 1;
+      opacity: 0.85;
+    }
+  }
+}
+
+// TOC with Glass Effect
+.toc-container {
+  @include liquid-glass-clear;
+  @include floating-element;
+  position: sticky;
+  top: 100px;
+  padding: 20px;
+  border-radius: var(--lg-radius-large);
+
+  .toc-content {
+    @include scroll-edge-blur;
+    max-height: 60vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 2px;
+    }
+  }
+
+  .toc-item {
+    padding: 4px 8px;
+    border-radius: var(--lg-radius-small);
+    transition: all var(--lg-duration-fast) var(--lg-transition-smooth);
+
+    &:hover {
+      background: rgba(0,0,0,0.05);
+      transform: translateX(4px);
+    }
+
+    &.active {
+      background: var(--lg-accent-primary);
+      color: white;
+    }
+  }
+}
+
+// Code Blocks with Glass
+pre {
+  @include liquid-glass-clear;
+  @include floating-element;
+  padding: 20px;
+  border-radius: var(--lg-radius-medium);
+  position: relative;
+
+  // Code language badge
+  &::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--lg-radius-small);
+    font-size: 12px;
+    backdrop-filter: blur(10px);
+  }
+}
+
+// Mobile Drawer with Glass
+.drawer {
+  @include liquid-glass-regular;
+  border-radius: var(--lg-radius-large) var(--lg-radius-large) 0 0;
+
+  &-content {
+    background: transparent !important;
+  }
+}
+
+// ==================== Animation Classes ====================
+
+// Fade in animation for page load
+@keyframes fadeInGlass {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    backdrop-filter: blur(var(--lg-blur-regular));
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInGlass var(--lg-duration-slow) var(--lg-transition-smooth) forwards;
+}
+
+// Ripple effect for interactions
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    animation: ripple 0.6s ease-out;
+  }
+}
+
+// ==================== Adaptive Color System ====================
+
+// Dynamic tinting based on content
+.adaptive-tint {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(40px) saturate(200%);
+    opacity: 0.3;
+    z-index: -1;
+  }
+}
+
+// ==================== Mobile Optimizations ====================
+
+@media screen and (max-width: 1020px) {
+  :root {
+    // Reduce blur for better performance on mobile
+    --lg-blur-regular: 15px;
+    --lg-blur-clear: 6px;
+    --lg-blur-intense: 20px;
+
+    // Adjust transparency for better readability
+    --lg-transparency-regular: 0.8;
+    --lg-transparency-clear: 0.4;
+
+    // Smaller radius for mobile
+    --lg-radius-small: 6px;
+    --lg-radius-medium: 10px;
+    --lg-radius-large: 16px;
+    --lg-radius-xl: 20px;
+  }
+
+  // Optimize sidebar for mobile
+  .side-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin: 0;
+    backdrop-filter: blur(10px);
+  }
+
+  // Mobile drawer with glass effect
+  .single-column-drawer-container {
+    @include liquid-glass-regular;
+    border-radius: var(--lg-radius-large) var(--lg-radius-large) 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+
+    .drawer-content {
+      background: transparent !important;
+    }
+  }
+
+  // Optimize post items for mobile
+  .post-item-wrapper {
+    margin: 10px !important;
+    border-radius: var(--lg-radius-medium) !important;
+
+    // Reduce hover effects on mobile
+    &:hover {
+      transform: none !important;
+    }
+
+    .post-item {
+      padding: 15px !important;
+    }
+  }
+
+  // Mobile navigation header
+  .single-column-header-container {
+    @include liquid-glass-clear;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(var(--lg-blur-regular));
+  }
+
+  // Touch-friendly button sizes
+  .nav-link-item,
+  .drawer-menu-item {
+    padding: 12px 20px !important;
+    min-height: 44px; // iOS touch target size
+  }
+}
+
+// ==================== Performance Optimizations ====================
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .liquid-glass-regular::before,
+  .liquid-glass-clear::before {
+    display: none;
+  }
+}
+
+// GPU acceleration hints
+.glass-layer {
+  transform: translateZ(0);
+  will-change: backdrop-filter, transform;
+}
+
+// Performance optimization for low-end devices
+@media (max-width: 768px) and (-webkit-max-device-pixel-ratio: 2) {
+  .liquid-glass-regular,
+  .liquid-glass-clear {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  :root {
+    --lg-transparency-regular: 0.9;
+    --lg-transparency-clear: 0.6;
+    --lg-blur-regular: 5px;
+    --lg-blur-clear: 2px;
+  }
+
+  .liquid-glass-regular,
+  .liquid-glass-clear {
+    border: 1px solid currentColor;
+  }
+}
