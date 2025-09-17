@@ -243,6 +243,11 @@ $single-column-max-width: 1020px !default;
     max-height: 60vh;
     overflow-y: auto;
 
+    // Keep only the top fade mask for the TOC scroll area
+    &::after {
+      display: none;
+    }
+
     &::-webkit-scrollbar {
       width: 4px;
     }
@@ -434,11 +439,13 @@ pre {
 
   // Mobile navigation header
   .single-column-header-container {
-    @include liquid-glass-clear;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(var(--lg-blur-regular));
+    // Allow title block to scroll away instead of acting as an extra overlay
+    position: static;
+    top: auto;
+    z-index: auto;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   // Touch-friendly button sizes
