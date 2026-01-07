@@ -13,7 +13,6 @@ categories:
 - AI
 comment: true
 ---
-
 # 深入理解 AI Agent 的核心机制：从循环到认知
 
 > 揭示 Claude Code、Cursor Agent 等编程代理的内在逻辑，通过代码一层层剖析其设计哲学
@@ -389,7 +388,7 @@ def agent_loop(messages: list) -> list:
 
 ### 执行流程图解
 
-{{<mermaid>}}
+```mermaid
 flowchart TD
     subgraph Agent_Loop ["Agent Loop"]
         A["user message"] --> B[client.messages.create<br/>model + tools + messages]
@@ -406,7 +405,7 @@ flowchart TD
     style D fill:#e8f5e9
     style E fill:#e1f5fe
     style F fill:#f3e5f5
-{{< /mermaid >}}
+```
 
 ---
 
@@ -713,7 +712,7 @@ Skills 采用**渐进式披露**优化上下文使用：
 
 ## 八、架构总览：全局视角
 
-{{<mermaid>}}
+```mermaid
 flowchart TB
     subgraph Core ["Agent Core Loop"]
         direction TB
@@ -757,7 +756,7 @@ flowchart TB
     style edit fill:#fff3e0,stroke:#ff9800
     style Subagent fill:#ffebee,stroke:#d32f2f
     style Skills fill:#e0f7fa,stroke:#0097a7
-{{< /mermaid >}}
+```
 
 ---
 
