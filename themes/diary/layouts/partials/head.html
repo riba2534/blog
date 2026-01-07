@@ -27,6 +27,17 @@
 {{ template "_internal/twitter_cards.html" . }}
 {{end}}
 
+<!-- 自定义 og:image: 优先使用文章 featured_image，兜底用默认图片 -->
+{{- $featuredImage := "" -}}
+{{- $fallbackImage := "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210427152737.jpeg" -}}
+{{- if .IsPage -}}
+  {{- $featuredImage = or .Params.featured_image .Params.featuredImage .Params.cover_image .Params.image -}}
+{{- end -}}
+{{- $ogImage := or $featuredImage $fallbackImage -}}
+<meta property="og:image" content="{{ $ogImage }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
 <!-- metadata -->
 
 {{ if .Site.Config.Services.GoogleAnalytics.ID }}
@@ -54,10 +65,8 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 {{ end }}
 
-<!-- favicon -->
-{{ if .Site.Params.favicon }}
-<link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
-{{ end }}
+<!-- favicon: emoji 方式 -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
 
 <!-- For compatibility. View https://github.com/AmazingRise/hugo-theme-diary/pull/135 for details.-->
 {{- $hugoVersion := split (replaceRE ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "$1 $2 $3" hugo.Version) " " -}}
