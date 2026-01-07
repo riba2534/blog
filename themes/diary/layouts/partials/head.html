@@ -34,6 +34,7 @@
   {{- $featuredImage = or .Params.featured_image .Params.featuredImage .Params.cover_image .Params.image -}}
 {{- end -}}
 {{- $ogImage := or $featuredImage $fallbackImage -}}
+{{- $ogImage = $ogImage | absURL -}}
 <meta property="og:image" content="{{ $ogImage }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{{ $ogImage }}">
