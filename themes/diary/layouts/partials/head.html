@@ -87,7 +87,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Web Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Cascadia+Code:wght@400;600;700&family=Fira+Code:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons&display=swap">
 
 {{ if .Site.Params.cloudflareToken }}
@@ -166,7 +166,7 @@
 {{ end }}
 
 {{ if and (.Site.Params.enableTwikoo) (.IsPage) }}
-<script defer src="https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js"></script>
+<!-- Twikoo script will be loaded lazily in comment.html -->
 {{ end }}
 
 {{ if and (.Site.Params.walineServer) (.IsPage) }}

@@ -49,19 +49,31 @@
 {{ if .Site.Params.enableTwikoo }}
 <div id="tcomment"></div>
 <script>
-(function(){
-  var start = function(){
-    if (typeof twikoo === 'undefined') return;
-    twikoo.init({
-      envId: '{{ .Site.Params.twikooEnvId }}',
-      el: '#tcomment'{{ with .Site.Params.twikooRegion }},
-      region: '{{ . }}'{{ end }}
+(function() {
+  function loadTwikoo() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js';
+    script.async = true;
+    script.onload = function() {
+      twikoo.init({
+        envId: '{{ .Site.Params.twikooEnvId }}',
+        el: '#tcomment'{{ with .Site.Params.twikooRegion }},
+        region: '{{ . }}'{{ end }}
+      });
+    };
+    document.body.appendChild(script);
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadTwikoo();
+        observer.disconnect();
+      }
     });
-  };
-  if (typeof twikoo !== 'undefined') {
-    start();
+    observer.observe(document.getElementById('tcomment'));
   } else {
-    window.addEventListener('load', start, { once: true });
+    loadTwikoo();
   }
 })();
 </script>

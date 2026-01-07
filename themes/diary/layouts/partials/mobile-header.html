@@ -1,5 +1,4 @@
-<div class="single-column-drawer-container" id="drawer"
-     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+<div class="single-column-drawer-container" id="drawer">
     <div class="drawer-content">
         <div class="drawer-menu">
             {{- partial "google-search.html" . -}}
@@ -11,9 +10,9 @@
                     {{$actived = "active"}}
                 {{end}}
                 {{ if .HasChildren }}
-                <div class="a-block drawer-menu-item {{$actived}}" v-on:click="toggleDrawerSubMenu" onclick="if(typeof toggleDrawerSubMenu === 'function') toggleDrawerSubMenu()">
+                <div class="a-block drawer-menu-item {{$actived}}" onclick="toggleDrawerSubMenu()">
                     {{ .Name }}
-                    <div class="nav-link-subitem drawer-submenu" v-if="!drawerSubMenuHidden" style="display: none;">
+                    <div class="nav-link-subitem drawer-submenu" style="display: none;">
                         {{ range .Children }}
                         <li><a href="{{ .URL }}"> {{ .Name }}</a></li>
                     {{ end }}
@@ -34,7 +33,7 @@
         </div>
     </div>
 </div>
-<div id="drawer-overlay" class="single-column-drawer-overlay" v-show="isDrawerOpen" v-on:click="toggleDrawer" onclick="if(typeof toggleDrawer === 'function') toggleDrawer()"></div>
+<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" onclick="toggleDrawer()"></div>
 <nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">
@@ -56,8 +55,7 @@
         {{ end }}
     </div>
 </nav>
-<div class="single-column-header-container" id="pageHead"
-     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+<div class="single-column-header-container" id="pageHead">
     <a href="{{ "" | absLangURL }}">
         <div class="single-column-header-title">{{.Site.Title}}</div>
         {{ with .Site.Params.subtitle }}

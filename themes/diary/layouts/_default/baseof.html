@@ -32,64 +32,19 @@
     {{- end -}}
 
     <script>
-    // Initialize Vue.js for theme functionality (always loaded for menu functionality)
-    if (typeof Vue !== 'undefined') {
-        new Vue({
-            el: '#app',
-            data: {
-                mounted: false,
-                isDrawerOpen: false,
-                sidebarSubMenuHidden: true,  // 桌面端侧边栏子菜单状态
-                drawerSubMenuHidden: true,   // 移动端抽屉子菜单状态
-                scrollY: 0,
-                navOpacity: 0
-            },
-            mounted() {
-                this.mounted = true;
-                window.addEventListener('scroll', this.handleScroll);
-                // Force remove any drawer mask elements
-                this.removeMasks();
-                // Check again after Vue renders
-                this.$nextTick(() => {
-                    this.removeMasks();
-                });
-            },
-            beforeDestroy() {
-                window.removeEventListener('scroll', this.handleScroll);
-            },
-            methods: {
-                toggleDrawer() {
-                    this.isDrawerOpen = !this.isDrawerOpen;
-                    // 切换抽屉时重置移动端子菜单状态
-                    if (!this.isDrawerOpen) {
-                        this.drawerSubMenuHidden = true;
-                    }
-                },
-                toggleSidebarSubMenu() {
-                    this.sidebarSubMenuHidden = !this.sidebarSubMenuHidden;
-                },
-                toggleDrawerSubMenu() {
-                    this.drawerSubMenuHidden = !this.drawerSubMenuHidden;
-                },
-                handleScroll() {
-                    this.scrollY = window.scrollY;
-                    this.navOpacity = Math.min(this.scrollY / 300, 1);
-                },
-                removeMasks() {
-                    const masks = document.querySelectorAll('#drawer-mask, .single-column-drawer-mask, [class*="mask"]:not(.single-column-drawer-overlay), [id*="mask"]:not(#drawer-overlay)');
-                    masks.forEach(mask => mask.remove());
-                }
-            }
-        });
-    } else {
-        // Fallback for when Vue is not loaded - provide basic functionality
+    // Native JavaScript implementation for theme functionality
+    (function() {
         window.themeState = {
             isDrawerOpen: false,
             sidebarSubMenuHidden: true,
-            drawerSubMenuHidden: true
+            drawerSubMenuHidden: true,
+            scrollY: 0,
+            navOpacity: 0
         };
 
         const drawerEl = document.getElementById('drawer');
+        const pageHeadEl = document.getElementById('pageHead');
+        const overlayEl = document.getElementById('drawer-overlay');
 
         // Force remove any drawer mask elements but keep our transparent overlay
         function removeMasks() {
@@ -100,10 +55,24 @@
         // Check again after a delay
         setTimeout(removeMasks, 100);
 
+        // Scroll handling for navbar opacity and title translation
+        function handleScroll() {
+            window.themeState.scrollY = window.scrollY;
+            window.themeState.navOpacity = Math.min(window.scrollY / 300, 1);
+            
+            if (pageHeadEl) {
+                pageHeadEl.style.transform = `translateZ(0px) translateY(${0.3 * window.themeState.scrollY}px)`;
+                pageHeadEl.style.opacity = 1 - window.themeState.navOpacity;
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        // Initial call
+        handleScroll();
+
         window.toggleDrawer = function() {
             const state = window.themeState;
             state.isDrawerOpen = !state.isDrawerOpen;
-            const overlayEl = document.getElementById('drawer-overlay');
 
             if (!drawerEl) {
                 return;
@@ -112,11 +81,17 @@
             if (state.isDrawerOpen) {
                 drawerEl.classList.add('single-column-drawer-container-active');
                 document.documentElement.style.overflow = 'hidden';
-                if (overlayEl) overlayEl.style.display = 'block';
+                if (overlayEl) {
+                    overlayEl.style.display = 'block';
+                    // Trigger reflow
+                    overlayEl.offsetHeight; 
+                }
             } else {
                 drawerEl.classList.remove('single-column-drawer-container-active');
                 document.documentElement.style.overflow = '';
-                if (overlayEl) overlayEl.style.display = 'none';
+                if (overlayEl) {
+                    overlayEl.style.display = 'none';
+                }
                 state.drawerSubMenuHidden = true;
                 // Hide all submenu items
                 document.querySelectorAll('.drawer-submenu').forEach(el => {
@@ -142,7 +117,23 @@
                 submenu.style.display = state.drawerSubMenuHidden ? 'none' : 'block';
             }
         };
-    }
+
+        window.toggleSidebarSubMenu = function() {
+            const state = window.themeState;
+            state.sidebarSubMenuHidden = !state.sidebarSubMenuHidden;
+            document.querySelectorAll('.sidebar-submenu').forEach(el => {
+                el.style.display = state.sidebarSubMenuHidden ? 'none' : 'block';
+            });
+        };
+
+        window.toggleDrawerSubMenu = function() {
+            const state = window.themeState;
+            state.drawerSubMenuHidden = !state.drawerSubMenuHidden;
+            document.querySelectorAll('.drawer-submenu').forEach(el => {
+                el.style.display = state.drawerSubMenuHidden ? 'none' : 'block';
+            });
+        };
+    })();
     </script>
 
     </body>

@@ -23,9 +23,9 @@
                 {{$actived = "active"}}
             {{end}}
             {{ if .HasChildren }}
-            <div class="a-block nav-link-item {{$actived}}" v-on:click="toggleSidebarSubMenu" onclick="if(typeof toggleSidebarSubMenu === 'function') toggleSidebarSubMenu()">
+            <div class="a-block nav-link-item {{$actived}}" onclick="toggleSidebarSubMenu()">
                 {{ .Name }}
-                <div class="nav-link-subitem sidebar-submenu" v-if="!sidebarSubMenuHidden" style="display: none;">
+                <div class="nav-link-subitem sidebar-submenu" style="display: none;">
                     {{ range .Children }}
                     <li><a href="{{ .URL }}"> {{ .Name }}</a></li>
                     {{ end }}
