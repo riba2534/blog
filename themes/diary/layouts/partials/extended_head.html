@@ -186,3 +186,29 @@
   }
 })();
 </script>
+
+{{ if .Site.Params.enableMermaid }}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false });
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var codes = document.querySelectorAll("pre code.language-mermaid");
+    codes.forEach(function(code) {
+      var pre = code.parentElement;
+      var div = document.createElement("div");
+      div.className = "mermaid";
+      div.textContent = code.textContent;
+      
+      var parent = pre.parentElement;
+      if (parent.classList.contains("highlight")) {
+          parent.replaceWith(div);
+      } else {
+          pre.replaceWith(div);
+      }
+    });
+    
+    mermaid.run();
+  });
+</script>
+{{ end }}

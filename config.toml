@@ -33,6 +33,7 @@ title = "🌀riba2534's Blog"
 description = "riba2534的个人技术博客，分享编程、投资、生活的思考与经验"
 enableMathJax = true
 enableLaTeX=true
+enableMermaid = true
 enableReadingTime = true
 favicon = "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210427152737.jpeg"
 subtitle = "凡事有交代，件件有着落，事事有回音"
