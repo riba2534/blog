@@ -1,35 +1,33 @@
 ---
-title: "深入理解 AI Agent 的核心机制：从循环到认知"
+title: "理解 AI Agent 的核心机制：循环"
 date: 2026-01-07T20:30:00+08:00
 draft: false
 featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/07/695e76ab6b472.png"
-description: "揭示 Claude Code、Cursor Agent 等编程代理的内在逻辑，通过代码一层层剖析其设计哲学"
+description: "理解 Claude Code、Cursor Agent 等编程代理的内在逻辑"
 tags:
 - AI Agent
 - Claude Code
 - 大语言模型
-- 编程助手
+- Agent 
 categories:
 - AI
 comment: true
 ---
-# 深入理解 AI Agent 的核心机制：从循环到认知
+# 理解 AI Agent 的核心机制：循环
 
-> 揭示 Claude Code、Cursor Agent 等编程代理的内在逻辑，通过代码一层层剖析其设计哲学
+> 理解 Claude Code、Cursor Agent 等 AI Agent 的内在逻辑，一层层剖析其设计哲学
 
----
 
-## 引言：魔法背后的朴素真相
+## 引言
 
-当我们惊叹于 Claude Code、Cursor Agent、Devin 这些 AI 编程助手的神奇能力时，常常会陷入一个误区——认为它们背后必然隐藏着某种复杂精密的架构：精心设计的状态机、复杂的规划算法、庞大的决策引擎……
+2025 年是 AI Agent 爆发元年，随着模型能力提升，各种 AI Agent 产品涌现出来，Manus，Claude Code , Cursor 等产品极大改变了工作模式，释放了生产力。
 
-但当我们剥去 CLI 的炫酷外观、花哨的进度条、严格的安全沙盒，**剩下的核心竟不到 100 行代码**。
+当我们感叹这些 AI Agent 的神奇能力时，常常会认为它们背后必然隐藏着某种复杂精密的架构：精心设计的状态机、复杂的规划算法、庞大的决策引擎……，事实确实如此，但是我们应该大概知道一个 Agent 是如何实现的，才能帮助我们更好的使用它。
+
+剥去 CLI 的炫酷外观、花哨的进度条、严格的安全沙盒，**剩下的核心竟不到 100 行代码**。
 
 这不是魔法，这是**循环**。
 
-本文将带你从零开始，一行一行构建一个完整的 AI Agent，深入理解其设计哲学与实现细节。
-
----
 
 ## 一、范式转换：从被动应答到主动执行
 
@@ -37,7 +35,7 @@ comment: true
 
 理解 Agent 的第一步，是认清它与传统 AI 助手的根本区别。
 
-**传统对话式 AI（Chatbot）**遵循请求-响应模式：
+传统对话式 AI（Chatbot）遵循请求-响应模式：
 
 ```
 用户 → 模型 → 文本回复
@@ -45,33 +43,32 @@ comment: true
 
 模型接收输入，生成输出，任务结束。
 
-**AI Agent（自主代理）**则是一个持续循环的控制系统：
+AI Agent（自主代理）则是一个持续循环的控制系统：
 
 ```
 用户 → 模型 → [工具调用 → 执行结果]* → 最终回复
                      ^________________|
 ```
 
-注意那个 `*`（ Kleene 星号），它意味着**模型会反复调用工具**，每一次执行的结果都作为新的上下文反馈给模型，直到它判断任务完成。
+注意那个 `*`（星号），它意味着**模型会反复调用工具**，每一次执行的结果都作为新的上下文反馈给模型，直到它判断任务完成。
 
 ### 从鹦鹉学舌到自主行动
 
-这个星号代表着从"高级打字机"到"自主执行者"的质变：
+这个星号代表着从“高级打字机”到“自主执行者”的质变：
 
 | 对比维度 | 传统助手 | AI Agent |
 |---------|---------|----------|
 | 交互模式 | 单次请求-响应 | 持续循环 |
-| 能力边界 | 仅限文本生成 | 可操作外部世界 |
+| 能力边界 | 仅限文本生成 | 可操作外部世界 (Shell, API) |
 | 决策主体 | 人类主导 | 模型主导 |
-| 任务复杂度 | 低（单轮对话） | 高（多步规划） |
+| 任务复杂度 | 低（单轮对话） | 高（多步规划、错误修正） |
 
-**核心洞见**：模型不再只是被动的回答者，而是成为了主动的决策者。代码的角色从"执行者"退居为"工具提供者"和"循环驱动者"。
+**核心**：模型不再只是被动的回答者，而是成为了主动的决策者。代码的角色从“执行者”退居为“工具提供者”和“循环驱动者”。
 
----
 
 ## 二、最小可行实现：16 行代码的启示
 
-让我们从最简版本开始，看看一个 Agent 究竟需要什么。
+从最简版本开始，看看一个 Agent 究竟需要什么。
 
 ### 伪代码视角
 
@@ -117,7 +114,10 @@ def agent_loop(messages):
 
         # 阶段 2：检查是否需要工具
         if response.stop_reason != "tool_use":
-            return response.content
+            return response.content[0].text
+
+        # [关键步骤] 将模型的思考过程和工具调用请求加入历史
+        messages.append({"role": "assistant", "content": response.content})
 
         # 阶段 3：执行工具并反馈
         results = []
@@ -144,19 +144,19 @@ def agent_loop(messages):
 2. **反馈驱动决策**：每次工具执行结果都进入模型上下文，影响下一步决策
 3. **上下文累积**：消息历史自动保存，天然具备多轮对话能力
 
----
+
 
 ## 三、工具层设计：能力的边界与扩展
 
 Bash 工具虽然理论上可以完成任何操作（通过调用其他命令），但**为特定场景设计专用工具**能显著提升模型的可用性和可靠性。
 
-### 四个核心工具
+### 四个核心工具：Agent 的眼与手
 
-经过实践验证，以下四个工具覆盖了 90% 的编程任务：
+以下四个工具基本可以覆盖 90% 的任务：
 
 ```python
 TOOLS = [
-    # 工具 1：Bash - 系统操作的网关
+    # 工具 1：Bash - "手"：系统操作的网关
     {
         "name": "bash",
         "description": "执行 shell 命令：ls, find, grep, git, npm, python 等",
@@ -167,7 +167,7 @@ TOOLS = [
         }
     },
 
-    # 工具 2：read_file - 理解代码的窗口
+    # 工具 2：read_file - "眼"：理解代码的窗口
     {
         "name": "read_file",
         "description": "读取文件内容，支持限制行数以处理大文件",
@@ -195,7 +195,7 @@ TOOLS = [
         }
     },
 
-    # 工具 4：edit_file - 精确手术式修改
+    # 工具 4：edit_file - "手术刀"：精确修改
     {
         "name": "edit_file",
         "description": "精确替换文件中的某段文本",
@@ -212,7 +212,17 @@ TOOLS = [
 ]
 ```
 
+### 为什么 edit_file 如此重要？
+
+你可能会问：*“为什么不直接用 write_file 覆盖整个文件？”*
+
+对于 50 行的小脚本，覆盖没问题。但对于 2000 行的业务代码，每次修改都重新生成整个文件，既浪费 Tokens，又容易因上下文截断导致代码丢失。
+
+`edit_file` 实现了**最小修改原则**，但也带来了挑战：模型必须能精确复述出 `old_text`（包括缩进和空行）。这要求我们在 Prompt 中强调“精确引用”。
+
 ### 工具实现细节
+
+为了让这些概念落地，我们需要一段健壮的 Python 代码来实现这些工具。注意其中的**安全沙盒**设计：
 
 ```python
 from pathlib import Path
@@ -260,7 +270,7 @@ def run_write(path: str, content: str) -> str:
     return f"Wrote {len(content)} bytes to {path}"
 
 def run_edit(path: str, old_text: str, new_text: str) -> str:
-    """精确替换文本，只修改第一个匹配项"""
+    """精确替换文本，只修改第一个匹配项（注意：需完全匹配包括缩进在内的字符）"""
     fp = safe_path(path)
     content = fp.read_text()
     if old_text not in content:
@@ -282,26 +292,19 @@ def execute_tool(name: str, args: dict) -> str:
     return f"Unknown tool: {name}"
 ```
 
-### 设计要点
 
-1. **安全沙盒**：`safe_path` 确保模型无法访问工作目录外的文件
-2. **输出截断**：防止长输出撑爆上下文窗口
-3. **危险命令过滤**：阻止明显的破坏性操作
-4. **精确匹配**：`edit_file` 使用精确字符串匹配，避免意外修改
 
----
-
-## 四、系统提示词：Agent 的灵魂塑造
+## 四、系统提示词：Agent 的灵魂
 
 如果说工具是 Agent 的**四肢**，那么系统提示词就是 Agent 的**大脑**——它定义了 Agent 的行为模式、决策原则和输出风格。
 
 ```python
-SYSTEM = f"""你是一个专业的编程助手，工作目录是 {WORKDIR}。
+SYSTEM = f"""你是一个专业的Agent ，工作目录是 {WORKDIR}。
 
 ## 工作模式
 
 遵循「思考 → 行动 → 报告」的循环：
-1. 短暂思考下一步该做什么
+1. 短暂思考下一步该做什么（Chain of Thought）
 2. 使用合适的工具执行
 3. 报告结果并继续
 
@@ -321,17 +324,18 @@ SYSTEM = f"""你是一个专业的编程助手，工作目录是 {WORKDIR}。
 
 ### 提示词设计哲学
 
-1. **简洁优先**：避免冗长的规则列表，模型难以处理过多约束
-2. **模式引导**：用「思考 → 行动 → 报告」建立清晰的认知框架
-3. **边界清晰**：明确能力范围和安全限制
+1.  **简洁优先**：避免冗长的规则列表，模型难以处理过多约束。
+2.  **思维链（CoT）**：用「思考 → 行动 → 报告」强制模型在行动前进行隐式规划，减少鲁莽操作。
+3.  **边界清晰**：明确能力范围和安全限制，防止幻觉。
 
----
 
 ## 五、完整的 Agent 循环
 
 将所有组件组装起来，就是一个完整的 Agent：
 
 ```python
+MODEL = "your model name"
+
 def agent_loop(messages: list) -> list:
     """
     完整的 Agent 循环实现
@@ -407,15 +411,14 @@ flowchart TD
     style F fill:#f3e5f5
 ```
 
----
 
 ## 六、上下文隔离：子代理机制
 
 当任务规模增大时，单一 Agent 会遇到一个严重问题：**上下文污染**。
 
-### 问题的本质
+### 问题的本质：单线程大脑的过载
 
-考虑任务"探索代码库并重构认证模块"：
+考虑任务“探索代码库并重构认证模块”：
 
 ```
 主 Agent 历史记录：
@@ -426,23 +429,26 @@ flowchart TD
   [现在开始重构] "等等，user.py 里有什么来着？"
 ```
 
-探索过程中的大量细节占用了宝贵的上下文空间，导致真正需要聚焦的重构任务反而没有足够的上下文容量。
+探索过程中的大量细节占用了宝贵的上下文空间（Context Window），导致真正需要聚焦的重构任务反而没有足够的“脑容量”。
 
-### 解决方案：子代理
+### 解决方案：SubAgent
 
-子代理机制通过**任务隔离**解决此问题：
+子代理机制（Sub-agents）本质上是**“总包-分包”模式**：
+
+1.  **主 Agent**：负责统筹规划，不干脏活累活。
+2.  **子 Agent**：领取特定任务，干完活只汇报结果，不汇报过程。
 
 ```python
 # 代理类型注册表：定义不同类型子代理的能力边界
 AGENT_TYPES = {
     "explore": {
         "description": "只读代理，用于搜索和分析代码库",
-        "tools": ["bash", "read_file"],  # 不能写入
+        "tools": ["bash", "read_file"],  # 权限收敛：不能写入
         "prompt": "你是探索者。广泛搜索、深入分析，但绝不修改任何文件。返回结构化的简洁摘要。"
     },
     "code": {
         "description": "完整代理，用于实现功能",
-        "tools": "*",  # 所有工具
+        "tools": "*",  # 全权限
         "prompt": "你是实现者。高效执行代码变更，遵循最佳实践，确保代码质量。"
     },
     "plan": {
@@ -451,7 +457,13 @@ AGENT_TYPES = {
         "prompt": "你是架构师。分析问题，设计清晰的实现步骤。输出编号列表，不要修改任何代码。"
     }
 }
+```
 
+### Task
+
+主 Agent 只需要一个特殊的工具 `Task`，就能召唤子 Agent：
+
+```python
 # Task 工具：触发子代理的核心
 TASK_TOOL = {
     "name": "Task",
@@ -567,15 +579,15 @@ def run_task(description: str, prompt: str, agent_type: str) -> str:
 
 ## 七、知识外化：Skills 机制
 
-如果说工具是 Agent 的**能力**，子代理是 Agent 的**组织方式**，那么 Skills 则是 Agent 的**知识**。
+如果说工具是 Agent 的**能力**，子代理是 Agent 的**组织方式**，那么 Skills 则是 Agent 的**外脑**。
 
 ### 问题的演进
 
 随着 Agent 应用场景扩展，出现了一个新挑战：**模型如何获取特定领域的专业知识？**
 
-- 处理 PDF？需要知道 pdftotext、PyMuPDF 等工具
-- 构建 MCP 服务器？需要理解协议规范
-- 代码审查？需要一套系统化的检查清单
+- 处理 PDF？需要知道 pdftotext、PyMuPDF 等工具。
+- 构建 MCP 服务器？需要理解协议规范。
+- 代码审查？需要一套系统化的检查清单。
 
 这些知识既不是通用能力（模型出厂时已具备），也不是工具（不执行操作），而是**领域专业知识**。
 
@@ -588,7 +600,7 @@ def run_task(description: str, prompt: str, agent_type: str) -> str:
 成本：$10K-$1M+  时间：数周
 ```
 
-Skills 机制引入了**知识外化**的新范式：
+Skills 机制引入了**知识外化**的新范式，就像给员工发新的操作手册：
 
 ```
 修改模型行为 → 编辑 SKILL.md → 即时生效
@@ -802,9 +814,9 @@ Agent = 循环 + 工具集合
 
 ---
 
-## 十、总结：本质与启示
+## 十、总结
 
-Claude Code、Cursor Agent、Devin……这些看似复杂的系统，都共享同一个核心模式：
+Claude Code、Cursor Agent、OpenCode 这些看似复杂的系统，都共享同一个核心模式：
 
 ```python
 while not done:
@@ -814,24 +826,23 @@ while not done:
 ```
 
 差异仅在于：
-- **工具丰富度**：从单一 bash 到几十个专业工具
-- **交互体验**：进度条、权限确认、错误恢复
-- **安全边界**：沙盒、权限控制、危险操作拦截
-- **知识储备**：从通用模型到加载领域 Skills
+- **工具丰富度**：从单一 bash 到几十个专业工具。
+- **交互体验**：进度条、权限确认、错误恢复。
+- **安全边界**：沙盒、权限控制、危险操作拦截。
+- **知识储备**：从通用模型到加载领域 Skills。
 
 但**本质从未改变**：模型是决策者，代码是执行者，循环是骨架。
 
-> **模型即代理。**
 
-这就是全部的秘密。
+> **模型即代理（Model is the Agent）。**
+
 
 ---
 
-## 延伸阅读
+## 参考
 
-| 项目 | 描述 |
-|-----|------|
-| [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | 渐进式 Agent 教程，从 50 行到 550 行 |
-| [Kode CLI](https://github.com/shareAI-lab/Kode) | 开源完整 Agent CLI 实现 |
-| [Agent Skills Spec](https://github.com/anthropics/agent-skills) | 官方 Skills 规范 |
-| [Anthropic Tool Use](https://docs.anthropic.com/claude/docs/tool-use) | 官方工具使用文档 |
+- [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)
+- [Kode CLI](https://github.com/shareAI-lab/Kode)
+- [Agent Skills Spec](https://github.com/anthropics/agent-skills) Anthropic 官方 Skills 规范
+- [learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)
+
