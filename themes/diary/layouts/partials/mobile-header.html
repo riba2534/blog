@@ -10,13 +10,20 @@
                     {{$actived = "active"}}
                 {{end}}
                 {{ if .HasChildren }}
-                <div class="a-block drawer-menu-item {{$actived}}" role="button" tabindex="0" onclick="toggleDrawerSubMenu()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleDrawerSubMenu()" aria-expanded="false">
+                {{ $submenuId := printf "drawer-submenu-%s" (.Name | urlize) }}
+                <div class="a-block drawer-menu-item {{$actived}}"
+                     role="button"
+                     tabindex="0"
+                     onclick="toggleDrawerSubMenu(this)"
+                     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDrawerSubMenu(this)}"
+                     aria-expanded="false"
+                     aria-controls="{{ $submenuId }}">
                     {{ .Name }}
-                    <div class="nav-link-subitem drawer-submenu" style="display: none;">
+                    <ul id="{{ $submenuId }}" class="nav-link-subitem drawer-submenu" style="display: none;" aria-hidden="true">
                         {{ range .Children }}
-                        <li><a href="{{ .URL }}"> {{ .Name }}</a></li>
-                    {{ end }}
-                    </div>
+                        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                        {{ end }}
+                    </ul>
                 </div>
                 {{ else }}
                 <!--<a class="a-block nav-link-item {{$actived}}" href="{{ .URL }}">-->
@@ -33,11 +40,11 @@
         </div>
     </div>
 </div>
-<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" role="button" tabindex="-1" aria-label="关闭菜单" onclick="toggleDrawer()"></div>
+<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" role="button" tabindex="0" aria-label="关闭菜单" onclick="toggleDrawer()" onkeydown="if(event.key==='Enter'||event.key===' '||event.key==='Escape'){event.preventDefault();toggleDrawer()}"></div>
 <nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" aria-label="打开菜单" aria-expanded="false" v-on:click="toggleDrawer" onclick="if(typeof toggleDrawer === 'function') toggleDrawer()">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" aria-label="打开菜单" aria-expanded="false" onclick="toggleDrawer()">
             <i class="material-icons" aria-hidden="true">
                 menu
             </i>

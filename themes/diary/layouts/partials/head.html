@@ -11,10 +11,10 @@
 {{ with .Site.Params.googleSiteVerification }}
 <meta name="google-site-verification" content="{{ . }}">
 {{ end }}
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
 <meta content="telephone=no" name="format-detection">
 <meta name="description" content="{{ $description }}">
-<meta name="renderer" content="webkit">
+<meta name="author" content="{{ .Site.Params.author | default .Site.Title }}">
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
 
@@ -130,29 +130,29 @@
 
 {{ if and ( and ( .Site.Params.enableGitalk ) ( .IsPage ) ) ( or ( not ( isset .Params "comment" ) ) ( eq .Params.comment true ) ) }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <!-- For compatibility. View https://github.com/AmazingRise/hugo-theme-diary/pull/135 for details.-->
 {{- $hugoVersion := split (replaceRE ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "$1 $2 $3" hugo.Version) " " -}}
 {{- if and (eq (int (index $hugoVersion 0)) 0) (ge (int (index $hugoVersion 1)) 101) -}}
     {{- /* no leading slash */ -}}
-    <script src="{{"vendor/js/md5.min.js" | relURL}}"></script>
+    <script defer src="{{"vendor/js/md5.min.js" | relURL}}"></script>
 {{- else -}}
     {{- /* with leading slash */ -}}
-    <script src="{{"/vendor/js/md5.min.js" | relURL}}"></script>
+    <script defer src="{{"/vendor/js/md5.min.js" | relURL}}"></script>
 {{- end -}}
 <script>
-  var gitalk = new Gitalk({
-  clientID: '{{ .Site.Params.Gitalk.client_id }}',
-  clientSecret: '{{ .Site.Params.Gitalk.client_secret }}',
-  repo: '{{ .Site.Params.Gitalk.repo }}',
-  owner: '{{ .Site.Params.Gitalk.owner }}',
-  admin: ['{{ .Site.Params.Gitalk.owner }}'],
-  id: md5(location.pathname),
-  distractionFreeMode: 'false'
+  document.addEventListener('DOMContentLoaded', function() {
+    var gitalk = new Gitalk({
+      clientID: '{{ .Site.Params.Gitalk.client_id }}',
+      clientSecret: '{{ .Site.Params.Gitalk.client_secret }}',
+      repo: '{{ .Site.Params.Gitalk.repo }}',
+      owner: '{{ .Site.Params.Gitalk.owner }}',
+      admin: ['{{ .Site.Params.Gitalk.owner }}'],
+      id: md5(location.pathname),
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
   });
-  window.onload = function () {
-        gitalk.render('gitalk-container')
-  }
 </script>
 {{ end }}
 
@@ -162,12 +162,12 @@
 {{ end }}
 
 {{ if and (.Site.Params.disqusShortname) (.IsPage) }}
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 {{ end }}
 
 {{ if or (.Params.enableVue) (.Site.Params.enableVueGlobally) }}
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
 {{ end }}
 
 {{ if and (.Site.Params.enableTwikoo) (.IsPage) }}
@@ -175,11 +175,53 @@
 {{ end }}
 
 {{ if and (.Site.Params.walineServer) (.IsPage) }}
-<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/@waline/client@v2/dist/waline.css"
-  />
+<script defer src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+{{ end }}
+
+<!-- JSON-LD Schema for SEO -->
+{{ if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  {{- with .Params.featured_image }}
+  "image": "{{ . | absURL }}",
+  {{- end }}
+  "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ $.Site.Params.author | default $.Site.Title }}",
+    "url": "{{ $.Site.BaseURL }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ $.Site.Title }}",
+    "url": "{{ $.Site.BaseURL }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  }
+}
+</script>
+{{ else if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "description": "{{ .Site.Params.description }}",
+  "url": "{{ .Site.BaseURL }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author | default .Site.Title }}"
+  }
+}
+</script>
 {{ end }}
 
 <!-- head custom -->

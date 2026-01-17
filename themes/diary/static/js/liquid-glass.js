@@ -1,248 +1,241 @@
-// Liquid Glass Dynamic Effects
+// Liquid Glass Dynamic Effects - Optimized Version
 
 (function() {
     'use strict';
 
-    const scrollState = {
-        lastScrollY: window.scrollY || 0,
-        ticking: false,
-        initialized: false
+    // State management
+    const state = {
+        scroll: {
+            lastY: 0,
+            ticking: false,
+            initialized: false
+        },
+        mouse: {
+            x: 0,
+            y: 0,
+            currentX: 0,
+            currentY: 0,
+            isMoving: false,
+            animationId: null,
+            idleTimeout: null
+        },
+        // Cache DOM queries
+        cache: {
+            postItems: null,
+            sidebar: null,
+            navContainer: null
+        }
     };
 
-    // Wait for DOM to be ready
-    document.addEventListener('DOMContentLoaded', function() {
-        initLiquidGlass();
-    });
+    const CONFIG = {
+        MOUSE_SPEED: 0.08,
+        MOUSE_IDLE_DELAY: 2000,  // Stop animation after 2s idle
+        SCROLL_BLUR_MAX: 30,
+        RIPPLE_DURATION: 600
+    };
+
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', initLiquidGlass);
 
     function initLiquidGlass() {
-        // Add glass effect classes to elements
+        // Cache DOM elements once
+        cacheElements();
+
+        // Add glass effects
         addGlassEffects();
 
-        // Initialize dynamic lighting
+        // Initialize effects
         initDynamicLighting();
-
-        // Initialize scroll effects
         initScrollEffects();
-
-        // Initialize interactive ripples
         initRippleEffects();
 
-        // Initialize adaptive tinting
-        initAdaptiveTinting();
+        // Skip adaptive tinting - too expensive
+        // initAdaptiveTinting();
+    }
+
+    function cacheElements() {
+        state.cache.postItems = document.querySelectorAll('.post-item-wrapper');
+        state.cache.sidebar = document.querySelector('.side-container');
+        state.cache.navContainer = document.querySelector('.nav-container');
     }
 
     function addGlassEffects() {
         // Add animation classes to post items
-        const postItems = document.querySelectorAll('.post-item-wrapper');
-        postItems.forEach((item, index) => {
+        state.cache.postItems.forEach((item, index) => {
             item.classList.add('animate-fade-in');
             item.style.animationDelay = `${index * 50}ms`;
         });
 
         // Add glass layer class for GPU optimization
         const glassElements = document.querySelectorAll('.side-container, .post-item-wrapper, .toc-container, pre, blockquote');
-        glassElements.forEach(el => {
-            el.classList.add('glass-layer');
-        });
+        glassElements.forEach(el => el.classList.add('glass-layer'));
     }
 
     function initDynamicLighting() {
-        let mouseX = 0;
-        let mouseY = 0;
-        let currentX = 0;
-        let currentY = 0;
-        const speed = 0.08;
+        const root = document.documentElement;
 
+        // Throttled mousemove handler
         document.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
-            mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+            state.mouse.x = (e.clientX / window.innerWidth - 0.5) * 20;
+            state.mouse.y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+            // Mark as moving and start animation if not running
+            if (!state.mouse.isMoving) {
+                state.mouse.isMoving = true;
+                startLightingAnimation();
+            }
+
+            // Reset idle timeout
+            clearTimeout(state.mouse.idleTimeout);
+            state.mouse.idleTimeout = setTimeout(() => {
+                state.mouse.isMoving = false;
+            }, CONFIG.MOUSE_IDLE_DELAY);
         });
 
-        function animate() {
-            currentX += (mouseX - currentX) * speed;
-            currentY += (mouseY - currentY) * speed;
+        function startLightingAnimation() {
+            if (state.mouse.animationId) return;
 
-            // Update CSS variables for dynamic lighting
-            document.documentElement.style.setProperty('--lg-light-x', `${50 + currentX}%`);
-            document.documentElement.style.setProperty('--lg-light-y', `${50 + currentY}%`);
+            function animate() {
+                // Stop if mouse is idle and values have converged
+                const deltaX = Math.abs(state.mouse.x - state.mouse.currentX);
+                const deltaY = Math.abs(state.mouse.y - state.mouse.currentY);
 
-            requestAnimationFrame(animate);
+                if (!state.mouse.isMoving && deltaX < 0.01 && deltaY < 0.01) {
+                    state.mouse.animationId = null;
+                    return;
+                }
+
+                state.mouse.currentX += (state.mouse.x - state.mouse.currentX) * CONFIG.MOUSE_SPEED;
+                state.mouse.currentY += (state.mouse.y - state.mouse.currentY) * CONFIG.MOUSE_SPEED;
+
+                root.style.setProperty('--lg-light-x', `${50 + state.mouse.currentX}%`);
+                root.style.setProperty('--lg-light-y', `${50 + state.mouse.currentY}%`);
+
+                state.mouse.animationId = requestAnimationFrame(animate);
+            }
+
+            animate();
         }
-
-        animate();
     }
 
     function initScrollEffects() {
-        scrollState.lastScrollY = window.scrollY || 0;
+        state.scroll.lastY = window.scrollY || 0;
+
+        // Initial update
         updateScrollEffects();
 
-        if (!scrollState.initialized) {
-            window.addEventListener('scroll', requestTick);
-            scrollState.initialized = true;
+        if (!state.scroll.initialized) {
+            window.addEventListener('scroll', requestTick, { passive: true });
+            state.scroll.initialized = true;
         }
     }
 
     function updateScrollEffects() {
         const scrollY = window.scrollY;
-        const scrollDelta = scrollY - scrollState.lastScrollY;
+        const scrollDelta = scrollY - state.scroll.lastY;
+        const root = document.documentElement;
 
-        // Parallax effect for background
-        const body = document.body;
-        if (body) {
-            body.style.backgroundPositionY = `${scrollY * 0.5}px`;
-        }
+        // Dynamic blur intensity (throttled by RAF already)
+        const blurIntensity = Math.min(Math.abs(scrollDelta) * 2, CONFIG.SCROLL_BLUR_MAX);
+        root.style.setProperty('--lg-scroll-blur', `${blurIntensity}px`);
 
-        // Dynamic blur intensity based on scroll speed
-        const blurIntensity = Math.min(Math.abs(scrollDelta) * 2, 30);
-        document.documentElement.style.setProperty('--lg-scroll-blur', `${blurIntensity}px`);
+        // Fade in elements - use cached and filter
+        state.cache.postItems.forEach(el => {
+            if (el.classList.contains('in-view')) return;
 
-        // Fade in elements as they come into view
-        const elements = document.querySelectorAll('.post-item-wrapper:not(.in-view)');
-        elements.forEach(el => {
             const rect = el.getBoundingClientRect();
             if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
                 el.classList.add('in-view');
-                el.style.animation = 'fadeInGlass 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards';
             }
         });
 
-        // Update sidebar opacity based on scroll
-        const sidebar = document.querySelector('.side-container');
-        if (sidebar) {
+        // Update sidebar opacity
+        if (state.cache.sidebar) {
             const opacity = Math.max(0.7, 1 - scrollY / 500);
-            sidebar.style.opacity = opacity;
+            state.cache.sidebar.style.opacity = opacity;
         }
 
-        // Shrink navigation when scrolling
-        const navContainer = document.querySelector('.nav-container');
-        if (navContainer) {
-            if (scrollY > 50) {
-                navContainer.classList.add('scrolled');
-            } else {
-                navContainer.classList.remove('scrolled');
-            }
+        // Navigation scroll state
+        if (state.cache.navContainer) {
+            state.cache.navContainer.classList.toggle('scrolled', scrollY > 50);
         }
 
-        scrollState.lastScrollY = scrollY;
-        scrollState.ticking = false;
+        state.scroll.lastY = scrollY;
+        state.scroll.ticking = false;
     }
 
     function requestTick() {
-        if (!scrollState.ticking) {
+        if (!state.scroll.ticking) {
             requestAnimationFrame(updateScrollEffects);
-            scrollState.ticking = true;
+            state.scroll.ticking = true;
         }
     }
 
     function initRippleEffects() {
-        const clickableElements = document.querySelectorAll('.post-item-wrapper, .nav-link-item, button, a');
+        // Use event delegation instead of attaching to every element
+        document.addEventListener('click', (e) => {
+            const target = e.target.closest('.post-item-wrapper, button');
+            if (!target) return;
 
-        clickableElements.forEach(el => {
-            el.addEventListener('click', function(e) {
-                // Remove existing ripple
-                const existingRipple = this.querySelector('.ripple-effect');
-                if (existingRipple) {
-                    existingRipple.remove();
-                }
+            // Remove existing ripple
+            const existingRipple = target.querySelector('.ripple-effect');
+            if (existingRipple) existingRipple.remove();
 
-                // Create ripple
-                const ripple = document.createElement('span');
-                ripple.className = 'ripple-effect';
+            // Create ripple
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple-effect';
 
-                // Calculate size and position
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
+            const rect = target.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
 
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-
-                this.appendChild(ripple);
-
-                // Remove ripple after animation
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
+            Object.assign(ripple.style, {
+                width: size + 'px',
+                height: size + 'px',
+                left: x + 'px',
+                top: y + 'px'
             });
+
+            target.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), CONFIG.RIPPLE_DURATION);
         });
     }
 
-    function initAdaptiveTinting() {
-        const adaptiveElements = document.querySelectorAll('.post-item-wrapper');
-
-        adaptiveElements.forEach(el => {
-            // Extract dominant color from featured image if exists
-            const image = el.querySelector('.post-item-image');
-            if (image) {
-                const imgUrl = window.getComputedStyle(image).backgroundImage;
-                if (imgUrl && imgUrl !== 'none') {
-                    // Add adaptive tint class
-                    el.classList.add('adaptive-tint');
-
-                    // Create subtle color overlay
-                    const overlay = document.createElement('div');
-                    overlay.className = 'color-overlay';
-                    overlay.style.position = 'absolute';
-                    overlay.style.inset = '0';
-                    overlay.style.background = 'inherit';
-                    overlay.style.filter = 'blur(100px) saturate(200%)';
-                    overlay.style.opacity = '0.05';
-                    overlay.style.zIndex = '0';
-                    overlay.style.pointerEvents = 'none';
-
-                    el.style.position = 'relative';
-                    el.insertBefore(overlay, el.firstChild);
-                }
-            }
-        });
-    }
-
-    // Add custom CSS for ripple effect
+    // Inject minimal CSS
     const style = document.createElement('style');
     style.textContent = `
         .ripple-effect {
             position: absolute;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
             transform: scale(0);
             animation: ripple-animation 0.6s ease-out;
             pointer-events: none;
             z-index: 100;
         }
-
         @keyframes ripple-animation {
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
+            to { transform: scale(2); opacity: 0; }
         }
-
         .in-view {
             opacity: 1;
+            transform: translateY(0);
         }
-
         .post-item-wrapper:not(.in-view) {
             opacity: 0;
             transform: translateY(20px);
-        }
-
-        .color-overlay {
-            transition: opacity 0.3s ease;
-        }
-
-        .post-item-wrapper:hover .color-overlay {
-            opacity: 0.1 !important;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
     `;
     document.head.appendChild(style);
 
-    // Performance optimization: Throttle resize events
+    // Throttled resize handler
     let resizeTimer;
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
+        resizeTimer = setTimeout(() => {
+            cacheElements();
             initScrollEffects();
         }, 250);
     });

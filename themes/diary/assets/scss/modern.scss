@@ -179,7 +179,10 @@ a {
   box-shadow: var(--shadow-2);
   transform: translateY(-2px);
 }
-.post-item-image { border-radius: var(--radius-sm) !important; }
+/* 卡片右侧图片圆角 */
+.post-item-image {
+  border-radius: var(--radius-md) !important;
+}
 
 /* Single post container */
 .post-list-container.post-list-container-shadow > .post {
@@ -199,7 +202,7 @@ a {
 .post-head-wrapper {
   border-top-left-radius: var(--radius-xl);
   border-top-right-radius: var(--radius-xl);
-  min-height: 240px;
+  min-height: 320px; // 增加 banner 最小高度
 }
 .post-head-wrapper-text-only { padding-top: var(--space-6); }
 
@@ -449,14 +452,15 @@ code {
   font-size: .92rem;
 }
 
-/* Copy button - GitHub style */
+/* Copy button - GitHub style with iOS touch target */
 .post-body > pre .code-copy-btn,
 .post-body .highlight .code-copy-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 32px;
-  height: 32px;
+  top: 2px;
+  right: 2px;
+  width: 44px;   /* iOS recommended touch target */
+  height: 44px;
+  padding: 6px;  /* Visual size remains ~32px */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -496,7 +500,7 @@ code {
   content: attr(data-lang);
   position: absolute;
   top: 14px;
-  right: 52px;
+  right: 56px;  /* Adjusted for larger copy button */
   padding: 2px 8px;
   border-radius: 999px;
   background: rgba(27,31,35,0.04);
@@ -533,10 +537,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Better Chinese/CJK text rendering */
 .post-body p,
 .post-body li {
-  text-align: justify;
-  text-justify: inter-ideograph;
-  hyphens: auto;
+  text-align: left;  /* justify causes uneven spacing in CJK text */
   word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.8;  /* Better readability for Chinese */
 }
 
 /* Images */
@@ -1311,8 +1315,8 @@ body.lightbox-open {
 
   /* Post cover image optimization */
   .post-item-image {
-    height: 160px !important;
-    border-radius: 0 !important;
+    height: 170px !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
   }
 
   /* ===== 3. Scroll experience optimization ===== */
@@ -1426,8 +1430,9 @@ body.lightbox-open {
     font-size: 17px !important;
   }
 
+  /* 小屏幕图片高度 */
   .post-item-image {
-    height: 140px !important;
+    height: 150px !important;
   }
 
   /* Body text optimization */
@@ -1505,7 +1510,7 @@ body.lightbox-open {
   }
 
   .post-item-image {
-    height: 120px !important;
+    height: 130px !important;
   }
 
   /* Wider drawer menu in landscape */
@@ -1514,11 +1519,14 @@ body.lightbox-open {
   }
 }
 
-/* Touch device hover state disable */
+/* Touch device hover state optimization */
 @media (hover: none) and (pointer: coarse) {
   .post-item-wrapper:hover {
-    background: transparent !important;
     transform: none !important;
+  }
+
+  .post-item-wrapper:active {
+    transform: scale(0.99) !important;
   }
 
   .post-item-title:hover {

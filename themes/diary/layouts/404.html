@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<div class="post-list-container post-list-container-shadow">
+    <div class="post">
+        <div class="post-head-wrapper-text-only" style="text-align: center; padding: 60px 35px;">
+            <div class="post-title" style="font-size: 120px; margin-bottom: 20px; opacity: 0.15;">
+                404
+            </div>
+            <h1 style="font-size: 28px; margin-bottom: 16px; font-weight: 600;">
+                {{ i18n "page_not_found" | default "Page Not Found" }}
+            </h1>
+            <p style="color: #64748b; margin-bottom: 30px; font-size: 16px;">
+                {{ i18n "page_not_found_desc" | default "The page you're looking for doesn't exist or has been moved." }}
+            </p>
+            <a href="{{ "/" | relLangURL }}" class="btn-back-home" style="
+                display: inline-block;
+                padding: 12px 28px;
+                background: var(--accent, #1976d2);
+                color: white !important;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.2s ease;
+            ">
+                {{ i18n "back_to_home" | default "Back to Home" }}
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.btn-back-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+}
+</style>
+
+{{ end }}

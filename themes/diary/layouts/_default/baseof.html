@@ -38,8 +38,6 @@
     (function() {
         window.themeState = {
             isDrawerOpen: false,
-            sidebarSubMenuHidden: true,
-            drawerSubMenuHidden: true,
             scrollY: 0,
             navOpacity: 0
         };
@@ -94,7 +92,6 @@
                 if (overlayEl) {
                     overlayEl.style.display = 'none';
                 }
-                state.drawerSubMenuHidden = true;
                 // Hide all submenu items
                 document.querySelectorAll('.drawer-submenu').forEach(el => {
                     el.style.display = 'none';
@@ -102,20 +99,24 @@
             }
         };
 
-        window.toggleSidebarSubMenu = function() {
-            const state = window.themeState;
-            state.sidebarSubMenuHidden = !state.sidebarSubMenuHidden;
-            document.querySelectorAll('.sidebar-submenu').forEach(el => {
-                el.style.display = state.sidebarSubMenuHidden ? 'none' : 'block';
-            });
+        window.toggleSidebarSubMenu = function(btn) {
+            if (!btn) return;
+            const submenu = btn.querySelector('.sidebar-submenu');
+            if (!submenu) return;
+            const isHidden = submenu.style.display === 'none';
+            submenu.style.display = isHidden ? 'block' : 'none';
+            submenu.setAttribute('aria-hidden', !isHidden);
+            btn.setAttribute('aria-expanded', isHidden);
         };
 
-        window.toggleDrawerSubMenu = function() {
-            const state = window.themeState;
-            state.drawerSubMenuHidden = !state.drawerSubMenuHidden;
-            document.querySelectorAll('.drawer-submenu').forEach(el => {
-                el.style.display = state.drawerSubMenuHidden ? 'none' : 'block';
-            });
+        window.toggleDrawerSubMenu = function(btn) {
+            if (!btn) return;
+            const submenu = btn.querySelector('.drawer-submenu');
+            if (!submenu) return;
+            const isHidden = submenu.style.display === 'none';
+            submenu.style.display = isHidden ? 'block' : 'none';
+            submenu.setAttribute('aria-hidden', !isHidden);
+            btn.setAttribute('aria-expanded', isHidden);
         };
     })();
     </script>

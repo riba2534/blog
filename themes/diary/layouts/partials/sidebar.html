@@ -23,13 +23,20 @@
                 {{$actived = "active"}}
             {{end}}
             {{ if .HasChildren }}
-            <div class="a-block nav-link-item {{$actived}}" role="button" tabindex="0" onclick="toggleSidebarSubMenu()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleSidebarSubMenu()" aria-expanded="false">
+            {{ $submenuId := printf "submenu-%s" (.Name | urlize) }}
+            <div class="a-block nav-link-item {{$actived}}"
+                 role="button"
+                 tabindex="0"
+                 onclick="toggleSidebarSubMenu(this)"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSidebarSubMenu(this)}"
+                 aria-expanded="false"
+                 aria-controls="{{ $submenuId }}">
                 {{ .Name }}
-                <div class="nav-link-subitem sidebar-submenu" style="display: none;">
+                <ul id="{{ $submenuId }}" class="nav-link-subitem sidebar-submenu" style="display: none;" aria-hidden="true">
                     {{ range .Children }}
-                    <li><a href="{{ .URL }}"> {{ .Name }}</a></li>
+                    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
                     {{ end }}
-                </div>
+                </ul>
             </div>
             {{ else }}
             <!--<a class="a-block nav-link-item {{$actived}}" href="{{ .URL }}">-->
