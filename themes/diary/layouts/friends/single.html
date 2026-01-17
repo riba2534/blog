@@ -58,8 +58,8 @@
                 <div class="post-body">
                     {{.Content}}
                     {{ if not .Lastmod.IsZero }}
-                    <HR width="100%" id="EOF">
-                    <p style="color:#777;">{{ i18n "last_mod_on" .Page.Lastmod }}</p>
+                    <hr class="post-divider" id="EOF">
+                    <p class="post-last-mod">{{ i18n "last_mod_on" .Page.Lastmod }}</p>
                     {{ end }}
                 </div>
 

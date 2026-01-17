@@ -172,35 +172,39 @@ var sgn = function (t, x) {
 };
 
 var handleScroll = function () {
-  //let scrollY = window.scrollY;
-  let pageHeadHeight = function () {
-    return document.getElementById("pageHead").offsetHeight;
-  };
+  try {
+    var pageHead = document.getElementById("pageHead");
+    var navBar = document.getElementById("navBar");
 
-  let navBarHeight = function () {
-    return document.getElementById("navBar").offsetHeight;
-  };
-  let navOpacity = sgn(
-    0.0,
-    Math.min(
-      1,
-      Math.max(0, window.scrollY / (pageHeadHeight() - navBarHeight() * 0.8))
-    )
-  );
-  if (navOpacity >= 1) {
-    navBackground.style.opacity = 1;
-    navTitle.style.opacity = 1;
-  } else {
-    navBackground.style.opacity = 0;
-    navTitle.style.opacity = 0;
-  }
-
-  if (typeof spy !== "undefined" && typeof spy === "function") {
-    try {
-      spy();
-    } catch (e) {
-      console.warn('TOC spy function error:', e);
+    // 如果必要元素不存在，直接返回
+    if (!pageHead || !navBar || !navBackground || !navTitle) {
+      return;
     }
+
+    var pageHeadHeight = pageHead.offsetHeight || 1;
+    var navBarHeight = navBar.offsetHeight || 1;
+
+    var navOpacity = sgn(
+      0.0,
+      Math.min(
+        1,
+        Math.max(0, window.scrollY / (pageHeadHeight - navBarHeight * 0.8))
+      )
+    );
+
+    if (navOpacity >= 1) {
+      navBackground.style.opacity = 1;
+      navTitle.style.opacity = 1;
+    } else {
+      navBackground.style.opacity = 0;
+      navTitle.style.opacity = 0;
+    }
+
+    if (typeof spy !== "undefined" && typeof spy === "function") {
+      spy();
+    }
+  } catch (e) {
+    // 静默处理滚动事件中的错误
   }
 };
 
@@ -216,78 +220,6 @@ document.querySelectorAll("table").forEach(function (elem) {
   elem.classList.add("table-responsive");
   elem.classList.add("table-hover");
 });
-
-// Night mode
-
-var isDarkMode = false;
-
-var toggleDarkMode = function () {
-  let setGiscusTheme = function (themeName) {
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (!iframe) return;
-    iframe.contentWindow.postMessage({
-      giscus: {
-        setConfig: {
-          theme: themeName
-        }
-      }
-    }, '*');
-  }
-
-  isDarkMode = !isDarkMode;
-  let icon = document.getElementById("darkModeToggleIcon");
-  let icon2 = document.getElementById("darkModeToggleIcon2");
-  if (isDarkMode == true) {
-    document.cookie = "night=1;path=/";
-    document.body.classList.add("night");
-    icon.innerText = "light_mode";
-    icon2.innerText = "light_mode";
-    setGiscusTheme("dark");
-  } else {
-    document.cookie = "night=0;path=/";
-    document.body.classList.remove("night");
-    icon.innerText = "dark_mode";
-    icon2.innerText = "dark_mode";
-    setGiscusTheme("light");
-  }
-};
-
-let night = document.cookie.replace(
-  /(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/,
-  "$1"
-);
-
-if (night == "") {
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    toggleDarkMode();
-  }
-} else {
-  // If night is not empty
-  if (night === "1") {
-    toggleDarkMode();
-  }
-}
-
-try {
-  document
-    .getElementById("darkModeToggleButton")
-    .addEventListener("click", function () {
-      toggleDarkMode();
-    });
-
-  document
-    .getElementById("darkModeToggleButton2")
-    .addEventListener("click", function () {
-      toggleDarkMode();
-    });
-} catch (_) {
-
-}
-
-
 
 // Drawer
 

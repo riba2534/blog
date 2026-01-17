@@ -11,11 +11,12 @@
 {{ with .Site.Params.googleSiteVerification }}
 <meta name="google-site-verification" content="{{ . }}">
 {{ end }}
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="telephone=no" name="format-detection">
 <meta name="description" content="{{ $description }}">
 <meta name="renderer" content="webkit">
 <meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
 
 <!-- open-graph -->
 {{if .Site.Params.enableOpenGraph}}
@@ -85,14 +86,8 @@
     <link type="text/css" rel="stylesheet" href="{{"/vendor/css/bootstrap.min.css" | relURL}}">
 {{- end -}}
 
-{{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
-{{ if not $disableDark }}
-{{ $darkmode := resources.Get "scss/dark-mode.scss" | toCSS | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $darkmode.RelPermalink }}" integrity="{{ $darkmode.Data.Integrity }}" media="screen">
-{{ else }}
 {{ $styles := resources.Get "scss/journal.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
-{{ end }}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

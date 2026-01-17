@@ -15,14 +15,6 @@
                 keyboard_arrow_up
             </i>
         </a>
-        {{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
-        {{ if not $disableDark }}
-        <a type="button" class="pagination-action" id="darkModeToggleButton" title="切换暗黑模式">
-            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
-                dark_mode
-            </span>
-        </a>
-        {{ end }}
         {{ if and (.Page.IsNode) (.Page.Paginator) (not (.Data.Terms)) }}
         {{ if gt .Paginator.TotalPages 1 }}
 

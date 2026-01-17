@@ -46,19 +46,6 @@ $single-column-max-width: 1020px !default;
   --lg-duration-slow: 500ms;
 }
 
-// Dark mode adjustments
-@media (prefers-color-scheme: dark) {
-  :root {
-    --lg-transparency-regular: 0.5;
-    --lg-transparency-clear: 0.25;
-    --lg-transparency-solid: 0.85;
-    --lg-highlight-intensity: 0.25;
-    --lg-shadow-intensity: 0.15;
-    --lg-tint-light: rgba(255,255,255,0.1);
-    --lg-tint-dark: rgba(0,0,0,0.5);
-  }
-}
-
 // ==================== Core Mixins ====================
 
 // Regular Glass Material

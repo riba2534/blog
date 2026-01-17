@@ -2,11 +2,13 @@
 <html>
     {{- partial "head.html" . -}}
     <body>
+        <a class="skip-link" href="#main-content">跳到主要内容</a>
     	<div id="app">
             {{- partial "mobile-header.html" . -}}
             <!-- mobile header -->
             <div id="content">
-                <div id="streamContainer" class="stream-container">
+                <div id="streamContainer" class="stream-container" role="main">
+                    <div id="main-content"></div>
                     {{- block "main" . }}{{- end }}
                     </div>
             </div>
@@ -97,24 +99,6 @@
                 document.querySelectorAll('.drawer-submenu').forEach(el => {
                     el.style.display = 'none';
                 });
-            }
-        };
-
-        window.toggleSidebarSubMenu = function() {
-            const state = window.themeState;
-            state.sidebarSubMenuHidden = !state.sidebarSubMenuHidden;
-            const submenu = document.querySelector('.sidebar-submenu');
-            if (submenu) {
-                submenu.style.display = state.sidebarSubMenuHidden ? 'none' : 'block';
-            }
-        };
-
-        window.toggleDrawerSubMenu = function() {
-            const state = window.themeState;
-            state.drawerSubMenuHidden = !state.drawerSubMenuHidden;
-            const submenu = document.querySelector('.drawer-submenu');
-            if (submenu) {
-                submenu.style.display = state.drawerSubMenuHidden ? 'none' : 'block';
             }
         };
 

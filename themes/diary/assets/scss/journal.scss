@@ -234,7 +234,7 @@ a {
 }
 
 .animated-visibility {
-  transition: visibility 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s ease;
   visibility: visible;
   opacity: 1;
 }
@@ -293,28 +293,6 @@ a {
     }
     // UI/UX 优化: 增大触控区域至 iOS 44px 标准
     .nav-dropdown-toggle {
-      display: flex;
-      align-content: center;
-      align-items: center;
-      justify-items: center;
-      justify-content: center;
-      background: none !important;
-      border: none;
-      min-width: 44px;
-      min-height: 44px;
-      padding: 10px;
-      margin: -4px;
-      border-radius: 8px;
-      transition: background-color 0.2s ease;
-      &:hover {
-        color: #3f587d !important;
-        background: rgba(0, 0, 0, 0.05);
-      }
-      &:active {
-        background: rgba(0, 0, 0, 0.1);
-      }
-    }
-    .nav-darkmode-toggle {
       display: flex;
       align-content: center;
       align-items: center;
@@ -431,8 +409,7 @@ a {
           border-right: 2px solid transparent;
           padding: 8px 30px 8px 30px;
           cursor: pointer;
-          cursor: pointer;
-          transition: all 0.2s linear;
+          transition: all 0.2s ease;
           color: $deep-dark-accent;
           .nav-link-subitem {
             font-size: $single-column-nav-link-size;
@@ -641,10 +618,9 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
       justify-items: center;
       width: $extra-container-pagination-width;
       cursor: pointer;
-      cursor: pointer;
       padding: 15px 0;
       :not(.pagination-action-icon) {
-        transition: all 0.2s linear;
+        transition: all 0.2s ease;
         font-size: 13px;
         font-family: $mono-font-list;
       }
@@ -652,7 +628,7 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
         // margin-right: 4px;
       }
       * {
-        transition: all 0.3s linear;
+        transition: all 0.3s ease;
       }
       &:hover {
         text-decoration: none;
@@ -809,9 +785,9 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
           }
         }
 
-        //transition: all 0.2s linear;
+        //transition: all 0.2s ease;
         // * {
-        //   transition: all 0.2s linear;
+        //   transition: all 0.2s ease;
         // }
         &:not(.post-item-wrapper-no-hover):hover {
           text-decoration: none;
@@ -1254,10 +1230,9 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
       justify-items: center;
       width: $extra-container-pagination-width;
       cursor: pointer;
-      cursor: pointer;
       padding: 15px 0;
       :not(.pagination-action-icon) {
-        transition: all 0.2s linear;
+        transition: all 0.2s ease;
         font-size: 13px;
         font-family: $mono-font-list;
       }
@@ -1265,7 +1240,7 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
         // margin-right: 4px;
       }
       * {
-        transition: all 0.3s linear;
+        transition: all 0.3s ease;
       }
       &:hover {
         text-decoration: none;

@@ -164,10 +164,14 @@
   function enhance() {
     // 延迟执行，确保 mermaid 等库先处理
     setTimeout(function() {
-      // 为纯代码块添加行号
-      addLineNumbers();
-      detectLanguage();
-      addCopyButtons();
+      try {
+        // 为纯代码块添加行号
+        addLineNumbers();
+        detectLanguage();
+        addCopyButtons();
+      } catch (e) {
+        console.warn('代码增强功能初始化失败:', e);
+      }
     }, 100);
   }
 
