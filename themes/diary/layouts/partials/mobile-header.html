@@ -10,7 +10,7 @@
                     {{$actived = "active"}}
                 {{end}}
                 {{ if .HasChildren }}
-                <div class="a-block drawer-menu-item {{$actived}}" onclick="toggleDrawerSubMenu()">
+                <div class="a-block drawer-menu-item {{$actived}}" role="button" tabindex="0" onclick="toggleDrawerSubMenu()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleDrawerSubMenu()" aria-expanded="false">
                     {{ .Name }}
                     <div class="nav-link-subitem drawer-submenu" style="display: none;">
                         {{ range .Children }}
@@ -33,12 +33,12 @@
         </div>
     </div>
 </div>
-<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" onclick="toggleDrawer()"></div>
+<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" role="button" tabindex="-1" aria-label="关闭菜单" onclick="toggleDrawer()"></div>
 <nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer" onclick="if(typeof toggleDrawer === 'function') toggleDrawer()">
-            <i class="material-icons">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" aria-label="打开菜单" aria-expanded="false" v-on:click="toggleDrawer" onclick="if(typeof toggleDrawer === 'function') toggleDrawer()">
+            <i class="material-icons" aria-hidden="true">
                 menu
             </i>
         </button>
@@ -47,8 +47,8 @@
         </a>
         {{ $disableDark := or .Site.Params.disableDarkMode .Site.Params.disableDarkmode }}
         {{ if not $disableDark }}
-        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2" title="切换暗黑模式">
-            <i class="material-icons" id="darkModeToggleIcon2">
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2" title="切换暗黑模式" aria-label="切换暗黑模式">
+            <i class="material-icons" id="darkModeToggleIcon2" aria-hidden="true">
                 dark_mode
             </i>
         </button>

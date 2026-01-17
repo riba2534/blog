@@ -14,7 +14,7 @@ $mono-font-list: "JetBrains Mono", "Source Code Pro",
 //$sans-preferred-font-list: "Montserrat", "Roboto", "Source Sans Pro", "Helvetica", $default-font-list;
 $sans-preferred-font-list: $default-font-list;
 
-$side-container-width: 25%; //280px;
+$side-container-width: 25%;
 $extra-container-width: 25%;
 $extra-container-pagination-width: 64px;
 $stream-container-max-width: 1620px;
@@ -123,7 +123,11 @@ textarea,
 select,
 input,
 button {
-  outline: none !important;
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
 }
 
 table {
@@ -132,41 +136,54 @@ table {
 }
 
 button {
-  cursor: hand;
   cursor: pointer;
 }
 
 code {
   color: $dark-accent;
-  background: rgba($color-accent, 0.07);
-  padding: 2px 5px;
-  border-radius: 3px;
+  background: rgba(175, 184, 193, 0.2);
+  padding: .2em .4em;
+  border-radius: 6px;
   font-family: $mono-font-list;
+  font-size: 85%;
 }
 
 pre {
-  //background: rgba(46,46,46, 1) !important;
-  //color: rgba(255,255,255, 1);
-  background: rgba($color-accent, 0.07);
-  padding: 12px 15px;
-  border-radius: 5px;
+  background: #f6f8fa;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
   font-family: $mono-font-list;
   overflow-x: auto;
   max-width: 100%;
   white-space: pre;
+  box-shadow: none;
   @media screen and (max-width: $single-column-max-width) {
     -webkit-overflow-scrolling: touch;
   }
   * {
-    background: none;
+    background: none !important;
+    background-color: transparent !important;
     font-family: $mono-font-list !important;
   }
   code {
     display: block;
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: inherit !important;
     * {
       color: inherit;
+      background: none !important;
     }
+  }
+  // 禁用 hover 效果
+  &:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
 
@@ -274,6 +291,7 @@ a {
       //align-items: stretch;
       flex: 1;
     }
+    // UI/UX 优化: 增大触控区域至 iOS 44px 标准
     .nav-dropdown-toggle {
       display: flex;
       align-content: center;
@@ -282,11 +300,18 @@ a {
       justify-content: center;
       background: none !important;
       border: none;
-      padding: 8px;
-      margin: -8px;
-      //padding-top: 1px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px;
+      margin: -4px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
       &:hover {
         color: #3f587d !important;
+        background: rgba(0, 0, 0, 0.05);
+      }
+      &:active {
+        background: rgba(0, 0, 0, 0.1);
       }
     }
     .nav-darkmode-toggle {
@@ -297,11 +322,18 @@ a {
       justify-content: center;
       background: none !important;
       border: none;
-      padding: 8px;
-      margin: -8px;
-      //padding-top: 1px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px;
+      margin: -4px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
       &:hover {
         color: #3f587d !important;
+        background: rgba(0, 0, 0, 0.05);
+      }
+      &:active {
+        background: rgba(0, 0, 0, 0.1);
       }
     }
     .nav-icon-group {
@@ -356,35 +388,40 @@ a {
   }
 }
 
+// UI/UX 优化: 使用 transform 代替 left 动画，GPU 加速更流畅
 .single-column-drawer-container {
   display: none !important;
   @media screen and (max-width: $single-column-max-width) {
     display: block !important;
     position: fixed;
     top: 0;
-    left: -$single-column-drawer-width;
+    left: 0;
     width: $single-column-drawer-width;
     height: 100vh;
     z-index: 1800;
-    transition: all 0.3s ease-in-out;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                visibility 0.3s ease;
     opacity: 0;
     visibility: hidden;
+    will-change: transform;
     -webkit-overflow-scrolling: touch;
     .drawer-content {
       background: white;
       height: 100%;
       width: 100%;
-      padding: 50px 0 80px 0;
+      padding: 16px 0 24px 0;
       display: flex;
       flex-direction: column;
       align-items: stretch;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       .drawer-menu {
-        flex-grow: 1;
+        flex-grow: 0;
         display: flex;
-        justify-items: center;
-        justify-content: center;
+        justify-items: flex-start;
+        justify-content: flex-start;
         flex-direction: column;
         $drawer-menu-item-active-background-alpha: 0.1;
         $drawer-menu-item-active-color-darken: 30%;
@@ -393,7 +430,7 @@ a {
           margin-bottom: 10px;
           border-right: 2px solid transparent;
           padding: 8px 30px 8px 30px;
-          cursor: hand;
+          cursor: pointer;
           cursor: pointer;
           transition: all 0.2s linear;
           color: $deep-dark-accent;
@@ -459,11 +496,12 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
   }
 }
 
+// UI/UX 优化: 配合 transform 动画
 .single-column-drawer-container-active {
-  left: 0;
+  transform: translateX(0);
   opacity: 1;
   visibility: visible;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
 }
 
 .side-container {
@@ -523,7 +561,6 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
       margin-bottom: 10px;
       border-right: 2px solid transparent;
       padding: 8px 28px 8px 30px;
-      cursor: hand;
       cursor: pointer;
       color: $deep-dark-accent;
       .nav-link-subitem {
@@ -603,7 +640,7 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
       align-items: center;
       justify-items: center;
       width: $extra-container-pagination-width;
-      cursor: hand;
+      cursor: pointer;
       cursor: pointer;
       padding: 15px 0;
       :not(.pagination-action-icon) {
@@ -1020,20 +1057,59 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
   }
 }
 
+// UI/UX 优化: 改进 TOC 层级视觉效果
 .toc {
   float: right;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 30px;
   min-width: 200px;
-  max-width: 260px;
+  max-width: 320px;
   max-height: 80vh;
   overflow: auto;
   background: rgba($color-accent, 0.05);
+  border: 1px solid rgba($color-accent, 0.1);
+
+  // 防止 TOC 链接文字换行
+  a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
   &,
   * {
     font-size: $toc-size;
+  }
+  // 一级目录
+  > nav > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8em;
+    > li > a {
+      font-weight: 500;
+      color: $deep-dark-accent;
+    }
+  }
+  // 二级目录
+  ul ul {
+    list-style: none;
+    padding: 0 0 0 16px;
+    margin: 4px 0;
+    > li > a {
+      font-size: 0.92em;
+      opacity: 0.9;
+    }
+  }
+  // 三级及更深层目录
+  ul ul ul {
+    padding-left: 14px;
+    > li > a {
+      font-size: 0.88em;
+      opacity: 0.8;
+    }
   }
   ul {
     list-style: none;
@@ -1045,7 +1121,20 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
     padding: 20px;
   }
   .toc-active {
-    color: darken($color-accent, 40%) !important;
+    color: $color-accent !important;
+    font-weight: 600;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      background: $color-accent;
+      border-radius: 50%;
+    }
   }
   @media screen and (max-width: $single-column-max-width) {
     line-height: 2em;
@@ -1098,42 +1187,33 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
 @media screen and (max-width: $single-column-max-width) {
   .single-column-drawer-container .drawer-menu .toc {
     width: 100%;
-    max-height: calc(100vh - 200px);
-    margin: 15px 20px 20px;
-    overflow-y: auto;
+    max-width: none;
+    min-width: 0;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    border-radius: 8px;
-    background: rgba($color-accent, 0.04);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.4);
-      border-radius: 2px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background: rgba(148, 163, 184, 0.6);
-    }
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    float: none;
   }
 
   .single-column-drawer-container .drawer-menu .toc .toc-content {
-    padding: 15px;
-    max-height: none;
-    overflow: visible;
+    padding: 0 8px 8px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    background: transparent;
     a {
       display: block;
-      padding: 4px 0;
+      padding: 4px 8px;
       border-radius: 4px;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       &:hover {
         background: rgba($color-accent, 0.08);
-        padding-left: 8px;
       }
     }
   }
@@ -1173,7 +1253,7 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
       align-items: center;
       justify-items: center;
       width: $extra-container-pagination-width;
-      cursor: hand;
+      cursor: pointer;
       cursor: pointer;
       padding: 15px 0;
       :not(.pagination-action-icon) {

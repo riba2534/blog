@@ -60,14 +60,125 @@
     });
   }
 
+  // 为纯代码块添加行号
+  function addLineNumbers() {
+    var simpleBlocks = document.querySelectorAll('.post-body > pre');
+
+    simpleBlocks.forEach(function(pre) {
+      // 跳过已经处理过的
+      if (pre.classList.contains('line-numbers-added')) {
+        return;
+      }
+
+      var code = pre.querySelector('code');
+      if (!code) {
+        return;
+      }
+
+      // 跳过 mermaid、math 等需要特殊渲染的代码块
+      var className = code.className || '';
+      if (className.match(/language-mermaid|language-math|language-latex|mermaid/i)) {
+        return;
+      }
+
+      var text = code.textContent;
+      var lines = text.split('\n');
+
+      // 移除最后的空行（如果有）
+      if (lines.length > 0 && lines[lines.length - 1] === '') {
+        lines.pop();
+      }
+
+      // 如果没有内容，跳过
+      if (lines.length === 0) {
+        return;
+      }
+
+      // 创建 highlight 容器
+      var highlight = document.createElement('div');
+      highlight.className = 'highlight';
+
+      // 创建表格结构（与 Hugo 生成的结构一致）
+      var wrapper = document.createElement('div');
+      wrapper.className = 'chroma';
+
+      var table = document.createElement('table');
+      table.className = 'lntable';
+
+      var tbody = document.createElement('tbody');
+      var tr = document.createElement('tr');
+
+      // 行号列
+      var tdLineNos = document.createElement('td');
+      tdLineNos.className = 'lntd';
+      var preLineNos = document.createElement('pre');
+      preLineNos.className = 'chroma lnt';
+      var codeLineNos = document.createElement('code');
+
+      // 代码列
+      var tdCode = document.createElement('td');
+      tdCode.className = 'lntd';
+      var preCode = document.createElement('pre');
+      preCode.className = 'chroma code';
+      var codeContent = document.createElement('code');
+
+      // 填充行号和代码
+      var lineNumbers = [];
+      var codeLines = [];
+
+      for (var i = 0; i < lines.length; i++) {
+        lineNumbers.push((i + 1).toString());
+        // 对 HTML 进行转义
+        var escapedLine = lines[i]
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+        codeLines.push(escapedLine);
+      }
+
+      codeLineNos.textContent = lineNumbers.join('\n');
+      codeContent.innerHTML = codeLines.join('\n');
+
+      // 组装结构
+      preLineNos.appendChild(codeLineNos);
+      tdLineNos.appendChild(preLineNos);
+
+      preCode.appendChild(codeContent);
+      tdCode.appendChild(preCode);
+
+      tr.appendChild(tdLineNos);
+      tr.appendChild(tdCode);
+      tbody.appendChild(tr);
+      table.appendChild(tbody);
+      wrapper.appendChild(table);
+      highlight.appendChild(wrapper);
+
+      // 替换原来的 pre
+      pre.parentNode.replaceChild(highlight, pre);
+
+      // 标记为已处理
+      highlight.classList.add('line-numbers-added');
+    });
+  }
+
   function enhance() {
-    detectLanguage();
+    // 延迟执行，确保 mermaid 等库先处理
+    setTimeout(function() {
+      // 为纯代码块添加行号
+      addLineNumbers();
+      detectLanguage();
+      addCopyButtons();
+    }, 100);
+  }
+
+  function addCopyButtons() {
 
     if (!navigator.clipboard) {
       return;
     }
 
-    var simpleBlocks = document.querySelectorAll('.post-body > pre');
+    // 为纯代码块添加复制按钮（现在它们已经变成 .highlight 了）
+    var simpleBlocks = document.querySelectorAll('.post-body > pre:not(.line-numbers-added)');
     simpleBlocks.forEach(function(block) {
       if (block.querySelector('.code-copy-btn')) {
         return;

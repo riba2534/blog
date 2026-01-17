@@ -23,7 +23,7 @@
                 {{$actived = "active"}}
             {{end}}
             {{ if .HasChildren }}
-            <div class="a-block nav-link-item {{$actived}}" onclick="toggleSidebarSubMenu()">
+            <div class="a-block nav-link-item {{$actived}}" role="button" tabindex="0" onclick="toggleSidebarSubMenu()" onkeydown="if(event.key==='Enter'||event.key===' ')toggleSidebarSubMenu()" aria-expanded="false">
                 {{ .Name }}
                 <div class="nav-link-subitem sidebar-submenu" style="display: none;">
                     {{ range .Children }}

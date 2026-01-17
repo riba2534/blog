@@ -4,6 +4,13 @@
   - Focus: typography, spacing, cards, navbar, micro-interactions
 */
 
+/* Accessibility: ensure clickable elements have pointer cursor */
+[role="button"],
+[onclick],
+[tabindex]:not([tabindex="-1"]) {
+  cursor: pointer;
+}
+
 /* Design tokens */
 :root {
   /* spacing scale */
@@ -87,6 +94,34 @@ body {
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* UI/UX 优化: 增强焦点状态可访问性 */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 跳过链接 (屏幕阅读器) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent);
+  color: white;
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.2s ease;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+  top: 0;
 }
 
 /* Better link underline */
@@ -186,101 +221,198 @@ code {
   transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
 
-.post-body > pre {
+/* 代码块 GitHub 风格 - 浅色背景 */
+.post-body > pre,
+.post-body .highlight pre {
   position: relative;
   margin: var(--space-5) 0;
-  padding: calc(var(--space-5) + 18px) var(--space-6) var(--space-5);
-  background: var(--surface-1);
-  border: 1px solid rgba(27,31,35,0.12);
-  border-radius: var(--radius-lg);
+  padding: 16px !important;
+  background: #f6f8fa !important;
+  background-color: #f6f8fa !important;
+  border: 1px solid #d0d7de !important;
+  border-radius: 6px !important;
   overflow: auto;
-  font-size: .95rem;
-  line-height: 1.7;
-  color: inherit;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #1f2328 !important;
+  box-shadow: none !important;
 }
 
-body.night .post-body > pre {
-  background: var(--surface-3);
-  border-color: rgba(148,163,184,0.24);
-}
-
-.post-body > pre:hover {
-  box-shadow: 0 20px 44px rgba(15,23,42,0.12);
-}
-body.night .post-body > pre:hover {
-  box-shadow: 0 26px 54px rgba(2,6,23,0.68);
-}
-
-.post-body > pre code {
-  display: block;
-  padding: 0;
+/* 直接 pre 内的 code（不带语言标识的代码块）- 移除所有内部样式 */
+.post-body > pre > code {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
   background: none !important;
-  color: inherit;
-  overflow-wrap: normal;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
 }
 
-.post-body > pre::-webkit-scrollbar {
-  height: 8px;
-}
-.post-body > pre::-webkit-scrollbar-track {
-  background: transparent;
-}
-.post-body > pre::-webkit-scrollbar-thumb {
-  background: rgba(148,163,184,0.4);
-  border-radius: 999px;
-}
-body.night .post-body > pre::-webkit-scrollbar-thumb {
-  background: rgba(148,163,184,0.35);
+/* 移除 hover 效果 */
+.post-body > pre:hover,
+.post-body .highlight pre:hover,
+.post-body .highlight:hover {
+  transform: none !important;
+  box-shadow: none !important;
 }
 
+.post-body .highlight pre {
+  margin: 0 !important;
+  padding: 16px !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* highlight 容器 - 单层边框 */
 .post-body .highlight {
   position: relative;
   margin: var(--space-5) 0;
-  padding: 0 0 20px 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-gutter: stable both-edges;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(100,116,139,0.6) rgba(148,163,184,0.18);
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f6f8fa;
+  box-shadow: none !important;
 }
 
+/* 暗黑模式 - GitHub Dark */
+body.night .post-body > pre,
+body.night .post-body .highlight pre {
+  background: #161b22 !important;
+  background-color: #161b22 !important;
+  border-color: #30363d !important;
+  color: #e6edf3 !important;
+}
+
+body.night .post-body .highlight {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.post-body > pre code,
+.post-body .highlight pre code {
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  overflow-wrap: normal;
+  font-size: inherit !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* 覆盖 Hugo 内联语法高亮颜色 - 适配深色背景 */
+.post-body pre span,
+.post-body .highlight span {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* UI/UX 优化: PC 端更明显的滚动条 */
+.post-body > pre::-webkit-scrollbar {
+  height: 10px;
+}
+.post-body > pre::-webkit-scrollbar-track {
+  background: rgba(148,163,184,0.15);
+  border-radius: 5px;
+  margin: 0 8px;
+}
+.post-body > pre::-webkit-scrollbar-thumb {
+  background: rgba(100,116,139,0.5);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.post-body > pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(100,116,139,0.7);
+}
+body.night .post-body > pre::-webkit-scrollbar-track {
+  background: rgba(148,163,184,0.1);
+}
+body.night .post-body > pre::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.4);
+}
+body.night .post-body > pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(148,163,184,0.6);
+}
+
+/* Highlight 容器（带行号的代码块）- 移除所有多余样式 */
 .post-body .highlight > div {
   position: relative;
   padding: 0 !important;
+  margin: 0 !important;
   background: transparent !important;
   background-color: transparent !important;
-  display: inline-block;
+  display: block;
   min-width: 100%;
-  width: auto;
+  width: 100%;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
-.post-body .highlight::-webkit-scrollbar {
+/* 强制移除所有 pre 和 highlight 的多余效果 */
+.post-body .highlight,
+.post-body .highlight > *,
+.post-body .highlight pre,
+.post-body .highlight table,
+.post-body .highlight td,
+.post-body .highlight td pre,
+.post-body > pre {
+  box-shadow: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* 移除行号区域的任何左边框 */
+.post-body .highlight td:first-child,
+.post-body .highlight td:first-child pre,
+.post-body .highlight td:first-child pre code,
+.post-body .highlight td:first-child code {
+  border: none !important;
+  border-left: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.post-body .highlight::before,
+.post-body .highlight pre::before,
+.post-body > pre::before {
+  display: none !important;
+}
+
+/* 代码块滚动条 - 深色背景适配 */
+.post-body > pre::-webkit-scrollbar,
+.post-body .highlight pre::-webkit-scrollbar {
   height: 8px;
 }
-.post-body .highlight::-webkit-scrollbar-track {
-  background: rgba(148,163,184,0.18);
-  border-radius: 999px;
+.post-body > pre::-webkit-scrollbar-track,
+.post-body .highlight pre::-webkit-scrollbar-track {
+  background: rgba(100,116,139,0.2);
+  border-radius: 4px;
 }
-.post-body .highlight::-webkit-scrollbar-thumb {
-  background: rgba(100,116,139,0.65);
-  border-radius: 999px;
+.post-body > pre::-webkit-scrollbar-thumb,
+.post-body .highlight pre::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.4);
+  border-radius: 4px;
 }
-body.night .post-body .highlight::-webkit-scrollbar-track {
-  background: rgba(148,163,184,0.28);
-}
-body.night .post-body .highlight::-webkit-scrollbar-thumb {
-  background: rgba(148,163,184,0.55);
+.post-body > pre::-webkit-scrollbar-thumb:hover,
+.post-body .highlight pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(148,163,184,0.6);
 }
 
+/* 带行号的代码块表格 - GitHub 紧凑风格 */
 .post-body .highlight table {
-  width: auto !important;
-  min-width: 100%;
+  width: 100% !important;
   border-collapse: collapse !important;
+  background: transparent !important;
+  border-spacing: 0 !important;
+  table-layout: auto !important;
 }
 
 .post-body .highlight td {
@@ -288,48 +420,77 @@ body.night .post-body .highlight::-webkit-scrollbar-thumb {
   background: transparent !important;
   border: none !important;
   background-color: transparent !important;
-}
-
-.post-body .highlight td:first-child {
-  width: 3.4rem;
-  min-width: 3.4rem;
-  text-align: right;
-  padding-right: var(--space-3) !important;
-  border-right: 1px solid rgba(148,163,184,0.18);
-  color: var(--code-line-color);
-  background: var(--code-line-bg);
-  user-select: none;
-}
-body.night .post-body .highlight td:first-child {
-  border-right-color: rgba(148,163,184,0.18);
-  color: var(--code-line-color);
-  background: var(--code-line-bg);
-}
-
-.post-body .highlight pre {
-  margin: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  vertical-align: top;
   box-shadow: none !important;
-  padding: 0 !important;
-  overflow: visible;
 }
 
-.post-body .highlight pre code {
-  display: block;
-  padding: var(--space-3) var(--space-4);
-  background: none !important;
-  background-color: transparent !important;
-  color: inherit;
+/* 行号列 - GitHub 紧凑风格 */
+.post-body .highlight td:first-child {
+  width: 1px;
+  min-width: auto;
+  text-align: right;
+  padding: 0 !important;
+  border: none !important;
+  color: #6e7781;
+  background: transparent !important;
+  user-select: none;
+  vertical-align: top;
+  box-shadow: none !important;
+}
+
+.post-body .highlight td:first-child pre {
+  padding: 16px 8px 16px 16px !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 .post-body .highlight td:first-child pre code {
-  padding: var(--space-3) 0;
-  opacity: .65;
+  display: block;
+  padding: 0 !important;
+  background: none !important;
+  color: #6e7781;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: right;
+  border: none !important;
 }
+
+body.night .post-body .highlight td:first-child {
+  color: #6e7681;
+}
+
 body.night .post-body .highlight td:first-child pre code {
-  opacity: .55;
+  color: #6e7681;
+}
+
+/* 代码列 - GitHub 紧凑风格 */
+.post-body .highlight td:last-child {
+  padding: 0 !important;
+  width: 100%;
+  border: none !important;
+}
+
+.post-body .highlight td:last-child pre {
+  padding: 16px 16px 16px 8px !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.post-body .highlight td:last-child pre code {
+  display: block;
+  padding: 0 !important;
+  background: none !important;
+  background-color: transparent !important;
+  color: inherit;
+  font-size: 13px;
+  line-height: 20px;
+  border: none !important;
 }
 
 .post-body code:not([class*="language-"]) {
@@ -353,24 +514,25 @@ body.night .post-body code:not([class*="language-"]) {
   font-size: .92rem;
 }
 
-/* Copy button */
+/* Copy button - GitHub 风格 */
 .post-body > pre .code-copy-btn,
 .post-body .highlight .code-copy-btn {
   position: absolute;
-  top: 12px;
-  right: 16px;
-  width: 28px;
-  height: 28px;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-xs);
-  border: 1px solid rgba(27,31,35,0.15);
-  background: rgba(255,255,255,0.8);
-  color: rgba(27,31,35,0.7);
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  color: #57606a;
   cursor: pointer;
   opacity: 0;
   transition: opacity .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
+  z-index: 10;
 }
 
 .post-body > pre:hover .code-copy-btn,
@@ -380,36 +542,36 @@ body.night .post-body code:not([class*="language-"]) {
 }
 
 .code-copy-btn:hover {
-  background: rgba(255,255,255,0.95);
-  border-color: rgba(27,31,35,0.25);
-  color: var(--accent);
+  background: #f3f4f6;
+  border-color: #1f2328;
+  color: #1f2328;
 }
 
 .code-copy-btn svg { pointer-events: none; }
 
 .code-copy-btn.copied {
-  background: rgba(34,197,94,0.15);
-  border-color: rgba(34,197,94,0.3);
-  color: #22c55e;
+  background: #dafbe1;
+  border-color: #1a7f37;
+  color: #1a7f37;
 }
 
 body.night .post-body > pre .code-copy-btn,
 body.night .post-body .highlight .code-copy-btn {
-  border-color: rgba(148,163,184,0.2);
-  background: rgba(30,41,59,0.8);
-  color: rgba(200,215,235,0.8);
+  border-color: #30363d;
+  background: #21262d;
+  color: #7d8590;
 }
 
 body.night .code-copy-btn:hover {
-  background: rgba(30,41,59,0.95);
-  border-color: rgba(148,163,184,0.35);
-  color: var(--accent);
+  background: #30363d;
+  border-color: #8b949e;
+  color: #e6edf3;
 }
 
 body.night .code-copy-btn.copied {
-  background: rgba(34,197,94,0.2);
-  border-color: rgba(34,197,94,0.35);
-  color: #4ade80;
+  background: #238636;
+  border-color: #238636;
+  color: #fff;
 }
 
 /* Language badge */
@@ -481,6 +643,14 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--surface-1);
   box-shadow: var(--shadow-1);
   overflow: hidden;
+
+  // 防止 TOC 链接文字换行
+  a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
 }
 body.night .toc { background: var(--surface-3); }
 .toc .toc-content { max-height: calc(100vh - 140px); overflow: auto; }
@@ -499,54 +669,215 @@ body.night .toc { background: var(--surface-3); }
     scroll-behavior: smooth;
     border-radius: 8px;
   }
+
+  /* 优化移动端抽屉菜单布局 - 消除空白 */
+  .single-column-drawer-container .drawer-content {
+    padding-top: 16px;
+    padding-bottom: 24px;
+    justify-content: flex-start;
+  }
+
+  .single-column-drawer-container .drawer-menu {
+    flex-grow: 0 !important;
+    justify-content: flex-start !important;
+    padding-top: 0;
+  }
+
+  /* 导航菜单项紧凑化 */
+  .single-column-drawer-container .drawer-menu .drawer-menu-item {
+    margin-bottom: 2px;
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+
+  /* TOC 作为菜单的自然延续，无容器 */
+  .single-column-drawer-container .drawer-menu .toc {
+    margin: 0;
+    padding: 0;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    max-height: none;
+    overflow: visible;
+    width: 100%;
+    float: none;
+    border-radius: 0;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content {
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+    background: transparent !important;
+  }
+
+  /* TOC 标题样式 - 类似分隔标签 */
+  .single-column-drawer-container .drawer-menu .toc .toc-content > div:first-child {
+    padding: 16px 16px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-3, #94a3b8);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    margin-top: 8px;
+  }
+
+  /* TOC 列表样式 - 和菜单项保持一致 */
+  .single-column-drawer-container .drawer-menu .toc .toc-content > ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content ul ul {
+    padding-left: 16px;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content li {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* TOC 链接样式 - 类似菜单项 */
+  .single-column-drawer-container .drawer-menu .toc .toc-content a {
+    display: block;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--text-2, #334155);
+    border-radius: 0;
+    transition: all 0.15s ease;
+    border-right: 2px solid transparent;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content ul ul a {
+    padding-left: 24px;
+    font-size: 13px;
+    color: var(--text-3, #64748b);
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content ul ul ul a {
+    padding-left: 32px;
+    font-size: 12px;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content a:hover {
+    background: rgba(59, 130, 246, 0.06);
+    color: #3b82f6;
+  }
+
+  .single-column-drawer-container .drawer-menu .toc .toc-content .toc-active {
+    background: rgba(59, 130, 246, 0.08);
+    color: #3b82f6 !important;
+    font-weight: 500;
+    border-right-color: #3b82f6;
+  }
 }
 
-/* Tags & meta */
-.tags .tag a,
-.post-meta a {
-  display: inline-flex;
+/* Tags & meta - 精致小标签样式 */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(25,118,210,0.24);
-  background: rgba(25,118,210,0.08);
-  color: var(--accent);
-  font-size: .78rem;
-  font-weight: 500;
-  letter-spacing: .18px;
-  text-decoration: none;
-  transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+  gap: 6px 4px;
+  margin-top: 12px;
+  font-size: 14px;
 }
-.post-meta a:hover,
-.post-meta a:focus-visible,
-.tags .tag a:hover,
-.tags .tag a:focus-visible {
-  background: rgba(25,118,210,0.16);
-  border-color: rgba(25,118,210,0.4);
-  color: var(--accent-600);
-  box-shadow: 0 4px 10px rgba(15,76,129,0.15);
-}
-body.night .tags .tag a,
-body.night .post-meta a {
-  background: rgba(144,202,249,0.12);
-  border-color: rgba(144,202,249,0.35);
-  color: #9cc9ff;
-}
-body.night .tags .tag a:hover,
-body.night .tags .tag a:focus-visible,
-body.night .post-meta a:hover,
-body.night .post-meta a:focus-visible {
-  background: rgba(144,202,249,0.22);
-  border-color: rgba(144,202,249,0.45);
-  color: #c7e3ff;
-  box-shadow: 0 6px 12px rgba(10,40,80,0.3);
+
+.post-meta time {
+  opacity: 0.9;
 }
 
 .post-meta i {
-  margin-right: 6px;
-  font-size: 16px !important;
-  color: var(--text-3);
+  font-size: 15px !important;
+  color: inherit;
+  opacity: 0.8;
+  margin-left: 8px;
+  vertical-align: -2px;
+}
+
+.post-meta i:first-child {
+  margin-left: 0;
+}
+
+/* 文章页标签/分类链接 - 简洁风格 */
+.post-meta a {
+  display: inline;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity .15s ease, color .15s ease;
+}
+
+.post-meta a:hover,
+.post-meta a:focus-visible {
+  opacity: 1;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* 标签页/分类页的标签列表 - 保留泡泡样式但更精致 */
+.tags .tag a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(25,118,210,0.08);
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .1px;
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease, transform .15s ease;
+}
+
+.tags .tag a:hover,
+.tags .tag a:focus-visible {
+  background: rgba(25,118,210,0.15);
+  color: var(--accent-600);
+  transform: translateY(-1px);
+  box-shadow: none;
+  border: none;
+}
+
+/* 暗色模式 */
+body.night .post-meta a {
+  color: inherit;
+}
+
+body.night .post-meta a:hover,
+body.night .post-meta a:focus-visible {
+  color: #90caf9;
+}
+
+body.night .tags .tag a {
+  background: rgba(144,202,249,0.1);
+  color: #90caf9;
+}
+
+body.night .tags .tag a:hover,
+body.night .tags .tag a:focus-visible {
+  background: rgba(144,202,249,0.2);
+  color: #bbdefb;
 }
 
 /* Pagination buttons */
@@ -814,7 +1145,7 @@ body.night .archive-item-tags li a:focus-visible {
   color: #d0e7ff;
 }
 
-/* Lightbox for images */
+/* Lightbox for images - 支持长图滚动查看 */
 body.lightbox-open {
   overflow: hidden;
 }
@@ -825,10 +1156,11 @@ body.lightbox-open {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6);
-  background: rgba(12,18,28,0.7);
-  backdrop-filter: blur(6px);
+  padding: 20px;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(8px);
   z-index: 1200;
+  overflow: hidden;
 }
 
 .image-lightbox.is-visible {
@@ -837,50 +1169,77 @@ body.lightbox-open {
 
 .image-lightbox__inner {
   position: relative;
-  width: 100%;
-  max-width: 1200px;
-  max-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.35);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: rgba(15,23,42,0.85);
+  width: 100%;
+  height: 100%;
 }
 
 .image-lightbox__img {
-  width: 100%;
-  height: 100%;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  width: auto;
+  height: auto;
   object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 }
 
+/* 关闭按钮固定在右上角 */
 .image-lightbox__close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   border: none;
-  background: rgba(15,23,42,0.65);
-  color: #e2e8f0;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
   cursor: pointer;
   display: grid;
   place-items: center;
   font-size: 20px;
   transition: background-color .2s ease, transform .2s ease;
+  backdrop-filter: blur(10px);
+  z-index: 1201;
 }
 
-.image-lightbox__close:hover,
-.image-lightbox__close:focus-visible {
-  background: rgba(59,130,246,0.75);
+.image-lightbox__close:hover {
+  background: rgba(255,255,255,0.25);
   transform: scale(1.05);
 }
 
+.image-lightbox__close:focus,
+.image-lightbox__close:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 .image-lightbox__close svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+}
+
+/* 移动端灯箱优化 */
+@media (max-width: 768px) {
+  .image-lightbox {
+    padding: 12px;
+  }
+
+  .image-lightbox__img {
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    border-radius: 4px;
+  }
+
+  .image-lightbox__close {
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .post-body img[data-lightbox="disabled"] {
@@ -906,5 +1265,464 @@ body.lightbox-open {
   .archive-item {
     grid-template-columns: 80px 1fr;
     gap: var(--space-3);
+  }
+}
+
+/* 移动端归档页面优化 - 标题不换行，支持横滑 */
+@media (max-width: 1020px) {
+  .archive-item {
+    grid-template-columns: 56px 1fr;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+    overflow: hidden;
+  }
+
+  .archive-item-date {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* 主内容区域支持横向滚动 */
+  .archive-item-main {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--space-3);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    padding-right: 16px;
+    /* 滚动渐变提示 */
+    mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  }
+
+  /* 隐藏滚动条 */
+  .archive-item-main::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 标题不换行 */
+  .archive-item-title {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 15px;
+  }
+
+  /* 隐藏箭头指示器（移动端用滑动代替） */
+  .archive-item-title::after {
+    display: none;
+  }
+
+  /* 标签列表不换行 */
+  .archive-item-tags {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 4px;
+  }
+
+  .archive-item-tags li,
+  .archive-item-tags li a {
+    white-space: nowrap;
+    padding: 2px 6px;
+    font-size: .7rem;
+  }
+
+  /* 年份标题优化 */
+  .archive-year-header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .archive-year-label {
+    font-size: 1.1rem;
+  }
+
+  .archive-year-badge {
+    padding: 1px 6px;
+    font-size: .72rem;
+  }
+
+  /* 列表内边距 */
+  .archive-list {
+    padding: 0 var(--space-4) var(--space-3);
+  }
+}
+
+/* 小屏幕进一步优化 */
+@media (max-width: 480px) {
+  .archive-item {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .archive-item-date {
+    font-size: 12px;
+  }
+
+  .archive-item-title {
+    font-size: 14px;
+  }
+}
+
+/* ==================== UI/UX 优化: 移动端增强 ==================== */
+
+/* 移动端基础优化 (1020px 以下) */
+@media screen and (max-width: 1020px) {
+
+  /* ===== 1. 导航栏优化 ===== */
+  .single-column-nav-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .single-column-nav-container .nav-content {
+    min-height: 56px; /* 标准移动端导航高度 */
+    padding: 8px 12px;
+  }
+
+  /* 导航栏毛玻璃效果增强 */
+  .single-column-nav-container .nav-background {
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+
+  /* ===== 2. 文章列表卡片优化 ===== */
+  .post-item-wrapper {
+    margin: 12px 16px !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    /* 触控反馈 */
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  /* 按压效果 */
+  .post-item-wrapper:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-item-info-wrapper {
+    padding: 16px 20px !important;
+  }
+
+  /* 文章标题优化 */
+  .post-item-title {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* 文章摘要优化 */
+  .post-item-summary {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--text-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 文章元信息优化 */
+  .post-item-meta {
+    font-size: 13px !important;
+    opacity: 0.85;
+    margin-top: 8px;
+  }
+
+  /* 文章封面图优化 */
+  .post-item-image {
+    height: 160px !important;
+    border-radius: 0 !important;
+  }
+
+  /* ===== 3. 滚动体验优化 ===== */
+  .stream-container,
+  .post-list-container {
+    overflow-x: hidden;
+  }
+
+  /* 平滑滚动 */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* iOS 惯性滚动 */
+  .post-body,
+  .drawer-content,
+  .toc-content {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ===== 4. 代码块优化 ===== */
+  .post-body pre,
+  .post-body .highlight {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* 滚动条样式 */
+    scrollbar-width: thin;
+  }
+
+  /* 代码块滚动提示渐变 */
+  .post-body .highlight {
+    position: relative;
+  }
+
+  .post-body .highlight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 20px;
+    width: 30px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  body.night .post-body .highlight::after {
+    background: linear-gradient(to right, transparent, rgba(40,40,40,0.9));
+  }
+
+  /* ===== 5. 图片优化 ===== */
+  .post-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .post-body img:hover {
+    transform: none; /* 禁用悬停效果 */
+  }
+
+  /* ===== 6. 抽屉菜单优化 ===== */
+  .drawer-menu-item {
+    padding: 16px 24px !important;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 0;
+    transition: background-color 0.15s ease;
+  }
+
+  .drawer-menu-item:active {
+    background: rgba(25, 118, 210, 0.1);
+  }
+
+  /* 抽屉菜单分隔线 */
+  .drawer-menu-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  body.night .drawer-menu-item:not(:last-child) {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* ===== 7. 返回顶部按钮优化 ===== */
+  #backToTop {
+    right: 16px;
+    bottom: 20px;
+    width: 48px;
+    height: 48px;
+    /* iOS 安全区域 */
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* ===== 8. 阅读进度条 ===== */
+  #reading-progress {
+    height: 3px;
+    z-index: 1001;
+  }
+}
+
+/* 小屏幕特别优化 (480px 以下) */
+@media screen and (max-width: 480px) {
+
+  /* 更紧凑的文章卡片 */
+  .post-item-wrapper {
+    margin: 8px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .post-item-info-wrapper {
+    padding: 14px 16px !important;
+  }
+
+  .post-item-title {
+    font-size: 17px !important;
+  }
+
+  .post-item-image {
+    height: 140px !important;
+  }
+
+  /* 正文优化 */
+  .post-body {
+    font-size: 16px;
+    line-height: 1.85;
+    padding: 0 4px;
+  }
+
+  .post-body h1 { font-size: 24px; margin-top: 32px; }
+  .post-body h2 { font-size: 20px; margin-top: 28px; }
+  .post-body h3 { font-size: 18px; margin-top: 24px; }
+  .post-body h4 { font-size: 17px; margin-top: 20px; }
+
+  /* 代码块全宽 */
+  .post-body pre,
+  .post-body .highlight {
+    margin-left: -16px;
+    margin-right: -16px;
+    border-radius: 0;
+    padding: 16px;
+  }
+
+  /* 引用块优化 */
+  blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* 表格横向滚动 */
+  .post-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  /* 页面标题优化 */
+  .single-column-header-title {
+    font-size: 24px !important;
+  }
+
+  .single-column-header-subtitle {
+    font-size: 16px !important;
+  }
+}
+
+/* 暗色模式移动端修复 */
+body.night .nav-dropdown-toggle:hover,
+body.night .nav-dropdown-toggle:active,
+body.night .nav-darkmode-toggle:hover,
+body.night .nav-darkmode-toggle:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.night .drawer-menu-item:active {
+  background: rgba(144, 202, 249, 0.15);
+}
+
+/* 暗黑模式下移动端 TOC 样式 */
+@media screen and (max-width: 1020px) {
+  body.night .single-column-drawer-container .drawer-menu .toc .toc-content > div:first-child {
+    color: rgba(255, 255, 255, 0.5);
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  body.night .single-column-drawer-container .drawer-menu .toc .toc-content a {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  body.night .single-column-drawer-container .drawer-menu .toc .toc-content ul ul a {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  body.night .single-column-drawer-container .drawer-menu .toc .toc-content a:hover {
+    background: rgba(144, 202, 249, 0.1);
+    color: #90caf9;
+  }
+
+  body.night .single-column-drawer-container .drawer-menu .toc .toc-content .toc-active {
+    background: rgba(144, 202, 249, 0.15);
+    color: #90caf9 !important;
+    border-right-color: #90caf9;
+  }
+}
+
+body.night .post-item-wrapper:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* iOS 安全区域支持 */
+@supports (padding: env(safe-area-inset-bottom)) {
+  @media screen and (max-width: 1020px) {
+    /* 底部内容安全区域 */
+    .post-list-container,
+    .post {
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    /* 抽屉菜单底部安全区域 */
+    .drawer-content {
+      padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* 页脚安全区域 */
+    #single-column-footer {
+      padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+}
+
+/* 横屏模式优化 */
+@media screen and (max-width: 1020px) and (orientation: landscape) {
+  .single-column-header-container {
+    padding: 30px 20px 40px 20px;
+  }
+
+  .post-item-image {
+    height: 120px !important;
+  }
+
+  /* 横屏时抽屉菜单更宽 */
+  .single-column-drawer-container {
+    width: 320px;
+  }
+}
+
+/* 触控设备悬停状态禁用 */
+@media (hover: none) and (pointer: coarse) {
+  .post-item-wrapper:hover {
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  .post-item-title:hover {
+    text-decoration: none !important;
+  }
+
+  a:hover {
+    text-decoration: none !important;
+  }
+}
+
+/* 打印样式优化 */
+@media print {
+  .side-container,
+  .extra-container,
+  .single-column-nav-container,
+  .single-column-drawer-container,
+  #backToTop,
+  #reading-progress,
+  .toc {
+    display: none !important;
+  }
+
+  .stream-container {
+    padding: 0 !important;
+  }
+
+  .post-body {
+    font-size: 12pt;
+    line-height: 1.6;
   }
 }

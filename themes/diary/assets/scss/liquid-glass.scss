@@ -238,6 +238,14 @@ $single-column-max-width: 1020px !default;
   padding: 20px;
   border-radius: var(--lg-radius-large);
 
+  // 防止 TOC 链接文字换行
+  a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
   .toc-content {
     @include scroll-edge-blur;
     max-height: 60vh;
@@ -280,27 +288,8 @@ $single-column-max-width: 1020px !default;
   }
 }
 
-// Code Blocks with Glass
-pre {
-  @include liquid-glass-clear;
-  @include floating-element;
-  padding: 20px;
-  border-radius: var(--lg-radius-medium);
-  position: relative;
-
-  // Code language badge
-  &::before {
-    content: attr(data-lang);
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    padding: 2px 8px;
-    background: rgba(255,255,255,0.1);
-    border-radius: var(--lg-radius-small);
-    font-size: 12px;
-    backdrop-filter: blur(10px);
-  }
-}
+// Code Blocks - GitHub style (no glass effects)
+// Glass effects removed to match GitHub's clean code block style
 
 // Mobile Drawer with Glass
 .drawer {

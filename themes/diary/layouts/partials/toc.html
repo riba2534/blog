@@ -9,8 +9,8 @@
 		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
 			<span>- {{ i18n "toc_title" }} -</span>
 			{{ if site.Params.enableAutoCollapse }}
-			<button id="toc-toggle-all" onclick="toggleAllTocItems()" style="background: none; border: none; cursor: pointer; font-size: 14px;">
-				<i class="material-icons" style="font-size: 16px;">expand_more</i>
+			<button id="toc-toggle-all" onclick="toggleAllTocItems()" aria-label="展开/折叠目录" aria-expanded="false" style="background: none; border: none; cursor: pointer; font-size: 14px;">
+				<i class="material-icons" aria-hidden="true" style="font-size: 16px;">expand_more</i>
 			</button>
 			{{ end }}
 		</div>
