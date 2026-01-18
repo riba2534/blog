@@ -11,20 +11,20 @@ enableVue : true
 
 # 🐵Who am I
 
-<img src="https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210427152737.jpeg"  width="30px" height="30px"  alt="头像"/>
-行不更名坐不改姓，我就是 riba2534.
+<img src="https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/19/696d15125c4af.png"  width="30px" height="30px"  alt="头像"/>
+I'm riba2534.
 
 ## 简介
 
-riba2534 是我在网络上的常用代号，本人于 2020 年本科毕业于计算机科学与技术专业，我一直使用一个兔斯基的头像(~~如果要问为什么是，因为我太懒，懒得换~~)。
+riba2534 是我在网络上的常用代号，本人于 2020 年本科毕业于计算机科学与技术专业，我一直使用一个兔斯基的头像。
 
-兴趣使然（~~我会告诉你我是小时候玩网络游戏下载一堆外挂然后电脑中毒后开始对技术感兴趣的？~~），比较热爱计算机相关技术，喜欢折腾和瞎搞，前算法竞赛选手，退役 Acmer。
+兴趣使然，比较热爱计算机相关技术，喜欢折腾和瞎搞，前算法竞赛选手，退役 Acmer。
 
 目前在字节跳动（ByteDance）担任 TikTok Shop 的服务端研发工程师，喜欢折腾各种 AI Agent，Go，Linux，分布式，服务端架构设计。常用语言为：Golang、Python、Rust、C/C++。
 
 喜欢折腾一些 HomeLab 相关的东西， NAS、软路由、家庭网络拓扑、家庭影院、各种内网 Server 服务等。
 
-喜欢旅行，看见更大的世界，了解更多的文化，感知自己的渺小。
+喜欢旅行，看见更大的世界，了解更多的文化，寄蜉蝣于天地，渺沧海之一粟。
 
 对投资、经济、量化交易、区块链、Web3领域也比较感兴趣。混迹于加密社区，BTC HODL，同时搞一些 Defi 套利, Cefi 量化，Yield Farmer，价值投资者。
 
@@ -50,7 +50,7 @@ riba2534 是我在网络上的常用代号，本人于 2020 年本科毕业于�
 - 知乎：[https://www.zhihu.com/people/riba2534](https://www.zhihu.com/people/riba2534)
 - X: [https://x.com/riba2534](https://x.com/riba2534)
 
-## 以前的一些垃圾
+## 曾经的一些 Projects
 
 - [ACM_Template](https://github.com/riba2534/my_acm_template)：竞赛退役后整理的 ACM 模板，希望对后人有帮助. [网页版](https://riba2534.github.io/book/) | [PDF版](https://github.com/riba2534/my_acm_template/releases/download/v1.0/riba2534-ACM-Template.pdf)
 - [My_ACM_Code](https://github.com/riba2534/My_ACM_Code)：为了防止代码丢，之前用爬虫爬的我的各大 OJ AC 代码。
@@ -72,7 +72,7 @@ riba2534 是我在网络上的常用代号，本人于 2020 年本科毕业于�
 
 ## 联系我
 
-- Email：riba2534@qq.com
+- Email：riba2534@qq.com / riba2534.me@gmail.com
 - QQ：735632581
 - 微信：riba2534
 
@@ -80,7 +80,7 @@ riba2534 是我在网络上的常用代号，本人于 2020 年本科毕业于�
 
 > **碎碎念：**
 > 
-> 由于工作比较忙，可能会很久才更新一篇博客，故而把博客从 Typecho 迁移到 Hugo 便于维护，由于本人太蠢，搞不懂前端，对本主题进行了魔改，好像有很多 Bug...，如果您发现了请告诉我。
+> 由于工作比较忙，可能会很久才更新一篇博客，故而把博客从 Typecho 迁移到 Hugo 便于维护。
 
 > 之前的一些博客基本在 CSDN 上。本博客先是迁移了一些 2018 年 12 月 - 2021年初的文章，后续本人的博客也会更新在这里。
 

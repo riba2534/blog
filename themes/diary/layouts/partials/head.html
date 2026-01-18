@@ -30,7 +30,7 @@
 
 <!-- 自定义 og:image: 优先使用文章 featured_image，兜底用默认图片 -->
 {{- $featuredImage := "" -}}
-{{- $fallbackImage := "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210427152737.jpeg" -}}
+{{- $fallbackImage := "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/19/696d15125c4af.png" -}}
 {{- if .IsPage -}}
   {{- $featuredImage = or .Params.featured_image .Params.featuredImage .Params.cover_image .Params.image -}}
 {{- end -}}
