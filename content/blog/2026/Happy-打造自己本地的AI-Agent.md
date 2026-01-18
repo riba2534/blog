@@ -103,4 +103,4 @@ Happy 的工作原理如下：
 最近几个月，AI 给我的震撼越来越大了，以前很多费力的事情，现在都可以用 Agent 干，节省了大量时间。时代发展很快，拥抱先进生产力和技术，**你不需要超过 AI，你只需要超过不会用 AI 的人**。
 
 > 附一个和朋友关于 CC 的讨论：
-> ![Picsew_20260118182009.JPEG](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/18/696cb3f236df7.jpeg)
+> ![Picsew_20260118185723.JPEG](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/18/696cbcb215388.jpeg)
