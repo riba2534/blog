@@ -211,6 +211,9 @@ sequenceDiagram
     L->>T1: shutdown request
     L->>T2: shutdown request
     L->>T3: shutdown request
+    T1-->>L: approve shutdown
+    T2-->>L: approve shutdown
+    T3-->>L: approve shutdown
     L->>L: 清理团队资源
 ```
 
@@ -305,7 +308,8 @@ flowchart TD
     C --> D["Lead 审核计划"]
     D -->|批准| E["队员退出 Plan Mode"]
     E --> F["队员开始实现"]
-    D -->|打回 + 反馈意见| B
+    D -->|打回 + 反馈意见| G["队员修改计划<br/>(仍在 Plan Mode)"]
+    G --> C
 ```
 
 lead 对计划的审批是自主决策的。如果你想影响它的判断标准，可以在 prompt 里说清楚，比如"只批准包含测试覆盖方案的计划"或者"拒绝涉及数据库 schema 修改的计划"。
@@ -402,12 +406,16 @@ sequenceDiagram
     end
 
     BE-->>FE: API 完成，发送接口契约
-    FE->>FE: 对接后端 API
     BE-->>QA: 通知 API 可用
-    FE-->>QA: 通知前端组件可用
-    QA->>QA: 编写并运行 E2E 测试
+    BE-->>L: 后端任务完成
 
+    FE->>FE: 对接后端 API
+    FE-->>QA: 通知前端组件可用
+    FE-->>L: 前端任务完成
+
+    QA->>QA: 编写并运行 E2E 测试
     QA-->>L: 汇报测试结果
+
     L->>L: 汇总所有工作
 ```
 
