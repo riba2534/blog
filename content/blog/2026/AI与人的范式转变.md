@@ -179,7 +179,7 @@ flowchart LR
 
 ## 人机协作的三种姿势
 
-有一项[研究](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4921696)发现，知识工作者与 AI 协作时自然分化出了三种模式，我觉得这个分类用来理解 AI 编程工具的分化特别合适：
+有一项[研究](https://d3.harvard.edu/the-three-ways-professionals-work-with-ai-which-one-are-you/)发现，知识工作者与 AI 协作时自然分化出了三种模式，我觉得这个分类用来理解 AI 编程工具的分化特别合适：
 
 **Centaur 模式**（研究中占 14%）：人在驾驶座，AI 在需要的时候帮忙。人决定什么时候用 AI、用多少。这对应最早期的 Copilot autocomplete——你写到一半，AI 补一句，你看看要不要。人完全掌控流程，AI 是个被动的工具。研究发现 Centaur 的准确率最高，因为人始终在把关。
 
@@ -338,7 +338,7 @@ AI 工具到底分几种？分两种。一种是 AI 来辅助人做事，一种�
 - [Collins Dictionary - Word of the Year 2025: Vibe Coding](https://blog.collinsdictionary.com/language-lovers/collins-word-of-the-year-2025-ai-meets-authenticity-as-society-shifts/)
 - [Addy Osmani - The 70% Problem: Hard Truths About AI-Assisted Coding](https://addyo.substack.com/p/the-70-problem-hard-truths-about)
 - [Addy Osmani - Coding for the Future Agentic World](https://addyo.substack.com/p/coding-for-the-future-agentic-world)
-- [Harvard - Cyborgs, Centaurs and Self-Automators (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4921696)
+- [Harvard - Cyborgs, Centaurs and Self-Automators (HBS Working Paper)](https://www.hbs.edu/ris/Publication%20Files/26-036_e7d0e59a-904c-49f1-b610-56eb2bdfe6f9.pdf)
 - [Fortune - Are you a cyborg, centaur, or self-automator?](https://fortune.com/2026/01/30/ai-business-humans-in-the-loop-cyborg-centaur-or-self-automator/)
 - [Microsoft CEO says up to 30% of code was written by AI (TechCrunch)](https://techcrunch.com/2025/04/29/microsoft-ceo-says-up-to-30-of-the-companys-code-was-written-by-ai/)
 - [Stack Overflow Developer Survey 2025 - AI](https://survey.stackoverflow.co/2025/ai)
