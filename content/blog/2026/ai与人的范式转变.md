@@ -1,9 +1,9 @@
 ---
-title: "AI 与人的范式转变：从「AI 辅助人」到「人辅助 AI」"
-date: 2026-02-08T19:21:16+08:00
+title: "AI 与人的范式转变：从 Human-Driven 到 AI-Driven"
+date: 2026-02-08T21:42:43+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/69886f6529430.jpg"
-description: "Cursor 和 Claude Code 看似都是 AI 工具，但它们代表了两种完全不同的人机关系。这篇文章聊聊这个范式转变意味着什么——不只是编程，而是所有知识工作。"
+featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/698892074ccdd.jpg"
+description: "从 Human-Driven 到 AI-Driven，重新定义能力的边界。"
 tags:
 - AI
 - Agent
@@ -19,13 +19,13 @@ comment: true
 
 以前，我每天打开 Cursor，在编辑器里 coding，AI 在旁边给我补全、提建议、帮我改 bug。我是主角，AI 是配角，整个过程跟过去 coding 没有本质区别——只是打字更快了。
 
-现在，我打开终端，用自然语言描述一个目标，Claude Code 自己去读代码、改文件、跑测试、修 bug，遇到复杂任务还会拉起一个 Agent 团队并行干活。我的工作从 coding 变成了 reviewing——审查 AI 的输出、确认方向、批准关键决策。
+现在，我打开 Shell，用自然语言描述一个目标，Claude Code 自己去读代码、改文件、跑测试、修 bug，遇到复杂任务还会拉起一个 Agent 团队并行干活。我的工作从 coding 变成了 reviewing——审查 AI 的输出、确认方向、批准关键决策。
 
 这两种体验的差别，不是"哪个工具更好用"的问题，而是**人和 AI 的关系发生了根本性的反转**。
 
 虽然我是从编程场景切入的，但这个转变远不止编程。写文档、做研究、数据分析、项目管理——几乎所有知识工作都在经历类似的分化。编程只是最先、最明显感受到冲击的领域。
 
-我想聊三个问题：AI 工具到底分几种？它们真的是同一类东西吗？从"AI 辅助人"到"人辅助 AI"，变的到底是什么？这个趋势会走多远，对我们意味着什么？
+我想聊三个问题：AI 工具到底分几种？它们真的是同一类东西吗？从 Human-Driven 到 AI-Driven，变的到底是什么？这个趋势会走多远，对我们意味着什么？
 
 ## Software 的三个时代
 
@@ -41,30 +41,7 @@ Andrej Karpathy 在 2024-2025 年间提出了一个很有洞察力的框架，�
 
 三个时代的关系可以用一张图说清楚：
 
-```mermaid
-flowchart LR
-    subgraph S1 ["Software 1.0"]
-        I1("开发者<br/>Coding") --> P1["编译器/解释器<br/>逐行执行"] --> O1["确定性输出"]
-    end
-
-    subgraph S2 ["Software 2.0"]
-        I2("研究者<br/>准备数据") --> P2["训练框架<br/>梯度下降"] --> O2["模型参数<br/>(即代码)"]
-    end
-
-    subgraph S3 ["Software 3.0"]
-        I3("任何人<br/>说人话") --> P3["LLM<br/>理解+生成"] --> O3["代码/应用/<br/>任意输出"]
-    end
-
-    S1 --> S2 --> S3
-
-    classDef svc fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
-    classDef cfg fill:#fffde7,stroke:#f9a825,color:#f57f17
-    classDef fe fill:#f5f5f5,stroke:#616161,color:#212121
-
-    class I1,I2,I3 fe
-    class P1,P2,P3 svc
-    class O1,O2,O3 cfg
-```
+![Software 三个时代](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/69888f0d62167.png)
 
 那 Vibe Coding 是不是就是 Software 3.0 的终极形态了？我觉得不是。
 
@@ -76,7 +53,7 @@ Vibe Coding 本质上还是"人在 coding"，只不过方式从键盘变成了�
 
 如果你把市面上的 AI 编程工具摆在一起看，会发现它们其实分成了两个截然不同的阵营。
 
-### "AI 辅助人"阵营
+### Human-Driven 阵营
 
 这个阵营的代表是 Cursor、Trae、GitHub Copilot。
 
@@ -88,11 +65,11 @@ Vibe Coding 本质上还是"人在 coding"，只不过方式从键盘变成了�
 
 这个阵营的共同特征：**不管 AI 能力多强，范式没变——你是主人，AI 是工具。**
 
-### "人辅助 AI"阵营
+### AI-Driven 阵营
 
 这个阵营的代表是 Claude Code、OpenAI Codex、Claude Cowork。
 
-**Claude Code** 是我目前的主力工具。最新的 Claude Opus 4.6 模型支持 100 万 token 的上下文窗口，可以一次"看到"整个大型代码库。它跑在终端里，没有花哨的 IDE 界面，你用自然语言描述目标，它自己决定要做什么——读哪些文件、改哪些代码、跑什么命令、怎么修 bug。上一代 Claude Sonnet 4.5 就已经能autonomous coding 30 小时以上，这个时长超过了大多数人类开发者一天的工作时间。Opus 4.6 带来的 Agent Teams 功能更进一步：遇到复杂任务，它会自己拉起一个团队，Team Lead 拆分任务，Teammates 并行执行，互相通信协作。
+**Claude Code** 是我目前的主力工具。最新的 Claude Opus 4.6 模型支持 100 万 token 的上下文窗口，可以一次"看到"整个大型代码库。它跑在 Shell 里，没有花哨的 IDE 界面，你用自然语言描述目标，它自己决定要做什么——读哪些文件、改哪些代码、跑什么命令、怎么修 bug。上一代 Claude Sonnet 4.5 就已经能 autonomous coding 30 小时以上，这个时长超过了大多数人类开发者一天的工作时间。Opus 4.6 带来的 Agent Teams 功能更进一步：遇到复杂任务，它会自己拉起一个团队，Team Lead 拆分任务，Teammates 并行执行，互相通信协作。
 
 **OpenAI Codex** 走得更远。它是异步后台模式——你提交一个任务，Codex 在云端沙箱里自主执行，你不需要盯着看，可以同时提交好几个任务。它用的是专门优化过的 GPT-5.3-Codex 模型，每个任务在独立的云端沙箱中运行，默认禁用网络访问，只能操作你提供的代码仓库。跑完了给你一个 diff 和执行日志，你 review 通过就合并。这种体验已经完全不像 coding 了，更像你在 Jira 上给同事派任务。
 
@@ -102,52 +79,17 @@ Vibe Coding 本质上还是"人在 coding"，只不过方式从键盘变成了�
 
 ### 两者对比
 
-| 维度 | AI 辅助人 | 人辅助 AI |
-|------|----------|----------|
-| 代表工具 | Cursor, Copilot, Trae | Claude Code, Codex, Cowork |
-| 交互界面 | IDE（图形编辑器） | 终端 / 异步任务面板 |
-| 人的角色 | Coder、决策者 | Reviewer、方向指引者 |
-| AI 的角色 | Autocomplete、建议、辅助 | 自主 planning、执行、协作 |
-| 决策权 | 人持有 | 逐步转向 AI |
-| 注意力绑定 | 强（必须盯着看） | 弱（可以异步、并行） |
-| 并行能力 | 弱（一次一个任务） | 强（多 Agent / 多任务） |
-| 适合场景 | 精确编辑、已知问题修复 | 大型任务、探索性工作、多模块协作 |
+![Human-Driven vs AI-Driven 对比](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/69888f2257b79.jpg)
 
 两个阵营的交互模式差异很大：
 
-```mermaid
-flowchart TB
-    subgraph left ["「AI 辅助人」模式"]
-        direction TB
-        Dev1("开发者") -->|Coding| IDE1["IDE 编辑器"]
-        IDE1 -->|请求补全| AI1["AI 模型"]
-        AI1 -->|返回建议| IDE1
-        IDE1 -->|人工审查+采纳| Dev1
-    end
-
-    subgraph right ["「人辅助 AI」模式"]
-        direction TB
-        Dev2("开发者") -->|描述目标| Agent["AI Agent"]
-        Agent -->|自主规划| Tools["读文件 / 改代码<br/>跑测试 / 修 bug"]
-        Tools -->|执行结果| Agent
-        Agent -->|最终产出| Dev2
-        Dev2 -->|审查+批准| Agent
-    end
-
-    classDef fe fill:#f5f5f5,stroke:#616161,color:#212121
-    classDef svc fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
-    classDef cfg fill:#fffde7,stroke:#f9a825,color:#f57f17
-
-    class Dev1,Dev2 fe
-    class IDE1,Agent svc
-    class AI1,Tools cfg
-```
+![两种交互模式对比](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/69888f23494f8.png)
 
 ## 从 Coder 到 Conductor
 
 Google Chrome 团队的 Addy Osmani 写过一篇很有影响力的文章叫"The 70% Problem"，后来他又在一系列文章中提出了开发者角色演进的三层模式：
 
-**第一层：CLI Agent。** 一个终端，一个 Agent，你给它指令，它执行。Claude Code 单人模式就是这层。你和 AI 一对一协作，AI 做执行，你做审查。
+**第一层：CLI Agent。** 一个 Shell，一个 Agent，你给它指令，它执行。Claude Code 单人模式就是这层。你和 AI 一对一协作，AI 做执行，你做审查。
 
 **第二层：并行编排。** 多个 Agent 同时工作，各自负责不同模块，像一个小团队。Claude Code Agent Teams 就是这层。你从 coder 变成了 team lead。
 
@@ -161,21 +103,7 @@ Google Chrome 团队的 Addy Osmani 写过一篇很有影响力的文章叫"The 
 
 开发者的角色正在往这个方向走。你不需要记住每个 API 的参数，不需要手写每一行 boilerplate，但你必须理解系统架构、知道哪些决策会带来哪些后果、能判断 AI 的输出是不是正确的。
 
-```mermaid
-flowchart LR
-    A("Coder<br/>人手写每一行") -->|Autocomplete| B["Boosted Coder<br/>AI 辅助打字"]
-    B -->|Agent 模式| C["Collaborator<br/>与 AI 对话迭代"]
-    C -->|Multi-Agent| D["Conductor<br/>编排多个 Agent"]
-    D -->|异步后台| E["Orchestrator<br/>审查最终产出"]
-
-    classDef fe fill:#f5f5f5,stroke:#616161,color:#212121
-    classDef svc fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
-    classDef cfg fill:#fffde7,stroke:#f9a825,color:#f57f17
-
-    class A fe
-    class B,C svc
-    class D,E cfg
-```
+![开发者角色演进](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/69888f25ac10a.jpg)
 
 ## 人机协作的三种姿势
 
@@ -201,7 +129,7 @@ flowchart LR
 
 有几组数据放在一起看很有意思。
 
-Stack Overflow 2025 年的开发者调查显示，80% 的开发者在工作流中使用 AI 工具，DX 的报告更夸张——13.5 万名开发者中 AI 采用率达到 91%。GitHub 自己的数据是，使用 Copilot 的开发者coding 速度提升了 55%。多项研究表明，AI 辅助下个人任务完成量平均提升 20% 以上。
+Stack Overflow 2025 年的开发者调查显示，80% 的开发者在工作流中使用 AI 工具，DX 的报告更夸张——13.5 万名开发者中 AI 采用率达到 91%。GitHub 自己的数据是，使用 Copilot 的开发者 coding 速度提升了 55%。多项研究表明，AI 辅助下个人任务完成量平均提升 20% 以上。
 
 这些数字看起来都在说一件事：AI 让开发者变快了。
 
@@ -229,7 +157,7 @@ Coding 从来不是软件工程的瓶颈。真正难的是理解需求、设计�
 
 后来切到 Claude Code，体验完全不同。
 
-我不再在编辑器里一行行 coding 了。我在终端里用自然语言描述我要做什么，Claude Code 自己去搜索代码库、理解上下文、制定计划、逐步执行。它会自己读文件、改代码、跑测试，测试失败了还会自己分析错误然后修。
+我不再在编辑器里一行行 coding 了。我在 Shell 里用自然语言描述我要做什么，Claude Code 自己去搜索代码库、理解上下文、制定计划、逐步执行。它会自己读文件、改代码、跑测试，测试失败了还会自己分析错误然后修。
 
 一开始我很不适应，总想插手——看到它改的代码不是我想的写法就忍不住打断。后来我发现，只要最终结果正确、代码质量可以，写法跟我想的不一样其实无所谓。**我的角色从 coder 变成了 reviewer。**
 
@@ -245,7 +173,7 @@ Agent 的工作原理其实并不复杂：核心就是一个循环——模型�
 
 这个范式转变不是凭空发生的。背后有几个关键的技术和经济因素在推动。
 
-**模型能力是根因。** 早期的模型 coding 还经常出低级错误，现在的模型可以理解几十万行的代码库、做多步推理、自己规划执行路径。上下文窗口从最初的几千 token 扩大到了百万级别（Claude Opus 4.6 已经到了 100 万 token）。窗口的扩大意味着 AI 可以"看到"更多信息，理解更完整的系统结构，做出更准确的决策。
+**模型能力是根因。** 早期的模型 coding 还经常出低级错误，生成的代码经常跑不通，Agent 循环几轮就陷入死胡同——那个阶段 AI-Driven 就是个空想。真正的转折点是 2025 年 11 月 Anthropic 发布的 Claude Opus 4.5。这是第一个在 coding 能力上让人觉得"可以放手让它干"的模型——推理链条足够长、工具调用足够稳、对大型代码库的理解足够准确。在它之前，AI 辅助补全是好用的，但你不敢把一整个任务交给它；在它之后，autonomous coding 才真正从概念变成了可用的工作方式。后续的 Opus 4.6 把上下文窗口推到了 100 万 token、加入了 Agent Teams，更是把 AI-Driven 的天花板又拉高了一截。
 
 **工具使用能力的突破。** 光会 coding 没用，Agent 还得会用工具——读文件、写文件、跑命令、调 API。这个能力在最近一两年有了质的飞跃。以前的模型调用工具经常出错，现在的模型可以稳定地编排十几步的工具调用链。
 
@@ -253,24 +181,7 @@ Agent 的工作原理其实并不复杂：核心就是一个循环——模型�
 
 这几个因素之间还在互相加强：
 
-```mermaid
-flowchart TD
-    A["模型推理能力提升"] --> B["Agent 可以自主完成<br/>更复杂的任务"]
-    C["上下文窗口扩大<br/>4K → 1M"] --> B
-    D["工具使用能力突破"] --> B
-    B --> E["人的角色转变<br/>执行者 → 审查者"]
-    F["AI 推理成本<br/>指数级下降"] --> G["更多执行工作<br/>由 AI 承担"]
-    H["人力成本<br/>持续上升"] --> G
-    G --> E
-
-    classDef svc fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
-    classDef cfg fill:#fffde7,stroke:#f9a825,color:#f57f17
-    classDef fe fill:#f5f5f5,stroke:#616161,color:#212121
-
-    class A,C,D,F,H fe
-    class B,G svc
-    class E cfg
-```
+![驱动力关系图](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/08/69888f269948a.png)
 
 ## 不只是编程：对所有知识工作者意味着什么
 
@@ -297,7 +208,7 @@ flowchart TD
 
 ## 往远处想一想
 
-编程是这波范式转变的前线阵地，但绝不是终点。如果我们把视野拉开，"人辅助 AI"这个模式能渗透到哪里？
+编程是这波范式转变的前线阵地，但绝不是终点。如果我们把视野拉开，AI-Driven 这个模式能渗透到哪里？
 
 **法律行业**可能是下一个被深度改变的领域。律师的核心工作是什么？检索判例、起草合同、审查条款、准备诉讼材料。这些工作对上下文理解和精准表达的要求极高，但本质上是信息密集型的执行工作。当模型能处理百万 token 上下文的时候，让 AI 通读几百页合同找出风险条款，再由律师做最终判断，这个模式已经不是想象了——LexisNexis、Harvey 这些法律 AI 产品正在往这个方向走。以后的律师可能更像一个"法律架构师"：定义策略、审查 AI 产出、做最终的法律判断，而不是花大量时间在文书工作上。
 
@@ -307,7 +218,7 @@ flowchart TD
 
 **教育行业**的范式转变可能最深远。当 AI 可以一对一辅导学生、批改作业、设计个性化学习路径时，老师的角色会从"传递知识"转向"激发思考"和"情感支持"。知识的获取不再稀缺，稀缺的是判断力、创造力和动机。一对一的苏格拉底式对话，以前只有富人请得起家庭教师才能实现，AI 正在把这个门槛打平。
 
-**创意行业**——设计、写作、音乐——情况更复杂一些。AI 已经能生成质量不错的图片、文案、音乐片段，但"好不好"的判断标准很主观。这个领域的范式转变可能不是"人辅助 AI 创作"，而是**AI 极大扩展了人的创作带宽**。一个导演以前需要整个后期团队花几个月做特效，以后可能只需要描述想要的视觉效果，AI 生成多个版本，导演选一个。创作的瓶颈从"做不做得出来"变成了"想不想得到"。
+**创意行业**——设计、写作、音乐——情况更复杂一些。AI 已经能生成质量不错的图片、文案、音乐片段，但"好不好"的判断标准很主观。这个领域的范式转变可能不是 AI-Driven 创作，而是**AI 极大扩展了人的创作带宽**。一个导演以前需要整个后期团队花几个月做特效，以后可能只需要描述想要的视觉效果，AI 生成多个版本，导演选一个。创作的瓶颈从"做不做得出来"变成了"想不想得到"。
 
 那更远一点呢？如果多 Agent 协作继续发展下去，我觉得有几个趋势值得关注：
 
@@ -321,9 +232,9 @@ flowchart TD
 
 ## 回到最初的三个问题
 
-AI 工具到底分几种？分两种。一种是 AI 来辅助人做事，一种是人来辅助 AI 做事。它们不是同一个东西的不同版本，而是两种根本不同的人机关系。编程领域最先分化出来，但这个分化正在向法律、医疗、金融、教育、创意等所有知识工作蔓延。
+AI 工具到底分几种？分两种。一种是 Human-Driven——人驱动 AI 来帮忙，一种是 AI-Driven——AI 自主执行、人来审批。它们不是同一个东西的不同版本，而是两种根本不同的人机关系。编程领域最先分化出来，但这个分化正在向法律、医疗、金融、教育、创意等所有知识工作蔓延。
 
-从"AI 辅助人"到"人辅助 AI"，变的是什么？变的是决策权的归属。在前一种范式里，人做所有决策，AI 只是帮忙执行细节。在后一种范式里，AI 做大部分执行决策，人只做关键的方向决策和最终审查。
+从 Human-Driven 到 AI-Driven，变的是什么？变的是决策权的归属。在前一种范式里，人做所有决策，AI 只是帮忙执行细节。在后一种范式里，AI 做大部分执行决策，人只做关键的方向决策和最终审查。
 
 这个趋势会走多远？从技术和经济的双重驱动来看，方向不会逆转。模型在变强，成本在变低，工具链在完善——三个趋势都在加速这个转变。至于最终会到什么程度，说实话，我也不确定。但 Addy Osmani 的三层模型给了一个不错的参照：我们大概率正在从第一层（单 Agent 协作）走向第二层（多 Agent 并行编排），第三层（异步后台自主执行）已经有产品在探索了。
 

@@ -6,7 +6,8 @@ enableGitInfo = true
 languageCode = "zh-cn"
 theme = "diary"
 title = "🌀riba2534's Blog"
-baseURL = "https://blog.riba2534.cn/" 
+baseURL = "https://blog.riba2534.cn/"
+relativeURLs = true
 
 
 
