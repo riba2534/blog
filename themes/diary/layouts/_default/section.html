@@ -1,7 +1,39 @@
 {{ define "main" }}
 
 <div class="post-list-container post-list-container-shadow">
-    {{ range .Paginator.Pages.GroupByDate "2006" }}
+    {{ $allPages := .Pages }}
+    {{ $pinned := where $allPages ".Params.pin" true }}
+    {{ $normal := where $allPages ".Params.pin" "!=" true }}
+    {{ $paginator := .Paginate $normal }}
+
+    {{/* 置顶文章 - 仅第一页显示，在年份分组之前 */}}
+    {{ if and (eq $paginator.PageNumber 1) (gt (len $pinned) 0) }}
+        {{ range $pinned }}
+        <a href="{{ .RelPermalink }}" class="a-block">
+            <div class="post-item-wrapper post-item-pinned">
+                <div class="post-item post-item-no-gaps">
+                    <div class="post-item-info-wrapper">
+                        <div class="post-item-title">
+                            {{.Title}}
+                        </div>
+                        {{ partial "post-item-meta.html" . }}
+                    </div>
+                    {{ $featured_image := .Params.featured_image }}
+                    {{ if $featured_image }}
+                    {{ $image := .Resources.GetMatch (.Params.featured_image) }}
+                    <div class="post-item-image-wrapper">
+                        <div class="post-item-image" {{ if $image }} style="background-image: url('{{ $image.Permalink }}')"
+                            {{ else }} style="background-image: url('{{ $featured_image | absURL}}')" {{ end }}></div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </a>
+        {{ end }}
+    {{ end }}
+
+    {{/* 普通文章 - 按年份分组正常渲染 */}}
+    {{ range $paginator.Pages.GroupByDate "2006" }}
     <div class="year-header">
         <h2 class="year-title">{{ .Key }}</h2>
     </div>

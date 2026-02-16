@@ -1364,6 +1364,20 @@ mjx-container {
   }
 }
 
+// 置顶标签样式
+.pin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.18), rgba(230, 81, 0, 0.2));
+  border: 1px solid rgba(255, 152, 0, 0.35);
+  color: #e65100;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
 // 年份标题样式
 .year-header {
   margin: 30px 35px 20px 35px;

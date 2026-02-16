@@ -2,6 +2,7 @@
 title: "HappyClaw：我写了一个自托管多用户本地 AI Agent"
 date: 2026-02-16T23:05:23+08:00
 draft: false
+pin: true
 featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935600b2b22.png"
 description: "HappyClaw 是一个基于 Claude Agent SDK 构建的自托管多用户 AI Agent 系统，通过飞书/Telegram/Web 三端接入完整的 Claude Code 能力。"
 tags:

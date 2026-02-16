@@ -1,4 +1,8 @@
 <div class="post-item-meta">
+    {{ if .Params.pin }}
+    <span class="pin-badge">📌 置顶</span>
+    &emsp;
+    {{ end }}
     {{ i18n "format_date" .PublishDate }}
     &emsp;
     <!-- Reading Time Start -->
