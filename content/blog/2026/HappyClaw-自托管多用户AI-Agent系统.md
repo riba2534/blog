@@ -2,7 +2,7 @@
 title: "HappyClaw：我写了一个自托管多用户本地 AI Agent"
 date: 2026-02-16T23:05:23+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/69932730cc0d8.png"
+featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935600b2b22.png"
 description: "HappyClaw 是一个基于 Claude Agent SDK 构建的自托管多用户 AI Agent 系统，通过飞书/Telegram/Web 三端接入完整的 Claude Code 能力。"
 tags:
 - AI Agent
@@ -200,17 +200,10 @@ flowchart TD
     class SDK,MCP ext
 ```
 
-### 技术栈一览
-
-**后端**：TypeScript 5.7 + Hono + SQLite (WAL 模式) + node-pty + ws
-
-**前端**：React 19 + Vite 6 + Zustand 5 + Tailwind CSS 4 + xterm.js + @tanstack/react-virtual
-
-**Agent**：Claude Agent SDK + MCP SDK + Docker (node:22-slim)
 
 ### 数据流
 
-消息从接入到执行，经过以下管道：
+消息从接入到执行，经过以下流程：
 
 1. 用户通过飞书/Telegram/Web 发送消息，存储到 SQLite 并广播
 2. 主进程每 2 秒轮询新消息，按 chat_jid 分组去重，分发到 GroupQueue
