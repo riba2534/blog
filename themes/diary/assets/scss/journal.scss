@@ -294,6 +294,8 @@ a {
       padding-left: 12px;
     }
     .nav-content {
+      display: flex;
+      align-items: center;
       padding: 12px 8px;
       justify-content: flex-start;
       max-width: unset !important;
