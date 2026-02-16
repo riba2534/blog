@@ -176,12 +176,25 @@ var handleScroll = function () {
     var pageHead = document.getElementById("pageHead");
     var navBar = document.getElementById("navBar");
 
-    // 如果必要元素不存在，直接返回
-    if (!pageHead || !navBar || !navBackground || !navTitle) {
+    // 更新全局 themeState
+    if (window.themeState) {
+      window.themeState.scrollY = window.scrollY;
+      window.themeState.navOpacity = Math.min(window.scrollY / 300, 1);
+    }
+
+    // pageHead 视差效果
+    if (pageHead) {
+      var parallaxY = 0.3 * window.scrollY;
+      pageHead.style.transform = "translateZ(0px) translateY(" + parallaxY + "px)";
+      pageHead.style.opacity = 1 - Math.min(window.scrollY / 300, 1);
+    }
+
+    // 如果必要元素不存在，跳过 navbar opacity 逻辑
+    if (!navBar || !navBackground || !navTitle) {
       return;
     }
 
-    var pageHeadHeight = pageHead.offsetHeight || 1;
+    var pageHeadHeight = (pageHead && pageHead.offsetHeight) || 1;
     var navBarHeight = navBar.offsetHeight || 1;
 
     var navOpacity = sgn(
@@ -213,13 +226,6 @@ window.addEventListener(
   debounce(handleScroll, 100, { maxWait: 100 }),
   false
 );
-
-document.querySelectorAll("table").forEach(function (elem) {
-  elem.classList.add("table-striped");
-  elem.classList.add("table");
-  elem.classList.add("table-responsive");
-  elem.classList.add("table-hover");
-});
 
 // Drawer
 

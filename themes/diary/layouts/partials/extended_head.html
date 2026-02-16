@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="{{ $modern.RelPermalink }}" integrity="{{ $modern.Data.Integrity }}" media="screen">
 {{ end }}
 
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 
 <script>
 // Lightweight enhancements: reading progress + back-to-top
@@ -60,9 +60,10 @@
 
   function toggleBackToTop() {
     var btn = document.getElementById('backToTop');
-    if (!btn) return;
+    var globalBtn = document.getElementById('globalBackToTop');
     var show = (window.scrollY || document.documentElement.scrollTop) > 360;
-    if (show) btn.classList.add('show'); else btn.classList.remove('show');
+    if (btn) { if (show) btn.classList.add('show'); else btn.classList.remove('show'); }
+    if (globalBtn) { if (show) globalBtn.classList.remove('invisible'); else globalBtn.classList.add('invisible'); }
   }
 
   function refresh() {
@@ -187,11 +188,12 @@
 })();
 </script>
 
-{{ if .Site.Params.enableMermaid }}
+{{ if .IsPage }}
+  {{ if and .Site.Params.enableMermaid (findRE "language-mermaid" .Content) }}
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: false });
-  
+
   document.addEventListener("DOMContentLoaded", function() {
     var codes = document.querySelectorAll("pre code.language-mermaid");
     codes.forEach(function(code) {
@@ -199,7 +201,7 @@
       var div = document.createElement("div");
       div.className = "mermaid";
       div.textContent = code.textContent;
-      
+
       var parent = pre.parentElement;
       if (parent.classList.contains("highlight")) {
           parent.replaceWith(div);
@@ -207,8 +209,9 @@
           pre.replaceWith(div);
       }
     });
-    
+
     mermaid.run();
   });
 </script>
+  {{ end }}
 {{ end }}

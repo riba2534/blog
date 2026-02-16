@@ -16,7 +16,7 @@
 <meta name="description" content="{{ $description }}">
 <meta name="author" content="{{ .Site.Params.author | default .Site.Title }}">
 <meta name="theme-color" content="#ffffff">
-<meta name="color-scheme" content="light">
+
 
 <!-- open-graph -->
 {{if .Site.Params.enableOpenGraph}}
@@ -78,13 +78,11 @@
     {{ if and (not (.Params.disableToC) ) (.IsPage) }}
       <script src="{{"js/toc.js" | relURL}}"></script>
     {{ end }}
-    <link type="text/css" rel="stylesheet" href="{{"vendor/css/bootstrap.min.css" | relURL}}">
 {{- else -}}
     {{- /* with leading slash */ -}}
     {{ if and (not (.Params.disableToC) ) (.IsPage) }}
       <script src="{{"/js/toc.js" | relURL}}"></script>
     {{ end }}
-    <link type="text/css" rel="stylesheet" href="{{"/vendor/css/bootstrap.min.css" | relURL}}">
 {{- end -}}
 
 {{ $styles := resources.Get "scss/journal.scss" | toCSS | minify | fingerprint }}

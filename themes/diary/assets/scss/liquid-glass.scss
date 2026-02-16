@@ -99,7 +99,6 @@ $single-column-max-width: 1020px !default;
 @mixin floating-element {
   border-radius: var(--lg-radius-large);
   transition: all var(--lg-duration-medium) var(--lg-transition-smooth);
-  will-change: transform, box-shadow;
 
   &:hover {
     transform: translateY(-2px) scale(1.01);

@@ -25,31 +25,16 @@
 
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <div class="container">
-                        <div id="friend-list" class="row">
-                            {{ range .Site.Data.friends }}
-                            <div class="card-container col-xs-6" style="margin:1rem;width:20rem;">
-                                <div class="card" style="background:none !important;">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <img src="{{ .avatar }}" style="width: 6rem;" class="img-fluid">
-                                        </div>
-                                        <div class="col">
-                                            <div class="card-block px-2" style="margin: 0.5rem;">
-                                                <p class="card-title">{{ .name }}</p>
-                                                <p class="card-text small">{{ .description }} <br> <a href="{{ .url }}">{{ .url }}</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer w-100 text-muted">
-                                        <p class="card-text small">
-                                            <a href="https://github.com/{{ .github }}" class="card-subtitle mb-2 text-muted">{{ .github }}@GitHub</a>
-                                        </p>
-                                    </div>
-                                </div>
+                    <div class="friends-grid">
+                        {{ range .Site.Data.friends }}
+                        <a class="friend-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ .avatar }}" alt="{{ .name }}" loading="lazy" class="friend-avatar">
+                            <div class="friend-info">
+                                <p class="friend-name">{{ .name }}</p>
+                                <p class="friend-desc">{{ .description }}</p>
                             </div>
-                            {{ end }}
-                        </div>
+                        </a>
+                        {{ end }}
                     </div>
                 </div>
             </div>
