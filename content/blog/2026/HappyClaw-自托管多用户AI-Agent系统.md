@@ -1,5 +1,5 @@
 ---
-title: "HappyClaw：我写了一个自托管多用户本地 AI Agent 系统"
+title: "HappyClaw：我写了一个自托管多用户本地 AI Agent"
 date: 2026-02-16T23:05:23+08:00
 draft: false
 featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/69932730cc0d8.png"
@@ -19,7 +19,7 @@ comment: true
 
 2026 年初，本地个人 AI Agent 这个概念彻底出圈了。OpenClaw 60 天拿下 157K GitHub Stars，NanoClaw 用 4000 行代码证明了"极简也能很强"。越来越多的人意识到：**Claude Code 不应该只活在终端里**。
 
-我自己也折腾了一阵子，核心痛点有两个：
+我自己折腾了一阵子，核心痛点有两个：
 
 1. **OpenClaw 只能跑在 IM 里**。简单的对话没问题，但碰到复杂任务——需要看实时执行过程、需要容器隔离、需要多会话管理——纯 IM 交互就力不从心了。我需要一个 Web 界面来更好地跟进任务进度。更重要的是，我希望底层的 Agent 就是 Claude Code 本身，而不是一套自己实现的 Agent 框架。
 2. **我需要一个远程的 Claude Code**。市面上有一些类似的方案，但要么 bug 比较多，要么更新太慢跟不上 Claude Code 的迭代节奏。我希望的是：Claude Code 升级了什么能力，我的 Agent 立刻就有。
@@ -44,6 +44,12 @@ comment: true
 
 项目开源在 GitHub：[https://github.com/riba2534/happyclaw](https://github.com/riba2534/happyclaw)，MIT 协议。
 
+先上几张截图感受一下：
+
+| 工具调用追踪 | Markdown 渲染 | 图片生成 + 文件管理 |
+|:---:|:---:|:---:|
+| ![工具调用追踪](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/699353428bda4.png) | ![Markdown 渲染](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935340eaae2.png) | ![图片生成](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993533f2d98e.png) |
+
 ## 核心功能
 
 ### 三端消息接入
@@ -55,6 +61,10 @@ comment: true
 | **Web** | WebSocket 实时通信 | 流式 Markdown | 图片粘贴/拖拽上传、虚拟滚动 |
 
 每个用户可以独立配置自己的 IM 通道——你用你的飞书应用凭据，我用我的 Telegram Bot Token，互不干扰。消息路由规则也很简单：**飞书来的回飞书，Telegram 来的回 Telegram，Web 来的回 Web**。
+
+| 飞书 Bot 聊天 | 飞书富文本卡片回复 |
+|:---:|:---:|
+| ![飞书聊天](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/699353477bb79.png) | ![飞书卡片回复](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/699353467c9f2.png) |
 
 ### Agent 执行引擎
 
@@ -126,6 +136,23 @@ Agent 会自主维护这些记忆文件。你告诉它"记住我喜欢用 Go 写
 手机浏览器打开 HappyClaw 的 Web 地址，一键安装到桌面，就是一个原生 App 的体验：全屏模式运行、独立应用图标、iOS / Android 均已适配。
 
 这解决了我最大的一个痛点：**随时随地能用**。等电梯的时候掏出手机问一句"帮我查一下那个 API 的返回格式"，Agent 直接在服务器上执行，结果推送到手机。
+
+| 登录 | 工作区 | 系统监控 | 设置 |
+|:---:|:---:|:---:|:---:|
+| ![登录](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935357c3e09.png) | ![工作区](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993534cb8323.png) | ![监控](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935358d7a60.png) | ![设置](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993535a2e5b0.png) |
+
+### Web Terminal
+
+基于 xterm.js + node-pty 实现的浏览器内完整终端。WebSocket 连接，可拖拽调整面板大小，直接在 Web 界面里操作服务器——不用再另外开 SSH 了。容器模式下用户可以访问自己容器的终端，宿主机模式出于安全考虑不开放。
+
+### Skills 系统
+
+HappyClaw 支持两级 Skills 扩展：
+
+- **项目级 Skills**：放在 `container/skills/`，所有容器自动挂载
+- **用户级 Skills**：放在 `~/.claude/skills/`，同样自动挂载
+
+不需要重建 Docker 镜像，volume 挂载 + 符号链接自动发现。你在宿主机上写好一个 Skill，所有容器内的 Agent 立刻就能用。
 
 ## 技术架构
 
@@ -225,6 +252,10 @@ make start
 
 所有配置通过 Web 界面完成，不需要手动编辑 `.env` 文件。
 
+| 创建管理员 | 配置接入（飞书 + Claude） |
+|:---:|:---:|
+| ![设置向导](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993535c556ab.png) | ![配置接入](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993535b5f3cf.png) |
+
 ### 启用容器模式
 
 如果需要给 member 用户使用容器模式：
@@ -249,44 +280,6 @@ make start
 1. 跟 [@BotFather](https://t.me/BotFather) 创建一个 Bot
 2. 在 HappyClaw 设置页填入 Bot Token
 
-就这么简单。
-
-## 与同类项目的比较
-
-| 维度 | OpenClaw | NanoClaw | HappyClaw |
-|------|----------|----------|-----------|
-| 定位 | 全功能 AI Agent 平台 | 极简个人 Agent | 多用户 Agent 服务 |
-| 代码量 | 数十万行 | ~4000 行 | ~12000 行 |
-| 多用户 | 不支持 | 不支持 | RBAC + 用户隔离 |
-| IM 支持 | Apple Shortcuts | 飞书 | 飞书 + Telegram + Web |
-| 移动端 | 否 | 否 | PWA |
-| Web 界面 | React | 无 | React + 流式显示 |
-| 容器隔离 | Docker | 不支持 | Docker + 宿主机双模式 |
-| 记忆系统 | 自有实现 | 复用 Claude Code | 四层记忆 + PreCompact 归档 |
-| Agent 引擎 | 自有实现 | 复用 Claude Code | 复用 Claude Code (Agent SDK) |
-| 定时任务 | 支持 | 不支持 | Cron / Interval / Once |
-
-三个项目的设计哲学不同：
-
-- **OpenClaw** 选择了自己造一整套 Agent 框架，功能最全但也最重
-- **NanoClaw** 把"简单"做到了极致，只为一个人服务
-- **HappyClaw** 在复用 Claude Code 的基础上，补上了多用户、多渠道、移动端这几块短板
-
-## 一些设计决策
-
-### 为什么选 SQLite 而不是 PostgreSQL？
-
-**因为够用。** HappyClaw 面向的是个人或小团队的自托管场景，不会有几百万行数据。SQLite WAL 模式下读写性能足够，而且**零运维**——没有独立的数据库进程要维护，备份就是复制一个文件。
-
-### 为什么用文件 IPC 而不是 gRPC？
-
-Docker 容器挂载 volume 后，文件系统是最自然的通信通道。gRPC 意味着额外的端口映射、协议定义、连接管理。文件 IPC 的实现只有几百行代码，原子写入 + 即时删除就解决了并发安全问题。
-
-> 在简单场景下，用简单方案。
-
-### 为什么用哨兵标记而不是 structured stdout？
-
-因为 Docker 容器的 stdout 里什么都有——npm 的警告、Python 的 deprecation notice、各种库的启动日志。与其尝试让所有输出都结构化（基本不可能），不如用一对哨兵标记把**自己的输出**圈起来，其他的全部忽略。
 
 ## 写在最后
 
