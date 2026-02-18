@@ -33,6 +33,11 @@ comment: true
 
 ---
 
+# This Is Fine
+
+# 一切都好
+
+
 ![This Is Fine](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5adcfd6.png)
 
 When the fire alarm rings in your apartment or office building, you usually dismiss it. But sometimes death comes swiftly to those who ignore obvious warnings. Given the amount of noise swirling throughout our daily lives, understanding what alarms to heed could save your life or your portfolio.
@@ -59,9 +64,9 @@ That's a bold statement to call for a financial crisis because of job losses cau
 
 因为 AI 导致的失业就预言一场金融危机——这话说得够大胆的。官方叙事是：创造性毁灭将带来更高的生产力，人们会接受再培训去做天知道什么工作，然后乌托邦将降临美利坚治世（Pax Americana）。这就是指导特朗普政府的经济教条。他们相信 AI 将把生产力增长推到如此之高，以至于可以同时降低利率并减少债务负担——因为企业利润带来的税收将支撑每年 **15%的实际 GDP 增长**。没错，**他妈的15%**，这就是大人物特朗普亲口宣称的。然而，在这个由白人男性基督教上帝恩赐的辉煌美国未来到来之前，数百万高收入、高负债的白领平民将失去工作。银行体系将在消费信贷和抵押贷款的预期损失下不堪重负。
 
-First, I will step through my simple model that predicts in broad strokes the quantum of credit losses in store for US commercial banks. Next, I will present the early warning signs offered by Bitcoin and software SaaS stonk price action. Finally, I can speak to the political sclerosis at the Fed that will cause them to dither until shit gets really bad. The worse the fall, the harder the central wanker bankers press that Brr button. This AI financial crisis will restart the money printing machine for realz. But don't get it twisted. There are two scenarios for Bitcoin and shitcoins. Either Bitcoin's dump from $126,000 to $60,000 was the entire downward move and stonks will catch up, or Bitcoin will dump further as stocks meet their maker. It behooves punters to limit the use of leverage and wait for the all-clear from the Fed that it's time to dump filthy fiat and ape into risky assets with wanton abandon.
+First, I will step through my simple model that predicts in broad strokes the quantum of credit losses in store for US commercial banks. Next, I will present the early warning signs offered by Bitcoin and software SaaS stonk price action. Finally, I can speak to the political sclerosis at the Fed that will cause them to dither until shit gets really bad. The worse the fall, the harder the central wanker bankers press that Brr button. This AI financial crisis will restart the money printing machine for realz. But don't get it twisted. There are two scenarios for Bitcoin and shitcoins. Either Bitcoin's dump from \$126,000 to \$60,000 was the entire downward move and stonks will catch up, or Bitcoin will dump further as stocks meet their maker. It behooves punters to limit the use of leverage and wait for the all-clear from the Fed that it's time to dump filthy fiat and ape into risky assets with wanton abandon.
 
-首先，我将逐步展示我的简单模型，用它来粗略预测美国商业银行将面临的信贷损失规模。接下来，我将展示比特币和软件 SaaS 股票价格走势所提供的预警信号。最后，我会谈谈美联储的政治僵化——这将导致他们一直磨磨蹭蹭，直到局面彻底烂透。跌得越狠，那些中央银行的废物们（central wanker bankers）就会把"Brr"按钮按得越死。**这场 AI 金融危机将真正重启印钞机。** 但别搞混了——比特币和山寨币面临两种情景：要么比特币从 **$126,000 跌到 $60,000** 就是全部跌幅，股市随后跟上；要么比特币会继续下跌，与股市一起见阎王。赌徒们最好限制杠杆的使用，等待美联储发出"全面解除警报"的信号——届时就该抛掉肮脏的法币，毫无顾忌地冲进风险资产。
+首先，我将逐步展示我的简单模型，用它来粗略预测美国商业银行将面临的信贷损失规模。接下来，我将展示比特币和软件 SaaS 股票价格走势所提供的预警信号。最后，我会谈谈美联储的政治僵化——这将导致他们一直磨磨蹭蹭，直到局面彻底烂透。跌得越狠，那些中央银行的废物们（central wanker bankers）就会把"Brr"按钮按得越死。**这场 AI 金融危机将真正重启印钞机。** 但别搞混了——比特币和山寨币面临两种情景：要么比特币从 **\$126,000 跌到 \$60,000** 就是全部跌幅，股市随后跟上；要么比特币会继续下跌，与股市一起见阎王。赌徒们最好限制杠杆的使用，等待美联储发出"全面解除警报"的信号——届时就该抛掉肮脏的法币，毫无顾忌地冲进风险资产。
 
 ## Anatomy of Default
 
@@ -75,13 +80,13 @@ According to the US BLS, there are currently 72.1 million knowledge workers out 
 
 根据美国劳工统计局（BLS）的数据，在总计 **1.645亿** 的劳动人口中，目前有 **7210万** 知识工作者。[3]
 
-These knowledge workers earn more on average than other Americans and thus power the empire's consumer-led economy. I am interested in estimating on average how much consumer credit (e.g. credit card balances, auto loans etc.) they shoulder. According to the Fed, the total amount of consumer credit is $5.1 trillion. Because I'm only interested in loans the banking system holds as assets on its balance sheet, I must strip out student loans, which are usually underwritten by the government. Doing this brings the total down to $3.76 trillion.
+These knowledge workers earn more on average than other Americans and thus power the empire's consumer-led economy. I am interested in estimating on average how much consumer credit (e.g. credit card balances, auto loans etc.) they shoulder. According to the Fed, the total amount of consumer credit is \$5.1 trillion. Because I'm only interested in loans the banking system holds as assets on its balance sheet, I must strip out student loans, which are usually underwritten by the government. Doing this brings the total down to \$3.76 trillion.
 
 这些知识工作者的平均收入高于其他美国人，因此支撑着帝国以消费为导向的经济。我感兴趣的是估算他们平均背负多少消费信贷（如信用卡余额、汽车贷款等）。根据美联储的数据，消费信贷总额为 **5.1万亿美元**。因为我只关注银行体系作为资产持有在资产负债表上的贷款，所以必须剔除通常由政府承保的学生贷款。这样处理后，总额降至 **3.76万亿美元**。
 
-These high flyers also borrow money to purchase their dwelling. The average annual income of a knowledge worker is $85,000, which places them around the 70th percentile of income earners. Folks in this decile have a homeownership rate of 74% and on average 42% of homeowners have a mortgage. Knowledge workers carry an approximate average mortgage balance of $250,000.[4]
+These high flyers also borrow money to purchase their dwelling. The average annual income of a knowledge worker is \$85,000, which places them around the 70th percentile of income earners. Folks in this decile have a homeownership rate of 74% and on average 42% of homeowners have a mortgage. Knowledge workers carry an approximate average mortgage balance of \$250,000.[4]
 
-这些高收入者也借钱买房。知识工作者的平均年收入为 **$85,000**，大约处于收入分布的第70百分位。这一阶层的住房拥有率为 **74%**，平均 **42%** 的房主背有抵押贷款。知识工作者的平均抵押贷款余额约为 **$250,000**。[4]
+这些高收入者也借钱买房。知识工作者的平均年收入为 **\$85,000**，大约处于收入分布的第70百分位。这一阶层的住房拥有率为 **74%**，平均 **42%** 的房主背有抵押贷款。知识工作者的平均抵押贷款余额约为 **\$250,000**。[4]
 
 With these inputs, the next step is to calculate the losses to banks if 20% of knowledge workers vanished because of AI. I know that CEOs or lead researchers at various prominent AI companies call for an almost complete eradication of most knowledge work performed by humans within the next two years. While that may be true in the longer term, I want to know if even a modest culling of these folks would cause a financial crisis. For example, China's entry into the WTO deaded 35% of Americans working in the manufacturing industry over the next few decades. Blue-collar workers manipulate atoms, which are harder to move from one place to another than bits. Knowledge workers manipulate bits, which can move at the speed of light. Therefore, because AI similarly manipulates digital symbols faster than a human, the pace of white vs. blue-collar job losses will be much faster. The labor market in the US is very flexible and employers can fire folks at will with little to no financial consequences, unlike more socialist countries in Europe or Asia, e.g. Japan. Therefore, a profit maximizing corporation will quickly fire a sizable chunk of its knowledge workers if the AI tools are 10 or 100 times faster than a qualified human.
 
@@ -97,9 +102,9 @@ The market will assume unemployed workers cannot meet their monthly payments on 
 
 ![Consumer Credit Losses](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5d8d635.png)
 
-The market will price in $330bn of losses to banks consumer credit portfolios.
+The market will price in \$330bn of losses to banks consumer credit portfolios.
 
-市场将对银行消费信贷组合计入 **$3300亿** 的损失。
+市场将对银行消费信贷组合计入 **\$3300亿** 的损失。
 
 ### Mortgage Debt Losses
 
@@ -107,9 +112,9 @@ The market will price in $330bn of losses to banks consumer credit portfolios.
 
 ![Mortgage Debt Losses](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5f70bad.png)
 
-The market will price in $227bn of losses to banks mortgage debt portfolios.
+The market will price in \$227bn of losses to banks mortgage debt portfolios.
 
-市场将对银行抵押贷款组合计入 **$2270亿** 的损失。
+市场将对银行抵押贷款组合计入 **\$2270亿** 的损失。
 
 ### The Result
 
@@ -225,7 +230,7 @@ Warsh is supposedly in favor of a smaller Fed balance sheet and wants to institu
 
 据说 Warsh 主张缩减美联储资产负债表，并且想要在美联储运作方式和银行业监管方面推行许多其他"激进"改革。其他理事是否认为这些是好政策并不重要——**Warsh 是特朗普的人**。而如果鲍威尔留任并拉拢至少五位投票理事站在他那边，他就可以通过**按兵不动**来阻挠特朗普的议程，捍卫美联储的政治独立性。
 
-While the Fed is fighting windmills, AI-related job losses will destroy the balance sheets of American banks. And then, finally, the non-TBTF banking stocks will start crashing, depositors will flee to safety in JP Morgan CEO Jamie Dimon's arms, and credit markets will seize up. The market will frantically ask which credit sector is next to experience the wrath of AI optimization? And because scared traders optimize for immediate liquidity, they will dump everything. The stock market collapses and Bitcoin trades sideways, or Bitcoin slices through $60,000 and continues going until the Fed gins up the money printer.
+While the Fed is fighting windmills, AI-related job losses will destroy the balance sheets of American banks. And then, finally, the non-TBTF banking stocks will start crashing, depositors will flee to safety in JP Morgan CEO Jamie Dimon's arms, and credit markets will seize up. The market will frantically ask which credit sector is next to experience the wrath of AI optimization? And because scared traders optimize for immediate liquidity, they will dump everything. The stock market collapses and Bitcoin trades sideways, or Bitcoin slices through \$60,000 and continues going until the Fed gins up the money printer.
 
 当美联储还在跟风车作战的时候，AI 相关的失业潮将摧毁美国银行的资产负债表。然后，终于，**非"大而不能倒"（non-TBTF）的银行股将开始崩盘**，储户会逃向安全港、投入摩根大通 CEO 杰米·戴蒙的怀抱，信贷市场将冻结。市场将疯狂追问：下一个遭受 AI 优化之怒的信贷板块是谁？而因为恐慌的交易员优先追求即时流动性，他们会**抛售一切**。股市崩盘，比特币要么横盘震荡，要么**一路跌穿 60,000 美元继续下探**——直到美联储重新启动印钞机。
 
@@ -265,9 +270,9 @@ I don't believe Bitcoin traders will see through to the eventual Fed banking bai
 
 我不认为比特币交易者会提前看到美联储最终的银行救助——**除非消费信贷敏感型股票经历严重的阵痛**。我不会做空市场，但如果你还没有的话，**卖出多头仓位以筹集现金**可能是明智的。如果一项资产的价格从 10 跌到 5，做空赚 **50%**；但当价格从 5 反弹到 10 时，做多的人赚了**一倍**。因此，这场游戏的关键是**保持流动性、保持灵活、等待反弹**。做空是傻瓜的游戏。**永远做多凸性（Convexity）！**
 
-The top two shitcoins that Maelstrom will deploy excess stables into once the Fed blinks are $ZEC (Zcash) and $HYPE (Hyperliquid). In my next essay, I will present my model for why $HYPE will trade to $150 by July, which is ~5x higher than current levels. Obviously, we are already long $ZEC and $HYPE, but I want moar, and if my AI financial crisis thesis is correct, there will be another opportunity to acquire more of these high-quality shitcoins on sale.
+The top two shitcoins that Maelstrom will deploy excess stables into once the Fed blinks are \$ZEC (Zcash) and \$HYPE (Hyperliquid). In my next essay, I will present my model for why \$HYPE will trade to \$150 by July, which is ~5x higher than current levels. Obviously, we are already long \$ZEC and \$HYPE, but I want moar, and if my AI financial crisis thesis is correct, there will be another opportunity to acquire more of these high-quality shitcoins on sale.
 
-一旦美联储眨眼，Maelstrom 将把多余的稳定币投入的**前两大山寨币**是 **$ZEC（Zcash）** 和 **$HYPE（Hyperliquid）**。在我的下一篇文章中，我将展示我的模型，解释为什么 **$HYPE 将在 7 月前交易到 150 美元**，比当前水平高出约 **5 倍**。显然，我们已经做多了 $ZEC 和 $HYPE，但我还想要更多，如果我的 AI 金融危机论点是正确的，将会有另一个机会**以折扣价买入更多这些高质量的山寨币**。
+一旦美联储眨眼，Maelstrom 将把多余的稳定币投入的**前两大山寨币**是 **\$ZEC（Zcash）** 和 **\$HYPE（Hyperliquid）**。在我的下一篇文章中，我将展示我的模型，解释为什么 **\$HYPE 将在 7 月前交易到 150 美元**，比当前水平高出约 **5 倍**。显然，我们已经做多了 \$ZEC 和 \$HYPE，但我还想要更多，如果我的 AI 金融危机论点是正确的，将会有另一个机会**以折扣价买入更多这些高质量的山寨币**。
 
 ---
 
