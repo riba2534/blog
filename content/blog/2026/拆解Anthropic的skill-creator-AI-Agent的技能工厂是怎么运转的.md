@@ -30,7 +30,7 @@ Anthropic 自己显然也被这些问题折磨过，所以他们做了 [skill-cr
 
 skill-creator 并不是新东西，它从 2025 年 10 月 Agent Skills 发布时就存在了。但当时它基本就是一个交互式的脚手架工具 —— 问你几个问题，帮你生成 SKILL.md 初稿，完事了。
 
-**2025 年 2 月 25 日，Anthropic 悄悄推了一个大更新**（[PR #465](https://github.com/anthropics/skills/pull/465)），skill-creator 几乎被重写了。这次提交改动了 20 个文件，新增 5200+ 行代码，删掉了旧的 `init_skill.py` 脚手架，换上了一套完整的评估和优化工具链：
+**2026 年 2 月 25 日，Anthropic 悄悄推了一个大更新**（[PR #465](https://github.com/anthropics/skills/pull/465)），skill-creator 几乎被重写了。这次提交改动了 20 个文件，新增 5200+ 行代码，删掉了旧的 `init_skill.py` 脚手架，换上了一套完整的评估和优化工具链：
 
 - **三个专职评估 Agent**（Grader / Comparator / Analyzer）—— 全部新增，之前不存在
 - **描述优化循环**（`run_loop.py` + `run_eval.py` + `improve_description.py`）—— 全部新增，自动化调优 description 的触发精度
@@ -106,6 +106,7 @@ skill-creator/
 │   ├── improve_description.py      # 调 Claude extended thinking 改进描述
 │   ├── aggregate_benchmark.py      # 基准测试聚合（mean ± stddev）
 │   ├── package_skill.py            # 打包 .skill 分发文件
+│   ├── quick_validate.py           # Skill 目录校验
 │   ├── generate_report.py          # 优化过程 HTML 报告
 │   └── utils.py                    # SKILL.md 解析（YAML frontmatter）
 ├── eval-viewer/
@@ -117,7 +118,7 @@ skill-creator/
     └── eval_review.html            # 描述优化评审 HTML 模板
 ```
 
-整套系统大约 2500 行 Python + 500 行 Markdown 规范。不算大，但每个文件都有明确的职责。
+整套系统大约 1900 行 Python + 1100 行 Markdown 规范（含三个 Agent 定义和 JSON Schema）。不算大，但每个文件都有明确的职责。
 
 
 ## 二、核心工作流 —— Draft-Test-Evaluate-Improve
