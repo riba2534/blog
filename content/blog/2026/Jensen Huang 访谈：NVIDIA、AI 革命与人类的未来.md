@@ -14,13 +14,13 @@ categories:
 comment: true
 ---
 
-> **Jensen Huang**（黄仁勋），NVIDIA 联合创始人兼 CEO，执掌这家公司超过 34 年，是全球任期最长的科技公司 CEO。NVIDIA 目前是全球市值最高的公司。
+> - **Jensen Huang**（黄仁勋），NVIDIA 联合创始人兼 CEO，执掌这家公司超过 34 年，是全球任期最长的科技公司 CEO。NVIDIA 目前是全球市值最高的公司。
 >
-> **Lex Fridman**，MIT 研究员、播客主持人，以长篇深度技术访谈著称，嘉宾涵盖科技、科学、哲学领域的顶尖人物。
+> - **Lex Fridman**，MIT 研究员、播客主持人，以长篇深度技术访谈著称，嘉宾涵盖科技、科学、哲学领域的顶尖人物。
 >
-> 原视频（2026-03-24 00:24 UTC+8，时长 2h25m）：https://www.youtube.com/watch?v=vif8NQcjVf0
+> - 原视频（2026-03-24 00:24 UTC+8，时长 2h25m）：https://www.youtube.com/watch?v=vif8NQcjVf0
 >
-> Lex Fridman 发布推文（2026-03-24 00:49 UTC+8）：https://x.com/lexfridman/status/2036123301140111406
+> - Lex Fridman 发布推文（2026-03-24 00:49 UTC+8）：https://x.com/lexfridman/status/2036123301140111406
 >
 > 本文为该播客访谈的结构化整理，尽量忠实于原始对话内容。
 
