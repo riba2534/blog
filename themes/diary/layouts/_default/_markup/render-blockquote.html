@@ -1,0 +1,32 @@
+{{- if eq .Type "alert" -}}
+  {{- $iconMap := dict
+    "note"      "info"
+    "tip"       "lightbulb"
+    "important" "announcement"
+    "warning"   "warning"
+    "caution"   "error"
+  -}}
+  {{- $labelMap := dict
+    "note"      "Note"
+    "tip"       "Tip"
+    "important" "Important"
+    "warning"   "Warning"
+    "caution"   "Caution"
+  -}}
+  {{- $type := .AlertType -}}
+  {{- $icon := index $iconMap $type | default "info" -}}
+  {{- $label := .AlertTitle | default (index $labelMap $type | default "Note") -}}
+  <div class="gh-alert gh-alert-{{ $type }}">
+    <p class="gh-alert-title">
+      <span class="material-icons gh-alert-icon">{{ $icon }}</span>
+      {{ $label }}
+    </p>
+    <div class="gh-alert-content">
+      {{ .Text }}
+    </div>
+  </div>
+{{- else -}}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{- end -}}
