@@ -61,7 +61,7 @@ hugo new blog/$(date +%Y)/文章标题.md
 ## 项目结构
 
 ### 核心配置
-- `config.toml`: Hugo 配置文件，包含站点基本信息、菜单配置、评论系统配置等
+- `hugo.toml`: Hugo 配置文件，包含站点基本信息、菜单配置、评论系统配置等
 - `.github/workflows/deploy.yml`: GitHub Actions 自动部署配置，当推送到 main 分支时自动构建并部署到 GitHub Pages
 
 ### 内容组织
@@ -78,7 +78,7 @@ hugo new blog/$(date +%Y)/文章标题.md
 
 ## 重要特性
 
-1. **评论系统**: 使用 Twikoo，配置在 config.toml 中的 `twikooEnvId`
+1. **评论系统**: 使用 Twikoo，配置在 hugo.toml 中的 `twikooEnvId`
 2. **代码高亮**: 使用 GitHub 主题，支持行号显示，带复制按钮和语言标识
 3. **数学公式**: 启用了 MathJax 和 LaTeX 支持
 4. **自动部署**: 推送到 main 分支后，GitHub Actions 会自动构建并部署到 GitHub Pages
