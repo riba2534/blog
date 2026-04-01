@@ -1,10 +1,10 @@
 ---
 title: "关于"
-date: 2021-05-07T13:11:39+08:00
+date: 2026-04-02T03:16:43+08:00
 draft: false
 type: about
 featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/04/02/69cd67d9ac120.png"
-description: "十倍杠杆，做多自己"
+description: "十倍杠杆做多自己"
 comment : true
 enableVue : true
 ---
