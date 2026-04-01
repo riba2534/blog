@@ -1,0 +1,7 @@
+{
+  "name": "blog",
+  "pages_build_output_dir": "public",
+  "build": {
+    "command": "hugo --minify"
+  }
+}
