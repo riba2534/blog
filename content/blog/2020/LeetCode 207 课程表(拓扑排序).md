@@ -3,7 +3,7 @@ title: LeetCode 207 课程表(拓扑排序)
 date: 2020-08-04T01:19:39+08:00
 lastmod: 2020-08-04T01:19:39+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221015.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/136433b8_20210508221015.png"
 tags:
 - LeetCode
 - 拓扑排序

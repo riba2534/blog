@@ -2,7 +2,7 @@
 title: "WEB 4.0: The Birth of Superintelligent Life（超级智能生命的诞生）"
 date: 2026-02-20T02:45:58+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/20/69975f02c00ab.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/1907df29_69975f02c00ab.jpg"
 description: "我构建了第一个能自己赚取生存资源、自我改进并自我复制的 AI——完全不需要人类参与。Conway 是为 AI 而生的基础设施。"
 tags:
 - 转载
@@ -18,7 +18,7 @@ comment: true
 > Sigil Wen 创建了一个新网站 [web4.ai](https://web4.ai/)，阐述了 Web 4.0 的构想——当 AI 能够自主赚取生存资源、自我改进并自我复制，一个全新的自主网络时代正在到来。
 
 
-![WEB 4.0](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/20/69975f02c00ab.jpg)
+![WEB 4.0](https://img.riba2534.cn/images/2026/04/1907df29_69975f02c00ab.jpg)
 
 > **WEB 4.0** — The birth of superintelligent life, and the autonomous web.
 >

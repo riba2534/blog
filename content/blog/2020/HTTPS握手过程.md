@@ -3,7 +3,7 @@ title: HTTPS握手过程
 date: 2020-08-19T02:36:00+08:00
 lastmod: 2020-08-19T02:37:22+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - HTTP
 categories: HTTP
@@ -28,7 +28,7 @@ comment: true
     - 公钥一般用于加密和验证签名
     - 私钥一般用于解密和进行数字签名
 - SSL握手过程
-  - 握手过程图![img](https://api2.mubu.com/v3/document_image/acc32aa3-1105-4861-a463-33b78bde127d-5127810.jpg)
+  - 握手过程图![img](https://img.riba2534.cn/images/2026/04/3ae43408_acc32aa3-1105-4861-a463-33b78bde127d-5127810.jpg)
   - 1. 客户端通过发送 Client Hello 报文开始 SSL 通信。报文中包含客户端支持的 SSL 指定版本，加密组件列表（所使用的加密算法以及密钥长度等）
   - 2. 服务端发送 Server Hello 给客户端。服务端从客户端给出的ssl版本以及加密算法等信息，返回加密算法，这个加密算法一定是client发送给server加密算法的子集。
   - 3. 服务器发送 Certificate 报文，其中包含带有服务端公钥的证书。

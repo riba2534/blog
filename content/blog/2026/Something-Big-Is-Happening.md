@@ -2,7 +2,7 @@
 title: "Something Big Is Happening"
 date: 2026-02-12T03:23:55+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/12/698cd9ec732c7.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/7394be29_698cd9ec732c7.jpg"
 description: "AI 行业从业者 Matt Shumer 的深度长文：我们正处于一场比 Covid 更大变革的早期阶段。转载自 X @mattshumer_"
 tags:
 - AI

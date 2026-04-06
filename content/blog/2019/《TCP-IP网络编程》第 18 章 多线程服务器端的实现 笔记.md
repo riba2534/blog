@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 18 章 多线程服务器端的实现 笔记
 date: 2019-02-03T16:05:00+08:00
 lastmod: 2019-02-03T16:13:32+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -43,7 +43,7 @@ comment: true
 
 每个进程的内存空间都由保存全局变量的「数据区」、向 malloc 等函数动态分配提供空间的堆（Heap）、函数运行时间使用的栈（Stack）构成。每个进程都有独立的这种空间，多个进程的内存结构如图所示：
 
-![](https://i.loli.net/2019/02/02/5c55aa57db3c7.png)
+![](https://img.riba2534.cn/images/2026/04/89a37363_5c55aa57db3c7.png)
 
 但如果以获得多个代码执行流为目的，则不应该像上图那样完全分离内存结构，而只需分离栈区域。通过这种方式可以获得如下优势：
 
@@ -52,7 +52,7 @@ comment: true
 
 实际上这就是线程。线程为了保持多条代码执行流而隔开了栈区域，因此具有如下图所示的内存结构：
 
-![](https://i.loli.net/2019/02/02/5c55ab455e399.png)
+![](https://img.riba2534.cn/images/2026/04/4014edfb_5c55ab455e399.png)
 
 如图所示，多个线程共享数据区和堆。为了保持这种结构，线程将在进程内创建并运行。也就是说，进程和线程可以定义为如下形式：
 
@@ -61,7 +61,7 @@ comment: true
 
 如果说进程在操作系统内部生成多个执行流，那么线程就在同一进程内部创建多条执行流。因此，操作系统、进程、线程之间的关系可以表示为下图：
 
-![](https://i.loli.net/2019/02/02/5c55ac20aa776.png)
+![](https://img.riba2534.cn/images/2026/04/3056e3ec_5c55ac20aa776.png)
 
 ### 18.2 线程创建及运行
 
@@ -139,11 +139,11 @@ gcc thread1.c -o tr1 -lpthread # 线程相关代码编译时需要添加 -lpthre
 
 运行结果：
 
-![](https://i.loli.net/2019/02/02/5c55b5eb4daf6.png)
+![](https://img.riba2534.cn/images/2026/04/4d9c1596_5c55b5eb4daf6.png)
 
 上述程序的执行如图所示：
 
-![](https://i.loli.net/2019/02/02/5c55b6943255b.png)
+![](https://img.riba2534.cn/images/2026/04/b56ca6ef_5c55b6943255b.png)
 
 可以看出，程序在主进程没有结束时，生成的线程每隔一秒输出一次 `running thread` ，但是如果主进程没有等待十秒，而是直接结束，这样也会强制结束线程，不论线程有没有运行完毕。
 
@@ -215,13 +215,13 @@ gcc thread2.c -o tr2 -lpthread
 
 运行结果：
 
-![](https://i.loli.net/2019/02/02/5c55bd6032f1e.png)
+![](https://img.riba2534.cn/images/2026/04/2331f88c_5c55bd6032f1e.png)
 
 可以看出，线程输出了5次字符串，并且把返回值给了主进程
 
 下面是该函数的执行流程图：
 
-![](https://i.loli.net/2019/02/02/5c55bdd3bb3c8.png)
+![](https://img.riba2534.cn/images/2026/04/5afa0193_5c55bdd3bb3c8.png)
 
 #### 18.2.2 可在临界区内调用的函数
 
@@ -270,7 +270,7 @@ gcc -D_REENTRANT mythread.c -o mthread -lpthread
 
 下面的示例是计算从 1 到 10 的和，但并不是通过 main 函数进行运算，而是创建两个线程，其中一个线程计算 1 到 5 的和，另一个线程计算 6 到 10 的和，main 函数只负责输出运算结果。这种方式的线程模型称为「工作线程」。显示该程序的执行流程图：
 
-![](https://i.loli.net/2019/02/03/5c55c330e8b5b.png)
+![](https://img.riba2534.cn/images/2026/04/02262a9d_5c55c330e8b5b.png)
 
 下面是代码：
 
@@ -318,7 +318,7 @@ gcc thread3.c -D_REENTRANT -o tr3 -lpthread
 
 结果：
 
-![](https://i.loli.net/2019/02/03/5c55c53d70494.png)
+![](https://img.riba2534.cn/images/2026/04/29261a70_5c55c53d70494.png)
 
 可以看出计算结果正确，两个线程都用了全局变量 sum ,证明了 2 个线程共享保存全局变量的数据区。
 
@@ -383,7 +383,7 @@ gcc thread4.c -D_REENTRANT -o tr4 -lpthread
 
 结果：
 
-![](https://i.loli.net/2019/02/03/5c55c884e7c11.png)
+![](https://img.riba2534.cn/images/2026/04/57e09aab_5c55c884e7c11.png)
 
 从图上可以看出，每次运行的结果竟然不一样。理论上来说，上面代码的最后结果应该是 0 。原因暂时不得而知，但是可以肯定的是，这对于线程的应用是个大问题。
 
@@ -574,7 +574,7 @@ gcc mutex.c -D_REENTRANT -o mutex -lpthread
 
 运行结果：
 
-![](https://i.loli.net/2019/02/03/5c567e4aafbb8.png)
+![](https://img.riba2534.cn/images/2026/04/59fabf0c_5c567e4aafbb8.png)
 
 从运行结果可以看出，通过互斥量机制得出了正确的运行结果。
 
@@ -712,7 +712,7 @@ gcc semaphore.c -D_REENTRANT -o sema -lpthread
 
 结果：
 
-![](https://i.loli.net/2019/02/03/5c568c2717d1e.png)
+![](https://img.riba2534.cn/images/2026/04/579ba15c_5c568c2717d1e.png)
 
 从上述代码可以看出，设置了两个信号量 one 的初始值为 0 ，two 的初始值为 1，然后在调用函数的时候，「读」的前提是 two 可以减一，如果不能减一就会阻塞在这里，一直等到「计算」操作完毕后，给 two 加一，然后就可以继续执行下一句输入。对于「计算」函数，也一样。
 
@@ -764,7 +764,7 @@ gcc chat_clnt.c -D_REENTRANT -o cclnt -lpthread
 
 结果：
 
-![](https://i.loli.net/2019/02/03/5c569b70634ff.png)
+![](https://img.riba2534.cn/images/2026/04/83aa46ed_5c569b70634ff.png)
 
 ### 18.6 习题
 

@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 13 章 多种 I/O 函数 笔记
 date: 2019-01-26T23:08:00+08:00
 lastmod: 2019-01-26T23:18:15+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -77,9 +77,9 @@ gcc oob_recv.c -o recv
 
 运行结果：
 
-![](https://i.loli.net/2019/01/26/5c4bda167ae08.png)
+![](https://img.riba2534.cn/images/2026/04/d93e234c_5c4bda167ae08.png)
 
-![](https://i.loli.net/2019/01/26/5c4bdb4d99823.png)
+![](https://img.riba2534.cn/images/2026/04/bd4e85e0_5c4bdb4d99823.png)
 
 从运行结果可以看出，send 是客户端，recv 是服务端，客户端给服务端发送消息，服务端接收完消息之后显示出来。可以从图中看出，每次运行的效果，并不是一样的。
 
@@ -109,7 +109,7 @@ fcntl(recv_sock, F_SETOWN, getpid());
 
 MSG_OOB 的真正意义在于督促数据接收对象尽快处理数据。这是紧急模式的全部内容，而 TCP 「保持传输顺序」的传输特性依然成立。TCP 的紧急消息无法保证及时到达，但是可以要求急救。下面是 MSG_OOB 可选项状态下的数据传输过程，如图：
 
-![](https://i.loli.net/2019/01/26/5c4be222845cc.png)
+![](https://img.riba2534.cn/images/2026/04/00a39d45_5c4be222845cc.png)
 
 上面是:
 
@@ -123,7 +123,7 @@ send(sock, "890", strlen("890"), MSG_OOB);
 
 也就是说，实际上只用了一个字节表示紧急消息。这一点可以通过图中用于传输数据的 TCP 数据包（段）的结构看得更清楚，如图：
 
-![](https://i.loli.net/2019/01/26/5c4beeae46b4e.png)
+![](https://img.riba2534.cn/images/2026/04/710d51f5_5c4beeae46b4e.png)
 
 TCP 数据包实际包含更多信息。TCP 头部包含如下两种信息：
 
@@ -152,7 +152,7 @@ gcc peek_send.c -o send
 
 结果：
 
-![](https://i.loli.net/2019/01/26/5c4c0d1dc83af.png)
+![](https://img.riba2534.cn/images/2026/04/e9cf4ae6_5c4c0d1dc83af.png)
 
 可以通过结果验证，仅发送了一次的数据被读取了 2 次，因为第一次调用 recv 函数时设置了 MSG_PEEK 可选项。
 
@@ -189,7 +189,7 @@ struct iovec
 
 下图是该函数的使用方法：
 
-![](https://i.loli.net/2019/01/26/5c4c61b07d207.png)
+![](https://img.riba2534.cn/images/2026/04/454233e8_5c4c61b07d207.png)
 
 writev 的第一个参数，是文件描述符，因此向控制台输出数据，ptr 是存有待发送数据信息的 iovec 数组指针。第三个参数为 2，因此，从 ptr 指向的地址开始，共浏览 2 个 iovec 结构体变量，发送这些指针指向的缓冲数据。
 
@@ -289,7 +289,7 @@ gcc readv.c -o rv
 
 运行结果：
 
-![](https://i.loli.net/2019/01/26/5c4c718555398.png)
+![](https://img.riba2534.cn/images/2026/04/da51fa3f_5c4c718555398.png)
 
 从图上可以看出，首先截取了长度为 5 的数据输出，然后再输出剩下的。
 
@@ -299,7 +299,7 @@ gcc readv.c -o rv
 
 其意义在于减少数据包个数。假设为了提高效率在服务器端明确禁用了 Nagle 算法。其实 writev 函数在不采用 Nagle 算法时更有价值，如图：
 
-![](https://i.loli.net/2019/01/26/5c4c731323e19.png)
+![](https://img.riba2534.cn/images/2026/04/22eabe73_5c4c731323e19.png)
 
 ### 13.3 基于 Windows 的实现
 

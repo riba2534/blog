@@ -2,7 +2,7 @@
 title: "OpenViking：字节跳动开源了一个 AI Agent 上下文数据库"
 date: 2026-02-18T08:49:23+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69950eb568245.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/95c58049_69950eb568245.jpg"
 description: "OpenViking 是字节跳动火山引擎 Viking 团队开源的 Agent 原生上下文数据库，用文件系统范式统一管理 AI Agent 的记忆、资源和技能，解决传统 RAG 的碎片化和不可观测问题。"
 tags:
 - AI Agent
@@ -91,7 +91,7 @@ viking://
 
 **这就像人类查资料的方式**——你不会把图书馆所有书都读一遍，而是先看书名（L0），再看目录和摘要（L1），最后才翻开具体章节（L2）。
 
-![L0/L1/L2 三层内容体系](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69950eb877973.jpg)
+![L0/L1/L2 三层内容体系](https://img.riba2534.cn/images/2026/04/1634c2ee_69950eb877973.jpg)
 
 在代码层面，L0 和 L1 存储为每个资源目录下的 `.abstract.md` 和 `.overview.md` 隐藏文件，读取对应的 API 端点是：
 
@@ -207,11 +207,11 @@ Root (score=0.0) → Dir-A 的 final_score = 0.7（父为 0，直接用自身分
 
 这种检索策略配合 L0/L1/L2 三层体系，就像一个有经验的研究员在图书馆里查资料——不是漫无目的地翻，而是有方向、有层次地逐步缩小范围。
 
-![目录递归检索](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69950ebac868b.jpg)
+![目录递归检索](https://img.riba2534.cn/images/2026/04/6fe13d48_69950ebac868b.jpg)
 
 ## 记忆系统
 
-![记忆系统](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69950ebd1477f.jpg)
+![记忆系统](https://img.riba2534.cn/images/2026/04/7e294306_69950ebd1477f.jpg)
 
 OpenViking 的记忆管理也值得一看。它把 Agent 的记忆分为六类，每类都有明确的存储位置和处理策略：
 

@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 10 章 多进程服务器端 笔记
 date: 2019-01-21T15:59:25+08:00
 lastmod: 2019-01-21T15:59:25+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -47,7 +47,7 @@ ps au
 
 通过上面的命令可查看当前运行的所有进程。需要注意的是，该命令同时列出了 PID（进程ID）。参数 a 和 u列出了所有进程的详细信息。
 
-![](https://i.loli.net/2019/01/20/5c43d7c1f2a8b.png)
+![](https://img.riba2534.cn/images/2026/04/2933bf3f_5c43d7c1f2a8b.png)
 
 #### 10.1.4 通过调用 fork 函数创建进程
 
@@ -66,7 +66,7 @@ fork 函数将创建调用的进程副本。也就是说，并非根据完全不
 
 此处，「父进程」（Parent Process）指原进程，即调用 fork 函数的主体，而「子进程」（Child Process）是通过父进程调用 fork 函数复制出的进程。接下来是调用 fork 函数后的程序运行流程。如图所示：
 
-![](https://i.loli.net/2019/01/20/5c43da5412b90.png)
+![](https://img.riba2534.cn/images/2026/04/9595d28a_5c43da5412b90.png)
 
 从图中可以看出，父进程调用 fork 函数的同时复制出子进程，并分别得到 fork 函数的返回值。但复制前，父进程将全局变量 gval 增加到 11,将局部变量 lval 的值增加到 25，因此在这种状态下完成进程复制。复制完成后根据 fork 函数的返回类型区分父子进程。父进程的 lval 的值增加 1 ，但这不会影响子进程的 lval 值。同样子进程将 gval 的值增加 1 也不会影响到父进程的 gval 。因为 fork 函数调用后分成了完全不同的进程，只是二者共享同一段代码而已。接下来给出一个例子：
 
@@ -103,7 +103,7 @@ gcc fork.c -o fork
 
 运行结果：
 
-![](https://i.loli.net/2019/01/20/5c43e054e7f6f.png)
+![](https://img.riba2534.cn/images/2026/04/85efdcde_5c43e054e7f6f.png)
 
 可以看出，当执行了 fork 函数之后，此后就相当于有了两个程序在执行代码，对于父进程来说，fork 函数返回的是子进程的ID，对于子进程来说，fork 函数返回 0。所以这两个变量，父进程进行了 +2 操作 ，而子进程进行了 -2 操作，所以结果是这样。
 
@@ -178,11 +178,11 @@ gcc zombie.c -o zombie
 
 结果：
 
-![](https://i.loli.net/2019/01/20/5c443890f1781.png)
+![](https://img.riba2534.cn/images/2026/04/129dc0a2_5c443890f1781.png)
 
 因为暂停了 30 秒，所以在这个时间内可以验证一下子进程是否为僵尸进程。
 
-![](https://i.loli.net/2019/01/20/5c4439a751b11.png)
+![](https://img.riba2534.cn/images/2026/04/46626cf7_5c4439a751b11.png)
 
 通过 `ps au` 命令可以看出，子进程仍然存在，并没有被销毁，僵尸进程在这里显示为 `Z+`.30秒后，红框里面的两个进程会同时被销毁。
 
@@ -268,7 +268,7 @@ gcc wait.c -o wait
 
 结果：
 
-![](https://i.loli.net/2019/01/20/5c4441951df43.png)
+![](https://img.riba2534.cn/images/2026/04/86d9ac40_5c4441951df43.png)
 
 此时，系统中并没有上述 PID 对应的进程，这是因为调用了 wait 函数，完全销毁了该子进程。另外两个子进程返回时返回的 3 和 7 传递到了父进程。
 
@@ -330,7 +330,7 @@ gcc waitpid.c -o waitpid
 
 结果:
 
-![](https://i.loli.net/2019/01/20/5c444785a16ae.png)
+![](https://img.riba2534.cn/images/2026/04/1bedc160_5c444785a16ae.png)
 
 可以看出来，在 while 循环中正好执行了 5 次。这也证明了 waitpid 函数并没有阻塞
 
@@ -447,11 +447,11 @@ gcc signal.c -o signal
 
 结果：
 
-![](https://i.loli.net/2019/01/20/5c446c877acb7.png)
+![](https://img.riba2534.cn/images/2026/04/b2a0a0d2_5c446c877acb7.png)
 
 上述结果是没有任何输入的运行结果。当输入 ctrl+c 时:
 
-![](https://i.loli.net/2019/01/20/5c446ce0b1143.png)
+![](https://img.riba2534.cn/images/2026/04/1b175552_5c446ce0b1143.png)
 
 就可以看到 `CTRL+C pressed` 的字符串。
 
@@ -652,7 +652,7 @@ wait
 
 之前的回声服务器每次只能同事向 1 个客户端提供服务。因此，需要扩展回声服务器，使其可以同时向多个客户端提供服务。下图是基于多进程的回声服务器的模型。
 
-![](https://i.loli.net/2019/01/21/5c453664cde26.png)
+![](https://img.riba2534.cn/images/2026/04/dc37e9be_5c453664cde26.png)
 
 从图中可以看出，每当有客户端请求时（连接请求），回声服务器都创建子进程以提供服务。如果请求的客户端有 5 个，则将创建 5 个子进程来提供服务，为了完成这些任务，需要经过如下过程：
 
@@ -683,11 +683,11 @@ gcc echo_mpserv.c -o eserver
 
 调用 fork 函数时赋值父进程的所有资源，但是套接字不是归进程所有的，而是归操作系统所有，只是进程拥有代表相应套接字的文件描述符。
 
-![](https://s2.ax1x.com/2019/01/21/kP7Rjx.png)
+![](https://img.riba2534.cn/images/2026/04/1cc5f8f5_kP7Rjx.png)
 
 如图所示，1 个套接字存在 2 个文件描述符时，只有 2 个文件描述符都终止（销毁）后，才能销毁套接字。如果维持图中的状态，即使子进程销毁了与客户端连接的套接字文件描述符，也无法销毁套接字（服务器套接字同样如此）。因此调用 fork 函数候，要将无关紧要的套接字文件描述符关掉，如图所示：
 
-![](https://s2.ax1x.com/2019/01/21/kPH7ZT.png)
+![](https://img.riba2534.cn/images/2026/04/4b251140_kPH7ZT.png)
 
 ### 10.5 分割 TCP 的 I/O 程序
 
@@ -699,13 +699,13 @@ gcc echo_mpserv.c -o eserver
 
 传输数据后要等待服务器端返回的数据，因为程序代码中重复调用了 read 和 write 函数。只能这么写的原因之一是，程序在 1 个进程中运行，现在可以创建多个进程，因此可以分割数据收发过程。默认分割过程如下图所示：
 
-![](https://s2.ax1x.com/2019/01/21/kPbhkD.png)
+![](https://img.riba2534.cn/images/2026/04/689dac1d_kPbhkD.png)
 
 从图中可以看出，客户端的父进程负责接收数据，额外创建的子进程负责发送数据，分割后，不同进程分别负责输入输出，这样，无论客户端是否从服务器端接收完数据都可以进程传输。
 
 分割 I/O 程序的另外一个好处是，可以提高频繁交换数据的程序性能，图下图所示：
 
-![](https://s2.ax1x.com/2019/01/21/kPbvtg.png)
+![](https://img.riba2534.cn/images/2026/04/1ace0860_kPbvtg.png)
 
 
 
@@ -728,7 +728,7 @@ gcc echo_mpclient.c -o eclient
 
 结果：
 
-![](https://s2.ax1x.com/2019/01/21/kPOcXn.png)
+![](https://img.riba2534.cn/images/2026/04/e02c9ffd_kPOcXn.png)
 
 可以看出，基本和以前的一样，但是里面的内部结构却发生了很大的变化
 
@@ -760,7 +760,7 @@ gcc echo_mpclient.c -o eclient
 
    运行截图：
 
-   ![](https://s2.ax1x.com/2019/01/21/kPj3Md.png)
+   ![](https://img.riba2534.cn/images/2026/04/3013c5f5_kPj3Md.png)
 
    从图上可以看出，数值相同。
 

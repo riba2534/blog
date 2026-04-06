@@ -2,7 +2,7 @@
 title: "长时间运行 Agent 的有效框架设计（Effective Harnesses for Long-Running Agents）"
 date: 2026-02-22T16:27:44+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/22/699abec85402e.gif"
+featured_image: "https://img.riba2534.cn/images/2026/04/844ff9e7_699abec85402e.gif"
 description: "Anthropic 工程团队分享如何让 AI Agent 跨多个上下文窗口保持持续进展的实践方案：初始化 Agent + 编码 Agent 的双 Agent 架构。"
 tags:
 - 转载
@@ -136,7 +136,7 @@ In the case of building a web app, Claude mostly did well at verifying features 
 
 在构建 Web 应用的场景中，**一旦被明确提示使用浏览器自动化工具并像真实用户一样进行全部测试**，Claude 在端到端功能验证方面的表现大多不错。
 
-![Claude 在测试 claude.ai 克隆项目时，通过 Puppeteer MCP 服务器截取的屏幕截图](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/22/699abec85402e.gif)
+![Claude 在测试 claude.ai 克隆项目时，通过 Puppeteer MCP 服务器截取的屏幕截图](https://img.riba2534.cn/images/2026/04/844ff9e7_699abec85402e.gif)
 
 *[Screenshots taken by Claude through the Puppeteer MCP server as it tested the claude.ai clone.]*
 

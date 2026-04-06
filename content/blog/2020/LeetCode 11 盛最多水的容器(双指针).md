@@ -3,7 +3,7 @@ title: LeetCode 11 盛最多水的容器(双指针)
 date: 2020-04-18T11:44:52+08:00
 lastmod: 2020-04-18T11:44:52+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221015.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/136433b8_20210508221015.png"
 tags:
 - LeetCode
 categories: OnlineJudge刷题
@@ -20,7 +20,7 @@ series:
 
  
 
-![img](https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/07/25/question_11.jpg)
+![img](https://img.riba2534.cn/images/2026/04/7bc4bdbd_question_11.jpg)
 
 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
 

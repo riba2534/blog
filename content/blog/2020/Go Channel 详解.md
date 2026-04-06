@@ -3,7 +3,7 @@ title: Go Channel 详解
 date: 2020-09-01T11:13:34+08:00
 lastmod: 2020-09-01T11:13:34+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221223.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/56a18572_20210508221223.png"
 tags:
 - channel
 - Go

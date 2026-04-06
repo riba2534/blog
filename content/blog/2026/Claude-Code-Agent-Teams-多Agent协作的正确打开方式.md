@@ -2,7 +2,7 @@
 title: "Claude Code Agent Teams：多 Agent 协作的正确打开方式"
 date: 2026-02-06T03:16:57+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/06/6984fa78c061e.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/465d40ba_6984fa78c061e.png"
 description: "Claude Code 推出 Agent Teams 功能，多个 Agent 实例并行协作，像带团队一样指挥 AI 干活"
 tags:
 - AI

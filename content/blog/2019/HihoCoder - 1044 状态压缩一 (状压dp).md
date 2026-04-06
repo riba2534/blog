@@ -3,7 +3,7 @@ title: HihoCoder - 1044 状态压缩一 (状压dp)
 date: 2019-01-29T16:07:37+08:00
 lastmod: 2019-01-29T16:07:37+08:00
 draft: false
-featured_image: https://i.loli.net/2019/01/29/5c5009a934f2d.png
+featured_image: https://img.riba2534.cn/images/2026/04/2a025cbc_5c5009a934f2d.png
 tags:
 - 状压dp
 categories: OnlineJudge刷题

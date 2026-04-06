@@ -2,7 +2,7 @@
 title: "如何获得一个ETH钱包地址靓号"
 date: 2023-05-09T00:55:58+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/05/09/645929c2c205d.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/3280b5b9_645929c2c205d.png"
 description: ""
 tags:
 - ETH
@@ -67,7 +67,7 @@ chmod +x rare_eth
 
 👇 下图为程序运行后输出的结果：
 
-![1683563988360.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/05/09/645925d4ed800.png)
+![1683563988360.png](https://img.riba2534.cn/images/2026/04/929817b2_645925d4ed800.png)
 
 我们得到了一个 888 开头 888 结尾的靓号 💯
 

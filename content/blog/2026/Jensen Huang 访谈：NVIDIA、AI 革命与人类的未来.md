@@ -2,7 +2,7 @@
 title: "Jensen Huang 访谈：NVIDIA、AI 革命与人类的未来"
 date: 2026-03-24T04:11:33+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/24/69c19f071e16c.webp"
+featured_image: "https://img.riba2534.cn/images/2026/04/901d4971_69c19f071e16c.webp"
 description: "Lex Fridman Podcast #494 访谈整理：Jensen Huang 谈 NVIDIA 的极限协同设计、四大 AI Scaling Law、CUDA 的存亡之赌、供应链管理、中国科技生态、以及 AI 时代下人类的角色。"
 tags:
 - AI

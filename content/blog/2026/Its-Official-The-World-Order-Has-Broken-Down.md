@@ -2,7 +2,7 @@
 title: "It's Official: The World Order Has Broken Down"
 date: 2026-02-16T03:00:00+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/6992213ba224b.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/5c15433c_6992213ba224b.png"
 description: "桥水基金创始人 Ray Dalio 深度长文：世界秩序已正式瓦解，我们正处于大周期的第六阶段——大国博弈与混乱时期。转载自 X @RayDalio"
 tags:
 - 转载
@@ -95,7 +95,7 @@ The following chart shows the cycles of internal and external peace and conflict
 
 下图展示了自1500年以来欧洲内部与外部和平与冲突的周期，以其造成的死亡人数来衡量。如你所见，共有三个冲突上升与下降的大周期，每个周期平均约150年。尽管大规模的内战和对外战争只持续很短的时间，但它们通常是长期酝酿的冲突最终达到顶点的结果。
 
-![欧洲冲突死亡周期图（1400-2000）](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/6992192453a15.png)
+![欧洲冲突死亡周期图（1400-2000）](https://img.riba2534.cn/images/2026/04/a83410be_6992192453a15.png)
 
 While World Wars I and II were separately driven by the classic cycle, they were also interrelated.
 
@@ -209,7 +209,7 @@ As for the economic effects of these policies, when Hitler came to power in 1933
 
 至于这些政策的经济效果，1933年希特勒上台时失业率为**25%**，到1938年降为**零**。希特勒执政后的五年内，人均收入增长了**22%**，1934年至1938年间实际经济增长率年均超过**8%**。如以下图表所示，1933年至1938年间，德国股市稳步上涨了近**70%**，直到热战爆发。
 
-![德国股市回报与人均收入变化（1933-1938）](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/6992192c06534.png)
+![德国股市回报与人均收入变化（1933-1938）](https://img.riba2534.cn/images/2026/04/07a95b4e_6992192c06534.png)
 
 In 1935, Hitler began to build the military, making military service compulsory for Aryans. Germany's military spending increased much faster than any other country because the German economy needed more resources to fuel itself and it intended to use its military power to seize them.
 
@@ -359,13 +359,13 @@ When the US entered the European and Pacific wars after the attack on Pearl Harb
 
 珍珠港遇袭后，美国加入了欧洲和太平洋战争，大多数国家都实施了经典的战时经济政策，其领导人更加专制的治理方式得到了本国民众的广泛支持。下表展示了各主要国家的经济管控措施。
 
-![战时经济管控措施对比表](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/69921931da02d.png)
+![战时经济管控措施对比表](https://img.riba2534.cn/images/2026/04/2a2cb0be_69921931da02d.png)
 
 The market movements during the hot war years were heavily affected by both government controls and how countries did in battles as the odds of winning and losing changed. The next table shows the controls over markets and capital flows that were put in place by the major countries during the war years.
 
 热战年间的市场走势深受两方面因素的影响：一是政府管控，二是各国在战役中的表现——随着胜负概率的变化而波动。下表展示了主要国家在战争年代对市场和资本流动实施的管控措施。
 
-![影响资产的监管措施对比表](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/6992193783a99.png)
+![影响资产的监管措施对比表](https://img.riba2534.cn/images/2026/04/35d71002_6992193783a99.png)
 
 Stock market closures were common in a number of countries, leaving investors in stocks stuck without access to their capital. I should also note that money and credit were not commonly accepted between non-allied countries during the war because of a justifiable wariness about whether the currency would have any value. As noted earlier, **gold**—or, in some cases, silver or barter—**is the coin of the realm during wars**. At such times, prices and capital flows are typically controlled, so it is difficult to say what the real prices of many things are.
 
@@ -375,7 +375,7 @@ Because **losing wars typically leads to a total wipeout of wealth and power**, 
 
 由于**战败通常会导致财富和权力的彻底覆灭**，战争年代仍在运行的股票市场的走势主要取决于各国在关键战役中的表现，因为这些结果改变了各方胜败的概率。例如，二战初期德国攻占领土并建立军事优势时，德国股票表现优异；而当美国和英国等同盟国扭转战局后，德国股票表现则急剧下滑。1942年中途岛海战（Battle of Midway）之后，同盟国股市几乎持续上涨直至战争结束，而轴心国股市则持平或下跌。如图所示，德国和日本的股票市场在战争结束时均被关闭，约五年后才重新开放，重新开放时几乎被彻底清零；与此同时，美国股市则极为强劲。
 
-![各国股市回报指数对比（1939-1951）](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/16/6992193c76f58.png)
+![各国股市回报指数对比（1939-1951）](https://img.riba2534.cn/images/2026/04/ccb33180_6992193c76f58.png)
 
 Protecting one's wealth in times of war is difficult, as normal economic activities are curtailed, traditionally safe investments are not safe, capital mobility is limited, and high taxes are imposed when people and countries are fighting for their survival. Protecting the wealth of those who have it is not a priority relative to the need to redistribute wealth to get it to where it is needed most. As for investing, **sell out of all debt and buy gold** because wars are financed by borrowing and printing money, which devalues debt and money, and because there is a justifiable reluctance to accept credit.
 

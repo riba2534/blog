@@ -3,7 +3,7 @@ title: C++中main函数的参数
 date: 2018-12-23T16:52:00+08:00
 lastmod: 2018-12-25T22:45:21+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d57c978c.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/225b9bf0_63ee7d57c978c.jpg
 tags:
 - C++
 categories: C++
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 
 编译:`g++ main.cpp -o main`,运行`./main`，然后做一个测试，如图:
 
-![](https://i.loli.net/2018/12/23/5c1f486962d9e.png)
+![](https://img.riba2534.cn/images/2026/04/3e84c952_5c1f486962d9e.png)
 
 从图中一共进行了三次测试:
 
@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 
 然后进行测试：
 
-![](https://i.loli.net/2018/12/23/5c1f4b105cf9f.png)
+![](https://img.riba2534.cn/images/2026/04/1f60bb80_5c1f4b105cf9f.png)
 
 
 

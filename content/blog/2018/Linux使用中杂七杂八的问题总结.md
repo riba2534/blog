@@ -3,7 +3,7 @@ title: Linux使用中杂七杂八的问题总结
 date: 2018-12-16T13:07:00+08:00
 lastmod: 2020-03-31T16:25:50+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d605b35a.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/2c7f9fd0_63ee7d605b35a.jpg
 tags:
 - Linux
 categories: Linux
@@ -443,7 +443,7 @@ set noswapfile              "不创建交换文件
 
 解决办法就是：
 
-![](https://user-images.githubusercontent.com/2193314/57120128-f698c200-6d23-11e9-9220-551e7cf16d0e.png)
+![](https://img.riba2534.cn/images/2026/04/753112d6_57120128-f698c200-6d23-11e9-9220-551e7cf16d0e.png)
 加入配置：
 
 ```json
@@ -578,7 +578,7 @@ https证书设置：https://www.jianshu.com/p/baea81d30380
 
 首先查看：`netstat -an | grep 3306`
 
-![image-20210729001125308](https://image-1252109614.cos.ap-beijing.myqcloud.com/img/image-20210729001125308.png)
+![image-20210729001125308](https://img.riba2534.cn/images/2026/04/8546342b_image-20210729001125308.png)
 
 如果显示的是 `127.0.0.1` 就证明只监听了本机的端口，我们需要修改一下：`vim /etc/mysql/my.cnf`
 
@@ -590,7 +590,7 @@ bind-address          = 127.0.0.1
 
 这一行，注释掉，重启 mysql，`/etc/init.d/mysql restart`
 
-![image-20210729001358731](https://image-1252109614.cos.ap-beijing.myqcloud.com/img/image-20210729001358731.png)
+![image-20210729001358731](https://img.riba2534.cn/images/2026/04/cc397dd2_image-20210729001358731.png)
 
 然后需要创建用户并开放远程登录：
 

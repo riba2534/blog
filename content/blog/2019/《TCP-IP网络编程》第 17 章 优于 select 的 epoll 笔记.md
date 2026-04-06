@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 17 章 优于 select 的 epoll 笔记
 date: 2019-02-01T19:06:05+08:00
 lastmod: 2019-02-01T19:06:05+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -214,7 +214,7 @@ gcc echo_epollserv.c -o serv
 
 运行结果：
 
-![](https://i.loli.net/2019/02/01/5c53f5b6d4acf.png)
+![](https://img.riba2534.cn/images/2026/04/15a7b544_5c53f5b6d4acf.png)
 
 可以看出运行结果和以前 select 实现的和 fork 实现的结果一样，都可以支持多客户端同时运行。
 
@@ -265,7 +265,7 @@ gcc echo_EPLTserv.c -o serv
 
 运行结果：
 
-![](https://i.loli.net/2019/02/01/5c540825ae415.png)
+![](https://img.riba2534.cn/images/2026/04/33f94338_5c540825ae415.png)
 
 从结果可以看出，每当收到客户端数据时，都回注册该事件，并因此调用 epoll_wait 函数。
 
@@ -288,7 +288,7 @@ gcc echo_EDGEserv.c -o serv
 
 结果：
 
-![](https://i.loli.net/2019/02/01/5c54097b6469f.png)
+![](https://img.riba2534.cn/images/2026/04/97aebd61_5c54097b6469f.png)
 
 从上面的例子看出，接收到客户端的消息时，只输出一次「return epoll_wait」字符串，这证明仅注册了一次事件。
 
@@ -353,7 +353,7 @@ gcc echo_EPETserv.c -o serv
 
 结果：
 
-![](https://i.loli.net/2019/02/01/5c542149c0cee.png)
+![](https://img.riba2534.cn/images/2026/04/b7a8fcc8_5c542149c0cee.png)
 
 #### 17.2.5 条件触发和边缘触发孰优孰劣
 
@@ -363,7 +363,7 @@ gcc echo_EPETserv.c -o serv
 
 下面是边缘触发的图
 
-![](https://i.loli.net/2019/02/01/5c5421e3b3f2b.png)
+![](https://img.riba2534.cn/images/2026/04/536b4bd6_5c5421e3b3f2b.png)
 
 运行流程如下：
 

@@ -3,7 +3,7 @@ title: Good Bye 2018 C. New Year and the Sphere Transmission(数学)
 date: 2018-12-31T16:41:02+08:00
 lastmod: 2018-12-31T16:41:02+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d56e59a4.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/8aed313c_63ee7d56e59a4.jpg
 tags:
 - CodeForces
 - 数论
@@ -56,7 +56,7 @@ comment: true
 
 > In the first sample, we've already shown that picking $k = 4$ yields fun value $9$, as does $k = 2$. Picking $k = 6$ results in fun value of $1$. For $k = 3$ we get fun value $5$ and with $k = 1$ or $k = 5$ we get $21$.
 >
-> ![](https://codeforces.com/predownloaded/cf/a9/cfa92b3228335c77776143e8991a2c9a96a0cbe9.png)
+> ![](https://img.riba2534.cn/images/2026/04/fe5d735d_cfa92b3228335c77776143e8991a2c9a96a0cbe9.png)
 >
 > In the second sample, the values $1$, $10$, $28$, $64$ and $136$ are achieved for instance for $k = 16$, $8$, $4$, $10$ and $11$, respectively.
 

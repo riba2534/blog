@@ -3,7 +3,7 @@ title: Golang的反射reflect深入理解和示例
 date: 2019-08-29T22:16:02+08:00
 lastmod: 2019-08-29T22:16:02+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221223.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/56a18572_20210508221223.png"
 tags:
 - GoLang
 categories: GoLang

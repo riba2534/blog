@@ -3,7 +3,7 @@ title: "BTC 四年周期理论验证与预测研究报告"
 date: 2026-02-02T00:00:00+08:00
 lastmod: 2026-02-02T00:00:00+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa263107a1.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/8c24adfa_697fa263107a1.png"
 description: "基于币安 BTCUSDT 3091 个交易日数据，系统性验证比特币四年周期理论，结合宏观经济、ETF 资金流、链上指标等多维度分析，对 BTC 后市走势进行深度预测"
 tags:
 - BTC
@@ -102,7 +102,7 @@ comment: true
 
 ### 3.1 价格走势全景图
 
-![BTC价格走势全景图](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa263107a1.png)
+![BTC价格走势全景图](https://img.riba2534.cn/images/2026/04/8c24adfa_697fa263107a1.png)
 
 **图表说明**: 本图以对数坐标展示 2017-2026 年 BTCUSDT 完整价格走势，标注了第三次减半（2020-05-11）和第四次减半（2024-04-19）事件，以及各周期的峰值和底部位置。
 
@@ -134,7 +134,7 @@ comment: true
 
 ### 4.1 减半后价格走势对齐对比
 
-![减半后价格走势对比](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa26d4398d.png)
+![减半后价格走势对比](https://img.riba2534.cn/images/2026/04/15bfc970_697fa26d4398d.png)
 
 **图表说明**: 将各减半日设为 Day 0，价格归一化为 1.0，对比各周期减半后的价格走势。
 
@@ -188,7 +188,7 @@ comment: true
 
 ### 5.1 历史回撤全景
 
-![历史回撤分析](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa26e5c63d.png)
+![历史回撤分析](https://img.riba2534.cn/images/2026/04/0ff296f2_697fa26e5c63d.png)
 
 **图表说明**: 上半部分展示价格与历史最高价(ATH)的关系，下半部分展示从ATH的回撤百分比。
 
@@ -217,7 +217,7 @@ comment: true
 
 ### 6.1 月度收益率热力图
 
-![月度收益率热力图](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa26f4018b.png)
+![月度收益率热力图](https://img.riba2534.cn/images/2026/04/26a12c9c_697fa26f4018b.png)
 
 **图表说明**: 展示 2017-2026 年每月收益率，绿色表示正收益，红色表示负收益。紫色标注的年份为减半年。
 
@@ -248,7 +248,7 @@ comment: true
 
 ### 7.1 成交量趋势
 
-![成交量分析](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27023a14.png)
+![成交量分析](https://img.riba2534.cn/images/2026/04/5ec2b4d1_697fa27023a14.png)
 
 **图表说明**: 上图为价格走势，下图为日成交量（USDT计价，单位十亿），蓝线为30日均成交量。
 
@@ -274,7 +274,7 @@ comment: true
 
 ### 8.1 波动率趋势
 
-![波动率周期分析](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa2712c11b.png)
+![波动率周期分析](https://img.riba2534.cn/images/2026/04/2ed5afec_697fa2712c11b.png)
 
 **图表说明**: 上图展示30日、90日、365日年化波动率趋势；下图为年度收益率箱线图，紫色为减半年。
 
@@ -304,7 +304,7 @@ comment: true
 
 ### 9.1 日内时段分析
 
-![8小时K线分析](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa2738ea25.png)
+![8小时K线分析](https://img.riba2534.cn/images/2026/04/2efd2820_697fa2738ea25.png)
 
 **图表说明**: 基于 9,269 条8小时K线数据，分析三个交易时段（00:00 UTC、08:00 UTC、16:00 UTC）的收益率、波动率和成交量特征。
 
@@ -326,7 +326,7 @@ comment: true
 
 ### 10.1 周度收益与趋势
 
-![周K线分析](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa274b21d6.png)
+![周K线分析](https://img.riba2534.cn/images/2026/04/578b841d_697fa274b21d6.png)
 
 **图表说明**: 上图为周收益率与12周移动平均线；下图为连续涨/跌周数统计。
 
@@ -343,7 +343,7 @@ comment: true
 
 ### 11.1 均线周期分析
 
-![均线系统](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa275d3851.png)
+![均线系统](https://img.riba2534.cn/images/2026/04/913fd5fe_697fa275d3851.png)
 
 **图表说明**: 展示 MA50、MA100、MA200、MA365、MA730（2年）等关键均线与价格的关系。
 
@@ -358,7 +358,7 @@ comment: true
 
 ### 11.3 Mayer Multiple 估值分析
 
-![Mayer Multiple](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27b13d52.png)
+![Mayer Multiple](https://img.riba2534.cn/images/2026/04/5a9e38d9_697fa27b13d52.png)
 
 **Mayer Multiple** = 当前价格 / 200日移动平均价，是 Trace Mayer 提出的经典 BTC 估值工具。
 
@@ -386,7 +386,7 @@ comment: true
 
 ### 12.1 Power Law 模型
 
-![Power Law 对数回归](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27bf1dbc.png)
+![Power Law 对数回归](https://img.riba2534.cn/images/2026/04/88962164_697fa27bf1dbc.png)
 
 **Power Law 模型**是近年来华尔街最关注的 BTC 长期估值框架。模型假设 BTC 价格与自创世区块以来的天数之间存在幂律关系：
 
@@ -426,7 +426,7 @@ Price = 10^(-12.46) × Days^4.59
 
 ### 13.1 专业风险仪表盘
 
-![风险指标仪表盘](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27d40cfc.png)
+![风险指标仪表盘](https://img.riba2534.cn/images/2026/04/e0599de6_697fa27d40cfc.png)
 
 **图表说明**: 上图为 90 日滚动 Sharpe Ratio；中图为 90 日滚动最大回撤；下图为距上一次 ATH 的天数（水下时间）。
 
@@ -457,7 +457,7 @@ Price = 10^(-12.46) × Days^4.59
 
 ### 14.1 年度综合表现
 
-![年度表现](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa277ccad2.png)
+![年度表现](https://img.riba2534.cn/images/2026/04/5d7d417f_697fa277ccad2.png)
 
 ### 14.2 年度数据汇总
 
@@ -493,7 +493,7 @@ Price = 10^(-12.46) × Days^4.59
 
 ### 15.1 四阶段模型验证
 
-![周期阶段分析](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa279d357a.png)
+![周期阶段分析](https://img.riba2534.cn/images/2026/04/fd989753_697fa279d357a.png)
 
 **图表说明**: 用不同颜色标注各周期阶段：绿色=上涨，橙色=盘整/分配，红色=下跌，蓝色=底部积累，紫色=减半事件。
 
@@ -526,7 +526,7 @@ Price = 10^(-12.46) × Days^4.59
 
 ### 16.1 基于四年周期的预测
 
-![价格预测模型](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa276d63dd.png)
+![价格预测模型](https://img.riba2534.cn/images/2026/04/e1f90fbe_697fa276d63dd.png)
 
 **图表说明**: 基于历史周期模式，构建三种预测情景。阴影区域为预测区间。
 
@@ -602,7 +602,7 @@ Price = 10^(-12.46) × Days^4.59
 
 ### 17.2 周期3→周期4 精确映射: 如果历史重演
 
-![周期映射预测](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27e751cf.png)
+![周期映射预测](https://img.riba2534.cn/images/2026/04/edf33ab8_697fa27e751cf.png)
 
 **方法**: 将周期3（2021-11峰值后）的走势等比例缩放到周期4（2025-10峰值后），生成两条预测路径:
 
@@ -663,7 +663,7 @@ Price = 10^(-12.46) × Days^4.59
 
 ### 17.5 三种情景完整时间线
 
-![情景时间线](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27f99eea.png)
+![情景时间线](https://img.riba2534.cn/images/2026/04/2e2bda40_697fa27f99eea.png)
 
 基于以上所有数据论证，构建三种情景:
 
@@ -1404,24 +1404,24 @@ $100K ┃                                           ╱╱╱
 
 ### B. 图表索引
 
-- **编号**: 01 | **图表名称**: 价格走势全景图 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa263107a1.png`
-- **编号**: 02 | **图表名称**: 减半后周期对比 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa26d4398d.png`
-- **编号**: 03 | **图表名称**: 历史回撤分析 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa26e5c63d.png`
-- **编号**: 04 | **图表名称**: 月度收益率热力图 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa26f4018b.png`
-- **编号**: 05 | **图表名称**: 成交量分析 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27023a14.png`
-- **编号**: 06 | **图表名称**: 波动率周期分析 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa2712c11b.png`
-- **编号**: 07 | **图表名称**: 8小时K线分析 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa2738ea25.png`
-- **编号**: 08 | **图表名称**: 周K线趋势分析 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa274b21d6.png`
-- **编号**: 09 | **图表名称**: 关键均线系统 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa275d3851.png`
-- **编号**: 10 | **图表名称**: 价格预测模型 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa276d63dd.png`
-- **编号**: 11 | **图表名称**: 年度表现统计 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa277ccad2.png`
-- **编号**: 12 | **图表名称**: 周期阶段划分 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa279d357a.png`
-- **编号**: 13 | **图表名称**: Mayer Multiple 估值 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27b13d52.png`
-- **编号**: 14 | **图表名称**: Power Law 对数回归 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27bf1dbc.png`
-- **编号**: 15 | **图表名称**: 风险指标仪表盘 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27d40cfc.png`
-- **编号**: 16 | **图表名称**: 周期映射预测 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27e751cf.png`
-- **编号**: 17 | **图表名称**: 概率锥预测 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa2c61aa82.png`
-- **编号**: 18 | **图表名称**: 三种情景时间线 | **文件路径**: `https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa27f99eea.png`
+- **编号**: 01 | **图表名称**: 价格走势全景图 | **文件路径**: `https://img.riba2534.cn/images/2026/04/8c24adfa_697fa263107a1.png`
+- **编号**: 02 | **图表名称**: 减半后周期对比 | **文件路径**: `https://img.riba2534.cn/images/2026/04/15bfc970_697fa26d4398d.png`
+- **编号**: 03 | **图表名称**: 历史回撤分析 | **文件路径**: `https://img.riba2534.cn/images/2026/04/0ff296f2_697fa26e5c63d.png`
+- **编号**: 04 | **图表名称**: 月度收益率热力图 | **文件路径**: `https://img.riba2534.cn/images/2026/04/26a12c9c_697fa26f4018b.png`
+- **编号**: 05 | **图表名称**: 成交量分析 | **文件路径**: `https://img.riba2534.cn/images/2026/04/5ec2b4d1_697fa27023a14.png`
+- **编号**: 06 | **图表名称**: 波动率周期分析 | **文件路径**: `https://img.riba2534.cn/images/2026/04/2ed5afec_697fa2712c11b.png`
+- **编号**: 07 | **图表名称**: 8小时K线分析 | **文件路径**: `https://img.riba2534.cn/images/2026/04/2efd2820_697fa2738ea25.png`
+- **编号**: 08 | **图表名称**: 周K线趋势分析 | **文件路径**: `https://img.riba2534.cn/images/2026/04/578b841d_697fa274b21d6.png`
+- **编号**: 09 | **图表名称**: 关键均线系统 | **文件路径**: `https://img.riba2534.cn/images/2026/04/913fd5fe_697fa275d3851.png`
+- **编号**: 10 | **图表名称**: 价格预测模型 | **文件路径**: `https://img.riba2534.cn/images/2026/04/e1f90fbe_697fa276d63dd.png`
+- **编号**: 11 | **图表名称**: 年度表现统计 | **文件路径**: `https://img.riba2534.cn/images/2026/04/5d7d417f_697fa277ccad2.png`
+- **编号**: 12 | **图表名称**: 周期阶段划分 | **文件路径**: `https://img.riba2534.cn/images/2026/04/fd989753_697fa279d357a.png`
+- **编号**: 13 | **图表名称**: Mayer Multiple 估值 | **文件路径**: `https://img.riba2534.cn/images/2026/04/5a9e38d9_697fa27b13d52.png`
+- **编号**: 14 | **图表名称**: Power Law 对数回归 | **文件路径**: `https://img.riba2534.cn/images/2026/04/88962164_697fa27bf1dbc.png`
+- **编号**: 15 | **图表名称**: 风险指标仪表盘 | **文件路径**: `https://img.riba2534.cn/images/2026/04/e0599de6_697fa27d40cfc.png`
+- **编号**: 16 | **图表名称**: 周期映射预测 | **文件路径**: `https://img.riba2534.cn/images/2026/04/edf33ab8_697fa27e751cf.png`
+- **编号**: 17 | **图表名称**: 概率锥预测 | **文件路径**: `https://img.riba2534.cn/images/2026/04/4b595301_697fa2c61aa82.png`
+- **编号**: 18 | **图表名称**: 三种情景时间线 | **文件路径**: `https://img.riba2534.cn/images/2026/04/2e2bda40_697fa27f99eea.png`
 
 ### C. 原始数据文件
 

@@ -2,7 +2,7 @@
 title: "年薪150万的工作，我用500美金的AI完成：个人业务Agent升级指南"
 date: 2026-02-22T12:31:50+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/22/699a8b8b97f28.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/f7906107_699a8b8b97f28.jpg"
 description: "一个投资人如何用 Agent 系统将每天 6 小时的工作压缩到 2 小时，业务产出反而提升 300%。从投研、内容生产到咨询服务的全流程 Agent 化改造实录。"
 tags:
 - 转载

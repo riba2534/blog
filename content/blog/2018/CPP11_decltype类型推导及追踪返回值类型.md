@@ -3,7 +3,7 @@ title: C++11:decltype类型推导及追踪返回值类型
 date: 2018-12-24T17:37:00+08:00
 lastmod: 2019-01-02T14:48:39+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d57c978c.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/225b9bf0_63ee7d57c978c.jpg
 tags:
 - C++
 categories: C++
@@ -17,7 +17,7 @@ comment: true
 
 先看一段`cppreference`上面的解释：[decltype 指定符](https://zh.cppreference.com/w/cpp/language/decltype)
 
-![](https://i.loli.net/2018/12/24/5c20a6597638f.png)
+![](https://img.riba2534.cn/images/2026/04/3832c9ca_5c20a6597638f.png)
 
 可以看下面的一段代码：
 

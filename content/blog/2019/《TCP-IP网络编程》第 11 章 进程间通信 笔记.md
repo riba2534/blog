@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 11 章 进程间通信 笔记
 date: 2019-01-22T11:40:18+08:00
 lastmod: 2019-01-22T11:40:18+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -25,7 +25,7 @@ comment: true
 
 下图是基于管道（PIPE）的进程间通信的模型：
 
-![](https://s2.ax1x.com/2019/01/22/kFlk0s.png)
+![](https://img.riba2534.cn/images/2026/04/03e1433d_kFlk0s.png)
 
 可以看出，为了完成进程间通信，需要创建进程。管道并非属于进程的资源，而是和套接字一样，属于操作系统（也就不是 fork 函数的复制对象）。所以，两个进程通过操作系统提供的内存空间进行通信。下面是创建管道的函数。
 
@@ -85,13 +85,13 @@ Who are you?
 
 可以从程序中看出，首先创建了一个管道，子进程通过 fds[1] 把数据写入管道，父进程从 fds[0] 再把数据读出来。可以从下图看出：
 
-![](https://s2.ax1x.com/2019/01/22/kF8A7d.png)
+![](https://img.riba2534.cn/images/2026/04/70c0009b_kF8A7d.png)
 
 #### 11.1.2 通过管道进行进程间双向通信
 
 下图可以看出双向通信模型：
 
-![](https://s2.ax1x.com/2019/01/22/kF84De.png)
+![](https://img.riba2534.cn/images/2026/04/858ecc24_kF84De.png)
 
 下面是双向通信的示例：
 
@@ -149,7 +149,7 @@ Child proc output: Thank you for your message
 
 当一个管道不满足需求时，就需要创建两个管道，各自负责不同的数据流动，过程如下图所示：
 
-![](https://s2.ax1x.com/2019/01/22/kFJW0e.png)
+![](https://img.riba2534.cn/images/2026/04/c2b1d40f_kFJW0e.png)
 
 下面采用上述模型改进 `pipe2.c` 。
 
@@ -209,9 +209,9 @@ gcc echo_storeserv.c -o serv
 
 此服务端配合第 10 章的客户端 [echo_mpclient.c](https://github.com/riba2534/TCP-IP-NetworkNote/blob/master/ch10/echo_mpclient.c) 使用，运行结果如下图:
 
-![](https://s2.ax1x.com/2019/01/22/kFUCct.png)
+![](https://img.riba2534.cn/images/2026/04/e183cea1_kFUCct.png)
 
-![](https://s2.ax1x.com/2019/01/22/kFUAHS.png)
+![](https://img.riba2534.cn/images/2026/04/a9de0c9e_kFUAHS.png)
 
 从图上可以看出，服务端已经生成了文件，把客户端的消息保存可下来，只保存了10次消息。
 

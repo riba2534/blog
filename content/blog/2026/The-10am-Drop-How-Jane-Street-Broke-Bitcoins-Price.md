@@ -2,7 +2,7 @@
 title: "The 10am Drop: How Jane Street Broke Bitcoin's Price"
 date: 2026-02-26T16:36:28+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/26/69a00681d3ba7.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/38b8eb7b_69a00681d3ba7.jpg"
 description: "一桩联邦诉讼、一个每日上午10点的砸盘模式、一本隐形的衍生品账簿——三条线索揭示 Jane Street 如何利用 ETF 特权压制比特币价格"
 tags:
 - 转载
@@ -21,7 +21,7 @@ comment: true
 >
 > 翻译说明：本文为英中双语对照翻译，一段英文对应一段中文。
 
-![The 10am Drop](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/26/69a00681d3ba7.jpg)
+![The 10am Drop](https://img.riba2534.cn/images/2026/04/38b8eb7b_69a00681d3ba7.jpg)
 
 Bitcoin should be at least \$150,000 right now and everyone knows it.
 

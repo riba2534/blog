@@ -2,7 +2,7 @@
 title: "理解 AI Agent 的核心机制：循环"
 date: 2026-01-07T20:30:00+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/07/695e76ab6b472.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/77837999_695e76ab6b472.png"
 description: "理解 Claude Code、Cursor Agent 等编程代理的内在逻辑"
 tags:
 - AI Agent

@@ -3,7 +3,7 @@ title: 使用 VSCode 编辑远程服务器文件
 date: 2019-04-29T17:02:00+08:00
 lastmod: 2019-04-30T10:45:28+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - VSCode
 categories: 工具资源
@@ -25,7 +25,7 @@ comment: true
 
 发现一款插件 Remote VSCode，可以实现这个功能
 
-![](https://i.loli.net/2019/04/29/5cc6bad090c28.png)
+![](https://img.riba2534.cn/images/2026/04/920a75e9_5cc6bad090c28.png)
 
 如图，好评数还是很多的。
 
@@ -42,7 +42,7 @@ comment: true
 
 1. 在本机的 VSCode 中按 `F1` ,然后输入 `Remote: Start server` ,回车后启动服务
 
-   ![](https://i.loli.net/2019/04/29/5cc6bbfeb7b8e.png)
+   ![](https://img.riba2534.cn/images/2026/04/2037ec46_5cc6bbfeb7b8e.png)
 
 2. 按一下 `Ctrl+~`打开自带终端， 在 VSCode 的命令行中输入 `ssh -R 52698:127.0.0.1:52698 用户名@地址 -p ssh端口(一般是22)`
 
@@ -73,7 +73,7 @@ comment: true
 去插件官方地址点击安装：[SFTP](https://marketplace.visualstudio.com/items?itemName=liximomo.sftp)
 
 可以看一下插件的介绍：
-![](https://i.loli.net/2019/04/30/5cc7b4c3dbc66.png)
+![](https://img.riba2534.cn/images/2026/04/c3446204_5cc7b4c3dbc66.png)
 利用 `SFTP` 在本地工作区和服务器工作区完全同步。可以在本地工作区点右键上传/下载（一般是自动保持同步）
 
 ### 使用

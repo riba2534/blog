@@ -3,7 +3,7 @@ title: POJ3249 Test for Job(拓扑排序，dp)
 date: 2019-03-03T20:57:03+08:00
 lastmod: 2019-03-03T20:57:03+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 拓扑排序
 categories: OnlineJudge刷题
@@ -55,7 +55,7 @@ comment: true
 
 ### Hint
 
-![img](http://poj.org/images/3249_1.gif)
+![img](https://img.riba2534.cn/images/2026/04/9ddd58e4_3249_1.gif)
 
 ## 思路
 

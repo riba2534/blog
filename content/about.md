@@ -3,7 +3,7 @@ title: "关于"
 date: 2026-04-02T03:16:43+08:00
 draft: false
 type: about
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/04/02/69cd67d9ac120.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/a656f9d4_69cd67d9ac120.png"
 description: "十倍杠杆做多自己"
 comment : true
 enableVue : true
@@ -11,7 +11,7 @@ enableVue : true
 
 # 🐵Who am I
 
-<img src="https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/19/696d15125c4af.png"  width="30px" height="30px"  alt="头像"/>
+<img src="https://img.riba2534.cn/images/2026/04/27c63d8e_696d15125c4af.png"  width="30px" height="30px"  alt="头像"/>
 I'm riba2534.
 
 ## 简介

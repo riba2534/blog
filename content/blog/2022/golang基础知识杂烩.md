@@ -2,7 +2,7 @@
 title: "Golang基础知识杂烩"
 date: 2022-10-24T01:34:19+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557e98aeda0.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/a3288a93_63557e98aeda0.png"
 description: "For 给部门校招新人训练营准备的一次 Golang 技术分享"
 tags:
 - golang
@@ -153,7 +153,7 @@ func main() {
 
 如下图是 `x := []int{2,3,5,7,11}` 和 `y := x[1:3]` 两个切片对应的内存结构。
 
-![1666546745442.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557c3a283d5.png)
+![1666546745442.png](https://img.riba2534.cn/images/2026/04/255ff16d_63557c3a283d5.png)
 
 需要注意的是，由于 y 是通过下标的方式获得了 x 的一部分，虽然数据只有 [1:3]，但是 cap 是 4，同时，如果对 y 进行 append 操作，**在 cap 没有消耗完之前，改变的数据实际上是对 x 也生效的**，举个例子：
 
@@ -393,7 +393,7 @@ type mapextra struct {
 
 - 最后是一个 bmap 类型的指针，指向一个溢出桶，溢出桶的存在是为了减少扩容次数引入的。当一个桶已经存满了，还有可用的溢出桶时，就是往后面链一个溢出桶，继续往溢出桶里面存。
 
-![1666546889096.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557cc973d2b.png)
+![1666546889096.png](https://img.riba2534.cn/images/2026/04/c9078df7_63557cc973d2b.png)
 
 如果哈希表要分配的桶的数目大于 2^4 ,就认为使用到溢出桶的几率较大，就会预分配 2^(B-4) 个溢出桶备用，这些溢出桶与常规桶在内存中是连续的，只是前 2^B 用作常规桶，后面的用作溢出桶。
 
@@ -405,7 +405,7 @@ hmap 最后一个字段是 mapextra，其中：
 
 - nextOverflow 指向下一个空闲溢出桶
 
-![1666546908290.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557cdca582e.png)
+![1666546908290.png](https://img.riba2534.cn/images/2026/04/efc6dab0_63557cdca582e.png)
 
 ### 3.2.3 读取
 
@@ -425,7 +425,7 @@ hmap 最后一个字段是 mapextra，其中：
 
 如果在 bucket 中没找到，并且overflow不为空，则继续去overflow bucket中寻找，直到找到key或所有的key槽位都找遍了，包括所有的overflow bucket。
 
-![1666546937094.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557cf96ce6d.png)
+![1666546937094.png](https://img.riba2534.cn/images/2026/04/42fe42a2_63557cf96ce6d.png)
 
 **源码分析**:
 
@@ -708,7 +708,7 @@ done: // 此时元素已经插入或更新完毕，收尾工作
 
 **map** **的等量扩容，有个细节:**
 
-![1666546969296.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557d1984c27.png)
+![1666546969296.png](https://img.riba2534.cn/images/2026/04/36f8afba_63557d1984c27.png)
 
 - **在等量扩容的时候，只是把旧桶中排列比较稀疏的****kv****，迁移到了新桶中。扩容完成后由****GC****去释放旧桶的所占用空间，但是我们要注意，无论是翻倍扩容还是等量扩容，这个 B 的值是越来越大的，go 没有任何机制去主动缩小这个 B，则 hmap 的结构体所占用的内存会越来越大，很容易引起****内存泄漏****，所以开发时如果遇到一个****map****需要存很大数量的kv，却只是临时使用，需要开发者手动管理。**
 
@@ -794,11 +794,11 @@ type Context interface {
 
 - Context可以互相嵌套，可以由父 Context 生成很多子 Context，最终形成一棵树
 
-![1666546993745.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557d31f1e14.png)
+![1666546993745.png](https://img.riba2534.cn/images/2026/04/ca01e7ec_63557d31f1e14.png)
 
 Context 中包含了“一个接口、四种具体实现、六个函数”，我们分别看一下 context 每一种具体实现的作用。
 
-![1666547018140.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557d4a5f641.png)
+![1666547018140.png](https://img.riba2534.cn/images/2026/04/6d9eb312_63557d4a5f641.png)
 
 ### 3.3.2 emptyCtx
 
@@ -1261,7 +1261,7 @@ func ExampleWithValue() {
 
 如 logid 在 context 的 key 是 `K_LOGID`
 
-![1666547058491.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557d731186a.png)
+![1666547058491.png](https://img.riba2534.cn/images/2026/04/141f11f3_63557d731186a.png)
 
 客户端发请求给TLB，TLB再请求后端的时候，会添加请求头x-tt-logid 到TTHeader（如果客户端请求带此header，TLB就不加），后端收到TLB的请求，发现请求头带有x-tt-logid，如果后端用的是公司统一的框架写的代码，后端就会在响应头中也加入这个x-tt-logid。这样下来，整条链路的http请求和响应的x-tt-logid始终保持一致，ms平台就可根据logid来查询数据包的走向。
 
@@ -1298,7 +1298,7 @@ type Mutex struct {
 
 互斥锁的状态内存布局为:
 
-![1666547080111.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2022/10/24/63557d8854db6.png)
+![1666547080111.png](https://img.riba2534.cn/images/2026/04/390728fb_63557d8854db6.png)
 
 在默认情况下，互斥锁的所有状态位都是 0，`int32` 中的不同位分别表示了不同的状态：
 

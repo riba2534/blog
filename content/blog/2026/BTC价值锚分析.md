@@ -3,7 +3,7 @@ title: "BTC价值之锚：当恐慌指数跌到 16，我们该如何理性思考
 date: 2026-02-01T23:49:00+08:00
 draft: false
 description: "理性思考 BTC 价值之锚"
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/02/697fa6df11d11.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/274a403d_697fa6df11d11.png"
 tags:
 - BTC
 - 比特币

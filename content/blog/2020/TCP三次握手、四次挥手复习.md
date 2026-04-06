@@ -3,7 +3,7 @@ title: TCP三次握手、四次挥手复习
 date: 2020-04-27T16:18:53+08:00
 lastmod: 2020-04-27T16:18:53+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - TCP/IP
 categories: 计算机网络
@@ -21,7 +21,7 @@ comment: true
 
   - 格式：
 
-    ![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B%E5%A4%8D%E4%B9%A0.assets/2e3dcaa2-080c-495f-89fd-312c65794142-5127810.jpg)
+    ![img](https://img.riba2534.cn/images/2026/04/14855fa7_2e3dcaa2-080c-495f-89fd-312c65794142-5127810.jpg)
 
   - source port/destination port 分别代表源端口和目标端口
 
@@ -54,11 +54,11 @@ comment: true
 
   - 客户端应答，服务端收到应答后双方建立连接
 
-    ![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B%E5%A4%8D%E4%B9%A0.assets/208737a8-4ec6-40ca-bbe7-072c3aa1cc98-5127810.jpg)
+    ![img](https://img.riba2534.cn/images/2026/04/d7840732_208737a8-4ec6-40ca-bbe7-072c3aa1cc98-5127810.jpg)
 
   - 示意图
 
-    ![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B%E5%A4%8D%E4%B9%A0.assets/e08b7c4e-4f50-4e14-9f8e-62ca9eb2f0a9-5127810.jpg)
+    ![img](https://img.riba2534.cn/images/2026/04/f2e0c2ab_e08b7c4e-4f50-4e14-9f8e-62ca9eb2f0a9-5127810.jpg)
 
   - 正如SYN标志的研一，三次握手的过程在建立连接的过程中完成了自身初始 sequence number同步。使用随机生成的 sequence number是为了防止网络中滞后的报文影响建立新的连接。
 
@@ -81,7 +81,7 @@ comment: true
 
   - 四次挥手示意图
 
-    ![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B%E5%A4%8D%E4%B9%A0.assets/87134923-6a3c-440d-8731-f6e2ca063532-5127810.jpg)
+    ![img](https://img.riba2534.cn/images/2026/04/7e39aefd_87134923-6a3c-440d-8731-f6e2ca063532-5127810.jpg)
 
   - 为什么需要四次挥手？
 
@@ -94,4 +94,4 @@ comment: true
 
 - 状态转换图：
 
-  ![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E6%8F%A1%E6%89%8B%E6%8C%A5%E6%89%8B%E5%A4%8D%E4%B9%A0.assets/8c11ecfb-5eb6-4a5d-a7f8-55b90f0f9467-5127810.jpg)
+  ![img](https://img.riba2534.cn/images/2026/04/c35f6f5c_8c11ecfb-5eb6-4a5d-a7f8-55b90f0f9467-5127810.jpg)

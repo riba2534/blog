@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 14 章 多播与广播 笔记
 date: 2019-01-28T13:54:59+08:00
 lastmod: 2019-01-28T13:54:59+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -35,7 +35,7 @@ comment: true
 
 多播是基于 UDP 完成的，也就是说，多播数据包的格式与 UDP 数据包相同。只是与一般的 UDP 数据包不同。向网络传递 1 个多播数据包时，路由器将复制该数据包并传递到多个主机。像这样，多播需要借助路由器完成。如图所示：
 
-![](https://i.loli.net/2019/01/27/5c4d310daa6be.png)
+![](https://img.riba2534.cn/images/2026/04/5cd222ce_5c4d310daa6be.png)
 
 若通过 TCP 或 UDP 向 1000 个主机发送文件，则共需要传递 1000 次。但是此时如果用多播网络传输文件，则只需要发送一次。这时由 1000 台主机构成的网络中的路由器负责复制文件并传递到主机。就因为这种特性，多播主要用于「多媒体数据实时传输」。
 
@@ -45,7 +45,7 @@ comment: true
 
 为了传递多播数据包，必须设置 TTL 。TTL 是 Time to Live的简写，是决定「数据包传递距离」的主要因素。TTL 用整数表示，并且每经过一个路由器就减一。TTL 变为 0 时，该数据包就无法再被传递，只能销毁。因此，TTL 的值设置过大将影响网络流量。当然，设置过小，也无法传递到目标。
 
-![](https://i.loli.net/2019/01/27/5c4d3960001eb.png)
+![](https://img.riba2534.cn/images/2026/04/3b76b26b_5c4d3960001eb.png)
 
 接下来是 TTL 的设置方法。TTL 是可以通过第九章的套接字可选项完成的。与设置 TTL 相关的协议层为 IPPROTO_IP ，选项名为 IP_MULTICAST_TTL。因此，可以用如下代码把 TTL 设置为 64
 
@@ -105,7 +105,7 @@ gcc news_receiver.c -o receiver
 
 结果：
 
-![](https://i.loli.net/2019/01/28/5c4e85a9aabcc.png)
+![](https://img.riba2534.cn/images/2026/04/17d12874_5c4e85a9aabcc.png)
 
 通过结果可以看出，使用 sender 多播信息，通过 receiver 接收广播，如果延迟运行 receiver 将无法接受之前发送的信息。
 
@@ -154,7 +154,7 @@ gcc news_sender_brd.c -o sender
 
 结果：
 
-![](https://i.loli.net/2019/01/28/5c4e9113368dd.png)
+![](https://img.riba2534.cn/images/2026/04/5b0bddaf_5c4e9113368dd.png)
 
 ### 14.3 基于 Windows 的实现
 

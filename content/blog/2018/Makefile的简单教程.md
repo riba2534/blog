@@ -3,7 +3,7 @@ title: Makefile的简单教程
 date: 2018-12-22T17:02:00+08:00
 lastmod: 2018-12-25T12:12:54+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d40e7fd4.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/a7fb3f09_63ee7d40e7fd4.jpg
 tags:
 - C++
 - Makefile
@@ -87,7 +87,7 @@ main: main.cpp
 
 这样，就写好了一个最简单的`makefile`文件，这个时候，我们在终端中输入`make`，然后`make`命令就会自动解析`makefile`这个文件，然后生成一个可执行文件,然后执行，即可
 
-![](https://i.loli.net/2018/12/22/5c1deaa59f72b.png)
+![](https://img.riba2534.cn/images/2026/04/83cf6732_5c1deaa59f72b.png)
 
 那么我们来解析一个这个文件，首先写下你要生成的目标文件是啥，这里是`main`,然后写下依赖于哪个文件，这里依赖`main.cpp`,然后换一行打一个`Tab`键，输入你要执行的命令，这时候写下`make`就是自动执行.
 
@@ -140,7 +140,7 @@ tool.o: tool.cpp
 
 那这些代表什么意思呢，`main`这个可执行文件的来源是`main.cpp`和`tool.o`,但是其中一个已经有了，那么另一个`tool.o`怎么来的呢，我们继续在下面写，`tool.o`怎么来的，他的来源是`tool.cpp`，生成他的命令是`g++ -c tool.cpp`,这时候运行结果如下图:
 
-![](https://i.loli.net/2018/12/22/5c1df2b730a81.png)
+![](https://img.riba2534.cn/images/2026/04/e8f63271_5c1df2b730a81.png)
 
 这样也可以打到目的。
 
@@ -219,7 +219,7 @@ clean:
 
 但是这一次多了一个`clean`，这是什么意思呢，我们再生成可执行文件的过程中出现了很多`.o`文件，我们通过清理命令可以把它清理掉，先执行`make`生成可执行文件，等用完之后，执行`make clean`就会发现，现在已经回复原状，演示如下:
 
-![](https://i.loli.net/2018/12/22/5c1df62138db9.png)
+![](https://img.riba2534.cn/images/2026/04/ea4c8762_5c1df62138db9.png)
 
 假设，我们现在要用其他的编译器编译这个项目，一个一个改编译器会很麻烦，所以我们可以类似于定义变量的方式，改的时候只要改一个地方，就可以完成编译,`makefile`定义变量也很简单，直接写即可，假设我现在要把编译器换成`clang`，可以这么写:
 
@@ -299,7 +299,7 @@ clean:
 
 这样对不对呢?我们来测试一下
 
-![](https://i.loli.net/2018/12/22/5c1dfc0d4afde.png)
+![](https://img.riba2534.cn/images/2026/04/9a5cfceb_5c1dfc0d4afde.png)
 
 从图上可以发现，为啥编译出来的只有`max_main`这一个可执行文件呢，另一个去哪了。
 
@@ -328,7 +328,7 @@ clean:
 
 我们只需要加这一条即可`all:max_main min_main`,我们告诉他，需要生成两个文件,再试试:
 
-![](https://i.loli.net/2018/12/22/5c1dfb7622152.png)
+![](https://img.riba2534.cn/images/2026/04/d35178e6_5c1dfb7622152.png)
 
 这个时候已经成功了，生成了两个可执行文件。
 

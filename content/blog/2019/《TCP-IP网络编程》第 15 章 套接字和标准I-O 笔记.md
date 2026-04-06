@@ -3,7 +3,7 @@ title: 《TCP/IP网络编程》第 15 章 套接字和标准I/O 笔记
 date: 2019-01-29T17:53:25+08:00
 lastmod: 2019-01-29T17:53:25+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - 《TCP/IP网络编程》
 categories: 《TCP/IP网络编程》学习笔记
@@ -28,7 +28,7 @@ comment: true
 
 创建套接字时，操作系统会准备 I/O 缓冲。此缓冲在执行 TCP 协议时发挥着非常重要的作用。此时若使用标准 I/O 函数，将得到额外的缓冲支持。如下图：
 
-![](https://i.loli.net/2019/01/29/5c500e53ad9aa.png)
+![](https://img.riba2534.cn/images/2026/04/3415778b_5c500e53ad9aa.png)
 
 假设使用 fputs 函数进行传输字符串 「Hello」时，首先将数据传递到标准 I/O 缓冲，然后将数据移动到套接字输出缓冲，最后将字符串发送到对方主机。
 
@@ -112,7 +112,7 @@ cat data.dat
 
 运行结果：
 
-![](https://i.loli.net/2019/01/29/5c5018ff07b29.png)
+![](https://img.riba2534.cn/images/2026/04/c7df9bbb_5c5018ff07b29.png)
 
 文件描述符转换为 FILE 指针，并可以通过该指针调用标准 I/O 函数。
 
@@ -173,7 +173,7 @@ gcc echo_stdserv.c -o eserver
 
 结果：
 
-![](https://i.loli.net/2019/01/29/5c502001581bc.png)
+![](https://img.riba2534.cn/images/2026/04/34b3339a_5c502001581bc.png)
 
 可以看出，运行结果和第四章相同，这是利用标准 I/O 实现的。
 

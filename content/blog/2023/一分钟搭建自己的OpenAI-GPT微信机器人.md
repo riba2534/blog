@@ -2,7 +2,7 @@
 title: "一分钟搭建自己的OpenAI GPT微信机器人"
 date: 2023-03-12T23:06:39+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/09/64096b5ba7bf6.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/7e138bc9_64096b5ba7bf6.jpg"
 description: ""
 tags:
 - OpenAI
@@ -37,9 +37,9 @@ comment : true
 
  先看使用效果，之后再介绍如何部署以及配置。下图包含了**连续对话**和**文本画图**的一些例子：
 
-| ![连续对话1.jpg](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/12/640dd478ddca6.jpg) | ![连续对话2.jpg](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/12/640dd47782e95.jpg) | ![文字3.jpeg](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/12/640dd6d26b6b9.jpeg) |
+| ![连续对话1.jpg](https://img.riba2534.cn/images/2026/04/1849ff32_640dd478ddca6.jpg) | ![连续对话2.jpg](https://img.riba2534.cn/images/2026/04/7c0e46df_640dd47782e95.jpg) | ![文字3.jpeg](https://img.riba2534.cn/images/2026/04/cce66bb7_640dd6d26b6b9.jpeg) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![画图2.jpg](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/12/640dd477ea8be.jpg) | ![画图3.jpg](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/12/640dd478bf6dd.jpg) | ![画图1.jpg](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/12/640dd4794bfea.jpg) |
+| ![画图2.jpg](https://img.riba2534.cn/images/2026/04/5dfb64af_640dd477ea8be.jpg) | ![画图3.jpg](https://img.riba2534.cn/images/2026/04/bf976f61_640dd478bf6dd.jpg) | ![画图1.jpg](https://img.riba2534.cn/images/2026/04/32bef911_640dd4794bfea.jpg) |
 
 # 开始部署
 

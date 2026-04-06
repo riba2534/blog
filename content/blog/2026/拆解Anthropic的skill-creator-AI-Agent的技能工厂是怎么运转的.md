@@ -2,7 +2,7 @@
 title: "拆解 Anthropic 的 skill-creator：AI Agent 的技能工厂是怎么运转的"
 date: 2026-02-26T16:19:39+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/26/69a0097ed225b.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/793cbc87_69a0097ed225b.jpg"
 description: "系统拆解 Anthropic skill-creator 的架构设计：工作流闭环、评估系统、描述优化循环、元技能自举"
 tags:
 - AI Agent

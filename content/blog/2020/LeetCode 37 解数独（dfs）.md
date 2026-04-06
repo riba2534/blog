@@ -3,7 +3,7 @@ title: LeetCode 37 解数独（dfs）
 date: 2020-09-15T00:53:33+08:00
 lastmod: 2020-09-15T00:53:33+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221015.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/136433b8_20210508221015.png"
 tags:
 - LeetCode
 - dfs
@@ -25,11 +25,11 @@ series:
 
 空白格用 `'.'` 表示。
 
-![img](https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20200915004540.png)
+![img](https://img.riba2534.cn/images/2026/04/bc651c7c_20200915004540.png)
 
 一个数独。
 
-![img](https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20200915004540.png)
+![img](https://img.riba2534.cn/images/2026/04/bc651c7c_20200915004540.png)
 
 答案被标成红色。
 

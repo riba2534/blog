@@ -2,7 +2,7 @@
 title: "抛弃 MCP, CLI 才是 Agent 的母语"
 date: 2026-03-15T17:28:06+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/15/69b67fd0d9d56.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/d7c9b6be_69b67fd0d9d56.jpg"
 description: "MCP 试图为 Agent 发明一种新语言，但 Agent 已经会说人话了——Unix CLI 就是那门最自然的语言"
 tags:
 - AI

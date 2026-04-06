@@ -2,7 +2,7 @@
 title: "AI Is a 5-Layer Cake"
 date: 2026-03-12T00:49:18+08:00
 draft: true
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d3153a56.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/a3d470d9_69b19d3153a56.jpg
 description: "AI 是当今塑造世界最强大的力量之一。它不是一个聪明的应用程序或单一的模型；它是基础设施，就像电力和互联网一样。"
 tags: ["AI", "NVIDIA", "基础设施", "转载"]
 categories: ["技术观察"]
@@ -25,7 +25,7 @@ To understand why AI is unfolding this way, it helps to reason from first princi
 
 要理解 AI 为何以这种方式展开，从第一性原理进行推理并观察计算领域发生了什么根本性变化会有所帮助。
 
-![CES 2026 Full Stack Keynote Slide](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d3207322.jpg)
+![CES 2026 Full Stack Keynote Slide](https://img.riba2534.cn/images/2026/04/96ac50b6_69b19d3207322.jpg)
 
 ## From Prerecorded Software to Real‑Time Intelligence
 
@@ -59,7 +59,7 @@ When you look at AI industrially, it resolves into a five-layer stack.
 
 当你从工业角度审视 AI 时，它可以分解为一个五层栈。
 
-![Energy Icon](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d34708e2.png)
+![Energy Icon](https://img.riba2534.cn/images/2026/04/a7489a68_69b19d34708e2.png)
 
 ### Energy
 
@@ -69,7 +69,7 @@ At the foundation is energy. Intelligence generated in real time requires power 
 
 在最底层是能源。实时生成的智能需要实时生成的电力。产生的每一个 token 都是电子移动、热量管理和能量转化为计算的结果。这之下没有抽象层。**能源是 AI 基础设施的第一性原理**，也是系统能产生多少智能的约束条件。
 
-![Chips Icon](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d33b36b8.png)
+![Chips Icon](https://img.riba2534.cn/images/2026/04/bea0b749_69b19d33b36b8.png)
 
 ### Chips
 
@@ -79,7 +79,7 @@ Above energy are the chips. These are processors designed to transform energy in
 
 在能源之上是芯片。这些是为在大规模下高效地将能源转化为计算而设计的处理器。AI 工作负载需要巨大的并行性、高带宽内存和快速互连。芯片层的进步决定了 AI 可以扩展多快，以及智能变得多么经济实惠。
 
-![Infrastructure Icon](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d354b4b8.png)
+![Infrastructure Icon](https://img.riba2534.cn/images/2026/04/dd3d6c95_69b19d354b4b8.png)
 
 ### Infrastructure
 
@@ -89,7 +89,7 @@ Above chips is infrastructure. This includes land, power delivery, cooling, cons
 
 在芯片之上是基础设施。这包括土地、电力输送、冷却、建设、网络以及将数万个处理器编排成一台机器的系统。这些系统是 **AI 工厂**。它们不是为存储信息而设计的。它们是为**制造智能**而设计的。
 
-![Models Icon](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d362444c.png)
+![Models Icon](https://img.riba2534.cn/images/2026/04/b9f7a68d_69b19d362444c.png)
 
 ### Models
 
@@ -99,7 +99,7 @@ Above infrastructure are the models. AI models understand many kinds of informat
 
 在基础设施之上是模型。AI 模型理解多种类型的信息：语言、生物学、化学、物理学、金融、医学和物理世界本身。语言模型只是一个类别。一些最具变革性的工作正在蛋白质 AI、化学 AI、物理模拟、机器人和自主系统中发生。
 
-![Applications Icon](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d32ce64d.png)
+![Applications Icon](https://img.riba2534.cn/images/2026/04/39e4cbaf_69b19d32ce64d.png)
 
 ### Applications
 
@@ -171,7 +171,7 @@ DeepSeek-R1 was a powerful example of this. By making a strong reasoning model w
 
 DeepSeek-R1 就是一个有力的例证。通过让一个强大的推理模型广泛可用，它加速了应用层的采用，并增加了其下对训练、基础设施、芯片和能源的需求。
 
-![Open Models Slide](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/12/69b19d36e24f7.png)
+![Open Models Slide](https://img.riba2534.cn/images/2026/04/1ef3092a_69b19d36e24f7.png)
 
 ## What This Means
 

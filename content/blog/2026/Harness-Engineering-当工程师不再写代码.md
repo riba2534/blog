@@ -2,7 +2,7 @@
 title: "Harness Engineering：当工程师不再写代码"
 date: 2026-03-19T11:35:00+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/19/69bb8304125fc.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/30646565_69bb8304125fc.jpg"
 description: "从 Prompt Engineering 到 Context Engineering 再到 Harness Engineering，工程师的角色正在发生根本性转变。"
 tags:
 - AI

@@ -2,7 +2,7 @@
 title: "比 OpenClaw 更优雅的个人 AI Agent -- NanoClaw"
 date: 2026-02-10T00:20:59+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/09/6989fda253848.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/46a99a61_6989fda253848.jpg"
 description: "当所有人都在往代码里堆功能的时候，NanoClaw 在做减法"
 tags:
 - AI
@@ -196,7 +196,7 @@ NanoClaw 的 README 里有一句话道出了整个项目的灵魂：
 
 ### 分层设计
 
-![NanoClaw 架构分层图](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/09/698a00ffaa743.png)
+![NanoClaw 架构分层图](https://img.riba2534.cn/images/2026/04/4d4f6448_698a00ffaa743.png)
 
 宿主机 10 个文件的职责清单：
 
@@ -236,7 +236,7 @@ NanoClaw 的 README 里有一句话道出了整个项目的灵魂：
 
 一条 WhatsApp 消息从发出到收到回复的完整链路：
 
-![NanoClaw 消息流转图](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/09/698a0102921f0.png)
+![NanoClaw 消息流转图](https://img.riba2534.cn/images/2026/04/cbee8c9f_698a0102921f0.png)
 
 这里有个设计挺聪明的：容器不是每条消息都重启。回复后容器在 `IDLE_TIMEOUT` 内保持存活，后续消息通过 IPC 文件管道注入同一个容器，省去了重启和上下文加载的开销。
 
@@ -282,7 +282,7 @@ NanoClaw 做了一个更根本的选择：**把 Agent 扔进容器里**。
 
 OpenClaw 默认不敢这么做。因为它的 Agent 默认跑在宿主机进程里，完整权限意味着 Agent 可以直接操作你的文件系统。虽然它后来加了可选的 Docker sandbox，但那是后补的、可选的、默认关闭的 —— 而 NanoClaw 从第一天起就是 **isolation-first** 的设计。代码逻辑的安全边界，永远不如操作系统的隔离可靠。
 
-![安全模型对比：容器隔离 vs 应用层权限](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/09/6989fdbda87b7.jpg)
+![安全模型对比：容器隔离 vs 应用层权限](https://img.riba2534.cn/images/2026/04/1465ffba_6989fdbda87b7.jpg)
 
 ## NanoClaw 的设计哲学
 

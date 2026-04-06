@@ -2,7 +2,7 @@
 title: "AI 海啸已至，而社会还没准备好：Dario Amodei 访谈解读"
 date: 2026-02-27T16:55:49+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/27/69a175a83aff3.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/9d67db3b_69a175a83aff3.jpg"
 description: "Anthropic CEO Dario Amodei 与印度投资人 Nikhil Kamath 的长谈，聊了 AI 海啸、就业冲击、权力集中、生物技术、AI 意识等话题"
 tags:
 - AI

@@ -3,7 +3,7 @@ title: "HappyClaw：我写了一个自托管多用户本地 AI Agent"
 date: 2026-02-16T23:05:23+08:00
 draft: false
 pin: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935600b2b22.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/2cd3959d_69935600b2b22.png"
 description: "HappyClaw 是一个基于 Claude Agent SDK 构建的自托管多用户 AI Agent 系统，通过飞书/Telegram/Web 三端接入完整的 Claude Code 能力。"
 tags:
 - AI Agent
@@ -49,7 +49,7 @@ comment: true
 
 | 工具调用追踪 | Markdown 渲染 | 图片生成 + 文件管理 |
 |:---:|:---:|:---:|
-| ![工具调用追踪](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/699353428bda4.png) | ![Markdown 渲染](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935340eaae2.png) | ![图片生成](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993533f2d98e.png) |
+| ![工具调用追踪](https://img.riba2534.cn/images/2026/04/943cfe56_699353428bda4.png) | ![Markdown 渲染](https://img.riba2534.cn/images/2026/04/47f085ea_69935340eaae2.png) | ![图片生成](https://img.riba2534.cn/images/2026/04/e6d0350f_6993533f2d98e.png) |
 
 ## 核心功能
 
@@ -65,7 +65,7 @@ comment: true
 
 | 飞书 Bot 聊天 | 飞书富文本卡片回复 |
 |:---:|:---:|
-| ![飞书聊天](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/699353477bb79.png) | ![飞书卡片回复](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/699353467c9f2.png) |
+| ![飞书聊天](https://img.riba2534.cn/images/2026/04/8b2a7e70_699353477bb79.png) | ![飞书卡片回复](https://img.riba2534.cn/images/2026/04/b01cdf5c_699353467c9f2.png) |
 
 ### Agent 执行引擎
 
@@ -140,7 +140,7 @@ Agent 会自主维护这些记忆文件。你告诉它"记住我喜欢用 Go 写
 
 | 登录 | 工作区 | 系统监控 | 设置 |
 |:---:|:---:|:---:|:---:|
-| ![登录](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935357c3e09.png) | ![工作区](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993534cb8323.png) | ![监控](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/69935358d7a60.png) | ![设置](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993535a2e5b0.png) |
+| ![登录](https://img.riba2534.cn/images/2026/04/b2e830c7_69935357c3e09.png) | ![工作区](https://img.riba2534.cn/images/2026/04/8323de1c_6993534cb8323.png) | ![监控](https://img.riba2534.cn/images/2026/04/b2dcf200_69935358d7a60.png) | ![设置](https://img.riba2534.cn/images/2026/04/9c821acf_6993535a2e5b0.png) |
 
 ### Web Terminal
 
@@ -248,7 +248,7 @@ make start
 
 | 创建管理员 | 配置接入（飞书 + Claude） |
 |:---:|:---:|
-| ![设置向导](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993535c556ab.png) | ![配置接入](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/17/6993535b5f3cf.png) |
+| ![设置向导](https://img.riba2534.cn/images/2026/04/ddd4f0d9_6993535c556ab.png) | ![配置接入](https://img.riba2534.cn/images/2026/04/c61d8144_6993535b5f3cf.png) |
 
 ### 启用容器模式
 

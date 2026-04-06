@@ -3,7 +3,7 @@ title: C/C++ 面试知识总结
 date: 2018-12-25T12:09:00+08:00
 lastmod: 2018-12-25T22:44:52+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d57c978c.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/225b9bf0_63ee7d57c978c.jpg
 tags:
 - C++
 categories: C++
@@ -1673,7 +1673,7 @@ typedef struct BiTNode
 
 <details><summary>B 树、B+ 树图片</summary>
 
-![B 树（B-tree）、B+ 树（B+-tree）](https://i.stack.imgur.com/l6UyF.png)
+![B 树（B-tree）、B+ 树（B+-tree）](https://img.riba2534.cn/images/2026/04/1e72f51a_l6UyF.png)
 
 </details>
 
@@ -1706,7 +1706,7 @@ typedef struct BiTNode
 
 <details><summary>八叉树图片</summary>
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Octree2.png/400px-Octree2.png)
+![](https://img.riba2534.cn/images/2026/04/afd07de2_400px-Octree2.png)
 
 </details>
 
@@ -2486,7 +2486,7 @@ ssize_t write(int fd, const void *buf, size_t count);
 
 只有就完了三次握手，但是这个三次握手发生在 Socket 的那几个函数中呢？请看下图：
 
-![socket 中发送的 TCP 三次握手](http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157467258.png)
+![socket 中发送的 TCP 三次握手](https://img.riba2534.cn/images/2026/04/715557fb_201012122157467258.png)
 
 从图中可以看出：
 1. 当客户端调用 connect 时，触发了连接请求，向服务器发送了 SYN J 包，这时 connect 进入阻塞状态；  
@@ -2498,7 +2498,7 @@ ssize_t write(int fd, const void *buf, size_t count);
 
 上面介绍了 socket 中 TCP 的三次握手建立过程，及其涉及的 socket 函数。现在我们介绍 socket 中的四次握手释放连接的过程，请看下图：
 
-![socket 中发送的 TCP 四次握手](http://images.cnblogs.com/cnblogs_com/skynet/201012/201012122157487616.png)
+![socket 中发送的 TCP 四次握手](https://img.riba2534.cn/images/2026/04/c413f267_201012122157487616.png)
 
 图示过程如下：
 

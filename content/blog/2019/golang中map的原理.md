@@ -2,7 +2,7 @@
 title: "Golang 中的 Map 原理"
 date: 2019-07-14T17:12:00+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221223.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/56a18572_20210508221223.png"
 tags:
 - golang
 categories:

@@ -3,7 +3,7 @@ title: 关于Linux Shell需要知道的
 date: 2020-05-02T01:27:17+08:00
 lastmod: 2020-05-02T01:27:17+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d40e7fd4.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/a7fb3f09_63ee7d40e7fd4.jpg"
 tags:
 - Linux
 categories: Linux
@@ -109,7 +109,7 @@ $ nohub some_cmd &
 
 shell 的行为可以测试，使用`set -x`命令，会开启 shell 的命令回显，你可以通过回显观察 shell 到底在执行什么命令：
 
-![](https://github.com/labuladong/fucking-algorithm/raw/master/pictures/linuxshell/1.png)
+![](https://img.riba2534.cn/images/2026/04/eeeba117_1.png)
 
 可见 `echo $(cmd)` 和 `echo "$(cmd)"`，结果差不多，但是仍然有区别。注意观察，双引号转义完成的结果会自动增加单引号，而前者不会。
 

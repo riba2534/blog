@@ -3,7 +3,7 @@ title: LeetCode 529 扫雷游戏（DFS）
 date: 2020-08-20T01:59:22+08:00
 lastmod: 2020-08-20T01:59:22+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221015.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/136433b8_20210508221015.png"
 tags:
 - LeetCode
 - dfs
@@ -48,7 +48,7 @@ Click : [3,0]
 解释:
 ```
 
-![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/minesweeper_example_1.png)
+![](https://img.riba2534.cn/images/2026/04/ed615e97_minesweeper_example_1.png)
 
 **示例 2：**
 
@@ -72,7 +72,7 @@ Click : [1,2]
 解释:
 ```
 
-![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/minesweeper_example_2.png)
+![](https://img.riba2534.cn/images/2026/04/5e52231c_minesweeper_example_2.png)
 
 **注意：**
 

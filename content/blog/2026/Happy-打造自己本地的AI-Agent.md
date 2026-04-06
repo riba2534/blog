@@ -3,7 +3,7 @@ title: "Happy: 打造自己本地的 AI-Agent"
 date: 2026-01-18T18:49:17+08:00
 lastmod: 2026-01-18T18:49:17+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/18/696bede018a23.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/cc95e7b2_696bede018a23.png"
 description: "使用 Happy 远程控制 Claude Code，打造 24 小时在线的本地 AI Agent"
 tags:
 - AI
@@ -92,9 +92,9 @@ Happy 的工作原理如下：
 
 下图是我让 Agent 调研 Polymarket 套利策略的一次对话过程，这种调研任务用 ChatGPT 这类产品是做不到的，因为它们缺少上下文。而本地 Agent 可以通过各种方式主动获取上下文，再给你结果：
 
-![Picsew_20260118180643.JPEG](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/18/696cb0d09c2e1.jpeg)
+![Picsew_20260118180643.JPEG](https://img.riba2534.cn/images/2026/04/3bd6b41c_696cb0d09c2e1.jpeg)
 
-![Picsew_20260118184602.JPEG](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/18/696cba0b01c21.jpeg)
+![Picsew_20260118184602.JPEG](https://img.riba2534.cn/images/2026/04/5f725bdc_696cba0b01c21.jpeg)
 
 而完成这一切，不需要你在电脑前，你可以在任何地方，一有想法，打开手机，随时验证。
 
@@ -103,4 +103,4 @@ Happy 的工作原理如下：
 最近几个月，AI 给我的震撼越来越大了，以前很多费力的事情，现在都可以用 Agent 干，节省了大量时间。时代发展很快，拥抱先进生产力和技术，**你不需要超过 AI，你只需要超过不会用 AI 的人**。
 
 > 附一个和朋友关于 CC 的讨论：
-> ![Picsew_20260118185723.JPEG](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/01/18/696cbcb215388.jpeg)
+> ![Picsew_20260118185723.JPEG](https://img.riba2534.cn/images/2026/04/3fec3414_696cbcb215388.jpeg)

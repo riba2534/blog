@@ -3,7 +3,7 @@ title: LeetCode 289 接雨水(单调栈)
 date: 2020-04-06T11:48:56+08:00
 lastmod: 2020-04-06T11:48:56+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221015.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/136433b8_20210508221015.png"
 tags:
 - LeetCode
 categories: OnlineJudge刷题
@@ -16,7 +16,7 @@ series:
 
 给定 *n* 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
-![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png)
+![img](https://img.riba2534.cn/images/2026/04/21d9b784_rainwatertrap.png)
 
 上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 **感谢 Marcos** 贡献此图。
 

@@ -2,7 +2,7 @@
 title: "Claude Code 封号机制深度探查报告"
 date: 2026-03-31T22:56:59+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/31/69cbdf1c7d039.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/3fcf0fcd_69cbdf1c7d039.jpg"
 description: "基于 Claude Code 源代码逆向分析，全面揭示其数据采集、上报机制及封号触发点。涵盖身份追踪体系、环境指纹采集、遥测上报系统、服务端远程控制及封号触发机制。"
 tags:
 - AI

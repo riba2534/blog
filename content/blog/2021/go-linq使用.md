@@ -2,7 +2,7 @@
 title: "Go Linq 使用"
 date: 2021-05-25T02:35:34+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508221223.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/56a18572_20210508221223.png"
 description: "Golang中的Language Integrated Query介绍"
 tags:
 - go-linq

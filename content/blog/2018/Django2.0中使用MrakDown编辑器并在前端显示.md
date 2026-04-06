@@ -89,7 +89,7 @@ comment: true
 
 此时打开我们的后台，应该已经可以看到效果了:
 
-![](https://i.loli.net/2018/12/02/5c03d6369d1ed.png)
+![](https://img.riba2534.cn/images/2026/04/6c21123a_5c03d6369d1ed.png)
 
 
 
@@ -132,7 +132,7 @@ def blog_detail(request, blog_pk):  # 博客内容
 
 此时效果为:
 
-![](https://i.loli.net/2018/12/02/5c03da977e1e0.png)
+![](https://img.riba2534.cn/images/2026/04/f0423e81_5c03da977e1e0.png)
 
 
 

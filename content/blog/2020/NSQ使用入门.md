@@ -3,7 +3,7 @@ title: NSQ使用入门
 date: 2020-06-27T00:54:00+08:00
 lastmod: 2020-06-27T01:06:55+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - NSQ
 categories: 消息队列
@@ -63,15 +63,15 @@ NSQ是一个基于Go语言的分布式实时消息平台，它基于MIT开源协
 
 NSQ推荐通过他们相应的nsqd实例使用协同定位发布者，这意味着即使面对网络分区，消息也会被保存在本地，直到它们被一个消费者读取。更重要的是，发布者不必去发现其他的nsqd节点，他们总是可以向本地实例发布消息。
 
-![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/czr5Hs0UpRl5c9lWx1D5JxPP5Qc7kLsohzi9ydSBOLmbcTHQdR.png)
+![img](https://img.riba2534.cn/images/2026/04/f8346194_czr5Hs0UpRl5c9lWx1D5JxPP5Qc7kLsohzi9ydSBOLmbcTHQdR.png)
 
 首先，一个发布者向它的本地nsqd发送消息，要做到这点，首先要先打开一个连接，然后发送一个包含topic和消息主体的发布命令，在这种情况下，我们将消息发布到事件topic上以分散到我们不同的worker中。 事件topic会复制这些消息并且在每一个连接topic的channel上进行排队，在我们的案例中，有三个channel，它们其中之一作为档案channel。消费者会获取这些消息并且上传到S3。
 
-![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/QutU73v05GOrXtiefsohJNv8iiKiRf5hs0hTIuQrBY6nrme2dS.png)
+![img](https://img.riba2534.cn/images/2026/04/c1d0d6ea_QutU73v05GOrXtiefsohJNv8iiKiRf5hs0hTIuQrBY6nrme2dS.png)
 
 每个channel的消息都会进行排队，直到一个worker把他们消费，如果此队列超出了内存限制，消息将会被写入到磁盘中。Nsqd节点首先会向nsqlookup广播他们的位置信息，一旦它们注册成功，worker将会从nsqlookup服务器节点上发现所有包含事件topic的nsqd节点。
 
-![img](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/wBIQxC7T6uX5o2Dbs5wYAVzmSrUGV6BRnX1xlQzPb0Of07M885.png)
+![img](https://img.riba2534.cn/images/2026/04/dea9935d_wBIQxC7T6uX5o2Dbs5wYAVzmSrUGV6BRnX1xlQzPb0Of07M885.png)
 
 然后每个worker向每个nsqd主机进行订阅操作，用于表明worker已经准备好接受消息了。这里我们不需要一个完整的连通图，但我们必须要保证每个单独的nsqd实例拥有足够的消费者去消费它们的消息，否则channel会被队列堆着。
 
@@ -85,7 +85,7 @@ NSQ官方文档地址为：https://nsq.io/overview/design.html
 
 2. 下载好后解压，你会得到如下文件:
 
-   ![image-20200627000201927](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/image-20200627000201927.png)
+   ![image-20200627000201927](https://img.riba2534.cn/images/2026/04/01b54e93_image-20200627000201927.png)
 
 3. 运行` nsqlookupd`（提供服务注册与发现功能，是nsq可扩展的基础，提供最终一致性服务发现服务）
 
@@ -121,11 +121,11 @@ NSQ官方文档地址为：https://nsq.io/overview/design.html
 
 不出意外的话，会看到这样
 
-![image-20200627002420261](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/image-20200627002420261.png)
+![image-20200627002420261](https://img.riba2534.cn/images/2026/04/17c67c75_image-20200627002420261.png)
 
 点击对应的topic，可以看到相关的 channel 信息
 
-![image-20200627002329792](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/image-20200627002329792.png)
+![image-20200627002329792](https://img.riba2534.cn/images/2026/04/a5223167_image-20200627002329792.png)
 
 里面可以看到当前channel的消息积压，以及一共有多少条消息。
 
@@ -175,7 +175,7 @@ func main() {
 
 使用效果：
 
-![image-20200627003900569](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/image-20200627003900569.png)
+![image-20200627003900569](https://img.riba2534.cn/images/2026/04/13b2cea5_image-20200627003900569.png)
 
 ### 消费者代码
 
@@ -217,7 +217,7 @@ func main() {
 
 使用效果：
 
-![image-20200627003927148](https://raw.githubusercontent.com/riba2534/MyLearnNotes/master/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97MQ/NSQ%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8.assets/image-20200627003927148.png)
+![image-20200627003927148](https://img.riba2534.cn/images/2026/04/840b1216_image-20200627003927148.png)
 
 可以看到，已经消费到了之前生产者生产的消息。
 

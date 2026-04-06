@@ -2,7 +2,7 @@
 title: "Claude Code Buddy 电子宠物系统：完全解析"
 date: 2026-04-01T12:47:24+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/04/01/69cc9abb07a4d.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/e7ef5b8c_69cc9abb07a4d.jpg"
 description: "基于 Claude Code 源码逆向分析，完整拆解隐藏的 Buddy 电子宠物系统。涵盖 18 种物种图鉴、稀有度体系、五维属性、确定性 PRNG 生成算法、ASCII 动画引擎、React 组件架构。"
 tags:
 - AI

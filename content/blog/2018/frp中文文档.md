@@ -3,7 +3,7 @@ title: frp中文文档
 date: 2018-12-13T21:28:00+08:00
 lastmod: 2018-12-13T21:31:18+08:00
 draft: false
-featured_image: https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/02/17/63ee7d55d1d62.jpg
+featured_image: https://img.riba2534.cn/images/2026/04/7506b0f6_63ee7d55d1d62.jpg
 tags:
 - frp
 - 内网穿透
@@ -14,7 +14,7 @@ comment: true
 
 # frp
 
-[![Build Status](https://travis-ci.org/fatedier/frp.svg?branch=master)](https://travis-ci.org/fatedier/frp)
+[![Build Status](https://img.riba2534.cn/images/2026/04/007459c7_frp.svg)](https://travis-ci.org/fatedier/frp)
 
 ## frp 的作用
 

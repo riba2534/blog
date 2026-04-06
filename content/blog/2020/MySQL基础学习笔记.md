@@ -3,7 +3,7 @@ title: MySQL基础学习笔记
 date: 2020-05-05T16:01:00+08:00
 lastmod: 2020-05-05T16:01:46+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/img/20210508201518.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/9615a5cf_20210508201518.png"
 tags:
 - MySQL
 categories: MySQL
@@ -1793,7 +1793,7 @@ DROP VIEW 视图名
 `存储程序`可以封装一些语句，然后给用户提供一种简单的方式来调用这个存储程序，从而间接地执行这些语句。根据调用方式的不同，我们可以把`存储程序`分为`存储例程`、`触发器`和`事件`这几种类型。其中，`存储例程`又可以被细分为`存储函数`和`存储过程`。如图：
 
 
-![](https://github.com/riba2534/MyLearnNotes/raw/master/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.assets/16ce116e5cb5079c)
+![](https://img.riba2534.cn/images/2026/04/93ed1e17_93ed1e17edae.png)
 
 ### 自定义变量简介
 

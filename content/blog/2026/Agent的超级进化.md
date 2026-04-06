@@ -2,7 +2,7 @@
 title: "Agent 的超级进化"
 date: 2026-03-02T00:46:32+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/03/02/69a496522d7cb.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/152ae922_69a496522d7cb.jpg"
 description: "从第一性原理出发，用 Skills、CLAUDE.md 构建一个能自我进化的个人 Agent 系统"
 tags:
 - AI

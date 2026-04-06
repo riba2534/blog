@@ -2,7 +2,7 @@
 title: "腾讯云函数1分钟搭建OpenAI国内代理"
 date: 2023-03-09T13:10:26+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/09/64096b5ba7bf6.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/7e138bc9_64096b5ba7bf6.jpg"
 description: ""
 tags:
 - OpenAI
@@ -40,7 +40,7 @@ comment : true
 - 日志投递也推荐选上，方便看日志
 - 触发器配置照着图看
 
-![云函数.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/09/64096590d8255.png)
+![云函数.png](https://img.riba2534.cn/images/2026/04/94d96782_64096590d8255.png)
 
 3. 注意，上传的 zip 包可以在本项目 [releases](https://github.com/riba2534/openai-scf-goproxy/releases) 中下载到，最新的包地址是： [main.zip](https://github.com/riba2534/openai-scf-goproxy/releases/download/V2.0/main.zip)
 
@@ -49,7 +49,7 @@ comment : true
 
 新建好之后，在腾讯云函数列表中找到你刚创建的，从左边 「函数管理」-> 「函数代码」，找到你的访问路径
 
-![1678337783998.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/09/640966f88f891.png)
+![1678337783998.png](https://img.riba2534.cn/images/2026/04/50e10443_640966f88f891.png)
 
 
 这个访问路径就是你之后请求 OpenAPI 的访问路径，访问路径的格式是 `https://service-xxxxxx.hk.apigw.tencentcs.com/release/`
@@ -60,9 +60,9 @@ comment : true
 
 **重要提示**：云函数默认访问的超时时间较短，而调用 openai 的时间可能很长，所以我们需要改一下云函数配置，把超时时间调大，在左边「函数管理」-> 「函数配置」 里面，把访问的超时时间和并发度调大，如下图：
 
-[![超时时间.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/13/640ece0cc7848.png)](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/13/640ece0cc7848.png)
+[![超时时间.png](https://img.riba2534.cn/images/2026/04/9f035131_640ece0cc7848.png)](https://img.riba2534.cn/images/2026/04/9f035131_640ece0cc7848.png)
 
-[![并发配置.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/13/640ece0c4dd58.png)](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/13/640ece0c4dd58.png)
+[![并发配置.png](https://img.riba2534.cn/images/2026/04/11211130_640ece0c4dd58.png)](https://img.riba2534.cn/images/2026/04/11211130_640ece0c4dd58.png)
 
 ### 大功告成
 
@@ -70,7 +70,7 @@ comment : true
 
 我们可以通过类似 postman 这种工具来测试一下是否可用，查询一个完成模型试试，可以看到，成功的返回了信息!
 
-![1678338111283.png](https://image-1252109614.cos.ap-beijing.myqcloud.com/2023/03/09/6409683fa484c.png)
+![1678338111283.png](https://img.riba2534.cn/images/2026/04/5a2e3afa_6409683fa484c.png)
 
 
 # 玩耍

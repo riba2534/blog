@@ -2,7 +2,7 @@
 title: "AI First：把自己从执行者变成调度者"
 date: 2026-02-27T16:45:02+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/28/69a2c870c2edf.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/52359ca5_69a2c870c2edf.jpg"
 description: "做任何事之前先问一句：这件事能让 Agent 来做吗？从执行者到调度者的思维转变。"
 tags:
 - AI

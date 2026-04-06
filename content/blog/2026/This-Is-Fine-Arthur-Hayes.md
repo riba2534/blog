@@ -2,7 +2,7 @@
 title: "This Is Fine —— AI 将引发金融危机，但最终比特币会赢"
 date: 2026-02-18T15:30:00+08:00
 draft: true
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5adcfd6.png"
+featured_image: "https://img.riba2534.cn/images/2026/04/2739198c_69956c5adcfd6.png"
 
 description: "Arthur Hayes 深度长文：比特币是全球法币流动性的火警器。AI 驱动的知识工作者失业潮将引发银行业危机，但最终美联储会开启印钞机，比特币将冲上新高。转载自 Crypto Trader Digest。"
 tags:
@@ -38,7 +38,7 @@ comment: true
 # 一切都好
 
 
-![This Is Fine](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5adcfd6.png)
+![This Is Fine](https://img.riba2534.cn/images/2026/04/2739198c_69956c5adcfd6.png)
 
 When the fire alarm rings in your apartment or office building, you usually dismiss it. But sometimes death comes swiftly to those who ignore obvious warnings. Given the amount of noise swirling throughout our daily lives, understanding what alarms to heed could save your life or your portfolio.
 
@@ -100,7 +100,7 @@ The market will assume unemployed workers cannot meet their monthly payments on 
 
 ### 消费信贷损失
 
-![Consumer Credit Losses](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5d8d635.png)
+![Consumer Credit Losses](https://img.riba2534.cn/images/2026/04/6de2246e_69956c5d8d635.png)
 
 The market will price in \$330bn of losses to banks consumer credit portfolios.
 
@@ -110,7 +110,7 @@ The market will price in \$330bn of losses to banks consumer credit portfolios.
 
 ### 抵押贷款损失
 
-![Mortgage Debt Losses](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c5f70bad.png)
+![Mortgage Debt Losses](https://img.riba2534.cn/images/2026/04/9d8c1db1_69956c5f70bad.png)
 
 The market will price in \$227bn of losses to banks mortgage debt portfolios.
 
@@ -120,7 +120,7 @@ The market will price in \$227bn of losses to banks mortgage debt portfolios.
 
 ### 结果
 
-![The Result](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c612ef94.png)
+![The Result](https://img.riba2534.cn/images/2026/04/a1f0beae_69956c612ef94.png)
 
 Banks reserve part of profits each quarter against losses on their loan books. The FDIC publishes the industry-wide total loan loss reserves quarterly.[5] Subtracting that from the consumer credit and mortgage debt losses tells us how large of a hit to their equity this AI deflationary event causes. When viewed against the total US commercial bank equity capitalization, this event would cause a 13% write-down.
 
@@ -134,7 +134,7 @@ To put this into context, here are the same numbers for the 2008 GFC.
 
 为了给出参照，以下是2008年 GFC 的同类数据。
 
-![2008 GFC Context](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c672f429.png)
+![2008 GFC Context](https://img.riba2534.cn/images/2026/04/a8026431_69956c672f429.png)
 
 Assuming a 20% almost immediate decline in knowledge workers is about half as deadly as the 2008 GFC. The Fed printed money for over a decade to repair the financial system in response to the 2008 GFC. I expect a similar thrust higher in Fed monetary shenanigans in 2026 once a wide swath of non-TBTF banks will go under if they don't solve their internal political squabbles and print dat money.
 
@@ -148,19 +148,19 @@ As always, my guiding light in investing is fiat credit creation. Let's start wi
 
 一如既往，我投资的指路明灯是法币信贷创造。让我们从我的美元流动性指数开始。
 
-![USD Liquidity Index](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c690c139.png)
+![USD Liquidity Index](https://img.riba2534.cn/images/2026/04/58ae5afa_69956c690c139.png)
 
 As you can see, falling liquidity forces the market on the dwindling prospects for certain tech businesses because of AI adoption.
 
 如你所见，**流动性下降**迫使市场重新审视某些科技企业因 AI 普及而日益黯淡的前景。
 
-![IGV vs Nasdaq](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c6aa3874.png)
+![IGV vs Nasdaq](https://img.riba2534.cn/images/2026/04/bfdf00f4_69956c6aa3874.png)
 
 If AI tools like Anthropic's Claude Cowork can reliably complete tasks in minutes, that would take a human hours or days, why do you need all those SaaS productivity subscriptions? The market came after the tools of knowledge workers first. That is why the iShares Software ETF IGV (white) which represents listed software SaaS businesses, tanked vs. the broader Nasdaq (gold).
 
 如果像 Anthropic 的 Claude Cowork 这样的 AI 工具能在几分钟内可靠地完成人类需要数小时甚至数天才能完成的任务，**你还需要那些 SaaS 生产力订阅干嘛？** 市场首先对知识工作者的工具开刀。这就是为什么代表上市软件 SaaS 企业的 iShares Software ETF IGV（白线）相对于更广泛的纳斯达克指数（金线）**暴跌**。
 
-![Blue Owl vs IGV](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c6cdc55a.png)
+![Blue Owl vs IGV](https://img.riba2534.cn/images/2026/04/ddcb4286_69956c6cdc55a.png)
 
 Then the market attacked those non-bank lenders who lent to these SaaS businesses. Blue Owl (white), the former market darling in the private credit space, got owned alongside IGV (gold).
 
@@ -174,21 +174,21 @@ First, let's observe what's happening at the base of the credit pyramid; as some
 
 首先，让我们看看信贷金字塔底部正在发生什么——随着一部分工人失去工作，**逾期率开始攀升**。
 
-![Credit Card Delinquencies](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c7208498.png)
+![Credit Card Delinquencies](https://img.riba2534.cn/images/2026/04/7cd62cb0_69956c7208498.png)
 
-![Credit Card Delinquencies Detail](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c738de7c.png)
+![Credit Card Delinquencies Detail](https://img.riba2534.cn/images/2026/04/7225807d_69956c738de7c.png)
 
 If the consumer cannot meet their monthly credit card payments, the next sector hit is consumer discretionary stocks.
 
 如果消费者连每月的信用卡账单都还不上，下一个被打击的板块就是**可选消费股**。
 
-![XLP vs XLY Ratio](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c756612b.png)
+![XLP vs XLY Ratio](https://img.riba2534.cn/images/2026/04/fc189509_69956c756612b.png)
 
 The above chart is the ratio of the SPDR Consumer Staples ETF (XLP US) to the SPDR Consumer Discretionary ETF (XLY US). As you can see by the rising ratio as of late, XLP is massively outperforming XLY. This means the plebes shop more at discount retailers like Walmart than mindlessly ordering knick-knacks on Amazon or overpaying for Tesla EVs. Walmart and Amazon/Tesla are the largest weightings in XLP and XLY, respectively.
 
 上图是 SPDR 必需消费品 ETF（XLP US）与 SPDR 可选消费品 ETF（XLY US）的比值。如你所见，近期这个比值不断攀升，**XLP 正在大幅跑赢 XLY**。这意味着平民百姓更多地去沃尔玛这样的折扣零售商购物，而不是在亚马逊上无脑下单买小玩意儿，或者花冤枉钱买特斯拉电动车。沃尔玛和亚马逊/特斯拉分别是 XLP 和 XLY 中权重最大的成分股。
 
-![AXP vs IGV](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c77bf16f.png)
+![AXP vs IGV](https://img.riba2534.cn/images/2026/04/fea31d01_69956c77bf16f.png)
 
 The financial institutions that cater to the soon to be broke as fuck white-collar workers like American Express (AXP US in white) held serve while the employers of their borrowers (IGV US in gold) got punished by the markets. But lenders' outperformance will wane as the market fully prices in the future culling of knowledge workers.
 
@@ -198,13 +198,13 @@ When in doubt about whether USD liquidity is ample, turn to Bitcoin.
 
 当你拿不准美元流动性是否充裕时，看看比特币就知道了。
 
-![Bitcoin vs Nasdaq](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c7c6e559.png)
+![Bitcoin vs Nasdaq](https://img.riba2534.cn/images/2026/04/6bddd04f_69956c7c6e559.png)
 
 Nasdaq (gold) is flat whilst Bitcoin (white) plunged since Bitcoin hit its all-time high in October 2025.
 
 自 **2025 年 10 月比特币创下历史新高**以来，纳斯达克（金线）横盘震荡，而比特币（白线）则大幅跳水。
 
-![Gold vs Bitcoin](https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/02/18/69956c7e3cb95.png)
+![Gold vs Bitcoin](https://img.riba2534.cn/images/2026/04/90fe22f3_69956c7e3cb95.png)
 
 A surging gold (gold) versus a slumping Bitcoin (white) clearly tells us that a deflationary risk-off credit event within Pax Americana is brewing.
 
