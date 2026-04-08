@@ -2,7 +2,7 @@
 title: "透明的翅膀——Anthropic 造了一个不敢卖的模型"
 date: 2026-04-08T08:18:09+08:00
 draft: false
-featured_image: "https://image-1252109614.cos.ap-beijing.myqcloud.com/2026/04/08/69d59f1c569a1.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/glasswing_cover.jpg"
 description: "Anthropic 发布 Project Glasswing，一个联合科技巨头的网络安全计划。背后是一次数据泄露、一个不敢公开发售的前沿模型、以及 AI 对齐问题从理论走向现实的转折点。"
 tags:
 - AI
