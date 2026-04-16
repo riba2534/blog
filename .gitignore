@@ -4,3 +4,4 @@ docs/
 .DS_Store
 resources/
 .hugo_build.lock
+.playwright-cli/
