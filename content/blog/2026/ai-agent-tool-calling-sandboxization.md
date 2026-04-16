@@ -1,5 +1,5 @@
 ---
-title: "AI Agent 的工具调用，正在全面沙盒化"
+title: "把 Agent 关进盒子里"
 date: 2026-04-16T21:42:15+08:00
 draft: false
 featured_image: "https://img.riba2534.cn/images/2026/04/nanobanana_sandbox_cover.png"
