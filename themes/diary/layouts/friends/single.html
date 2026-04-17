@@ -26,7 +26,7 @@
             <div class="post-body-wrapper">
                 <div class="post-body">
                     <div class="friends-grid">
-                        {{ range .Site.Data.friends }}
+                        {{ range hugo.Data.friends }}
                         <a class="friend-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
                             <img src="{{ .avatar }}" alt="{{ .name }}" loading="lazy" class="friend-avatar">
                             <div class="friend-info">

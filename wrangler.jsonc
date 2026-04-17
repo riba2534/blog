@@ -5,6 +5,6 @@
     "directory": "./public"
   },
   "build": {
-    "command": "hugo --minify"
+    "command": "curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.160.1/hugo_extended_0.160.1_linux-amd64.tar.gz | tar xz hugo && ./hugo --minify"
   }
 }
