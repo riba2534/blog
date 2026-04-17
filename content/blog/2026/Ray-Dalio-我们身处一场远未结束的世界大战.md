@@ -1,7 +1,7 @@
 ---
 title: "Ray Dalio：最要紧的事——我们已身处一场远未结束的世界大战"
 date: 2026-04-18T03:33:59+08:00
-draft: true
+draft: false
 featured_image: "https://img.riba2534.cn/images/2026/04/tweet_1.jpg"
 description: "Ray Dalio 作为 50 年全球宏观投资者分享他的判断：当前美-以-伊战争只是正在进行的世界大战的一部分，这场大战短期内不会结束。他给出识别大周期的 13 步序列、五大驱动力，以及主要条约与五场潜在战争的个人胜率估计。"
 tags:
