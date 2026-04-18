@@ -26,6 +26,11 @@ tabWidth = 4
 [markup.goldmark.renderer]
 unsafe = true
 
+[markup.goldmark.extensions.cjk]
+enable = true
+eastAsianLineBreaks = true
+escapedSpace = true
+
 [params]
 # enableGitalk = false
 enableOpenGraph = true
