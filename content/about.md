@@ -44,6 +44,23 @@ BTC HODL，相信价值投资和时间的力量。做过一些 DeFi 套利和 Ce
 
 喜欢旅行，看见更大的世界，了解不同的文化。寄蜉蝣于天地，渺沧海之一粟。
 
+下面是我去过的所有地方，也欢迎直接访问独立站点 [travel.riba2534.cn](https://travel.riba2534.cn/) 查看：
+
+<style>
+.travel-embed{position:relative;margin:1.2em -35px;overflow:hidden;border-top:1px solid #e1e4e8;border-bottom:1px solid #e1e4e8;}
+.travel-embed iframe{width:100%;height:640px;border:0;display:block;}
+@media (max-width:1020px){.travel-embed{margin:1em -15px;}.travel-embed iframe{height:520px;}}
+</style>
+
+<div class="travel-embed">
+  <iframe
+    src="https://travel.riba2534.cn/"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="riba2534 的旅行地图"
+    allowfullscreen></iframe>
+</div>
+
 ---
 
 *Don't Trust, Verify!*
