@@ -2,7 +2,7 @@
 title: "Ray Dalio：最要紧的事——我们已身处一场远未结束的世界大战"
 date: 2026-04-18T03:33:59+08:00
 draft: false
-featured_image: "https://img.riba2534.cn/images/2026/04/tweet_1.jpg"
+featured_image: "https://img.riba2534.cn/images/2026/04/dalio-cover.jpg"
 description: "Ray Dalio 作为 50 年全球宏观投资者分享他的判断：当前美-以-伊战争只是正在进行的世界大战的一部分，这场大战短期内不会结束。他给出识别大周期的 13 步序列、五大驱动力，以及主要条约与五场潜在战争的个人胜率估计。"
 tags:
 - 转载
@@ -26,7 +26,7 @@ comment: true
 
 ## 最要紧的事：我们已身处一场远未结束的世界大战
 
-![Principled Perspectives: The Big Thing — We Are In A World War That Isn't Going To End Anytime Soon. By Ray Dalio](https://img.riba2534.cn/images/2026/04/tweet_1.jpg)
+![Principled Perspectives: The Big Thing — We Are In A World War That Isn't Going To End Anytime Soon. By Ray Dalio](https://img.riba2534.cn/images/2026/04/dalio-cover.jpg)
 
 I will start off by wishing you well in these challenging times and by saying that the picture I paint in the following observations is not the picture I wish to be true; it is the picture that I **believe** to be true based on what I have learned and what the indicators that I use to objectively see things now suggest is true.
 
@@ -232,7 +232,7 @@ Below are what appear to be the most important treaties, the strength of the com
 
 **一、美国的关键条约**
 
-![Key US treaties rating table](https://img.riba2534.cn/images/2026/04/tweet_2.jpg)
+![Key US treaties rating table](https://img.riba2534.cn/images/2026/04/dalio-us-treaties.png)
 
 | Agreement | Rating | Why |
 | --- | --- | --- |
@@ -262,7 +262,7 @@ Below are what appear to be the most important treaties, the strength of the com
 
 **二、中国-俄罗斯-伊朗-朝鲜一方的关键条约**
 
-![Key China-Russia-Iran-North Korea treaties rating table](https://img.riba2534.cn/images/2026/04/tweet_3.jpg)
+![Key China-Russia-Iran-North Korea treaties rating table](https://img.riba2534.cn/images/2026/04/dalio-rivals-treaties.png)
 
 | Agreement | Rating | Why |
 | --- | --- | --- |
