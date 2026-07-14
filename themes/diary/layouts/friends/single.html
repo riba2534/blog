@@ -26,7 +26,10 @@
             <div class="post-body-wrapper">
                 <div class="post-body">
                     <div class="friends-grid">
-                        {{ range hugo.Data.friends }}
+                        {{/* Cloudflare Workers Builds 镜像的 Hugo 0.147 没有 hugo.Data（0.156+），旧版走 .Site.Data */}}
+                        {{ $friends := slice }}
+                        {{ if ge hugo.Version "0.156.0" }}{{ $friends = hugo.Data.friends }}{{ else }}{{ $friends = .Site.Data.friends }}{{ end }}
+                        {{ range $friends }}
                         <a class="friend-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
                             <img src="{{ .avatar }}" alt="{{ .name }}" loading="lazy" class="friend-avatar">
                             <div class="friend-info">

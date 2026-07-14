@@ -4,7 +4,7 @@
     <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
     <link>{{ .Permalink }}</link>
     <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
-    <generator>Hugo -- gohugo.io</generator>{{ with .Site.Language.Locale }}
+    <generator>Hugo -- gohugo.io</generator>{{/* Language.Locale 需 Hugo 0.158+，Cloudflare 的 0.147 回退用 .Lang */}}{{ $lang := "" }}{{ if ge hugo.Version "0.158.0" }}{{ $lang = .Site.Language.Locale }}{{ else }}{{ $lang = .Site.Language.Lang }}{{ end }}{{ with $lang }}
     <language>{{.}}</language>{{end}}{{ with .Site.Params.author_email }}
     <managingEditor>{{.}}{{ with $.Site.Params.author_name }} ({{.}}){{end}}</managingEditor>{{end}}{{ with .Site.Params.author_email }}
     <webMaster>{{.}}{{ with $.Site.Params.author_name }} ({{.}}){{end}}</webMaster>{{end}}{{ with .Site.Copyright }}
