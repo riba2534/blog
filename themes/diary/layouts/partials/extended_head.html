@@ -109,7 +109,7 @@
     var images = document.querySelectorAll('.post-body img:not([data-lightbox="disabled"])');
     if (!images.length) return;
 
-    var overlay = create('div', { class: 'image-lightbox', role: 'dialog', 'aria-modal': 'true' });
+    var overlay = create('div', { class: 'image-lightbox', role: 'dialog', 'aria-modal': 'true', 'aria-label': '图片预览' });
     var inner = create('div', { class: 'image-lightbox__inner' });
     var closeBtn = create('button', { class: 'image-lightbox__close', type: 'button', 'aria-label': '关闭图片预览' });
     closeBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.42L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.42L12 13.41l4.89 4.9a1 1 0 0 0 1.42-1.41L13.41 12l4.9-4.89a1 1 0 0 0-.01-1.4Z"/></svg>';
@@ -126,7 +126,6 @@
       overlay.classList.remove('is-visible');
       document.body.classList.remove('lightbox-open');
       imgEl.removeAttribute('src');
-      imgEl.removeAttribute('srcset');
       if (activeTrigger) {
         activeTrigger.focus({ preventScroll: true });
         activeTrigger = null;
@@ -135,14 +134,22 @@
 
     function openLightbox(img) {
       activeTrigger = img;
-      var source = img.getAttribute('data-lightbox-src') || (img.currentSrc || img.src);
+      var current = img.currentSrc || img.src;
+      var hi = img.getAttribute('data-lightbox-src');
       var linkParent = img.closest('a');
-      if (!img.getAttribute('data-lightbox-src') && linkParent && linkParent.href) {
-        source = linkParent.href;
+      // 仅当外链本身指向图片文件时才用它作为大图源，避免劫持普通链接（如 CC 协议徽章）
+      if (!hi && linkParent && linkParent.href && /\.(png|jpe?g|gif|webp|avif|svg)(\?|#|$)/i.test(linkParent.href)) {
+        hi = linkParent.href;
       }
-      imgEl.src = source;
-      var srcset = img.getAttribute('srcset');
-      if (srcset) imgEl.setAttribute('srcset', srcset);
+      // 先显示已缓存的正文图，再渐进换更高清档位，避免弹窗空白等待
+      imgEl.src = current;
+      if (hi && hi !== current) {
+        var pre = new Image();
+        pre.onload = function () {
+          if (overlay.classList.contains('is-visible')) imgEl.src = hi;
+        };
+        pre.src = hi;
+      }
       imgEl.alt = img.alt || '';
       overlay.classList.add('is-visible');
       document.body.classList.add('lightbox-open');
@@ -159,6 +166,8 @@
     images.forEach(function (img) {
       img.addEventListener('click', handleImageClick);
       img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', (img.alt || '图片') + '，按回车放大预览');
       img.addEventListener('keydown', function (evt) {
         if (evt.key === 'Enter' || evt.key === ' ') {
           evt.preventDefault();
@@ -174,8 +183,13 @@
     });
     closeBtn.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', function (evt) {
-      if (evt.key === 'Escape' && overlay.classList.contains('is-visible')) {
+      if (!overlay.classList.contains('is-visible')) return;
+      if (evt.key === 'Escape') {
         closeLightbox();
+      } else if (evt.key === 'Tab') {
+        // 焦点陷阱：dialog 内唯一可聚焦元素是关闭按钮，Tab 不允许逃逸到被遮挡的正文
+        evt.preventDefault();
+        closeBtn.focus();
       }
     });
   }

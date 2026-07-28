@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ site.Language.Lang | default "zh" }}">
     {{- partial "head.html" . -}}
-    <body>
+    <body id="top">
         <a class="skip-link" href="#main-content">跳到主要内容</a>
     	<div id="app">
             {{- partial "mobile-header.html" . -}}
             <!-- mobile header -->
             <div id="content">
-                <div id="streamContainer" class="stream-container" role="main">
-                    <div id="main-content"></div>
+                <main id="streamContainer" class="stream-container">
+                    <div id="main-content" tabindex="-1"></div>
                     {{- block "main" . }}{{- end }}
-                    </div>
+                    </main>
             </div>
 
             {{- partial "sidebar.html" . -}}
@@ -19,18 +19,9 @@
             {{- partial "mobile-footer.html" . -}}
             <!-- mobile footer -->
             </div>
-    {{ partial "journal.html" .}}
-    <!-- For compatibility. View https://github.com/AmazingRise/hugo-theme-diary/pull/135 for details.-->
-    {{- $hugoVersion := split (replaceRE ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "$1 $2 $3" hugo.Version) " " -}}
-    {{- if and (eq (int (index $hugoVersion 0)) 0) (ge (int (index $hugoVersion 1)) 101) -}}
-        {{- /* no leading slash */ -}}
-        <script defer src="{{"js/journal.js" | relURL}}"></script>
-        <script defer src="{{"js/code-enhance.js" | relURL}}"></script>
-    {{- else -}}
-        {{- /* with leading slash */ -}}
-        <script defer src="{{"/js/journal.js" | relURL}}"></script>
-        <script defer src="{{"/js/code-enhance.js" | relURL}}"></script>
-    {{- end -}}
+    {{- /* 项目最低 Hugo 0.147，原 <0.101 的版本分支恒为死路径，已展开 */ -}}
+    <script defer src="{{"js/journal.js" | relURL}}"></script>
+    <script defer src="{{"js/code-enhance.js" | relURL}}"></script>
 
     <script>
     // Native JavaScript implementation for theme functionality
@@ -44,15 +35,6 @@
         const drawerEl = document.getElementById('drawer');
         const overlayEl = document.getElementById('drawer-overlay');
 
-        // Force remove any drawer mask elements but keep our transparent overlay
-        function removeMasks() {
-            const masks = document.querySelectorAll('#drawer-mask, .single-column-drawer-mask, [class*="mask"]:not(.single-column-drawer-overlay), [id*="mask"]:not(#drawer-overlay)');
-            masks.forEach(mask => mask.remove());
-        }
-        removeMasks();
-        // Check again after a delay
-        setTimeout(removeMasks, 100);
-
         window.toggleDrawer = function() {
             const state = window.themeState;
             state.isDrawerOpen = !state.isDrawerOpen;
@@ -60,6 +42,9 @@
             if (!drawerEl) {
                 return;
             }
+
+            const navBtn = document.getElementById('nav_dropdown_btn');
+            if (navBtn) navBtn.setAttribute('aria-expanded', state.isDrawerOpen);
 
             if (state.isDrawerOpen) {
                 drawerEl.classList.add('single-column-drawer-container-active');
@@ -75,9 +60,12 @@
                 if (overlayEl) {
                     overlayEl.style.display = 'none';
                 }
-                // Hide all submenu items
+                // Hide all submenu items（同步 ARIA 状态，避免读屏器与实际显示不一致）
                 document.querySelectorAll('.drawer-submenu').forEach(el => {
                     el.style.display = 'none';
+                    el.setAttribute('aria-hidden', 'true');
+                    const btn = el.closest('[aria-expanded]');
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
                 });
             }
         };

@@ -61,16 +61,21 @@
         region: '{{ . }}'{{ end }}
       });
     };
+    script.onerror = function() {
+      const el = document.getElementById('tcomment');
+      if (el) el.innerHTML = '<p style="text-align:center;opacity:.6"><small>评论组件加载失败，请检查网络后刷新重试</small></p>';
+    };
     document.body.appendChild(script);
   }
 
   if ('IntersectionObserver' in window) {
+    // rootMargin 提前 300px 预热，读者滚到评论区时脚本大概率已就绪
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         loadTwikoo();
         observer.disconnect();
       }
-    });
+    }, { rootMargin: '300px' });
     observer.observe(document.getElementById('tcomment'));
   } else {
     loadTwikoo();
