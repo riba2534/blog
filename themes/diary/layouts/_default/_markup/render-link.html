@@ -1,0 +1,4 @@
+{{- /* 外链新标签页打开并按规范加 rel="noopener noreferrer"；站内相对链接保持原行为 */ -}}
+{{- $external := and (strings.HasPrefix .Destination "http") (not (strings.HasPrefix .Destination site.BaseURL)) -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>
+{{- /* chomp 尾随换行，避免行内链接后多出空格 */ -}}

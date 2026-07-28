@@ -1,0 +1,15 @@
+{{- /* 数学公式构建期渲染：KaTeX HTML+MathML 直接进产物，浏览器无需加载 KaTeX JS。
+     需要 Hugo 0.141+（try），Cloudflare 侧为 0.147.7，满足。
+     页面含公式时向 Store 写入 hasMath，head.html 据此按需注入 katex.css */ -}}
+{{- /* output 显式设为 htmlAndMathml：KaTeX HTML 保证跨浏览器排版一致，MathML 供读屏器；
+       默认值 mathml 纯靠浏览器 MathML 渲染，老浏览器不显示 */ -}}
+{{- $opts := dict "displayMode" (eq .Type "block") "throwOnError" false "output" "htmlAndMathml" -}}
+{{- with try (transform.ToMath .Inner $opts) -}}
+  {{- with .Err -}}
+    {{- warnf "KaTeX 渲染失败 %s: %s" $.Position . -}}
+    {{- $.Inner -}}
+  {{- else -}}
+    {{- .Value -}}
+    {{- $.Page.Store.Set "hasMath" true -}}
+  {{- end -}}
+{{- end -}}

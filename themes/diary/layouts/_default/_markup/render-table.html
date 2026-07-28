@@ -1,0 +1,28 @@
+{{- /* 用滚动容器包裹表格：table 元素自身不是滚动容器，
+     此前 `table { overflow-x: scroll }` 无效，宽表格在窄屏会撑破版面。
+     需要 Hugo 0.134+（Cloudflare 侧为 0.147.7，满足）。 */ -}}
+<div class="table-wrapper">
+  <table
+    {{- range $k, $v := .Attributes }}
+      {{- if $v }} {{ printf "%s=%q" $k $v | safeHTMLAttr }}{{ end }}
+    {{- end }}>
+    <thead>
+      {{- range .THead }}
+      <tr>
+        {{- range . }}
+        <th {{- with .Alignment }} style="text-align: {{ . }}"{{ end }}>{{ .Text }}</th>
+        {{- end }}
+      </tr>
+      {{- end }}
+    </thead>
+    <tbody>
+      {{- range .TBody }}
+      <tr>
+        {{- range . }}
+        <td {{- with .Alignment }} style="text-align: {{ . }}"{{ end }}>{{ .Text }}</td>
+        {{- end }}
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,5 @@
+{{- /* Mermaid 代码块在构建期直接输出容器，客户端 mermaid.run 就地渲染，
+     免去此前"高亮代码块 → JS 替换为 div"的两步走。
+     页面含 mermaid 时向 Store 写入 hasMermaid，extended_head.html 据此按需加载脚本 */ -}}
+<div class="mermaid">{{ .Inner }}</div>
+{{- .Page.Store.Set "hasMermaid" true -}}

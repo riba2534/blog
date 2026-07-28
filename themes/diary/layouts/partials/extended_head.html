@@ -42,7 +42,7 @@
     }
     if (!document.getElementById('backToTop')) {
       var btn = create('button', { id: 'backToTop', title: '返回顶部', 'aria-label': '返回顶部', type: 'button' });
-      btn.innerHTML = '<span class="material-icons" aria-hidden="true">arrow_upward</span>';
+      btn.innerHTML = '<svg class="material-icons" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>';
       btn.addEventListener('click', scrollToTop);
       document.body.appendChild(btn);
     }
@@ -189,29 +189,12 @@
 </script>
 
 {{ if .IsPage }}
-  {{ if and .Site.Params.enableMermaid (findRE "language-mermaid" .Content) }}
+  {{ $noop := .Content }}{{/* 先触发内容渲染，render-codeblock-mermaid hook 才会写入 Store */}}
+  {{ if and .Site.Params.enableMermaid (.Store.Get "hasMermaid") }}
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: false });
-
-  document.addEventListener("DOMContentLoaded", function() {
-    var codes = document.querySelectorAll("pre code.language-mermaid");
-    codes.forEach(function(code) {
-      var pre = code.parentElement;
-      var div = document.createElement("div");
-      div.className = "mermaid";
-      div.textContent = code.textContent;
-
-      var parent = pre.parentElement;
-      if (parent.classList.contains("highlight")) {
-          parent.replaceWith(div);
-      } else {
-          pre.replaceWith(div);
-      }
-    });
-
-    mermaid.run();
-  });
+  mermaid.run({ querySelector: '.mermaid' });
 </script>
   {{ end }}
 {{ end }}

@@ -32,13 +32,20 @@ enable = true
 eastAsianLineBreaks = true
 escapedSpace = true
 
+# 数学公式在构建期由 render-passthrough.html 调 transform.ToMath 渲染，浏览器端零 JS。
+# 刻意不启用单个 $ 作为内联定界符（会误伤正文里的美元符号），内联公式一律用 \( \)
+[markup.goldmark.extensions.passthrough]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]'], ['$$', '$$']]
+inline = [['\(', '\)']]
+
 [params]
 # enableGitalk = false
 enableOpenGraph = true
 enableTwitterCards = true
 title = "🌀riba2534's Blog"
 description = "riba2534的个人技术博客，分享编程、投资、生活的思考与经验"
-enableLaTeX=true
 enableMermaid = true
 enableReadingTime = true
 # favicon = "👋"  # emoji favicon 使用下方内联方式
