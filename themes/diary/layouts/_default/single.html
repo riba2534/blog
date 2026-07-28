@@ -34,7 +34,7 @@
                         {{ end }}
 
                         {{ if .Params.categories }}
-                            <i class="material-icons" style="">folder</i>
+                            {{ partial "functions/icon.html" "folder" }}
                             {{ if reflect.IsSlice .Params.categories }}
                                 {{ range .Params.categories }}
                                     <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
@@ -46,14 +46,14 @@
                         {{ end }}
 
                         {{ if gt .Params.tags 0 }}
-                            <i class="material-icons" style="">label</i>
+                            {{ partial "functions/icon.html" "label" }}
                             {{ range .Params.tags }}
                                 <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
                                 &nbsp;
                             {{ end }}
                         {{ end }}
                         {{ if .Site.Params.enableReadingTime }}
-                            <i class="material-icons" style="">schedule</i>
+                            {{ partial "functions/icon.html" "schedule" }}
                             {{ $wordCount := strings.RuneCount (plainify .Content) }}
                             {{ $readTime := div $wordCount 400 }}
                             {{ if lt $readTime 1 }}{{ $readTime = 1 }}{{ end }}

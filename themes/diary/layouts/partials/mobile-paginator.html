@@ -6,9 +6,7 @@
     {{ else }}
     <a class="pagination-action" style="opacity:0">
     {{ end }}
-        <i class="material-icons pagination-action-icon">
-            chevron_left
-        </i>
+        {{ partial "functions/icon.html" (dict "name" "chevron_left" "class" "pagination-action-icon") }}
     </a>
 
         <div class="pagination-indicator">
@@ -23,9 +21,7 @@
         {{ else }}
             <a class="pagination-action" style="opacity:0">
         {{ end }}
-                <i class="material-icons pagination-action-icon">
-                    chevron_right
-                </i>
+                {{ partial "functions/icon.html" (dict "name" "chevron_right" "class" "pagination-action-icon") }}
             </a>
 </div>
 {{ end }}

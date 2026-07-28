@@ -64,10 +64,13 @@ var spy = function () {
 // TOC Auto-collapse functionality
 var tocExpandedState = {};
 
+// 内联 SVG 图标（替代 Material Icons 连字字体）
+var TOC_ICON_EXPAND_MORE = '<svg class="material-icons" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>';
+var TOC_ICON_EXPAND_LESS = '<svg class="material-icons" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/></svg>';
+
 function toggleAllTocItems() {
   const tocItems = document.querySelectorAll('.toc-collapsible');
   const toggleButton = document.getElementById('toc-toggle-all');
-  const icon = toggleButton.querySelector('i');
 
   let allExpanded = true;
   tocItems.forEach(item => {
@@ -80,7 +83,10 @@ function toggleAllTocItems() {
     item.style.display = allExpanded ? 'none' : 'block';
   });
 
-  icon.textContent = allExpanded ? 'expand_more' : 'expand_less';
+  const icon = toggleButton.querySelector('.material-icons');
+  if (icon) {
+    icon.outerHTML = allExpanded ? TOC_ICON_EXPAND_MORE : TOC_ICON_EXPAND_LESS;
+  }
 }
 
 function toggleTocItem(element) {
@@ -89,9 +95,9 @@ function toggleTocItem(element) {
     const isHidden = subList.style.display === 'none';
     subList.style.display = isHidden ? 'block' : 'none';
 
-    const icon = element.querySelector('.toc-toggle-icon');
-    if (icon) {
-      icon.textContent = isHidden ? 'expand_less' : 'expand_more';
+    const wrapper = element.querySelector('.toc-toggle-icon');
+    if (wrapper) {
+      wrapper.innerHTML = isHidden ? TOC_ICON_EXPAND_LESS : TOC_ICON_EXPAND_MORE;
     }
   }
 }
@@ -103,10 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
   tocItems.forEach(item => {
     const nextUl = item.parentElement.querySelector('.toc-collapsible');
     if (nextUl) {
-      // Add expand icon
-      const icon = document.createElement('i');
-      icon.className = 'material-icons toc-toggle-icon';
-      icon.textContent = 'expand_more';
+      // Add expand icon (span 容器持有 SVG，方便点击态切换时整体替换)
+      const icon = document.createElement('span');
+      icon.className = 'toc-toggle-icon';
+      icon.innerHTML = TOC_ICON_EXPAND_MORE;
       icon.style.fontSize = '14px';
       icon.style.marginLeft = '5px';
       icon.style.cursor = 'pointer';

@@ -16,10 +16,11 @@ $color-meta: #94a3b8;
 $code-bg: #f6f8fa;
 $code-border: #d0d7de;
 
+// CJK 排序原则：各平台专属黑体按"本平台优先"——PingFang(macOS) → Hiragino(旧macOS) → YaHei(Windows) → Noto/思源(Linux)
 $default-font-list: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Helvetica Neue", "LXGW WenKai", "Noto Sans CJK SC", "Source Han Sans CN",
-  "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
-$mono-font-list: "JetBrains Mono", "Source Code Pro",
+  "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB",
+  "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans CN", sans-serif;
+$mono-font-list: "JetBrains Mono", ui-monospace, "Source Code Pro",
   "SF Mono", "Monaco", "Menlo", "Consolas", "Liberation Mono", monospace;
 //$sans-preferred-font-list: "Montserrat", "Roboto", "Source Sans Pro", "Helvetica", $default-font-list;
 $sans-preferred-font-list: $default-font-list;
@@ -80,7 +81,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: $default-font-list;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   color: $color-text;
@@ -146,8 +146,10 @@ button {
   }
 }
 
-table {
-  overflow-x: scroll;
+// 宽表格横向滚动由 render-table hook 的包裹容器承担（table 元素自身设 overflow 无效）
+.table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 button {

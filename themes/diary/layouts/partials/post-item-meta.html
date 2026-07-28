@@ -7,7 +7,7 @@
     &emsp;
     <!-- Reading Time Start -->
     {{ if .Site.Params.enableReadingTime }}
-    <i class="material-icons" style="font-size:10px">schedule</i>
+    {{ partial "functions/icon.html" (dict "name" "schedule" "style" "font-size:12px") }}
     {{ $wordCount := strings.RuneCount (plainify .Content) }}
     {{ $readTime := div $wordCount 400 }}
     {{ if lt $readTime 1 }}{{ $readTime = 1 }}{{ end }}

@@ -45,9 +45,7 @@
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">
         <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" aria-label="打开菜单" aria-expanded="false" onclick="toggleDrawer()">
-            <i class="material-icons" aria-hidden="true">
-                menu
-            </i>
+            {{ partial "functions/icon.html" "menu" }}
         </button>
         <a id="navTitle" class="navbar-brand" href="{{ "" | relLangURL }}">
             {{.Site.Title}}

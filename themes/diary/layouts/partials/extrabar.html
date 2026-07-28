@@ -10,9 +10,7 @@
     </div>
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility invisible" href="#top">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
+            {{ partial "functions/icon.html" (dict "name" "keyboard_arrow_up" "class" "pagination-action-icon") }}
         </a>
         {{ if and (.Page.IsNode) (.Page.Paginator) (not (.Data.Terms)) }}
         {{ if gt .Paginator.TotalPages 1 }}
@@ -21,9 +19,7 @@
             {{ else }}
             style="visibility:hidden">
             {{ end }}
-            <i class="material-icons pagination-action-icon">
-                chevron_left
-            </i>
+            {{ partial "functions/icon.html" (dict "name" "chevron_left" "class" "pagination-action-icon") }}
         </a>
 
         <div class="pagination-indicator">
@@ -38,9 +34,7 @@
             {{ else }}
             style="visibility:hidden">
             {{ end }}
-            <i class="material-icons pagination-action-icon">
-                chevron_right
-            </i>
+            {{ partial "functions/icon.html" (dict "name" "chevron_right" "class" "pagination-action-icon") }}
         </a>
         {{ end }}
         {{ end }}

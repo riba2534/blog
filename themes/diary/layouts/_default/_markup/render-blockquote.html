@@ -18,7 +18,7 @@
   {{- $label := .AlertTitle | default (index $labelMap $type | default "Note") -}}
   <div class="gh-alert gh-alert-{{ $type }}">
     <p class="gh-alert-title">
-      <span class="material-icons gh-alert-icon">{{ $icon }}</span>
+      {{ partial "functions/icon.html" (dict "name" $icon "class" "gh-alert-icon") }}
       {{ $label }}
     </p>
     <div class="gh-alert-content">

@@ -1,0 +1,33 @@
+{{- /* 内联 SVG 图标，替代 Material Icons 连字字体（该字体域名国内不可达，加载失败时会显示英文单词）。
+     入参: 字符串图标名，或 dict "name" <图标名> "class" <附加class> "style" <内联样式>。
+     path 数据取自 Material Design 24dp 图标集。 */ -}}
+{{- $name := . -}}
+{{- $class := "" -}}
+{{- $style := "" -}}
+{{- if reflect.IsMap . -}}
+  {{- $name = .name -}}
+  {{- $class = .class | default "" -}}
+  {{- $style = .style | default "" -}}
+{{- end -}}
+{{- $paths := dict
+  "folder"            "M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"
+  "label"             "M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z"
+  "schedule"          "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+  "menu"              "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+  "chevron_left"      "M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+  "chevron_right"     "M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+  "expand_more"       "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+  "expand_less"       "M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"
+  "arrow_upward"      "M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
+  "keyboard_arrow_up" "M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+  "info"              "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+  "lightbulb"         "M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"
+  "announcement"      "M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"
+  "warning"           "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+  "error"             "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+-}}
+{{- with index $paths $name -}}
+<svg class="material-icons{{ with $class }} {{ . }}{{ end }}"{{ with $style }} style="{{ . | safeCSS }}"{{ end }} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{{ . }}"/></svg>
+{{- else -}}
+{{- errorf "functions/icon.html: 未知图标 %q" $name -}}
+{{- end -}}
