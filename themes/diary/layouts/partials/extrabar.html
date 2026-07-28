@@ -4,18 +4,18 @@
 
         {{ if and (not (.Params.disableToC) ) (.IsPage) }}
         <div class="toc">
-            {{- partial "toc.html" . -}}
+            {{- partialCached "toc.html" . .RelPermalink -}}
         </div>
         {{ end }}
     </div>
     <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility invisible" href="#top">
+        <a id="globalBackToTop" class="pagination-action animated-visibility invisible" href="#top" aria-label="返回顶部">
             {{ partial "functions/icon.html" (dict "name" "keyboard_arrow_up" "class" "pagination-action-icon") }}
         </a>
         {{ if and (.Page.IsNode) (.Page.Paginator) (not (.Data.Terms)) }}
         {{ if gt .Paginator.TotalPages 1 }}
 
-        <a class="pagination-action" {{ if .Paginator.HasPrev }} href="{{.Paginator.Prev.URL}}">
+        <a class="pagination-action" aria-label="上一页" {{ if .Paginator.HasPrev }} href="{{.Paginator.Prev.URL}}">
             {{ else }}
             style="visibility:hidden">
             {{ end }}
@@ -30,7 +30,7 @@
         </div>
 
 
-        <a class="pagination-action" {{ if .Paginator.HasNext }} href="{{.Paginator.Next.URL}}">
+        <a class="pagination-action" aria-label="下一页" {{ if .Paginator.HasNext }} href="{{.Paginator.Next.URL}}">
             {{ else }}
             style="visibility:hidden">
             {{ end }}

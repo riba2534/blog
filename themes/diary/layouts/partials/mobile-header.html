@@ -34,7 +34,7 @@
             {{ end }}
             {{ if and (not (.Site.Params.disableToC) ) (.IsPage) }}
             <div class="toc">
-                {{- partial "toc.html" . -}}
+                {{- partialCached "toc.html" . .RelPermalink -}}
             </div>
             {{ end }}
         </div>

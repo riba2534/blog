@@ -1,13 +1,20 @@
 <head>
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
-{{ $description := .Params.description}}
-{{if .IsHome}}
-  {{ $description = .Site.Params.description}}
-{{end}}
+{{- /* description 兜底链：front matter → 文章摘要 → 站点描述，避免输出空 meta */ -}}
+{{ $description := .Params.description }}
+{{ if .IsHome }}
+  {{ $description = .Site.Params.description }}
+{{ else if not $description }}
+  {{ if .IsPage }}
+    {{ $description = .Summary | plainify | truncate 160 }}
+  {{ end }}
+  {{ if not $description }}
+    {{ $description = .Site.Params.description }}
+  {{ end }}
+{{ end }}
 
 <meta charset="utf-8">
-<meta name="X-UA-Compatible" content="IE=edge">
 {{ with .Site.Params.googleSiteVerification }}
 <meta name="google-site-verification" content="{{ . }}">
 {{ end }}
@@ -67,23 +74,19 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 {{ end }}
 
+<!-- RSS 自动发现：让阅读器在任意页面都能找到订阅源 -->
+{{ with site.Home.OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">
+{{ end }}
+
 <!-- favicon -->
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-<!-- For compatibility. View https://github.com/AmazingRise/hugo-theme-diary/pull/135 for details.-->
-{{- $hugoVersion := split (replaceRE ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "$1 $2 $3" hugo.Version) " " -}}
-{{- if and (eq (int (index $hugoVersion 0)) 0) (ge (int (index $hugoVersion 1)) 101) -}}
-    {{- /* no leading slash */ -}}
-    {{ if and (not (.Params.disableToC) ) (.IsPage) }}
-      <script defer src="{{"js/toc.js" | relURL}}"></script>
-    {{ end }}
-{{- else -}}
-    {{- /* with leading slash */ -}}
-    {{ if and (not (.Params.disableToC) ) (.IsPage) }}
-      <script defer src="{{"/js/toc.js" | relURL}}"></script>
-    {{ end }}
-{{- end -}}
+{{- /* 项目最低 Hugo 0.147，原 <0.101 的版本分支恒为死路径，已展开 */ -}}
+{{ if and (not (.Params.disableToC) ) (.IsPage) }}
+  <script defer src="{{"js/toc.js" | relURL}}"></script>
+{{ end }}
 
 {{ $styles := resources.Get "scss/journal.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
@@ -124,15 +127,7 @@
 {{ if and ( and ( .Site.Params.enableGitalk ) ( .IsPage ) ) ( or ( not ( isset .Params "comment" ) ) ( eq .Params.comment true ) ) }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script defer src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<!-- For compatibility. View https://github.com/AmazingRise/hugo-theme-diary/pull/135 for details.-->
-{{- $hugoVersion := split (replaceRE ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "$1 $2 $3" hugo.Version) " " -}}
-{{- if and (eq (int (index $hugoVersion 0)) 0) (ge (int (index $hugoVersion 1)) 101) -}}
-    {{- /* no leading slash */ -}}
-    <script defer src="{{"vendor/js/md5.min.js" | relURL}}"></script>
-{{- else -}}
-    {{- /* with leading slash */ -}}
-    <script defer src="{{"/vendor/js/md5.min.js" | relURL}}"></script>
-{{- end -}}
+<script defer src="{{"vendor/js/md5.min.js" | relURL}}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var gitalk = new Gitalk({
@@ -172,8 +167,8 @@
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 {{ end }}
 
-<!-- JSON-LD Schema for SEO -->
-{{ if .IsPage }}
+<!-- JSON-LD Schema for SEO：仅博客文章声明为 BlogPosting，归档/关于/友链等页面不做错误陈述 -->
+{{ if and .IsPage (eq .Section "blog") }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

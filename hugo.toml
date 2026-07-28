@@ -1,5 +1,4 @@
 DefaultContentLanguage = "zh"
-dateFormat = "2006-01-02 15:04:05"
 description = "🌀riba2534's Blog"
 enableEmoji = true
 enableGitInfo = true
@@ -40,7 +39,12 @@ enable = true
 block = [['\[', '\]'], ['$$', '$$']]
 inline = [['\(', '\)']]
 
+# 分页列表不再生成 /page/1/ 跳转页（曾产出 202 个无流量入口的冗余文件）
+[pagination]
+disableAliases = true
+
 [params]
+author = "riba2534"
 # enableGitalk = false
 enableOpenGraph = true
 enableTwitterCards = true

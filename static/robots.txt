@@ -1,0 +1,5 @@
+# 自建 robots.txt（覆盖 Cloudflare 托管版）：允许包括 AI 爬虫在内的全部抓取
+User-agent: *
+Allow: /
+
+Sitemap: https://blog.riba2534.cn/sitemap.xml

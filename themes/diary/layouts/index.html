@@ -1,5 +1,6 @@
 {{ define "main" }}
 
+    <h1 class="sr-only">{{ .Site.Title }}</h1>
     <div class="post-list-container post-list-container-no-background">
         {{/* 支持配置首页显示的内容类型，默认为 blog 分区 */}}
         {{ $section := .Site.Params.homePageSection | default "blog" }}

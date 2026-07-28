@@ -1,5 +1,6 @@
 {{ define "main" }}
 
+<h1 class="sr-only">{{ .Title }} - {{ .Site.Title }}</h1>
 <div class="post-list-container post-list-container-shadow">
     {{ $allPages := .Pages }}
     {{ $pinned := where $allPages ".Params.pin" true }}
