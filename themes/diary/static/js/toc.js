@@ -1,3 +1,5 @@
+// 上一次滚动的激活标题 id：不变时整帧跳过 DOM 写入
+var spyLastActive = null;
 var spy = function () {
   var elems = document.querySelectorAll(Array.from(Array(6).keys(), x => ".post-body h"+(x+1).toString()));
   // ":is()" was not supported until Chrome 88+
@@ -13,37 +15,45 @@ var spy = function () {
   var doc = document.documentElement;
   var body = document.body || { scrollHeight: 0, offsetHeight: 0, clientHeight: 0 };
   var pageBottom = Math.max(doc.scrollHeight, doc.offsetHeight, doc.clientHeight, body.scrollHeight, body.offsetHeight, body.clientHeight);
+  var reachedBottom = currentBottom >= pageBottom;
 
-  var meetUnread = false
-  let lastElemName = elems[elems.length - 1].id || 'undefined';
-  elems.forEach(function (elem, idx) {
+  // 阶段一：集中读取布局（offsetTop），读写分离，避免逐条 read/write 交替触发的连环强制重排
+  var entries = [];
+  elems.forEach(function (elem) {
     if (!elem) return;
-    var elemTop = elem.offsetTop;
     var id = elem.getAttribute('id');
     if (!id) return;
-    var navElems = document.getElementsByClassName("nav-"+id);
-    if (navElems.length == 0) {
-      return
+    entries.push({ id: id, top: elem.offsetTop });
+  });
+  if (entries.length == 0) {
+    return;
+  }
+
+  // 阶段二：纯计算，已读标题集合是一段前缀，末尾即当前激活项
+  var activeId = entries[0].id;
+  entries.forEach(function (en) {
+    en.read = reachedBottom || currentTop >= en.top;
+    if (en.read) {
+      activeId = en.id;
     }
-    if (currentTop >= elemTop || currentBottom >= pageBottom) {
-      Array.from(navElems).forEach((e) => {
-        e.classList.add('toc-active');
-      });
-    } else {
-      if (meetUnread == false) {
-        meetUnread = true;
-        if (idx > 0) {
-          lastElemName = elems[idx - 1].id; 
-        }
-      }
-      Array.from(navElems).forEach((e) => {
-        e.classList.remove('toc-active');
-      });
-    }
-  })
-  let selector = ".nav-" + lastElemName;
+  });
+
+  // 激活项没变则 TOC 状态必然没变，直接跳过全部 DOM 写入
+  if (activeId === spyLastActive) {
+    return;
+  }
+  spyLastActive = activeId;
+
+  // 阶段三：集中写入
+  entries.forEach(function (en) {
+    var navElems = document.getElementsByClassName("nav-" + en.id);
+    Array.from(navElems).forEach(function (e) {
+      e.classList.toggle('toc-active', en.read);
+    });
+  });
+
   // Two toc elements here
-  document.querySelectorAll(selector).forEach(e => {
+  document.querySelectorAll(".nav-" + activeId).forEach(e => {
     try {
       // Avoid jank on scroll: no smooth behavior inside scroll handler
       e.scrollIntoView({ block: "center", behavior: 'auto' });

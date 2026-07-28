@@ -171,22 +171,28 @@ var sgn = function (t, x) {
   }
 };
 
+var lastNavShown = null;
 var handleScroll = function () {
   try {
     var pageHead = document.getElementById("pageHead");
     var navBar = document.getElementById("navBar");
+    var scrollY = window.scrollY;
+
+    // 先集中读取布局，再统一写入，避免同一帧内读写交替触发强制重排
+    var pageHeadHeight = (pageHead && pageHead.offsetHeight) || 1;
+    var navBarHeight = (navBar && navBar.offsetHeight) || 1;
 
     // 更新全局 themeState
     if (window.themeState) {
-      window.themeState.scrollY = window.scrollY;
-      window.themeState.navOpacity = Math.min(window.scrollY / 300, 1);
+      window.themeState.scrollY = scrollY;
+      window.themeState.navOpacity = Math.min(scrollY / 300, 1);
     }
 
     // pageHead 视差效果
     if (pageHead) {
-      var parallaxY = 0.3 * window.scrollY;
+      var parallaxY = 0.3 * scrollY;
       pageHead.style.transform = "translateZ(0px) translateY(" + parallaxY + "px)";
-      pageHead.style.opacity = 1 - Math.min(window.scrollY / 300, 1);
+      pageHead.style.opacity = 1 - Math.min(scrollY / 300, 1);
     }
 
     // 如果必要元素不存在，跳过 navbar opacity 逻辑
@@ -194,23 +200,19 @@ var handleScroll = function () {
       return;
     }
 
-    var pageHeadHeight = (pageHead && pageHead.offsetHeight) || 1;
-    var navBarHeight = navBar.offsetHeight || 1;
-
     var navOpacity = sgn(
       0.0,
       Math.min(
         1,
-        Math.max(0, window.scrollY / (pageHeadHeight - navBarHeight * 0.8))
+        Math.max(0, scrollY / (pageHeadHeight - navBarHeight * 0.8))
       )
     );
 
-    if (navOpacity >= 1) {
-      navBackground.style.opacity = 1;
-      navTitle.style.opacity = 1;
-    } else {
-      navBackground.style.opacity = 0;
-      navTitle.style.opacity = 0;
+    var navShown = navOpacity >= 1;
+    if (navShown !== lastNavShown) {
+      lastNavShown = navShown;
+      navBackground.style.opacity = navShown ? 1 : 0;
+      navTitle.style.opacity = navShown ? 1 : 0;
     }
 
     if (typeof spy !== "undefined" && typeof spy === "function") {

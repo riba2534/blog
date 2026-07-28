@@ -13,7 +13,9 @@
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
-    {{ range first 50 .Paginator.Pages }}
+    {{/* 不要用 .Paginator：会让 Hugo 给每个分页目录都生成一份全文 RSS（曾产出 17 份共 9.4MB）。
+         首页的 .RegularPages 只含根级页面，必须用 .Site.RegularPages 才能取到 blog 分区的文章 */}}
+    {{ range first 20 .Site.RegularPages }}
     {{ if and (.IsPage) (.Params.date) }}
         <item>
         <title>{{ .Title }}</title>

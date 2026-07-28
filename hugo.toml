@@ -19,7 +19,8 @@ hl_Lines = ""
 lineNoStart = 1
 lineNos = true
 lineNumbersInTable = true
-noClasses = true
+# class 模式：高亮样式走独立可缓存的 chroma.scss，而非每个 token 内联 style（长文 HTML 可瘦 20%+）
+noClasses = false
 style = "github"
 tabWidth = 4
 
@@ -37,7 +38,6 @@ enableOpenGraph = true
 enableTwitterCards = true
 title = "🌀riba2534's Blog"
 description = "riba2534的个人技术博客，分享编程、投资、生活的思考与经验"
-enableMathJax = true
 enableLaTeX=true
 enableMermaid = true
 enableReadingTime = true
@@ -51,6 +51,17 @@ enableTwikoo = true
 # repo = "repo name"
 # client_id = "your client id"
 # client_secret = "your client secret"
+
+# 只保留首页与分区的 RSS；标签/分类/系列不再输出 RSS（此前 197 个无人订阅的 XML 占产物 5MB+）
+[outputs]
+home = ["html", "rss"]
+section = ["html", "rss"]
+taxonomy = ["html"]
+term = ["html"]
+page = ["html"]
+
+[services.rss]
+limit = 20
 
 [taxonomies]
 category = "categories"
