@@ -24,7 +24,6 @@
   <a href="#我是谁">我是谁</a> ·
   <a href="#博客里写什么">博客里写什么</a> ·
   <a href="#开源项目">开源项目</a> ·
-  <a href="#本站技术">本站技术</a> ·
   <a href="#找到我">找到我</a>
 </p>
 
@@ -72,10 +71,6 @@ I'm riba2534，一直用着一个兔斯基的头像。
 - [**HappyClaw**](https://github.com/riba2534/happyclaw) ⭐770+ —— 自托管多用户 AI Agent 系统，让 Claude Code 通过 Web 与多种消息渠道长期在线（[官网](https://happyclaw.cc)）
 - [**TCP-IP-NetworkNote**](https://github.com/riba2534/TCP-IP-NetworkNote) ⭐2.4k+ —— 《TCP/IP 网络编程》学习笔记，本来是个人笔记，没想到成了 Star 最多的仓库
 
-## 本站技术
-
-博客用 [Hugo](https://gohugo.io/) 构建，主题基于 [hugo-theme-diary](https://github.com/AmazingRise/hugo-theme-diary) 深度魔改，部署在 Cloudflare Workers 上（推送即自动构建发布），图片走 R2 + 边缘变换自动输出 AVIF/WebP，数学公式在构建期渲染（浏览器零 JS）。性能、排版、无障碍与 SEO 都做过系统性的审计优化——对实现感兴趣可以直接翻这个仓库的源码和提交历史。
-
 ## 找到我
 
 - 🏠 个人主页导航：[riba2534.cn](https://riba2534.cn/)
@@ -85,6 +80,8 @@ I'm riba2534，一直用着一个兔斯基的头像。
 - ✉️ Email：riba2534@qq.com / riba2534.me@gmail.com
 
 也欢迎通过 [RSS](https://blog.riba2534.cn/index.xml) 订阅博客，或在文章下方直接留言。
+
+> 博客主题基于 [hugo-theme-diary](https://github.com/AmazingRise/hugo-theme-diary) 魔改。
 
 ---
 
