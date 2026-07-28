@@ -1,0 +1,13 @@
+{{- /* 给 img.riba2534.cn 的图片 URL 加 Cloudflare Image Transformations 前缀。
+     入参: dict "url" <原始URL> "width" <目标宽度>
+     SVG 直接透传（CF 不转换矢量图）；其他域名 / 相对路径原样返回。
+     onerror=redirect: 变换失败时 302 回源图，保证永不裂图。 */ -}}
+{{- $url := .url -}}
+{{- $width := .width | default 1600 -}}
+{{- $prefix := "https://img.riba2534.cn/" -}}
+{{- $out := $url -}}
+{{- if and (hasPrefix $url $prefix) (not (strings.HasSuffix $url ".svg")) (not (in $url "/cdn-cgi/")) -}}
+  {{- $path := strings.TrimPrefix $prefix $url -}}
+  {{- $out = printf "%scdn-cgi/image/width=%v,fit=scale-down,format=auto,onerror=redirect/%s" $prefix $width $path -}}
+{{- end -}}
+{{- return $out -}}

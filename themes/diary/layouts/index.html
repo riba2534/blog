@@ -32,7 +32,8 @@
                                             {{ $thumbnail := $image.Resize "690x360" }}
                                             style="background-image: url('{{ $thumbnail.RelPermalink }}')"
                                         {{ else }}
-                                            style="background-image: url('{{ $featured_image | absURL }}')"
+                                            {{ $thumb := partial "functions/image-cdn.html" (dict "url" ($featured_image | absURL) "width" 440) }}
+                                            style="background-image: url('{{ $thumb | safeCSS }}')"
                                         {{ end }}
                                     ></div>
                                 </div>
@@ -66,7 +67,8 @@
                                         {{ $thumbnail := $image.Resize "690x360" }}
                                         style="background-image: url('{{ $thumbnail.RelPermalink }}')"
                                     {{ else }}
-                                        style="background-image: url('{{ $featured_image | absURL }}')"
+                                        {{ $thumb := partial "functions/image-cdn.html" (dict "url" ($featured_image | absURL) "width" 440) }}
+                                        style="background-image: url('{{ $thumb | safeCSS }}')"
                                     {{ end }}
                                 ></div>
                             </div>
