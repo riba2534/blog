@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-这是一个使用 Hugo 静态网站生成器构建的个人博客项目。博客使用 GitHub Pages 进行托管，Twikoo 作为评论系统。
+这是一个使用 Hugo 静态网站生成器构建的个人博客项目。博客部署在 Cloudflare Workers（静态资产模式，Workers Builds 自动构建），Twikoo 作为评论系统。
 
 - **主站地址**: https://blog.riba2534.cn
 - **主题**: hugo-theme-diary (已包含在项目中)
@@ -39,7 +39,7 @@ make new title="文章标题"
 # 构建并预览生产版本
 make preview
 
-# 部署到 GitHub Pages
+# 推送 main 分支触发 Cloudflare 自动部署
 make deploy
 ```
 
@@ -62,7 +62,8 @@ hugo new blog/$(date +%Y)/文章标题.md
 
 ### 核心配置
 - `hugo.toml`: Hugo 配置文件，包含站点基本信息、菜单配置、评论系统配置等
-- `.github/workflows/deploy.yml`: GitHub Actions 自动部署配置，当推送到 main 分支时自动构建并部署到 GitHub Pages
+- `wrangler.jsonc`: Cloudflare Workers 部署配置（静态资产目录 + 构建命令），推送到 main 后由 Cloudflare Workers Builds 自动构建部署
+- **注意**: Cloudflare Workers Builds 使用的 Hugo 固定为 0.147.7（非扩展版之外的新特性不可用），模板中使用 0.148+ 新特性时必须按 `hugo.Version` 分支做兼容
 
 ### 内容组织
 - `content/`: 所有内容文件
@@ -81,7 +82,7 @@ hugo new blog/$(date +%Y)/文章标题.md
 1. **评论系统**: 使用 Twikoo，配置在 hugo.toml 中的 `twikooEnvId`
 2. **代码高亮**: 使用 GitHub 主题，支持行号显示，带复制按钮和语言标识
 3. **数学公式**: 启用了 MathJax 和 LaTeX 支持
-4. **自动部署**: 推送到 main 分支后，GitHub Actions 会自动构建并部署到 GitHub Pages
+4. **自动部署**: 推送到 main 分支后，Cloudflare Workers Builds 会自动构建并部署（配置见 `wrangler.jsonc`）
 5. **扩展版 Hugo**: 项目需要 Hugo 扩展版（extended）以支持 SASS/SCSS 编译
 
 ## 注意事项
@@ -89,7 +90,7 @@ hugo new blog/$(date +%Y)/文章标题.md
 - Hugo 版本需要使用扩展版（extended），以支持主题中的 SASS/SCSS
 - 所有新文章应放在 `content/blog/` 目录下，按年份组织
 - 主题文件可以直接在 `themes/diary/` 目录中修改
-- 部署是通过 GitHub Actions 自动完成的，无需手动构建和推送
+- 部署是通过 Cloudflare Workers Builds 自动完成的，无需手动构建和推送
 - **不要在根目录创建 layouts 目录**，所有模板修改都应在 `themes/diary/layouts/` 中进行
 
 ## Claude 操作规则

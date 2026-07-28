@@ -2,7 +2,8 @@
   "name": "blog",
   "compatibility_date": "2026-04-01",
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    "not_found_handling": "404-page"
   },
   "build": {
     "command": "hugo --minify"
