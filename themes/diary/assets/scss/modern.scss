@@ -14,7 +14,6 @@
 /* Design tokens */
 :root {
   /* spacing scale */
-  --space-0: 0;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -22,9 +21,6 @@
   --space-5: 20px;
   --space-6: 24px;
   --space-7: 28px;
-  --space-8: 32px;
-  --space-9: 36px;
-  --space-10: 40px;
 
   /* radii */
   --radius-xs: 6px;
@@ -36,7 +32,6 @@
   /* shadows */
   --shadow-1: 0 1px 2px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
   --shadow-2: 0 2px 6px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.06);
-  --shadow-3: 0 8px 24px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.06);
 
   /* colors (sync accent with theme default #1976d2) */
   --accent: #1976d2;
@@ -53,25 +48,21 @@
   /* typography */
   --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
 
-  /* code surfaces */
+  /* code surfaces（值对齐既有硬编码，改这里即可整体换肤） */
   --code-surface: #f6f8fa;
-  --code-border: rgba(27,31,35,0.12);
-  --code-line-bg: rgba(27,31,35,0.04);
-  --code-line-color: rgba(27,31,35,0.38);
+  --code-border: #d0d7de;
+  --code-fg: #1f2328;
+  --code-line-color: #656d76;
+  --code-copy-btn-fg: #57606a;
 
   /* z-index scale (unified layer system) */
-  --z-behind: -1;
   --z-base: 1;
   --z-content: 10;
-  --z-sticky: 100;
   --z-fixed: 200;
   --z-navbar: 300;
-  --z-drawer-backdrop: 400;
-  --z-drawer: 500;
   --z-lightbox-backdrop: 600;
   --z-lightbox: 700;
   --z-skip-link: 800;
-  --z-tooltip: 900;
 }
 
 /* Global refinements */
@@ -91,7 +82,7 @@ body {
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto; }
 }
 
 /* UI/UX: Enhanced focus states for accessibility */
@@ -159,7 +150,34 @@ a {
   font-family: "Plus Jakarta Sans", "Inter", "DM Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
 }
+/* 文章标题的 h1 只承担语义，视觉完全跟随 .post-title 容器 */
+.post-title .post-title-heading {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  display: block;
+}
 .post .post-subtitle { color: var(--text-2); }
+
+/* 视觉隐藏但读屏器可读（列表页的 h1 用） */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 代码行号：chroma 默认 #7f7f7f 对比度不足 3:1，统一走 token（#656d76，4.93:1 AA） */
+.chroma .lnt,
+.chroma .ln {
+  color: var(--code-line-color);
+}
 
 /* Navbar: translucent, blurred background on mobile bar */
 .single-column-nav-container .nav-background {
@@ -234,14 +252,14 @@ code {
   position: relative;
   margin: var(--space-5) 0;
   padding: 16px !important;
-  background: #f6f8fa !important;
-  background-color: #f6f8fa !important;
-  border: 1px solid #d0d7de !important;
+  background: var(--code-surface) !important;
+  background-color: var(--code-surface) !important;
+  border: 1px solid var(--code-border) !important;
   border-radius: 6px !important;
   overflow: auto;
   font-size: 13px;
   line-height: 1.45;
-  color: #1f2328 !important;
+  color: var(--code-fg) !important;
   box-shadow: none !important;
   cursor: text;
 }
@@ -264,7 +282,7 @@ code {
 .post-body > pre:hover,
 .post-body .highlight pre:hover,
 .post-body .highlight:hover {
-  transform: none !important;
+  transform: none;
   box-shadow: none !important;
 }
 
@@ -279,10 +297,10 @@ code {
 .post-body .highlight {
   position: relative;
   margin: var(--space-5) 0;
-  border: 1px solid #d0d7de;
+  border: 1px solid var(--code-border);
   border-radius: 6px;
   overflow: hidden;
-  background: #f6f8fa;
+  background: var(--code-surface);
   box-shadow: none !important;
 }
 
@@ -303,23 +321,23 @@ code {
 /* Override Hugo inline syntax highlighting colors */
 .post-body pre span,
 .post-body .highlight span {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: transparent;
+  background-color: transparent;
 }
 
 /* Highlight container (with line numbers) - remove extra styles */
 .post-body .highlight > div {
   position: relative;
-  padding: 0 !important;
-  margin: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  background-color: transparent;
   display: block;
   min-width: 100%;
   width: 100%;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 /* Force remove all pre and highlight extra effects */
@@ -331,8 +349,8 @@ code {
 .post-body .highlight td pre,
 .post-body > pre {
   box-shadow: none !important;
-  border-left: none !important;
-  border-right: none !important;
+  border-left: none;
+  border-right: none;
 }
 
 /* Remove line number area left border */
@@ -340,10 +358,10 @@ code {
 .post-body .highlight td:first-child pre,
 .post-body .highlight td:first-child pre code,
 .post-body .highlight td:first-child code {
-  border: none !important;
-  border-left: none !important;
+  border: none;
+  border-left: none;
   box-shadow: none !important;
-  outline: none !important;
+  outline: none;
 }
 
 .post-body .highlight::before,
@@ -376,16 +394,16 @@ code {
 .post-body .highlight table {
   width: 100% !important;
   border-collapse: collapse !important;
-  background: transparent !important;
-  border-spacing: 0 !important;
-  table-layout: auto !important;
+  background: transparent;
+  border-spacing: 0;
+  table-layout: auto;
 }
 
 .post-body .highlight td {
   padding: 0 !important;
   background: transparent !important;
   border: none !important;
-  background-color: transparent !important;
+  background-color: transparent;
   vertical-align: top;
   box-shadow: none !important;
 }
@@ -397,7 +415,7 @@ code {
   text-align: right;
   padding: 0 !important;
   border: none !important;
-  color: #656d76;
+  color: var(--code-line-color);
   background: transparent !important;
   user-select: none;
   vertical-align: top;
@@ -417,7 +435,7 @@ code {
   display: block;
   padding: 0 !important;
   background: none !important;
-  color: #656d76;
+  color: var(--code-line-color);
   font-size: 13px;
   line-height: 20px;
   text-align: right;
@@ -480,9 +498,9 @@ code {
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: 1px solid #d0d7de;
-  background: #f6f8fa;
-  color: #57606a;
+  border: 1px solid var(--code-border);
+  background: var(--code-surface);
+  color: var(--code-copy-btn-fg);
   cursor: pointer;
   opacity: 0;
   transition: opacity .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
@@ -497,8 +515,8 @@ code {
 
 .code-copy-btn:hover {
   background: #f3f4f6;
-  border-color: #1f2328;
-  color: #1f2328;
+  border-color: var(--code-fg);
+  color: var(--code-fg);
 }
 
 .code-copy-btn svg { pointer-events: none; }
@@ -764,14 +782,14 @@ h1, h2, h3, h4, h5, h6 {
 
   .single-column-drawer-container .drawer-menu .toc .toc-content a:hover {
     background: rgba(59, 130, 246, 0.06);
-    color: #3b82f6;
+    color: #1565c0;
   }
 
   .single-column-drawer-container .drawer-menu .toc .toc-content .toc-active {
     background: rgba(59, 130, 246, 0.08);
-    color: #3b82f6 !important;
+    color: #1565c0 !important;
     font-weight: 500;
-    border-right-color: #3b82f6;
+    border-right-color: #1565c0;
   }
 }
 
@@ -790,7 +808,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-meta i {
-  font-size: 15px !important;
+  font-size: 15px;
   color: inherit;
   opacity: 0.8;
   margin-left: 8px;
@@ -902,8 +920,6 @@ h1, h2, h3, h4, h5, h6 {
 #backToTop:hover { background: var(--accent-600); }
 #backToTop:active { background: var(--accent-700); }
 
-/* Tables */
-table.table { border-radius: var(--radius-sm); overflow: hidden; }
 
 .post-body table {
   width: 100%;
@@ -931,6 +947,25 @@ table.table { border-radius: var(--radius-sm); overflow: hidden; }
 
 /* Fine tune material icons alignment */
 .material-icons { vertical-align: middle; }
+
+/* 竖长图（手机截图等）不撑满整栏：限制显示高度、等比缩放，细节交给 lightbox 放大查看。
+   img[width="100%"] 覆盖老文章里裸 HTML 写法的图（如 2024《对投资的一些思考》），
+   width:auto 压过 HTML width 属性后由两个 max-* 等比约束；带具体百分比（40% 等）的并排小图不动 */
+.post-body img.post-img,
+.post-body img[width="100%"] {
+  max-height: 72vh;
+  width: auto;
+  max-width: 100%;
+}
+/* Mermaid 竖向大图（时序图等）同理；SVG 带 viewBox，约束高度会自动等比缩放不变形 */
+.post-body .mermaid svg {
+  max-height: 80vh;
+}
+/* 键盘聚焦正文图片时的可见焦点环（lightbox 图片带 tabindex） */
+.post-body img:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 /* 图标为内联 SVG：跟随所在处 font-size（1em）与文字颜色 */
 svg.material-icons {
   width: 1em;
@@ -1638,7 +1673,7 @@ body.lightbox-open {
   }
 
   .post-item-title:hover {
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   a:hover {
@@ -1678,17 +1713,6 @@ body.lightbox-open {
   align-items: center;
   padding: 0.5rem 1rem;
 }
-.navbar-nav {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.nav-link {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-}
 
 /* 404 page */
 .error-page {
@@ -1716,7 +1740,7 @@ body.lightbox-open {
   display: inline-block;
   padding: 12px 28px;
   background: var(--accent, #1976d2);
-  color: white !important;
+  color: white;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
@@ -1803,7 +1827,7 @@ body.lightbox-open {
   #backToTop,
   #reading-progress,
   .toc {
-    display: none !important;
+    display: none;
   }
 
   .stream-container {

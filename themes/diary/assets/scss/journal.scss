@@ -240,18 +240,6 @@ a {
   }
 }
 
-.no-margin {
-  margin: 0;
-}
-
-.no-padding {
-  padding: 0;
-}
-
-.no-overflow {
-  overflow: hidden !important;
-}
-
 .animated-visibility {
   transition: visibility 0s, opacity 0.5s ease;
   visibility: visible;
@@ -261,25 +249,6 @@ a {
 .invisible {
   visibility: hidden;
   opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
-// dirty hack for livere
-#lv-container {
-  padding: 0 30px;
-
-  @media screen and (max-width: $single-column-max-width) {
-    padding: 0 15px;
-  }
 }
 
 .single-column-nav-container {
@@ -335,23 +304,6 @@ a {
       &:active {
         background: rgba(0, 0, 0, 0.1);
       }
-    }
-    .nav-icon-group {
-      z-index: 5;
-      padding-right: 5px;
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      li {
-        display: inline;
-        margin: 0;
-        padding: 0;
-      }
-    }
-    .nav-icon {
-      padding: 8px;
     }
     .nav-background {
       opacity: 0;
@@ -462,25 +414,6 @@ a {
 }
 
 
-/* Hide old drawer mask but allow new transparent overlay */
-.single-column-drawer-mask,
-#drawer-mask,
-div[id*="mask"]:not(#drawer):not(#drawer-overlay),
-div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawer-overlay),
-[class*="drawer-mask"] {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  z-index: -1 !important;
-}
-
-.single-column-drawer-mask.single-column-drawer-mask-active {
-  display: none !important;
-}
-
 /* New transparent overlay for click-to-close functionality */
 .single-column-drawer-overlay {
   display: none;
@@ -506,7 +439,7 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
 }
 
 .side-container {
-  @include liquid-glass-regular;
+  @include liquid-glass-opaque;
   position: fixed;
   top: 0;
   left: 0;
@@ -668,20 +601,6 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
   }
 }
 
-.pagination-bar-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: $side-container-width;
-  text-align: right;
-  font-family: $sans-preferred-font-list;
-  padding: 20px 0;
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
-}
-
 .stream-container {
   padding-left: $side-container-width;
   padding-right: $extra-container-width;
@@ -708,7 +627,7 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
     &,
     > * {
       .post-item-wrapper {
-        @include liquid-glass-regular;
+        @include liquid-glass-opaque;
         @include floating-element;
         cursor: pointer;
         padding: 0;
@@ -751,15 +670,6 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
               @media screen and (max-width: $single-column-max-width) {
                 font-size: $single-column-post-title-size;
                 margin-bottom: 5px;
-              }
-            }
-
-            .post-item-title-small {
-              font-size: $tag-category-title-size;
-              margin-bottom: 0;
-
-              @media screen and (max-width: $single-column-max-width) {
-                font-size: $single-column-tag-category-title-size;
               }
             }
 
@@ -849,10 +759,6 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
         }
       }
 
-      .post-item-wrapper-no-hover {
-        cursor: unset;
-      }
-
       &:not(:last-child) {
         .post-item {
           border-bottom: 1px solid rgba(128, 128, 128, 0.12);
@@ -874,15 +780,6 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
       // box-shadow: 0 -6px 8px -4px rgba(0, 0, 0, 0.1);
       box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
     }
-  }
-  .post-list-footer {
-    text-align: center;
-    width: 100%;
-    opacity: 0.3;
-    color: $deep-dark-accent;
-    font-family: $default-font-list;
-    font-size: 13px;
-    padding: 15px;
   }
   .post {
     padding: 0 0 20px 0;
@@ -1298,30 +1195,6 @@ div[class*="mask"]:not(.single-column-drawer-container):not(.single-column-drawe
 
 mjx-container {
   overflow-y: hidden !important;
-}
-
-.gsc-control-searchbox-only {
-  display: flex !important;
-  background: none !important;
-  max-width: 70%;
-  margin-top: 1em;
-  margin-left: 1.5em;
-  margin-right: 0.2em;
-  @media screen and (max-width: $single-column-max-width) {
-    margin-left: 0.5em;
-    padding-left: 0.2em;
-    .gsst_a {
-      display: none;
-    }
-  }
-}
-
-.vwrap * {
-  color: black !important;
-}
-
-.vcontent p {
-  color: black !important;
 }
 
 .tags {
