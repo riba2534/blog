@@ -8,7 +8,7 @@
     <!-- Reading Time Start -->
     {{ if .Site.Params.enableReadingTime }}
     {{ partial "functions/icon.html" (dict "name" "schedule" "style" "font-size:12px") }}
-    {{ $wordCount := strings.RuneCount (plainify .Content) }}
+    {{ $wordCount := strings.RuneCount .Plain }}
     {{ $readTime := div $wordCount 400 }}
     {{ if lt $readTime 1 }}{{ $readTime = 1 }}{{ end }}
     {{ $readTime }} min

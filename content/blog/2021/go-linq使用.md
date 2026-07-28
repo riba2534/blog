@@ -7,9 +7,8 @@ description: "Golang中的Language Integrated Query介绍"
 tags:
 - go-linq
 - linq
-- golang
-categories:
 - Golang
+categories:
 comment : true
 ---
 

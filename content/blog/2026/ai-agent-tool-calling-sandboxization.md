@@ -8,8 +8,8 @@ tags:
 - ai-agent
 - sandbox
 - cloudflare
-- openai
-- anthropic
+- OpenAI
+- Anthropic
 - vercel
 - agent-infrastructure
 - 技术趋势

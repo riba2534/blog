@@ -1,0 +1,13 @@
+{{- /* 所有围栏代码块统一走构建期高亮：无语言标注的按 text 处理，
+     照样出 lntable 行号，语言徽章由 data-lang 提供，客户端无需再重建 DOM。 */ -}}
+{{- $lang := .Type -}}
+{{- $html := transform.Highlight .Inner (or $lang "text") .Options -}}
+{{- if not (in $html `class="chroma"`) -}}
+  {{- /* chroma 无此 lexer（如 dataview），退回 text 保证行号一致 */ -}}
+  {{- $lang = "" -}}
+  {{- $html = transform.Highlight .Inner "text" .Options -}}
+{{- end -}}
+{{- with $lang -}}
+  {{- $html = replaceRE `^<div class="highlight">` (printf `<div class="highlight" data-lang="%s">` (upper .)) $html -}}
+{{- end -}}
+{{- $html | safeHTML -}}

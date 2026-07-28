@@ -1,2 +1,4 @@
 {{- $src := partial "functions/image-cdn.html" (dict "url" .Destination "width" 1600) -}}
-<img class="post-img" src="{{ $src | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} loading="lazy" decoding="async" />
+{{- /* lightbox 放大用更高档位，点击时渐进加载（extended_head.html 的 data-lightbox-src 协议） */ -}}
+{{- $full := partial "functions/image-cdn.html" (dict "url" .Destination "width" 2560) -}}
+<img class="post-img" src="{{ $src | safeURL }}"{{ if ne $full $src }} data-lightbox-src="{{ $full | safeURL }}"{{ end }} alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} loading="lazy" decoding="async" />

@@ -5,9 +5,8 @@ draft: false
 featured_image: "https://img.riba2534.cn/images/2026/04/a3288a93_63557e98aeda0.png"
 description: "For 给部门校招新人训练营准备的一次 Golang 技术分享"
 tags:
-- golang
-categories:
 - Golang
+categories:
 comment : true
 ---
 

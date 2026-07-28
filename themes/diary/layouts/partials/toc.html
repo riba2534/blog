@@ -8,11 +8,6 @@
 		{{ $renum := (cond (eq $h1_n 0) "[2-4]" "[1-4]") }}
 		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
 			<span>- {{ i18n "toc_title" }} -</span>
-			{{ if site.Params.enableAutoCollapse }}
-			<button id="toc-toggle-all" onclick="toggleAllTocItems()" aria-label="展开/折叠目录" aria-expanded="false" style="background: none; border: none; cursor: pointer; font-size: 14px;">
-				{{ partial "functions/icon.html" (dict "name" "expand_more" "style" "font-size:16px") }}
-			</button>
-			{{ end }}
 		</div>
 		{{ $scratch := newScratch }}
 		{{ $scratch.Set "prev_heading" 1 }}
@@ -30,11 +25,7 @@
 						{{ end }}
 						{{ if gt $next_heading $prev_heading }}
 							{{ range seq (sub $next_heading $prev_heading) }}
-								{{ if site.Params.enableAutoCollapse }}
-									<ul class="toc-collapsible" data-level="{{ $next_heading }}" style="display: none;">
-								{{ else }}
-									<ul>
-								{{ end }}
+								<ul>
 							{{ end }}
 						{{ end }}
 						{{ $anchorId :=  (replaceRE ".* id=\"(.*?)\".*" "$1" $header ) }}
