@@ -1456,6 +1456,13 @@ html.immersive {
     width: $immersive-toc-band;
     pointer-events: none;
 
+    // 宽屏（对称留白 > 目录带）时正文居中，right:0 会让目录吊在屏幕最右缘远离正文；
+    // 改为贴正文卡片右缘定位。≤1600 时留白即目录带，本就紧邻，维持右锚定
+    @media screen and (min-width: #{$immersive-card-width + $immersive-toc-band * 2 + 1}) {
+      left: calc(50% + #{$immersive-card-width * 0.5} + 16px);
+      right: auto;
+    }
+
     .toc {
       pointer-events: auto;
       max-width: 280px;

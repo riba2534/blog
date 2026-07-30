@@ -925,6 +925,14 @@ h1, h2, h3, h4, h5, h6 {
 #backToTop:hover { background: var(--accent-600); }
 #backToTop:active { background: var(--accent-700); }
 
+/* 桌面三栏布局已有 extrabar 的 #globalBackToTop（沉浸模式下随目录带贴正文卡片），
+   FAB 只保留给移动端，避免右下角出现两个返回顶部按钮 */
+@media (min-width: 1021px) {
+  #backToTop {
+    display: none;
+  }
+}
+
 
 .post-body table {
   width: 100%;
