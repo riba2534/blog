@@ -107,7 +107,7 @@ As you can see, each cycle consisted of a relatively long period of peace and pr
 
 As you read on, keep in mind that \* **the two things about war that one can be most confident in are 1) that it won't go as planned and 2) that it will be far worse than imagined.** It is for those reasons that so many of the principles that follow are about ways to avoid shooting wars. Still, whether they are fought for good reasons or bad, shooting wars happen. To be clear, while I believe most are tragic and fought for nonsensical reasons, some are worth fighting because the consequences of not fighting them (e.g., the loss of freedom) would be intolerable.
 
-在继续阅读时，请记住：\* **关于战争，人们最有把握的两件事是：1）战争不会按计划进行；2）战争将远比想象中糟糕。**正是出于这些原因，接下来的许多原则都是关于如何避免武装战争的。然而，无论出于好的理由还是坏的理由，武装战争终究会发生。需要明确的是，虽然我认为大多数战争都是悲剧性的、因荒谬的理由而发动的，但有些战争值得一打，因为不打的后果（例如失去自由）将是不可忍受的。
+在继续阅读时，请记住：\* **关于战争，人们最有把握的两件事是：1）战争不会按计划进行；2）战争将远比想象中糟糕**。正是出于这些原因，接下来的许多原则都是关于如何避免武装战争的。然而，无论出于好的理由还是坏的理由，武装战争终究会发生。需要明确的是，虽然我认为大多数战争都是悲剧性的、因荒谬的理由而发动的，但有些战争值得一打，因为不打的后果（例如失去自由）将是不可忍受的。
 
 ---
 
@@ -117,7 +117,7 @@ As you read on, keep in mind that \* **the two things about war that one can be 
 
 As I explained in Chapter 2, after self-interest and self-survival, the quest for wealth and power is what most motivates individuals, families, companies, states, and countries. Because **wealth equals power** in terms of the ability to build military strength, control trade, and influence other nations, domestic and military strength go hand in hand. It takes money to buy **guns** (military power) and it takes money to buy **butter** (domestic social spending needs). When a country fails to provide adequate amounts of either, it becomes vulnerable to domestic and foreign opposition. From my study of Chinese dynasties and European empires, I've learned that the financial strength to outspend one's rivals is one of the most important strengths a country can have. That is how the United States beat the Soviet Union in the Cold War. Spend enough money in the right ways, and you don't have to have a shooting war. **Long-term success depends on sustaining both the "guns" and the "butter" without producing the excesses that lead to their declines.** In other words, a country must be strong enough financially to give its people both a good living standard and protection from outside enemies. The really successful countries have been able to do that for 200 to 300 years. None has been able to do it forever.
 
-正如我在第二章所解释的，在自身利益和自我生存之后，对财富和权力的追求是最能驱动个人、家庭、公司、州和国家的动力。因为从建设军事力量、控制贸易和影响其他国家的能力来看，**财富等于权力**，所以国内实力和军事实力是相辅相成的。买**枪**（军事力量）需要钱，买**黄油**（国内社会支出需求）也需要钱。当一个国家无法充分提供两者中的任何一个时，它就容易受到国内和国外反对势力的威胁。通过研究中国的朝代更迭和欧洲帝国的兴衰，我了解到，在财力上能够超越对手的能力，是一个国家所能拥有的最重要的优势之一。美国在冷战中正是这样击败苏联的。以正确的方式投入足够的资金，就不必诉诸武装战争。**长期的成功取决于同时维持"枪炮"和"黄油"，而不产生导致衰落的过度行为。**换言之，一个国家在财务上必须足够强大，既能为人民提供良好的生活水平，又能提供抵御外敌的保护。真正成功的国家能够做到这一点长达200到300年。但没有任何国家能永远做到。
+正如我在第二章所解释的，在自身利益和自我生存之后，对财富和权力的追求是最能驱动个人、家庭、公司、州和国家的动力。因为从建设军事力量、控制贸易和影响其他国家的能力来看，**财富等于权力**，所以国内实力和军事实力是相辅相成的。买**枪**（军事力量）需要钱，买**黄油**（国内社会支出需求）也需要钱。当一个国家无法充分提供两者中的任何一个时，它就容易受到国内和国外反对势力的威胁。通过研究中国的朝代更迭和欧洲帝国的兴衰，我了解到，在财力上能够超越对手的能力，是一个国家所能拥有的最重要的优势之一。美国在冷战中正是这样击败苏联的。以正确的方式投入足够的资金，就不必诉诸武装战争。**长期的成功取决于同时维持"枪炮"和"黄油"，而不产生导致衰落的过度行为**。换言之，一个国家在财务上必须足够强大，既能为人民提供良好的生活水平，又能提供抵御外敌的保护。真正成功的国家能够做到这一点长达200到300年。但没有任何国家能永远做到。
 
 Conflict arises when the dominant power begins to weaken or an emerging power begins to approach it in strength—or both. \* **The greatest risk of military war is when both parties have 1) military powers that are roughly comparable and 2) irreconcilable and existential differences.** As of this writing, the most potentially explosive conflict is that between the **United States and China over Taiwan**.
 
@@ -125,7 +125,7 @@ Conflict arises when the dominant power begins to weaken or an emerging power be
 
 The choice that opposing countries face—either fighting or backing down—is very hard to make. Both are costly—fighting in terms of lives and money, and backing down in terms of the loss of status, since it shows weakness, which leads to reduced support. When two competing entities each have the power to destroy the other, both must have extremely high trust that they won't be unacceptably harmed or killed by the other. Managing the **prisoner's dilemma** well, however, is extremely rare.
 
-对立国家面临的选择——要么开战，要么退让——极其艰难。两者代价都很高昂：开战的代价是生命和金钱，退让的代价是地位的丧失，因为退让意味着示弱，进而导致支持减少。当两个竞争实体各自拥有摧毁对方的能力时，双方都必须对彼此拥有极高的信任，相信自己不会被对方以不可接受的方式伤害或消灭。然而，能够妥善处理**"囚徒困境"**（prisoner's dilemma）的情况极为罕见。
+对立国家面临的选择——要么开战，要么退让——极其艰难。两者代价都很高昂：开战的代价是生命和金钱，退让的代价是地位的丧失，因为退让意味着示弱，进而导致支持减少。当两个竞争实体各自拥有摧毁对方的能力时，双方都必须对彼此拥有极高的信任，相信自己不会被对方以不可接受的方式伤害或消灭。然而，能够妥善处理"**囚徒困境"**（prisoner's dilemma）的情况极为罕见。
 
 While there are no rules in international relations other than those the most powerful impose on themselves, some approaches produce better outcomes than others. Specifically, those that are more likely to lead to **win-win** outcomes are better than those that lead to **lose-lose** outcomes. Hence this all-important principle: \* **to get more win-win outcomes one needs to negotiate with consideration given to what is most important to the other party and to oneself and know how to trade them.**
 
@@ -153,7 +153,7 @@ While I don't know about the love part of the saying "all is fair in love and wa
 
 This leads me to one final principle: \* **have power, respect power, and use power wisely.** Having power is good because power will win out over agreements, rules, and laws all the time. When push comes to shove, those who have the power to either enforce their interpretation of the rules and laws or to overturn them will get what they want. It is important to respect power because it's not smart to fight a war that one is going to lose; it is preferable to negotiate the best settlement possible (that is unless one wants to be a martyr, which is usually for stupid ego reasons rather than for sensible strategic reasons). It is also important to use power wisely. Using power wisely doesn't necessarily mean forcing others to give you what you want—i.e., bullying them. It includes the recognition that generosity and trust are powerful forces for producing win-win relationships, which are fabulously more rewarding than lose-lose relationships. In other words, it is often the case that using one's "**hard powers**" is not the best path and that using one's "**soft powers**" is preferable.
 
-这将我引向最后一条原则：\* **拥有权力，尊重权力，明智地使用权力。**拥有权力是好事，因为权力总是能够凌驾于协议、规则和法律之上。当事情到了紧要关头，那些有能力强制执行自己对规则和法律的解释、或者推翻这些规则和法律的人，将得到他们想要的。尊重权力很重要，因为打一场注定会输的仗是不明智的；不如尽可能谈判争取最好的条件（除非一个人想当烈士，而这通常是出于愚蠢的自尊心而非明智的战略考量）。明智地使用权力同样重要。明智地使用权力并不一定意味着强迫他人给你想要的东西——即霸凌他人。它包括认识到慷慨和信任是产生双赢关系的强大力量，而双赢关系的回报远远超过双输关系。换言之，使用"**硬实力**"（hard powers）往往不是最佳路径，使用"**软实力**"（soft powers）反而更可取。
+这将我引向最后一条原则：\* **拥有权力，尊重权力，明智地使用权力**。拥有权力是好事，因为权力总是能够凌驾于协议、规则和法律之上。当事情到了紧要关头，那些有能力强制执行自己对规则和法律的解释、或者推翻这些规则和法律的人，将得到他们想要的。尊重权力很重要，因为打一场注定会输的仗是不明智的；不如尽可能谈判争取最好的条件（除非一个人想当烈士，而这通常是出于愚蠢的自尊心而非明智的战略考量）。明智地使用权力同样重要。明智地使用权力并不一定意味着强迫他人给你想要的东西——即霸凌他人。它包括认识到慷慨和信任是产生双赢关系的强大力量，而双赢关系的回报远远超过双输关系。换言之，使用"**硬实力**"（hard powers）往往不是最佳路径，使用"**软实力**"（soft powers）反而更可取。
 
 When thinking about how to use power wisely, it's also important to decide when to reach an agreement and when to fight. To do that, a party must imagine how its power will change over time. It is desirable to use one's power to negotiate an agreement, enforce an agreement, or fight a war when one's power is greatest. That means that it pays to fight early if one's relative power is declining and fight later if it's rising.
 
@@ -161,7 +161,7 @@ When thinking about how to use power wisely, it's also important to decide when 
 
 If one is in a lose-lose relationship, one has to get out of it one way or another, preferably through separation, though possibly through war. To handle one's power wisely, it's usually best not to show it because it will usually lead others to feel threatened and build their own threatening powers, which will lead to a mutual escalation that threatens both. **Power is usually best handled like a hidden knife** that can be brought out in the event of a fight. But there are times when showing one's power and threatening to use it are most effective for improving one's negotiating position and preventing a fight. Knowing what matters most and least to the other party, especially what they will and won't fight for, allows you to work your way toward an equilibrium that both parties consider a fair resolution of a dispute.
 
-如果身处双输关系中，就必须想方设法脱身，最好是通过分离，必要时也可以通过战争。要明智地运用权力，通常最好不要展示它，因为这通常会让对方感到威胁，从而建立自己的威慑力量，导致双方互相升级、两败俱伤。**权力通常最好像一把隐藏的刀，只在需要战斗时才亮出来。**但有些时候，展示自己的权力并威胁使用它，对于改善自己的谈判地位和避免战争反而最为有效。了解对方最看重什么、最不在意什么，尤其是他们愿意为什么而战、不愿意为什么而战，能让你逐步找到双方都认为公平的争端解决方案的均衡点。
+如果身处双输关系中，就必须想方设法脱身，最好是通过分离，必要时也可以通过战争。要明智地运用权力，通常最好不要展示它，因为这通常会让对方感到威胁，从而建立自己的威慑力量，导致双方互相升级、两败俱伤。**权力通常最好像一把隐藏的刀，只在需要战斗时才亮出来**。但有些时候，展示自己的权力并威胁使用它，对于改善自己的谈判地位和避免战争反而最为有效。了解对方最看重什么、最不在意什么，尤其是他们愿意为什么而战、不愿意为什么而战，能让你逐步找到双方都认为公平的争端解决方案的均衡点。
 
 Though it is generally desirable to have power, it is also desirable to not have power that one doesn't need. That is because maintaining power consumes resources, most importantly your time and your money. Also, with power comes the burden of responsibilities. I have often been struck by how much happier less powerful people can be relative to more powerful people.
 
@@ -257,11 +257,11 @@ To make matters worse, there were droughts in the US and in the Soviet Union in 
 
 \* **Deflationary depressions are debt crises** caused by there not being enough money in the hands of debtors to service their debts. They inevitably lead to the printing of money, debt restructurings, and government spending programs that increase the supply of, and reduce the value of, money and credit. The only question is how long it takes for government officials to make this move.
 
-\* **通缩性萧条是由于债务人手中没有足够的资金来偿还债务而引发的债务危机。**它们不可避免地会导致印钞、债务重组和政府支出计划，这些举措增加了货币和信贷的供给，同时降低了其价值。唯一的问题是政府官员需要多长时间才会采取这一步。
+\* **通缩性萧条是由于债务人手中没有足够的资金来偿还债务而引发的债务危机**。它们不可避免地会导致印钞、债务重组和政府支出计划，这些举措增加了货币和信贷的供给，同时降低了其价值。唯一的问题是政府官员需要多长时间才会采取这一步。
 
 In the case of the US, it took three and a half years from the crash in October 1929 until President Franklin D. Roosevelt's March 1933 actions. In Roosevelt's first 100 days in office, he created several massive government spending programs that were paid for by big tax increases and big budget deficits financed by debt that the Federal Reserve monetized. He instituted jobs programs, unemployment insurance, Social Security supports, and labor- and union friendly programs. After his 1935 tax bill, then popularly called the "Soak the Rich Tax," the top marginal income tax rate for individuals rose to **75 percent** (versus as low as 25 percent in 1930). By 1941, the top personal tax rate was **81 percent**, and the top corporate tax rate was 31 percent, having started at 12 percent in 1930. Roosevelt also imposed a number of other taxes. Despite all of these taxes and the pickup in the economy that helped raise tax revenue, budget deficits increased from around 1 percent of GDP to about 4 percent of GDP because the spending increases were so large. From 1933 until the end of 1936 the stock market returned over **200 percent**, and the economy grew at a blistering average real rate of about **9 percent**.
 
-就美国而言，从1929年10月股市崩盘到富兰克林·D·罗斯福（Franklin D. Roosevelt）总统1933年3月采取行动，历经了三年半。在罗斯福执政的头100天里，他推出了多项大规模政府支出计划，资金来源于大幅增税和巨额预算赤字——这些赤字通过发债融资，再由美联储（Federal Reserve）将其货币化。他设立了就业计划、失业保险、社会保障支持以及有利于劳工和工会的政策。在1935年的税收法案——当时被民间戏称为"劫富税"（Soak the Rich Tax）——通过后，个人最高边际所得税率攀升至**75%**（而1930年最低仅为25%）。到1941年，个人最高税率达到**81%**，企业最高税率达到31%，而1930年时仅为12%。罗斯福还征收了许多其他税种。尽管有这些税收以及经济复苏带来的税收增长，预算赤字仍从GDP的约1%上升到约4%，因为支出增幅实在太大。从1933年到1936年底，股市回报率超过**200%**，经济以约**9%**的惊人平均实际增长率高速增长。
+就美国而言，从1929年10月股市崩盘到富兰克林·D·罗斯福（Franklin D. Roosevelt）总统1933年3月采取行动，历经了三年半。在罗斯福执政的头100天里，他推出了多项大规模政府支出计划，资金来源于大幅增税和巨额预算赤字——这些赤字通过发债融资，再由美联储（Federal Reserve）将其货币化。他设立了就业计划、失业保险、社会保障支持以及有利于劳工和工会的政策。在1935年的税收法案——当时被民间戏称为"劫富税"（Soak the Rich Tax）——通过后，个人最高边际所得税率攀升至**75%**（而1930年最低仅为25%）。到1941年，个人最高税率达到**81%**，企业最高税率达到31%，而1930年时仅为12%。罗斯福还征收了许多其他税种。尽管有这些税收以及经济复苏带来的税收增长，预算赤字仍从GDP的约1%上升到约4%，因为支出增幅实在太大。从1933年到1936年底，股市回报率超过**200%**，经济以约**9**%的惊人平均实际增长率高速增长。
 
 In 1936, the Federal Reserve tightened money and credit to fight inflation and slow an overheating economy, which caused the fragile US economy to fall back into recession and the other major economies to weaken with it, further raising tensions within and between countries.
 
@@ -273,11 +273,11 @@ Meanwhile in Europe, the conflict in Spain between the populists of the left (th
 
 \* **During periods of severe economic distress and large wealth gaps, there are typically revolutionarily large redistributions of wealth.** When done peacefully these are achieved through large tax increases on the rich and big increases in the supply of money that devalue debtors' claims, and when done violently they are achieved by forced asset confiscations. In the US and the UK, while there were redistributions of wealth and political power, capitalism and democracy were maintained. In Germany, Japan, Italy, and Spain they were not.
 
-\* **在严重经济困境和巨大贫富差距时期，通常会发生革命性的大规模财富再分配。**以和平方式实现时，这通过对富人大幅增税和大量增发货币——从而稀释债务人的债权价值——来达成；以暴力方式实现时，则通过强制没收资产来完成。在美国和英国，虽然财富和政治权力经历了再分配，但资本主义和民主制度得以维持。而在德国、日本、意大利和西班牙，则未能如此。
+\* **在严重经济困境和巨大贫富差距时期，通常会发生革命性的大规模财富再分配**。以和平方式实现时，这通过对富人大幅增税和大量增发货币——从而稀释债务人的债权价值——来达成；以暴力方式实现时，则通过强制没收资产来完成。在美国和英国，虽然财富和政治权力经历了再分配，但资本主义和民主制度得以维持。而在德国、日本、意大利和西班牙，则未能如此。
 
 \* **Before there is a shooting war there is usually an economic war.** As is also typical, before all-out wars are declared there is about a decade of economic, technological, geopolitical, and capital wars, during which the conflicting powers intimidate each other, testing the limits of each other's power. While 1939 and 1941 are known as the official starts of the wars in Europe and the Pacific, the conflicts really began about 10 years before that. In addition to the economically motivated conflicts within countries and the political shifts that arose from them, all of these countries faced increased external economic conflicts as they fought for greater shares of a shrinking economic pie. Because power, and not law, rules international relations, Germany and Japan became more expansionist and increasingly began to test the UK, the US, and France in the competition over resources and influence over territories.
 
-\* **在爆发热战之前，通常会先有一场经济战。**同样典型的是，在全面战争宣告之前，大约会有十年的经济战、技术战、地缘政治战和资本战，在此期间对立大国互相恐吓，试探彼此的力量边界。虽然1939年和1941年被认为是欧洲和太平洋战争的正式起点，但冲突实际上在大约十年前就已经开始了。除了各国内部由经济动因引发的冲突以及由此产生的政治转向之外，所有这些国家还面临着日益加剧的外部经济冲突，因为它们都在争夺不断缩小的经济蛋糕中更大的份额。由于国际关系中起决定作用的是实力而非法律，德国和日本变得更加扩张主义，并开始越来越频繁地在资源争夺和领土影响力方面试探英国、美国和法国的底线。
+\* **在爆发热战之前，通常会先有一场经济战**。同样典型的是，在全面战争宣告之前，大约会有十年的经济战、技术战、地缘政治战和资本战，在此期间对立大国互相恐吓，试探彼此的力量边界。虽然1939年和1941年被认为是欧洲和太平洋战争的正式起点，但冲突实际上在大约十年前就已经开始了。除了各国内部由经济动因引发的冲突以及由此产生的政治转向之外，所有这些国家还面临着日益加剧的外部经济冲突，因为它们都在争夺不断缩小的经济蛋糕中更大的份额。由于国际关系中起决定作用的是实力而非法律，德国和日本变得更加扩张主义，并开始越来越频繁地在资源争夺和领土影响力方面试探英国、美国和法国的底线。
 
 Before going on to describe the hot war, I want to elaborate on the common tactics used when economic and capital tools are weaponized.
 
@@ -335,7 +335,7 @@ In March 1941, Congress passed the Lend-Lease Act, which allowed the US to lend 
 
 \* **When countries are weak, opposing countries take advantage of their weaknesses to obtain gains.** France, the Netherlands, and Great Britain all had colonies in Asia. Overstretched by the fighting in Europe, they were unable to defend them against the Japanese. Starting in September 1940, Japan invaded several colonies in Southeast Asia, beginning with French Indochina, adding what it called the Southern Resource Zone to its Greater East Asia Co-Prosperity Sphere. In 1941, Japan seized oil reserves in the Dutch East Indies.
 
-\* **当国家虚弱时，敌对国家会利用其弱点来谋取利益。**法国、荷兰和英国都在亚洲拥有殖民地。由于在欧洲战场上力量过度分散，它们无力抵御日本的进攻。从1940年9月开始，日本入侵了东南亚的多个殖民地，首先是法属印度支那，将其所谓的"南方资源区"纳入"大东亚共荣圈"（Greater East Asia Co-Prosperity Sphere）。1941年，日本夺取了荷属东印度群岛（Dutch East Indies）的石油储备。
+\* **当国家虚弱时，敌对国家会利用其弱点来谋取利益**。法国、荷兰和英国都在亚洲拥有殖民地。由于在欧洲战场上力量过度分散，它们无力抵御日本的进攻。从1940年9月开始，日本入侵了东南亚的多个殖民地，首先是法属印度支那，将其所谓的"南方资源区"纳入"大东亚共荣圈"（Greater East Asia Co-Prosperity Sphere）。1941年，日本夺取了荷属东印度群岛（Dutch East Indies）的石油储备。
 
 This Japanese territorial expansion was a threat to the US's own Pacific ambitions. In July and August 1941, Roosevelt responded by freezing all Japanese assets in the United States, closing the Panama Canal to Japanese ships, and embargoing oil and gas exports to Japan. This cut off **three-fourths** of Japan's trade and **80 percent** of its oil. Japan calculated that it would run out of oil in two years. This put Japan in the position of having to choose between backing down or attacking the US.
 
@@ -404,7 +404,7 @@ Still, the cycle needn't transpire this way if countries in their rich and power
 #### 一、世界秩序的终结
 
 - 2026年慕尼黑安全会议上，德国总理默茨、法国总统马克龙、美国国务卿卢比奥等主要领导人一致宣告：**1945年以来的世界秩序已正式终结**，我们进入了**大国政治**的新时代。这不是某个评论员的观点，而是全球主要大国领导人的共识
-- 按照 Dalio 的分析框架，当前处于**"大周期"（Big Cycle）第六阶段**——一个没有规则、强权即公理、大国激烈碰撞的混乱时期。历史上每次进入这个阶段，都伴随着巨大的动荡和重新洗牌
+- 按照 Dalio 的分析框架，当前处于"**大周期"（Big Cycle）第六阶段**——一个没有规则、强权即公理、大国激烈碰撞的混乱时期。历史上每次进入这个阶段，都伴随着巨大的动荡和重新洗牌
 
 #### 二、国际关系的本质
 
@@ -438,8 +438,8 @@ Still, the cycle needn't transpire this way if countries in their rich and power
 
 - 1929年**大萧条**催生了全球性的民粹主义和专制转向：德日意西走向法西斯，苏中走向共产主义，美英虽也民粹化但因民主传统深厚而得以维持制度。一个国家在极端经济困境下走向何方，很大程度上取决于其既有的制度传统
 - **法西斯主义的本质：专制 + 资本主义 + 集体主义**——政府自上而下指挥私营企业的生产，个人满足服从于国家成功。这与共产主义的区别在于保留了生产资料私有制
-- 德国案例：希特勒通过强制银行购买国债、央行货币化债务、大规模基础设施建设（大众汽车、高速公路）等手段实现经济奇迹——失业率从**25%**降至零，年均增长超**8%**，股市上涨近**70%**。这证明以本币借债投资于提高生产率的项目可以极其有效，但德国最终将这种能力转向军事扩张，走向毁灭
-- 日本案例：作为资源匮乏的岛国，出口下降**50%**后经济崩溃，被迫放弃金本位、货币大幅贬值。在绝望中走上以军事掠夺资源（石油、铁矿、煤炭、橡胶）的道路，建立了"大东亚共荣圈"
+- 德国案例：希特勒通过强制银行购买国债、央行货币化债务、大规模基础设施建设（大众汽车、高速公路）等手段实现经济奇迹——失业率从**25**%降至零，年均增长超**8%**，股市上涨近**70%**。这证明以本币借债投资于提高生产率的项目可以极其有效，但德国最终将这种能力转向军事扩张，走向毁灭
+- 日本案例：作为资源匮乏的岛国，出口下降**50**%后经济崩溃，被迫放弃金本位、货币大幅贬值。在绝望中走上以军事掠夺资源（石油、铁矿、煤炭、橡胶）的道路，建立了"大东亚共荣圈"
 - 经济不景气时**提高关税是常见做法**（如1930年《斯穆特-霍利关税法》），但会降低全球生产效率、引发关税战，最终导致征收关税的国家反而失去出口市场，各方皆输
 - **自然灾害**（旱灾、洪灾、瘟疫）与其他不利条件叠加时，往往引发剧烈冲突。1930年代美苏同时遭遇严重旱灾，雪上加霜
 
@@ -447,8 +447,8 @@ Still, the cycle needn't transpire this way if countries in their rich and power
 
 - **热战之前通常有约十年的经济战**。1939年和1941年被视为战争正式起点，但冲突实际上在十年前就已经开始——以经济战、技术战、地缘政治战和资本战的形式逐步升级
 - 经济武器化的三大经典策略：**资产冻结/没收**（阻止敌方使用海外资产）、**封锁资本市场准入**（切断融资渠道）、**禁运/封锁**（断绝关键物资供应）
-- 美国对日本的经济绞杀：冻结日本在美全部资产、关闭巴拿马运河、石油禁运——切断了日本**四分之三**的贸易和**80%**的石油供应。日本估算石油储备仅够两年，被逼入要么退让要么偷袭珍珠港的绝境
-- 美国自身的经济转型同样剧烈：罗斯福将个人最高税率从25%提升至**81%**，企业税率从12%提至**31%**，同时推出大规模政府支出计划，实现了**200%**的股市回报和年均约**9%**的经济增长
+- 美国对日本的经济绞杀：冻结日本在美全部资产、关闭巴拿马运河、石油禁运——切断了日本**四分之三**的贸易和**80**%的石油供应。日本估算石油储备仅够两年，被逼入要么退让要么偷袭珍珠港的绝境
+- 美国自身的经济转型同样剧烈：罗斯福将个人最高税率从25%提升至**81%**，企业税率从12%提至**31%**，同时推出大规模政府支出计划，实现了**200**%的股市回报和年均约**9**%的经济增长
 
 #### 八、战时经济与财富保护
 

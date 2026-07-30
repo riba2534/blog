@@ -26,6 +26,12 @@ tabWidth = 4
 [markup.goldmark.renderer]
 unsafe = true
 
+# 中英混排下 typographer 的引号配对经常一半弯一半直（实测 85 处错配），
+# 还会把 --force 这类 CLI 参数改成 –force；中文全角标点与破折号均为手打字面字符，
+# 自动替换的正收益趋近于零，故整体关闭
+[markup.goldmark.extensions.typographer]
+disable = true
+
 [markup.goldmark.extensions.cjk]
 enable = true
 eastAsianLineBreaks = true

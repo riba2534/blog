@@ -32,7 +32,7 @@ master 分支用于发布稳定版本，dev 分支用于开发，您可以尝试
 
 ## 架构
 
-![architecture](/doc/pic/architecture.png)
+![architecture](https://raw.githubusercontent.com/fatedier/frp/v0.21.0/doc/pic/architecture.png)
 
 ## 使用示例
 
@@ -340,7 +340,7 @@ dashboard_pwd = admin
 
 打开浏览器通过 `http://[server_addr]:7500` 访问 dashboard 界面，用户名密码默认为 `admin`。
 
-![dashboard](/doc/pic/dashboard.png)
+![dashboard](https://raw.githubusercontent.com/fatedier/frp/v0.21.0/doc/pic/dashboard.png)
 
 ### 身份验证
 
@@ -698,11 +698,11 @@ frp 交流群：606194980 (QQ 群号)
 
 ### 支付宝扫码捐赠
 
-![donate-alipay](/doc/pic/donate-alipay.png)
+![donate-alipay](https://raw.githubusercontent.com/fatedier/frp/v0.21.0/doc/pic/donate-alipay.png)
 
 ### 微信支付捐赠
 
-![donate-wechatpay](/doc/pic/donate-wechatpay.png)
+![donate-wechatpay](https://raw.githubusercontent.com/fatedier/frp/v0.21.0/doc/pic/donate-wechatpay.png)
 
 ### Paypal 捐赠
 
