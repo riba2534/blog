@@ -1127,22 +1127,8 @@ a {
   .toc-content {
     padding: 20px;
   }
-  .toc-active {
-    color: $color-accent !important;
-    font-weight: 600;
-    position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      left: -12px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 4px;
-      background: $color-accent;
-      border-radius: 50%;
-    }
-  }
+  // toc-active（已读集合）不再承载视觉：颜色通道让给结构层级，
+  // 状态只由 toc-current（当前项）表达；抽屉的激活态样式在 modern.scss
   @media screen and (max-width: $single-column-max-width) {
     line-height: 2em;
     float: none;

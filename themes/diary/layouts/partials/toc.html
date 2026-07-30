@@ -7,7 +7,7 @@
 		{{ $re := (cond (eq $h1_n 0) "<h[2-4]" "<h[1-4]") }}
 		{{ $renum := (cond (eq $h1_n 0) "[2-4]" "[1-4]") }}
 		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-			<span>- {{ i18n "toc_title" }} -</span>
+			<span class="toc-title">{{ i18n "toc_title" }}</span>
 		</div>
 		{{ $scratch := newScratch }}
 		{{ $scratch.Set "prev_heading" 1 }}

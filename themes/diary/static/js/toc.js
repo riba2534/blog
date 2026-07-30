@@ -52,6 +52,15 @@ var spy = function () {
     });
   });
 
+  // 当前位置单独标记（toc-active 是"已读前缀集合"，做进度感；
+  // toc-current 才是"我在哪"，桌面目录用它点亮轨道线）
+  document.querySelectorAll('.toc-current').forEach(function (e) {
+    e.classList.remove('toc-current');
+  });
+  document.querySelectorAll('.nav-' + activeId).forEach(function (e) {
+    e.classList.add('toc-current');
+  });
+
   // Two toc elements here
   // 只滚动 TOC 自身的滚动容器：桌面端是 .toc-content（modern.scss 设 overflow:auto），
   // 旧版规则下是 .toc 本身，按谁真正可滚动来选。

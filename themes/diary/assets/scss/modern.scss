@@ -933,6 +933,74 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ===== 桌面 TOC 重设计（VitePress 风格）：单轨道线 + 三态字色分层 =====
+   未读=弱字色，已读（spy 前缀集合）=常规字色形成进度感，当前项=accent+轨道亮起；
+   缩进全部走 a 的 padding，嵌套 ul 不再位移，轨道一条线贯穿。
+   scoped 到 .extra-container，移动端抽屉目录不受影响 */
+@media (min-width: 1021px) {
+  .extra-container .toc .toc-content {
+    padding: 14px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+  }
+  .extra-container .toc .toc-title {
+    display: block;
+    padding: 0 0 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--text-3, #94a3b8);
+  }
+  .extra-container .toc .toc-content ul,
+  .extra-container .toc .toc-content ul ul,
+  .extra-container .toc .toc-content ul ul ul {
+    padding-left: 0;
+    margin: 0;
+  }
+  .extra-container .toc .toc-content a {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 4px 8px 4px 14px;
+    // 轨道要能被看见才成立；var(--border) 8% 黑在白卡上近乎隐形
+    border-left: 2px solid rgba(100, 116, 139, 0.28);
+    border-radius: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    // 颜色只表达结构层级（静态），不做"已读染色"——进度与层级抢颜色通道会自相矛盾
+    color: #52627a;
+    background: none;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .extra-container .toc .toc-content > ul > li > a {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #374151;
+  }
+  .extra-container .toc .toc-content ul ul a {
+    padding-left: 26px;
+    font-weight: 400;
+  }
+  .extra-container .toc .toc-content ul ul ul a {
+    padding-left: 38px;
+    font-size: 12.5px;
+    color: #6b7787;
+  }
+  .extra-container .toc .toc-content a:hover {
+    color: var(--accent);
+    background: none;
+  }
+  .extra-container .toc .toc-content a.toc-active {
+    background: none;
+  }
+  .extra-container .toc .toc-content a.toc-current {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: rgba(25, 118, 210, 0.06); // 极淡底色锚定当前位置，避免亮轨孤立
+  }
+}
+
 
 .post-body table {
   width: 100%;
