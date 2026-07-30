@@ -53,10 +53,18 @@ var spy = function () {
   });
 
   // Two toc elements here
+  // 只滚动 TOC 自身的滚动容器：桌面端是 .toc-content（modern.scss 设 overflow:auto），
+  // 旧版规则下是 .toc 本身，按谁真正可滚动来选。
+  // 不能用 scrollIntoView：它会连带滚动所有可滚祖先，把移动端抽屉（overflow:hidden）
+  // 的菜单顶部滚出可视区且用户无法复原
   document.querySelectorAll(".nav-" + activeId).forEach(e => {
     try {
-      // Avoid jank on scroll: no smooth behavior inside scroll handler
-      e.scrollIntoView({ block: "center", behavior: 'auto' });
+      var box = [e.closest(".toc-content"), e.closest(".toc")].find(function (c) {
+        return c && c.scrollHeight > c.clientHeight;
+      });
+      if (!box) return;
+      var delta = e.getBoundingClientRect().top - box.getBoundingClientRect().top;
+      box.scrollTop = Math.max(0, box.scrollTop + delta - (box.clientHeight - e.offsetHeight) / 2);
     } catch (_) {}
   });
 }

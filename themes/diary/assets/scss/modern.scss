@@ -235,7 +235,12 @@ a {
 .post-head-wrapper {
   border-top-left-radius: var(--radius-xl);
   border-top-right-radius: var(--radius-xl);
-  min-height: 320px; // 增加 banner 最小高度
+}
+/* banner 最小高度只属于桌面横幅；移动端头图高度由图片自身比例决定 */
+@media (min-width: 1021px) {
+  .post-head-wrapper {
+    min-height: 320px;
+  }
 }
 .post-head-wrapper-text-only { padding-top: var(--space-6); }
 
@@ -727,7 +732,7 @@ h1, h2, h3, h4, h5, h6 {
   /* TOC title style - like separator label */
   .single-column-drawer-container .drawer-menu .toc .toc-content > div:first-child {
     padding: 16px 16px 8px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -757,10 +762,10 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.4;
   }
 
-  /* TOC link style - like menu items */
+  /* TOC link style - like menu items（移动端目录是主导航，padding 撑到 ~44px 触控标准） */
   .single-column-drawer-container .drawer-menu .toc .toc-content a {
     display: block;
-    padding: 8px 16px;
+    padding: 12px 16px;
     font-size: 14px;
     line-height: 1.4;
     color: var(--text-2, #334155);
@@ -771,13 +776,13 @@ h1, h2, h3, h4, h5, h6 {
 
   .single-column-drawer-container .drawer-menu .toc .toc-content ul ul a {
     padding-left: 24px;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-3, #64748b);
   }
 
   .single-column-drawer-container .drawer-menu .toc .toc-content ul ul ul a {
     padding-left: 32px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .single-column-drawer-container .drawer-menu .toc .toc-content a:hover {
@@ -960,6 +965,18 @@ h1, h2, h3, h4, h5, h6 {
 /* Mermaid 竖向大图（时序图等）同理；SVG 带 viewBox，约束高度会自动等比缩放不变形 */
 .post-body .mermaid svg {
   max-height: 80vh;
+}
+/* 移动端：宽图不再整体压缩到不可读，保留可读尺寸 + 容器内横向滚动查看 */
+@media (max-width: 1020px) {
+  .post-body .mermaid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .post-body .mermaid svg {
+    /* mermaid 会写入内联 max-width，需要 !important 才能放开 */
+    max-width: none !important;
+    min-width: 640px;
+  }
 }
 /* 键盘聚焦正文图片时的可见焦点环（lightbox 图片带 tabindex） */
 .post-body img:focus-visible {
@@ -1176,8 +1193,8 @@ body.lightbox-open {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  /* 0.9 不透明度的纯黑遮罩上叠 blur 视觉不可辨，却要求全视口滤镜合成，移动端白耗 GPU */
   background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(8px);
   z-index: var(--z-lightbox-backdrop);
   overflow: hidden;
 }
@@ -1186,13 +1203,15 @@ body.lightbox-open {
   display: flex;
 }
 
+/* 收缩包裹图片：关闭按钮以此定位到图片右上角；
+   同时点击图外暗区的目标恢复为 overlay，"点空白关闭"才真正生效 */
 .image-lightbox__inner {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .image-lightbox__img {
@@ -1206,28 +1225,27 @@ body.lightbox-open {
   box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 }
 
-/* Close button fixed at top right */
+/* 关闭按钮贴图片右上角（相对收缩后的 inner 定位）；压在图上，深色胶囊保证浅色图上可见 */
 .image-lightbox__close {
-  position: fixed;
-  top: 16px;
-  right: 16px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   width: 44px;
   height: 44px;
   border-radius: 999px;
   border: none;
-  background: rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.5);
   color: #fff;
   cursor: pointer;
   display: grid;
   place-items: center;
   font-size: 20px;
   transition: background-color .2s ease, transform .2s ease;
-  backdrop-filter: blur(10px);
   z-index: var(--z-lightbox);
 }
 
 .image-lightbox__close:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.72);
   transform: scale(1.05);
 }
 
@@ -1543,8 +1561,9 @@ body.lightbox-open {
     bottom: 20px;
     width: 48px;
     height: 48px;
-    /* iOS safe area */
+    /* iOS safe area：fixed 元素吃不到 body 的 inset padding，横屏右侧刘海单独补 */
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: calc(20px + env(safe-area-inset-right, 0px));
   }
 
   /* ===== 8. Reading progress bar ===== */
@@ -1607,12 +1626,10 @@ body.lightbox-open {
     border-radius: 0 8px 8px 0;
   }
 
-  /* Table horizontal scroll */
-  .post-body table {
-    display: block;
-    overflow-x: auto;
+  /* 表格横向滚动交给 render-table.html 包的 .table-wrapper（journal.scss 已设 overflow-x）。
+     原先给 table 自身设 display:block + nowrap 会绕过 wrapper 并把表格撑到视口数倍宽 */
+  .post-body .table-wrapper {
     -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
   }
 
   /* Page title optimization */
@@ -1628,6 +1645,17 @@ body.lightbox-open {
 /* iOS safe area support */
 @supports (padding: env(safe-area-inset-bottom)) {
   @media screen and (max-width: 1020px) {
+    /* 横屏刘海：viewport meta 用了 viewport-fit=cover，内容流与 sticky 导航栏
+       需要左右 inset 兜底，否则文字会被刘海/圆角遮住；竖屏时 inset 为 0 无副作用 */
+    body {
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
+    }
+    /* 抽屉 fixed 在左缘，不受 body padding 影响，单独补左 inset */
+    .single-column-drawer-container .drawer-content {
+      padding-left: env(safe-area-inset-left, 0px);
+    }
+
     /* Bottom content safe area */
     .post-list-container,
     .post {
@@ -1662,8 +1690,24 @@ body.lightbox-open {
   }
 }
 
-/* Touch device hover state optimization */
-@media (hover: none) and (pointer: coarse) {
+/* 锚点跳转让开移动端吸顶导航（约 72px），否则点目录后标题被盖住 */
+@media (max-width: 1020px) {
+  html {
+    scroll-padding-top: 84px;
+  }
+
+  /* 文章头部分类/标签链接触控区扩到 ~44px，负 margin 抵消不影响排版 */
+  .post-meta a {
+    display: inline-block;
+    padding: 6px 4px;
+    margin: -6px -4px;
+  }
+}
+
+/* Touch device hover state optimization
+   只用 hover:none 判定：iPhone 模拟等环境 pointer:coarse 可能为 false，
+   双条件会让整块触屏适配失效 */
+@media (hover: none) {
   .post-item-wrapper:hover {
     transform: none !important;
   }
@@ -1678,6 +1722,15 @@ body.lightbox-open {
 
   a:hover {
     text-decoration: none !important;
+  }
+
+  /* 触屏无 hover：代码复制按钮常驻半透明可见，否则功能不可发现 */
+  .post-body > pre .code-copy-btn,
+  .post-body .highlight .code-copy-btn {
+    opacity: 0.55;
+  }
+  .code-copy-btn.copied {
+    opacity: 1;
   }
 }
 

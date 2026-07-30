@@ -86,8 +86,9 @@
   .single-column-drawer-container {
     // 抽屉浮在滚动的正文之上，这里的 backdrop-filter 是真正生效的，保留
     @include liquid-glass-regular;
-    border-radius: var(--lg-radius-large) var(--lg-radius-large) 0 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    // 左滑入的全高抽屉：右缘圆角 + 朝右投影（原上圆角/朝上阴影是 bottom sheet 遗留）
+    border-radius: 0 var(--lg-radius-large) var(--lg-radius-large) 0;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
     .drawer-content {
       background: transparent !important;
     }

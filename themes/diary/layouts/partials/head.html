@@ -88,6 +88,12 @@
   <script defer src="{{"js/toc.js" | relURL}}"></script>
 {{ end }}
 
+{{- /* 沉浸式阅读偏好在样式表加载前恢复，首帧即最终布局，避免侧栏闪现；
+       类名与 baseof.html 的 can-immersive、journal.scss 的 html.immersive 配套 */ -}}
+{{ if and .IsPage (eq .Section "blog") }}
+<script>try{localStorage.getItem('immersive-reading')==='1'&&document.documentElement.classList.add('immersive')}catch(e){}</script>
+{{ end }}
+
 {{ $styles := resources.Get "scss/journal.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
 

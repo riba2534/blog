@@ -29,6 +29,8 @@ $side-container-width: 25%;
 $extra-container-width: 25%;
 $extra-container-pagination-width: 64px;
 $stream-container-max-width: 1620px;
+$immersive-card-width: 960px; // 沉浸式阅读时正文卡片宽度，两侧留白居中
+$immersive-toc-band: 320px; // 沉浸式阅读时右侧目录带宽度，目录在任何桌面视口都保持可见
 
 $nav-title-size: 30px;
 $nav-subtitle-size: 18px;
@@ -60,7 +62,7 @@ $single-column-nav-link-size: 16px;
 $single-column-nav-footer-size: 13px;
 $single-column-post-title-size: 22px;
 $single-column-post-summary-size: 16px;
-$single-column-post-body-size: 15px;
+$single-column-post-body-size: 16px; // 中文长文移动端 15px 偏小，16px 起步
 $single-column-post-meta-size: 14px;
 $single-column-tag-category-title-size: 14px;
 $single-column-toc-size: 14px;
@@ -414,7 +416,7 @@ a {
 }
 
 
-/* New transparent overlay for click-to-close functionality */
+/* Overlay: click-to-close + 变暗遮罩，给"菜单已打开"的明确视觉信号 */
 .single-column-drawer-overlay {
   display: none;
   @media screen and (max-width: $single-column-max-width) {
@@ -423,7 +425,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(15, 23, 42, 0.4);
     z-index: 1700;
     pointer-events: auto;
     cursor: pointer;
@@ -716,8 +718,10 @@ a {
               width: 220px;
               min-height: 110px;
               height: 100%;
-              background: no-repeat center;
-              background-size: cover;
+              // 已从背景图 div 换成 <img loading="lazy">，用 object-fit 保持裁切效果
+              display: block;
+              object-fit: cover;
+              object-position: center;
               border-radius: var(--lg-radius-medium);
               overflow: hidden;
               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -785,69 +789,177 @@ a {
     padding: 0 0 20px 0;
     .post-head-wrapper {
       margin-top: -20px;
-      background: no-repeat center;
-      background-size: cover;
       position: relative;
+      overflow: hidden; // 顶部圆角需要裁切绝对定位的头图
       padding-top: 220px; // 增加 banner 高度
 
-      @media screen and (max-width: $single-column-max-width) {
-        padding-top: 180px; // 移动端也增加
+      // 桌面：头图（真实 <img>）绝对定位铺满整个横幅，等效原 background-size: cover；
+      // .post-head-cover 桌面不定位，img 以 wrapper 为定位祖先
+      .post-head-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
-
-      @media screen and (max-width: 480px) {
-        padding-top: 140px; // 小屏幕适当减少
+      .post-title,
+      .post-head-info {
+        position: relative; // 盖在绝对定位的图上
       }
 
       * {
         color: white;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); // 增加文字阴影提升可读性
       }
+
       .post-title {
-        padding: 100px 35px 35px 35px;
+        padding: 100px 35px 10px 35px;
         font-size: $post-title-size;
         font-weight: 600;
         font-style: normal;
         line-height: 1.45em;
+        // 遮罩分两段接续（标题段→info 段），整体观感与原一体式渐变一致
         background: linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0) 0%,
-          rgba(0, 0, 0, 0.6) 60%,
+          rgba(0, 0, 0, 0.6) 80%,
+          rgba(0, 0, 0, 0.66) 100%
+        );
+      }
+
+      .post-head-info {
+        padding: 0 35px 30px 35px;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.66) 0%,
           rgba(0, 0, 0, 0.8) 100%
-        ); // 更平滑的渐变
+        );
+      }
 
-        @media screen and (max-width: $single-column-max-width) {
+      // 移动端分层式头部：图按原比例完整显示，仅标题以窄遮罩浮在图底部；
+      // 描述与 meta 下沉到图下用正常配色——长描述不再糊满整张封面，也无需补边
+      @media screen and (max-width: $single-column-max-width) {
+        padding-top: 0;
+
+        .post-head-cover {
+          position: relative; // 标题的定位锚点 = 图片区域本身
+        }
+
+        .post-head-img {
+          position: static;
+          height: auto;
+          display: block;
+        }
+
+        .post-title {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 48px 16px 12px 16px;
           font-size: $single-column-post-title-size;
-          padding: 80px 20px 30px 20px;
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.45) 55%,
+            rgba(0, 0, 0, 0.72) 100%
+          );
         }
 
-        @media screen and (max-width: 480px) {
-          padding: 60px 16px 24px 16px;
-        }
-
-        .post-subtitle {
-          font-size: $post-subtitle-size;
-          line-height: 1.2em !important;
-          width: 80%;
-          opacity: 0.6;
-          padding: 0px 0 8px 0;
-        }
-
-        .post-meta {
+        .post-head-info {
+          // 液态玻璃信息条：信息条不在图的后方，backdrop-filter 透不到封面，
+          // 用封面图的重度模糊放大版垫底模拟"取材玻璃"（Apple Music 播放页手法），
+          // 再叠暗色定调层 + 顶部内高光，与头图连成一个 hero 单元
+          position: relative;
           margin: 0;
+          padding: 16px 20px 18px 20px;
+          overflow: hidden;
+          background: #12161f; // 图未加载时的兜底
+
+          &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--head-bg) center / cover no-repeat;
+            filter: blur(48px) saturate(1.8) brightness(0.6);
+            transform: scale(2.4); // 重度放大，让封面色彩化为柔和色场
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            // 定调层加深到浅色封面下也满足 AA 对比度（meta 13px 白字需 ≥4.5:1）
+            background: linear-gradient(
+              180deg,
+              rgba(16, 20, 30, 0.6) 0%,
+              rgba(16, 20, 30, 0.46) 100%
+            );
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12); // 玻璃顶缘高光
+          }
+
+          > * {
+            position: relative;
+            z-index: 1; // 文字浮在玻璃层之上
+          }
+
           &,
           * {
-            font-size: 16px;
-          }
-          .material-icons {
-            vertical-align: middle;
-            margin-bottom: 3px;
+            text-shadow: none;
           }
 
-          @media screen and (max-width: $single-column-max-width) {
+          .post-subtitle {
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.82);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.7em !important; // 压过共享块同为 !important 的 1.55em
+          }
+
+          .post-meta {
             &,
             * {
-              font-size: $single-column-post-meta-size;
+              font-size: 13px;
+              color: rgba(255, 255, 255, 0.72); // 0.55 在浅色封面下对比度仅 2.9:1
             }
+          }
+        }
+      }
+    }
+
+    // 描述与 meta 排版为两种头部变体共用
+    // （featured：桌面叠图上、移动端沉到图下；text-only：常规文档流）
+    .post-head-info {
+      .post-subtitle {
+        font-size: $post-subtitle-size;
+        line-height: 1.2em !important;
+        width: 80%;
+        opacity: 0.6;
+        padding: 0px 0 8px 0;
+
+        @media screen and (max-width: $single-column-max-width) {
+          width: 100%;
+          line-height: 1.55em !important;
+        }
+      }
+
+      .post-meta {
+        margin: 0;
+        &,
+        * {
+          font-size: 16px;
+        }
+        .material-icons {
+          vertical-align: middle;
+          margin-bottom: 3px;
+        }
+
+        @media screen and (max-width: $single-column-max-width) {
+          &,
+          * {
+            font-size: $single-column-post-meta-size;
           }
         }
       }
@@ -864,30 +976,6 @@ a {
         font-weight: 600;
         font-style: normal;
         line-height: 1.5em;
-        .post-subtitle {
-          font-size: $post-subtitle-size;
-          width: 80%;
-          opacity: 0.6;
-          padding: 0px 0 8px 0;
-        }
-        .post-meta {
-          margin: 0;
-          &,
-          * {
-            font-size: 16px;
-          }
-          .material-icons {
-            vertical-align: middle;
-            margin-bottom: 3px;
-          }
-
-          @media screen and (max-width: $single-column-max-width) {
-            &,
-            * {
-              font-size: $single-column-post-meta-size;
-            }
-          }
-        }
 
         @media screen and (max-width: $single-column-max-width) {
           font-size: $single-column-post-title-size;
@@ -967,6 +1055,12 @@ a {
     font-size: $single-column-nav-footer-size;
     font-family: $sans-preferred-font-list;
     padding: 40px 20px 40px 20px;
+
+    // 触屏可点性：裸文本链接只有约 16px 高，撑到 ~36px 的触控目标
+    a {
+      display: inline-block;
+      padding: 10px 8px;
+    }
   }
 }
 
@@ -1274,5 +1368,117 @@ mjx-container {
 
   @media screen and (max-width: $single-column-max-width) {
     font-size: 24px;
+  }
+}
+
+// ==================== 沉浸式阅读模式 ====================
+// 仅文章页可用（html.can-immersive 由 baseof.html 按 Section 输出），
+// 点正文右上角按钮切换、Esc 退出，偏好由 head.html 在首帧前恢复。
+// ≤ $single-column-max-width 本就是无侧栏抽屉布局，此模式不参与。
+
+// 正文右上角的开关按钮，sticky 跟随滚动常驻
+.immersive-toggle-wrapper {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  height: 0; // 不占正文排版空间
+  display: flex;
+  justify-content: flex-end;
+
+  @media screen and (max-width: $single-column-max-width) {
+    display: none;
+  }
+}
+
+.immersive-toggle {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 20px; // svg.material-icons 为 1em，跟随此处
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  color: rgba($deep-dark-accent, 0.6);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+
+  .immersive-icon-exit {
+    display: none;
+  }
+
+  &:hover {
+    color: $color-accent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+}
+
+html.can-immersive {
+  .side-container {
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .stream-container {
+    transition: padding 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+html.immersive {
+  .side-container {
+    transform: translateX(-100%);
+    visibility: hidden;
+    // 滑出动画结束后再摘除可见性，同时把导航移出 Tab 焦点链
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.45s;
+  }
+
+  .stream-container {
+    // 整体限定在桌面布局：≤ $single-column-max-width 是抽屉单栏布局，
+    // 若 immersive 偏好残留在 localStorage，固定 320px 目录带会把正文挤没
+    @media screen and (min-width: #{$single-column-max-width + 1}) {
+      // 宽屏：两侧对称留白，正文严格居中（目录浮在右侧留白里）
+      padding-left: calc((100% - #{$immersive-card-width}) / 2);
+      padding-right: calc((100% - #{$immersive-card-width}) / 2);
+
+      // 对称留白 < 目录带（视口 < 960 + 320×2）时：右侧固定预留目录带保证目录始终可见，
+      // 左侧吃掉剩余留白；正文保持 960 直到 1280，再窄则自适应收窄（padding 负值按规范收敛为 0）
+      @media screen and (max-width: #{$immersive-card-width + $immersive-toc-band * 2}) {
+        padding-left: calc(100% - #{$immersive-card-width + $immersive-toc-band});
+        padding-right: $immersive-toc-band;
+      }
+    }
+  }
+
+  .extra-container {
+    // 右侧收窄为目录带，只保留目录与返回顶部，容器本身不拦截正文点击
+    width: $immersive-toc-band;
+    pointer-events: none;
+
+    .toc {
+      pointer-events: auto;
+      max-width: 280px;
+      margin-left: 12px;
+      margin-right: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .pagination {
+      pointer-events: auto;
+    }
+  }
+
+  .immersive-toggle {
+    color: $color-accent;
+
+    .immersive-icon-enter {
+      display: none;
+    }
+    .immersive-icon-exit {
+      display: block;
+    }
   }
 }

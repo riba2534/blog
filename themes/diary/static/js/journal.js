@@ -5,6 +5,8 @@ const navBackground = document.getElementById("navBackground");
 const navTitle = document.getElementById("navTitle");
 
 var lastNavShown = null;
+// CSS 的 reduced-motion 规则管不到 JS 每帧写入的 transform/opacity，这里单独尊重
+var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var handleScroll = function () {
   try {
     var pageHead = document.getElementById("pageHead");
@@ -15,7 +17,7 @@ var handleScroll = function () {
     var navBarHeight = (navBar && navBar.offsetHeight) || 1;
 
     // pageHead 视差效果
-    if (pageHead) {
+    if (pageHead && !reduceMotion) {
       pageHead.style.transform = "translateZ(0px) translateY(" + (0.3 * scrollY) + "px)";
       pageHead.style.opacity = 1 - Math.min(scrollY / 300, 1);
     }

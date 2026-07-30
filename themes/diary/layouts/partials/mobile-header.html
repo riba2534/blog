@@ -1,4 +1,4 @@
-<div class="single-column-drawer-container" id="drawer">
+<div class="single-column-drawer-container" id="drawer" role="dialog" aria-modal="true" aria-label="导航菜单">
     <div class="drawer-content">
         <div class="drawer-menu">
             {{- partial "google-search.html" . -}}
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" role="button" tabindex="0" aria-label="关闭菜单" onclick="toggleDrawer()" onkeydown="if(event.key==='Enter'||event.key===' '||event.key==='Escape'){event.preventDefault();toggleDrawer()}"></div>
+<div id="drawer-overlay" class="single-column-drawer-overlay" style="display: none;" role="button" tabindex="0" aria-label="关闭菜单" onclick="toggleDrawer()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleDrawer()}"></div>
 <nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
     <div id="navBackground" class="nav-background"></div>
     <div class="container container-narrow nav-content">

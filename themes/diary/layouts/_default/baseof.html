@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.Lang | default "zh" }}">
+<html lang="{{ site.Language.Lang | default "zh" }}"{{ if and .IsPage (eq .Section "blog") }} class="can-immersive"{{ end }}>
     {{- partial "head.html" . -}}
     <body id="top">
         <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -36,30 +36,39 @@
         const overlayEl = document.getElementById('drawer-overlay');
 
         window.toggleDrawer = function() {
-            const state = window.themeState;
-            state.isDrawerOpen = !state.isDrawerOpen;
-
+            // null 检查必须在状态翻转之前：无抽屉的页面上状态一旦翻反便无法复原，
+            // 之后 Esc 会一直命中"先关抽屉"分支空转
             if (!drawerEl) {
                 return;
             }
+            const state = window.themeState;
+            state.isDrawerOpen = !state.isDrawerOpen;
 
             const navBtn = document.getElementById('nav_dropdown_btn');
             if (navBtn) navBtn.setAttribute('aria-expanded', state.isDrawerOpen);
 
             if (state.isDrawerOpen) {
                 drawerEl.classList.add('single-column-drawer-container-active');
+                // html + body 双保险：iOS Safari 上只锁 html 不生效
                 document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
                 if (overlayEl) {
                     overlayEl.style.display = 'block';
                     // Trigger reflow
-                    overlayEl.offsetHeight; 
+                    overlayEl.offsetHeight;
                 }
+                // 焦点移入抽屉（role=dialog），Tab 不再落到被遮挡的正文
+                const firstFocusable = drawerEl.querySelector('a, [tabindex="0"]');
+                if (firstFocusable) firstFocusable.focus();
             } else {
                 drawerEl.classList.remove('single-column-drawer-container-active');
                 document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
                 if (overlayEl) {
                     overlayEl.style.display = 'none';
                 }
+                // 焦点还给汉堡按钮
+                if (navBtn) navBtn.focus();
                 // Hide all submenu items（同步 ARIA 状态，避免读屏器与实际显示不一致）
                 document.querySelectorAll('.drawer-submenu').forEach(el => {
                     el.style.display = 'none';
@@ -89,6 +98,41 @@
             submenu.setAttribute('aria-hidden', !isHidden);
             btn.setAttribute('aria-expanded', isHidden);
         };
+
+        // 沉浸式阅读：收起左侧导航、正文居中留白，仅文章页（html.can-immersive）可用。
+        // 偏好存 localStorage，由 head.html 内联脚本在首帧前恢复，这里只负责切换与 ARIA 同步
+        const htmlEl = document.documentElement;
+
+        function syncImmersiveBtn() {
+            const btn = document.getElementById('immersiveToggle');
+            if (!btn) return;
+            const on = htmlEl.classList.contains('immersive');
+            btn.setAttribute('aria-pressed', on);
+            btn.setAttribute('title', on ? '退出沉浸式阅读（Esc）' : '沉浸式阅读');
+        }
+
+        window.toggleImmersive = function() {
+            if (!htmlEl.classList.contains('can-immersive')) return;
+            const on = htmlEl.classList.toggle('immersive');
+            try { localStorage.setItem('immersive-reading', on ? '1' : '0'); } catch (_) {}
+            syncImmersiveBtn();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key !== 'Escape') return;
+            // 灯箱有自己的 Esc 处理（extended_head.html），此处让路避免一次按键双动作
+            if (document.body.classList.contains('lightbox-open')) return;
+            // 优先关抽屉，其次退沉浸模式
+            if (window.themeState && window.themeState.isDrawerOpen) {
+                window.toggleDrawer();
+                return;
+            }
+            if (htmlEl.classList.contains('immersive')) {
+                window.toggleImmersive();
+            }
+        });
+
+        syncImmersiveBtn();
     })();
     </script>
 

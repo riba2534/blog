@@ -28,15 +28,13 @@
                             {{ if $featured_image }}
                                 {{ $image := .Resources.GetMatch (.Params.featured_image) }}
                                 <div class="post-item-image-wrapper">
-                                    <div class="post-item-image"
-                                        {{ if $image }}
-                                            {{ $thumbnail := $image.Resize "690x360" }}
-                                            style="background-image: url('{{ $thumbnail.RelPermalink }}')"
-                                        {{ else }}
-                                            {{ $thumb := partial "functions/image-cdn.html" (dict "url" ($featured_image | absURL) "width" 440) }}
-                                            style="background-image: url('{{ $thumb | safeCSS }}')"
-                                        {{ end }}
-                                    ></div>
+                                    {{ if $image }}
+                                        {{ $thumbnail := $image.Resize "690x360" }}
+                                        <img class="post-item-image" src="{{ $thumbnail.RelPermalink }}" alt="" loading="lazy" decoding="async">
+                                    {{ else }}
+                                        {{ $thumb := partial "functions/image-cdn.html" (dict "url" ($featured_image | absURL) "width" 440) }}
+                                        <img class="post-item-image" src="{{ $thumb }}" alt="" loading="lazy" decoding="async">
+                                    {{ end }}
                                 </div>
                             {{ end }}
                         </div>
@@ -63,15 +61,13 @@
                         {{ if $featured_image }}
                             {{ $image := .Resources.GetMatch (.Params.featured_image) }}
                             <div class="post-item-image-wrapper">
-                                <div class="post-item-image"
-                                    {{ if $image }}
-                                        {{ $thumbnail := $image.Resize "690x360" }}
-                                        style="background-image: url('{{ $thumbnail.RelPermalink }}')"
-                                    {{ else }}
-                                        {{ $thumb := partial "functions/image-cdn.html" (dict "url" ($featured_image | absURL) "width" 440) }}
-                                        style="background-image: url('{{ $thumb | safeCSS }}')"
-                                    {{ end }}
-                                ></div>
+                                {{ if $image }}
+                                    {{ $thumbnail := $image.Resize "690x360" }}
+                                    <img class="post-item-image" src="{{ $thumbnail.RelPermalink }}" alt="" loading="lazy" decoding="async">
+                                {{ else }}
+                                    {{ $thumb := partial "functions/image-cdn.html" (dict "url" ($featured_image | absURL) "width" 440) }}
+                                    <img class="post-item-image" src="{{ $thumb }}" alt="" loading="lazy" decoding="async">
+                                {{ end }}
                             </div>
                         {{ end }}
                     </div>
